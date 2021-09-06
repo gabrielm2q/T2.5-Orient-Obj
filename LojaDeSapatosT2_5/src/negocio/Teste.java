@@ -4,9 +4,10 @@ import java.text.*;
 
 public class Teste {
 	static Cliente cl;
+	static Cliente cl2;
 	static Endereco end;
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		
 		GregorianCalendar d = new GregorianCalendar();
 		Date dat = d.getTime();
@@ -23,9 +24,17 @@ public class Teste {
 		end.setComplemento("Casa Amarela");
 		
 		
-		cl = new Cliente(end, "John", 'M', dat, "000.000.000-00", "(99) 99999-9999", "john@gmail.com");
+		cl = new Cliente();
+		cl.cadastrar(end, "Felipe", 'M', dat, "111.111.111-11", "(61) 91111-1111", "felipe@gmail.com");
+		cl.ler();
 		
-		System.out.println(cl.toString());
+		cl2 = new Cliente();
+		cl2.cadastrar(end, "Joana", 'F', dat, "222.222.222-22", "(61) 92222-2222", "joana@gmail.com");
+		cl2.ler();
+		cl2.editar(end, "Joanna", 'F', dat, "222.222.222-11", "(61) 92222-2121", "joanna@gmail.com");
+		cl2.ler();
+		cl2.deletar();
+		cl2.ler();
 	}
 
 }

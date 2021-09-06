@@ -27,14 +27,13 @@ public class Endereco {
 	public Endereco() {
 		
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Endereco [cep=" + cep + ", cidade=" + cidade + ", uf=" + uf + ", nomeRua=" + nomeRua + ", numero="
 				+ numero + ", quadra=" + quadra + ", bairro=" + bairro + ", numApart=" + numApart + ", complemento="
 				+ complemento + "]";
 	}
-
 
 	public void cadastrar() {
 		
