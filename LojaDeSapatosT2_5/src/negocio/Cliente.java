@@ -22,6 +22,10 @@ public class Cliente {
 		email = mail;
 	}
 	
+	public Cliente() {
+		
+	}
+	
 	
 	@Override
 	public String toString() {
@@ -30,20 +34,41 @@ public class Cliente {
 	}
 
 
-	public void cadastrar() {
-		
+	public void cadastrar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String tele, String mail) {
+		this.endereco = endereco;
+		this.nome = nome;
+		this.genero = genero;
+		this.dataNasc = dataNasc;
+		this.cpf = cpf;
+		this.telefone = tele;
+		this.email = mail;
 	}
 	
 	public void ler() {
-		
+		String saida = "\nDados do Cliente: ";
+		saida = saida + "\nNome: " + this.getNome() + ".\nGênero: " + this.getGenero() + ".\nData de Nascimento: " 
+		+ this.getDataNasc() + ".\nCPF: " + this.getCpf() + ".\nTelefone: " + this.getTelefone() + ".\nE-Mail: " + this.getEmail() + ".";
+		System.out.println(saida);
 	}
 	
-	public void editar() {
-		
+	public void editar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String tele, String mail) {
+		this.endereco = endereco;
+		this.nome = nome;
+		this.genero = genero;
+		this.dataNasc = dataNasc;
+		this.cpf = cpf;
+		this.telefone = tele;
+		this.email = mail;
 	}
 	
 	public void deletar() {
-		
+		this.endereco = null;
+		this.nome = null;
+		this.genero = '\0';
+		this.dataNasc = null;
+		this.cpf = null;
+		this.telefone = null;
+		this.email = null;
 	}
 	
 	public Endereco getEndereco() {
