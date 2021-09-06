@@ -30,21 +30,41 @@ public class Endereco {
 
 	@Override
 	public String toString() {
-		return "Endereco [cep=" + cep + ", cidade=" + cidade + ", uf=" + uf + ", nomeRua=" + nomeRua + ", numero="
-				+ numero + ", quadra=" + quadra + ", bairro=" + bairro + ", numApart=" + numApart + ", complemento="
-				+ complemento + "]";
+		return "\nCidade: " + this.getCidade() + ".\nCEP: " + this.getCep() + ".\nUF: " + this.getUf() + "\nNome da Rua: " + this.getNomeRua()
+				+ ".\nNúmero: " + this.getNumero() + ".\nQuadra: " + this.getQuadra() + ".\nBairro: " + this.getBairro() +
+				".\nNúmero do Apartamento: " + this.getNumApart() + ".\nComplemento: " + this.getComplemento() + ".";
 	}
 
-	public void cadastrar() {
-		
+	public void cadastrar(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro, int numApart, String complemento) {
+		this.cep = cep;
+		this.cidade = cidade;
+		this.uf = uf;
+		this.nomeRua = nomeRua; 
+		this.numero = numero; 
+		this.quadra = quadra; 
+		this.bairro = bairro; 
+		this.numApart = numApart; 
+		this.complemento = complemento; 
 	}
 	
 	public void ler() {
-		
+		String saida = "\nEndereço do Cliente: ";
+		saida = saida + "\nCidade: " + this.getCidade() + ".\nCEP: " + this.getCep() + ".\nUF: " + this.getUf() + "\nNome da Rua: " + this.getNomeRua() + ".\nNúmero: " + this.getNumero() + ".\nQuadra: " 
+		+ this.getQuadra() + ".\nBairro: " + this.getBairro() + ".\nNúmero do Apartamento: " + this.getNumApart() 
+		+ ".\nComplemento: " + this.getComplemento() + ".";
+		System.out.println(saida);
 	}
 	
-	public void editar() {
-		
+	public void editar(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro, int numApart, String complemento) {
+		this.cep = cep;
+		this.cidade = cidade;
+		this.uf = uf;
+		this.nomeRua = nomeRua; 
+		this.numero = numero; 
+		this.quadra = quadra; 
+		this.bairro = bairro; 
+		this.numApart = numApart; 
+		this.complemento = complemento;
 	}
 	
 	public int getCep() {
