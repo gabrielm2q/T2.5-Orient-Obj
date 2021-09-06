@@ -25,14 +25,13 @@ public class Cliente {
 	public Cliente() {
 		
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "Cliente [endereco=" + endereco + ", nome=" + nome + ", genero=" + genero + ", dataNasc=" + dataNasc
-				+ ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + "]";
+				+ ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", getEndereco()=" + getEndereco()
+				+ "]";
 	}
-
 
 	public void cadastrar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String tele, String mail) {
 		this.endereco = endereco;
@@ -47,7 +46,8 @@ public class Cliente {
 	public void ler() {
 		String saida = "\nDados do Cliente: ";
 		saida = saida + "\nNome: " + this.getNome() + ".\nGênero: " + this.getGenero() + ".\nData de Nascimento: " 
-		+ this.getDataNasc() + ".\nCPF: " + this.getCpf() + ".\nTelefone: " + this.getTelefone() + ".\nE-Mail: " + this.getEmail() + ".";
+		+ this.getDataNasc() + ".\nCPF: " + this.getCpf() + ".\nTelefone: " + this.getTelefone() + ".\nE-Mail: " + this.getEmail()
+		+ ".\nEndereco: " + this.getEndereco();
 		System.out.println(saida);
 	}
 	
