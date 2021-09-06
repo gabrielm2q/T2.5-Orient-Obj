@@ -14,20 +14,32 @@ public class Pagamento {
 		numParcelas = np;
 	}
 	
-	public void cadastrar() {
-		
+	public void cadastrar(float valorPago, String formaPag, Date dataPag, int numParcelas) {
+		this.valorPago = valorPago;
+		this.formaPag = formaPag;
+		this.dataPag = dataPag;
+		this.numParcelas = numParcelas;
 	}
 
 	public void ler() {
-		
+		String saida = "\nDados do Pagamento: ";
+		saida = saida + "\nValor Pago: " + this.getValorPago() + ".\nForma de Pagamento: " + this.getFormaPag()
+		+ ".\nData de Pagamento: " + this.getDataPag() + ".\nNúmero de Parcelas: " + this.getNumParcelas() + ".";
+		System.out.println(saida);
 	}
 	
-	public void editar() {
-		
+	public void editar(float valorPago, String formaPag, Date dataPag, int numParcelas) {
+		this.valorPago = valorPago;
+		this.formaPag = formaPag;
+		this.dataPag = dataPag;
+		this.numParcelas = numParcelas;
 	}
 	
 	public void deletar() {
-		
+		this.valorPago = 0;
+		this.formaPag = null;
+		this.dataPag = null;
+		this.numParcelas = 0;
 	}
 
 	@Override
