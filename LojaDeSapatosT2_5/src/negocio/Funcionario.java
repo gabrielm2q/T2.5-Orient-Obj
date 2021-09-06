@@ -22,20 +22,52 @@ public class Funcionario {
 		endereco = end;
 	}
 	
-	public void cadastrar() {
+	public Funcionario() {
 		
+	}
+	
+	public void cadastrar(String nome, Date dataNasc, String cpf, String telefone, Date dataCont, String turno, int horaEnt, int horaSai, Endereco endereco) {
+		this.nome = nome;
+		this.dataNasc = dataNasc;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.dataContratacao = dataCont;
+		this.turno = turno;
+		this.horaEntrada = horaEnt;
+		this.horaSaida = horaSai;
+		this.endereco = endereco;
 	}
 
 	public void ler() {
-		
+		String saida = "\nDados do Funcionario: ";
+		saida = saida + "\nNome: " + this.getNome() + ".\nData de Nascimento: " + this.getDataNasc() + ".\nCPF: " 
+		+ this.getCpf() + ".\nTelefone: " + this.getTelefone() + ".\nData de Contratação: " + this.getDataContratacao() + ".\nTurno: " + this.getTurno()
+		+ ".\nHora de Entrada: " + this.getHoraEntrada() + "h.\nHora de Saída: " + this.getHoraSaida() + ".\nEndereco: " + this.getEndereco();
+		System.out.println(saida);
 	}
 	
-	public void editar() {
-		
+	public void editar(String nome, Date dataNasc, String cpf, String telefone, Date dataCont, String turno, int horaEnt, int horaSai, Endereco endereco) {
+		this.nome = nome;
+		this.dataNasc = dataNasc;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.dataContratacao = dataCont;
+		this.turno = turno;
+		this.horaEntrada = horaEnt;
+		this.horaSaida = horaSai;
+		this.endereco = endereco;
 	}
 	
 	public void deletar() {
-		
+		this.nome = null;
+		this.dataNasc = null;
+		this.cpf = null;
+		this.telefone = null;
+		this.dataContratacao = null;
+		this.turno = null;
+		this.horaEntrada = 0;
+		this.horaSaida = 0;
+		this.endereco = null;
 	}
 
 	@Override

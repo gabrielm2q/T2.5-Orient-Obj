@@ -28,13 +28,6 @@ public class Endereco {
 		
 	}
 
-	@Override
-	public String toString() {
-		return "\nCidade: " + this.getCidade() + ".\nCEP: " + this.getCep() + ".\nUF: " + this.getUf() + "\nNome da Rua: " + this.getNomeRua()
-				+ ".\nNúmero: " + this.getNumero() + ".\nQuadra: " + this.getQuadra() + ".\nBairro: " + this.getBairro() +
-				".\nNúmero do Apartamento: " + this.getNumApart() + ".\nComplemento: " + this.getComplemento() + ".";
-	}
-
 	public void cadastrar(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro, int numApart, String complemento) {
 		this.cep = cep;
 		this.cidade = cidade;
@@ -65,6 +58,13 @@ public class Endereco {
 		this.bairro = bairro; 
 		this.numApart = numApart; 
 		this.complemento = complemento;
+	}
+	
+	@Override
+	public String toString() {
+		return "\nCidade: " + this.getCidade() + ".\nCEP: " + this.getCep() + ".\nUF: " + this.getUf() + "\nNome da Rua: " + this.getNomeRua()
+				+ ".\nNúmero: " + this.getNumero() + ".\nQuadra: " + this.getQuadra() + ".\nBairro: " + this.getBairro() +
+				".\nNúmero do Apartamento: " + this.getNumApart() + ".\nComplemento: " + this.getComplemento() + ".";
 	}
 	
 	public int getCep() {

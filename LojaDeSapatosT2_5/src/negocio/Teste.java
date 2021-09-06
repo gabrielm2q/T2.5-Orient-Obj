@@ -7,6 +7,7 @@ public class Teste {
 	static Cliente cl2;
 	static Endereco end;
 	static Endereco end2;
+	static Funcionario fun;
 
 	public static void main(String[] args){
 		
@@ -27,6 +28,10 @@ public class Teste {
 		cl2 = new Cliente();
 		cl2.cadastrar(end2, "Joana", 'F', dat, "222.222.222-22", "(61) 92222-2222", "joana@gmail.com");
 		cl2.ler();
+		
+		fun = new Funcionario();
+		fun.cadastrar("João", dat, "333.333.333-33", "(61) 93333-3333", dat, "Integral", 8, 17, end2);
+		fun.ler();
 	}
 
 }
