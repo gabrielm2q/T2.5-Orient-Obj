@@ -6,37 +6,101 @@ public class Salto extends Produto {
 	private String corSolado;
 	private String alturaSalto;
 
-	public Salto(int id, String nm, int tam, float prc, String mar, String co, String tipo, String altura) {
+	public Salto(int id, String nm, int tam, float prc, String mar, String po, String tg, char gen, 
+		    	 String cb, String mat, String co, String salto, String ext, String solado, String altura) {
 		idProd = id;
 		nome = nm;
 		tamanho = tam;
 		preco = prc;
 		marca = mar;
+		paisOrigem = po;
+		tempoGarantia = tg;
+		genero = gen;
+		codBarras = cb;
 		cor = co;
-		tipoSalto = tipo;
+		material = mat;
+		tipoSalto = salto;
+		corExterna = ext;
+		corSolado = solado;
 		alturaSalto = altura;
 	}
 	
-	public void cadastrar() {
+	public Salto() {
 		
+	}
+	
+	public void cadastrar(int idProd, String nome, int tamanho, float preco, String marca, String paisOrigem, String tempoGarantia, char genero, 
+ 			  			  String codBarras, String material, String cor, String tipoSalto, String corExterna, String corSolado, String alturaSalto) {
+		this.idProd = idProd;
+		this.nome = nome;
+		this.tamanho = tamanho;
+		this.preco = preco;
+		this.marca = marca;
+		this.paisOrigem = paisOrigem;
+		this.tempoGarantia = tempoGarantia;
+		this.genero = genero;
+		this.codBarras = codBarras;
+		this.cor = cor;
+		this.material = material;
+		this.tipoSalto = tipoSalto;
+		this.corExterna = corExterna;
+		this.corSolado = corSolado;
+		this.alturaSalto = alturaSalto;
 	}
 
 	public void ler() {
-		
+		String saida = "\nCaracterísticas do Salto: ";
+		saida = saida + "\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
+				"\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nPaís de Origem: " + this.getPaisOrigem() + "\nTempo de Garantia: " +
+				this.getTempoGarantia() + "\nGênero: " + this.getGenero() + "\nCódigo de Barras: " + this.getCodBarras() + "\nMaterial: " + this.getMaterial() +
+				"\nCor: " + this.getCor() + "\nTipo de Salto: " + this.getTipoSalto() + "\nCor Externa: " + this.getCorExterna() + "\nCor do Solado: " + 
+				this.getCorSolado() + "\nAltura do Salto: " + this.getAlturaSalto() + ".";
+		System.out.println(saida);
 	}
 	
-	public void editar() {
-		
+	public void editar(int idProd, String nome, int tamanho, float preco, String marca, String paisOrigem, String tempoGarantia, char genero, 
+ 			  		   String codBarras, String material, String cor, String tipoSalto, String corExterna, String corSolado, String alturaSalto) {
+		this.idProd = idProd;
+		this.nome = nome;
+		this.tamanho = tamanho;
+		this.preco = preco;
+		this.marca = marca;
+		this.paisOrigem = paisOrigem;
+		this.tempoGarantia = tempoGarantia;
+		this.genero = genero;
+		this.codBarras = codBarras;
+		this.cor = cor;
+		this.material = material;
+		this.tipoSalto = tipoSalto;
+		this.corExterna = corExterna;
+		this.corSolado = corSolado;
+		this.alturaSalto = alturaSalto;
 	}
 	
 	public void deletar() {
-		
+		this.idProd = 0;
+		this.nome = null;
+		this.tamanho = 0;
+		this.preco = 0;
+		this.marca = null;
+		this.paisOrigem = null;
+		this.tempoGarantia = null;
+		this.genero = '\0';
+		this.codBarras = null;
+		this.cor = null;
+		this.material = null;
+		this.tipoSalto = null;
+		this.corExterna = null;
+		this.corSolado = null;
+		this.alturaSalto = null;
 	}
 	
 	@Override
 	public String toString() {
-		return "Salto [tipoSalto=" + tipoSalto + ", alturaSalto=" + alturaSalto + ", idProd=" + idProd + ", nome="
-				+ nome + ", tamanho=" + tamanho + ", preco=" + preco + ", marca=" + marca + ", cor=" + cor + "]";
+		return "\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
+				"\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nMaterial: " + this.getMaterial() +
+				"\nCor: " + this.getCor() + "\nTipo de Salto: " + this.getTipoSalto() + "\nCor do Solado: " + 
+				this.getCorSolado() + "\nAltura do Salto: " + this.getAlturaSalto() + ".";
 	}
 
 	public int getIdProd() {

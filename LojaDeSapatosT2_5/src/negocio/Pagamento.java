@@ -14,6 +14,10 @@ public class Pagamento {
 		numParcelas = np;
 	}
 	
+	public Pagamento() {
+		
+	}
+	
 	public void cadastrar(float valorPago, String formaPag, Date dataPag, int numParcelas) {
 		this.valorPago = valorPago;
 		this.formaPag = formaPag;
@@ -23,7 +27,7 @@ public class Pagamento {
 
 	public void ler() {
 		String saida = "\nDados do Pagamento: ";
-		saida = saida + "\nValor Pago: " + this.getValorPago() + ".\nForma de Pagamento: " + this.getFormaPag()
+		saida = saida + "\nValor Pago: R$" + this.getValorPago() + ".\nForma de Pagamento: " + this.getFormaPag()
 		+ ".\nData de Pagamento: " + this.getDataPag() + ".\nNúmero de Parcelas: " + this.getNumParcelas() + ".";
 		System.out.println(saida);
 	}
@@ -44,8 +48,8 @@ public class Pagamento {
 
 	@Override
 	public String toString() {
-		return "Pagamento [valorPago=" + valorPago + ", formaPag=" + formaPag + ", dataPag=" + dataPag
-				+ ", numParcelas=" + numParcelas + "]";
+		return "\nValor Pago: " + this.getValorPago() + ".\nForma de Pagamento: " + this.getFormaPag()
+		+ ".\nData de Pagamento: " + this.getDataPag() + ".\nNúmero de Parcelas: " + this.getNumParcelas() + ".";
 	}
 
 	public float getValorPago() {

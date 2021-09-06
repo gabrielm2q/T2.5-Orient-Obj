@@ -8,6 +8,11 @@ public class Teste {
 	static Endereco end;
 	static Endereco end2;
 	static Funcionario fun;
+	static Pagamento pag;
+	static Tenis ten;
+	static Sapato sap;
+	static Bota bot;
+	static Salto sal;
 
 	public static void main(String[] args){
 		
@@ -32,6 +37,27 @@ public class Teste {
 		fun = new Funcionario();
 		fun.cadastrar("João", dat, "333.333.333-33", "(61) 93333-3333", dat, "Integral", 8, 17, end2);
 		fun.ler();
+		
+		pag = new Pagamento();
+		pag.cadastrar(200.5f, "Débito", dat, 0);
+		pag.ler();
+		
+		ten = new Tenis();
+		ten.cadastrar(1, "Run 7", 41, 210.5f, "Asics", "Taiwan", "1 ano", 'M', "00010001", "Tecido Mash", 
+					  "Vermelho", "Corrida", "Gel", "Pronada", "Gel", 250.1f, "Cadarço", "Azul");
+		ten.ler();
+		
+		sap = new Sapato();
+		sap.cadastrar(2, "Mocassim", 42, 200.99f, "Democrata", "Brasil", "1 ano", 'U', "11101110", "Nappa", "Preto", "Borracha", "Espuma", "Quadrado", "Baixo", "Comum");
+		sap.ler();
+		
+		bot = new Bota();
+		bot.cadastrar(3, "Botina", 43, 152.8f, "Rio Branco", "Brasil", "2 anos", 'U', "10101010", "Couro", "Marrom", "Trabalho", "Médio", "Pequeno", "Não possui", "Borracha");
+		bot.ler();
+		
+		sal = new Salto();
+		sal.cadastrar(4, "Salto Alto", 40, 500.0f, "Schutz", "Brasil", "2 anos", 'F', "01010101", "Couro Orgânico", "Bege", "Scarpin", "Bege", "Vermelho", "Alto");
+		sal.ler();
 	}
 
 }
