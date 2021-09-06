@@ -12,15 +12,15 @@ public class Teste {
 		Date dat = d.getTime();
 		
 		end = new Endereco();
-		end.setCep(73850000);
-		end.setCidade("Cristalina");
+		end.setCep(70000000);
+		end.setCidade("Cidade");
 		end.setUf("GO");
-		end.setNomeRua("Rua dos Cristais");
-		end.setNumero(17);
-		end.setQuadra(01);
-		end.setBairro("Setor Sul I");
-		end.setNumApart(17);
-		end.setComplemento("Próximo ao SESAL");
+		end.setNomeRua("Rua");
+		end.setNumero(11);
+		end.setQuadra(04);
+		end.setBairro("Centro");
+		end.setNumApart(11);
+		end.setComplemento("Casa Amarela");
 		
 		
 		cl = new Cliente(end, "John", 'M', dat, "000.000.000-00", "(99) 99999-9999", "john@gmail.com");
