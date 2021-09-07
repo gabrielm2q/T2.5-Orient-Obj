@@ -3,18 +3,19 @@ import java.util.*;
 import java.text.*;
 
 public class Teste {
-	static Cliente cl;
-	static Cliente cl2;
-	static Endereco end;
-	static Endereco end2;
-	static Funcionario fun;
-	static Pagamento pag;
-	static Tenis ten;
-	static Sapato sap;
-	static Bota bot;
-	static Salto sal;
+	
 
 	public static void main(String[] args){
+		Cliente cl;
+		Cliente cl2;
+		Endereco end;
+		Endereco end2;
+		Funcionario fun;
+		Pagamento pag;
+		Tenis ten;
+		Sapato sap;
+		Bota bot;
+		Salto sal;
 		
 		GregorianCalendar d = new GregorianCalendar();
 		Date dat = d.getTime();
