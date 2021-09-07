@@ -2,7 +2,6 @@ package model;
 import java.util.*;
 
 public class Cliente {
-	
 	private Endereco endereco;
 	private String nome;
 	private char genero;
@@ -11,19 +10,25 @@ public class Cliente {
 	private String telefone;
 	private String email;
 	
-
-	public Cliente(Endereco end, String n, char gen, Date dt, String pf, String fone, String mail) {
-		endereco = end;
-		nome = n;
-		genero = gen;
-		dataNasc = dt;
-		cpf = pf;
-		telefone = fone;
-		email = mail;
+	public Cliente(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
+			String email) {
+		this.endereco = endereco;
+		this.nome = nome;
+		this.genero = genero;
+		this.dataNasc = dataNasc;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.email = email;
 	}
-	
+
 	public Cliente() {
-		
+		this.endereco = null;
+		this.nome = "";
+		this.genero = '0';
+		this.dataNasc = null;
+		this.cpf = "";
+		this.telefone = "";
+		this.email = "";
 	}
 
 	@Override
@@ -33,14 +38,15 @@ public class Cliente {
 				+ "]";
 	}
 
-	public void cadastrar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String tele, String mail) {
+	public void cadastrar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
+			String email) {
 		this.endereco = endereco;
 		this.nome = nome;
 		this.genero = genero;
 		this.dataNasc = dataNasc;
 		this.cpf = cpf;
-		this.telefone = tele;
-		this.email = mail;
+		this.telefone = telefone;
+		this.email = email;
 	}
 	
 	public void ler() {
@@ -51,24 +57,15 @@ public class Cliente {
 		System.out.println(saida);
 	}
 	
-	public void editar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String tele, String mail) {
+	public void editar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
+			String email) {
 		this.endereco = endereco;
 		this.nome = nome;
 		this.genero = genero;
 		this.dataNasc = dataNasc;
 		this.cpf = cpf;
-		this.telefone = tele;
-		this.email = mail;
-	}
-	
-	public void deletar() {
-		this.endereco = null;
-		this.nome = null;
-		this.genero = '\0';
-		this.dataNasc = null;
-		this.cpf = null;
-		this.telefone = null;
-		this.email = null;
+		this.telefone = telefone;
+		this.email = email;
 	}
 	
 	public Endereco getEndereco() {

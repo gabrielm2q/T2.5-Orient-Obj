@@ -1,7 +1,6 @@
 package model;
 
 public class Endereco {
-	
 	private int cep;
 	private String cidade;
 	private String uf;
@@ -12,23 +11,33 @@ public class Endereco {
 	private int numApart;
 	private String complemento;
 	
-	public Endereco(int ce, String cd, String u, String nr, int num, int qd, String br, int na, String compl) {
-		cep = ce;
-		cidade = cd;
-		uf = u;
-		nomeRua = nr;
-		numero = num;
-		quadra = qd;
-		bairro = br;
-		numApart = na;
-		complemento = compl;
-	}
-	
-	public Endereco() {
-		
+	public Endereco(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
+			int numApart, String complemento) {
+		this.cep = cep;
+		this.cidade = cidade;
+		this.uf = uf;
+		this.nomeRua = nomeRua;
+		this.numero = numero;
+		this.quadra = quadra;
+		this.bairro = bairro;
+		this.numApart = numApart;
+		this.complemento = complemento;
 	}
 
-	public void cadastrar(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro, int numApart, String complemento) {
+	public Endereco() {
+		this.cep = 0;
+		this.cidade = "";
+		this.uf = "";
+		this.nomeRua = "";
+		this.numero = 0;
+		this.quadra = 0;
+		this.bairro = "";
+		this.numApart = 0;
+		this.complemento = "";
+	}
+
+	public void cadastrar(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
+			int numApart, String complemento) {
 		this.cep = cep;
 		this.cidade = cidade;
 		this.uf = uf;
@@ -48,7 +57,8 @@ public class Endereco {
 		System.out.println(saida);
 	}
 	
-	public void editar(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro, int numApart, String complemento) {
+	public void editar(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
+			int numApart, String complemento) {
 		this.cep = cep;
 		this.cidade = cidade;
 		this.uf = uf;
@@ -57,7 +67,7 @@ public class Endereco {
 		this.quadra = quadra; 
 		this.bairro = bairro; 
 		this.numApart = numApart; 
-		this.complemento = complemento;
+		this.complemento = complemento; 
 	}
 	
 	@Override

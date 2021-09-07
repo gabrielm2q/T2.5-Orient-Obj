@@ -37,15 +37,16 @@ public class Funcionario {
 		this.endereco = null;
 	}
 	
-	public void cadastrar(String nome, Date dataNasc, String cpf, String telefone, Date dataCont, String turno, int horaEnt, int horaSai, Endereco endereco) {
+	public void cadastrar(String nome, Date dataNasc, String cpf, String telefone, Date dataContratacao, String turno,
+			int horaEntrada, int horaSaida, Endereco endereco) {
 		this.nome = nome;
 		this.dataNasc = dataNasc;
 		this.cpf = cpf;
 		this.telefone = telefone;
-		this.dataContratacao = dataCont;
+		this.dataContratacao = dataContratacao;
 		this.turno = turno;
-		this.horaEntrada = horaEnt;
-		this.horaSaida = horaSai;
+		this.horaEntrada = horaEntrada;
+		this.horaSaida = horaSaida;
 		this.endereco = endereco;
 	}
 
@@ -57,15 +58,16 @@ public class Funcionario {
 		System.out.println(saida);
 	}
 	
-	public void editar(String nome, Date dataNasc, String cpf, String telefone, Date dataCont, String turno, int horaEnt, int horaSai, Endereco endereco) {
+	public void editar(String nome, Date dataNasc, String cpf, String telefone, Date dataContratacao, String turno,
+			int horaEntrada, int horaSaida, Endereco endereco) {
 		this.nome = nome;
 		this.dataNasc = dataNasc;
 		this.cpf = cpf;
 		this.telefone = telefone;
-		this.dataContratacao = dataCont;
+		this.dataContratacao = dataContratacao;
 		this.turno = turno;
-		this.horaEntrada = horaEnt;
-		this.horaSaida = horaSai;
+		this.horaEntrada = horaEntrada;
+		this.horaSaida = horaSaida;
 		this.endereco = endereco;
 	}
 
