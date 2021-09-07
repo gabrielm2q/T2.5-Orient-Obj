@@ -1,0 +1,161 @@
+package model;
+
+import java.util.Date;
+
+public class Tenis extends Produto {
+	private String atvdIndicada;
+	private String tecnoSolado;
+	private String tipoPisada;
+	private String tipoPalmilha;
+	private Double peso;
+	private String tipoAmarracao;
+	private String corCadarco;
+
+	
+	public Tenis(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem,
+			Date tempoGarantia, char genero, String codBarras, String cor, String material, String atvdIndicada,
+			String tecnoSolado, String tipoPisada, String tipoPalmilha, Double peso, String tipoAmarracao,
+			String corCadarco) {
+		super(idProd, nome, tamanho, preco, marca, paisOrigem, tempoGarantia, genero, codBarras, cor, material);
+		this.atvdIndicada = atvdIndicada;
+		this.tecnoSolado = tecnoSolado;
+		this.tipoPisada = tipoPisada;
+		this.tipoPalmilha = tipoPalmilha;
+		this.peso = peso;
+		this.tipoAmarracao = tipoAmarracao;
+		this.corCadarco = corCadarco;
+	}
+
+	public Tenis() {
+		super();
+		this.atvdIndicada = "";
+		this.tecnoSolado = "";
+		this.tipoPisada = "";
+		this.tipoPalmilha = "";
+		this.peso = 0.0;
+		this.tipoAmarracao = "";
+		this.corCadarco = "";
+	}
+	
+	public void cadastrar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
+			 String codBarras, String material, String cor, String atvdIndicada, String tecnoSolado, String tipoPisada, String tipoPalmilha,
+			 Double peso, String tipoAmarracao, String corCadarco) {
+		this.setIdProd(idProd);
+		this.setNome(nome);
+		this.setTamanho(tamanho);
+		this.setPreco(preco);
+		this.setMarca(marca);
+		this.setPaisOrigem(paisOrigem);
+		this.setTempoGarantia(tempoGarantia);
+		this.setGenero(genero);
+		this.setCodBarras(codBarras);
+		this.setCor(cor);
+		this.setMaterial(material);
+		this.atvdIndicada = atvdIndicada;
+		this.tecnoSolado = tecnoSolado;
+		this.tipoPisada = tipoPisada;
+		this.tipoPalmilha = tipoPalmilha;
+		this.peso = peso;
+		this.tipoAmarracao = tipoAmarracao;
+		this.corCadarco = corCadarco;
+	}
+	
+	@Override
+	public void ler() {
+		String saida = "\nCaracterísticas do Tênis: ";
+		saida = saida + "\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
+				"\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nPaís de Origem: " + this.getPaisOrigem() + "\nTempo de Garantia: " +
+				this.getTempoGarantia() + "\nGênero: " + this.getGenero() + "\nCódigo de Barras: " + this.getCodBarras() + "\nMaterial: " + this.getMaterial() +
+				"\nCor: " + this.getCor() + "\nAtividade Indicada: " + this.getAtvdIndicada() + "\nTecnologia do Solado: " + this.getTecnoSolado() +
+				"\nTipo de Pisada: " + this.getTipoPisada() + "\nTipo de Palmilha: " + this.getTipoPalmilha() + "\nPeso: " + this.getPeso() +
+				"g\nTipo de Amarração: " + this.getTipoAmarracao() + "\nCor do Cadarço: " + this.getCorCadarco() + ".";
+		System.out.println(saida);
+	}
+	
+	public void editar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
+			 String codBarras, String material, String cor, String atvdIndicada, String tecnoSolado, String tipoPisada, String tipoPalmilha,
+			 Double peso, String tipoAmarracao, String corCadarco) {
+		this.setIdProd(idProd);
+		this.setNome(nome);
+		this.setTamanho(tamanho);
+		this.setPreco(preco);
+		this.setMarca(marca);
+		this.setPaisOrigem(paisOrigem);
+		this.setTempoGarantia(tempoGarantia);
+		this.setGenero(genero);
+		this.setCodBarras(codBarras);
+		this.setCor(cor);
+		this.setMaterial(material);
+		this.atvdIndicada = atvdIndicada;
+		this.tecnoSolado = tecnoSolado;
+		this.tipoPisada = tipoPisada;
+		this.tipoPalmilha = tipoPalmilha;
+		this.peso = peso;
+		this.tipoAmarracao = tipoAmarracao;
+		this.corCadarco = corCadarco;
+	}
+
+	@Override
+	public String toString() {
+		return "\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
+				"\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nMaterial: " + this.getMaterial() +
+				"\nCor: " + this.getCor() + "\nAtividade Indicada: " + this.getAtvdIndicada() + "\nPeso: " + this.getPeso() + ".";
+	}
+
+	public String getAtvdIndicada() {
+		return atvdIndicada;
+	}
+
+	public void setAtvdIndicada(String atvdIndicada) {
+		this.atvdIndicada = atvdIndicada;
+	}
+
+	public String getTecnoSolado() {
+		return tecnoSolado;
+	}
+
+	public void setTecnoSolado(String tecnoSolado) {
+		this.tecnoSolado = tecnoSolado;
+	}
+
+	public String getTipoPisada() {
+		return tipoPisada;
+	}
+
+	public void setTipoPisada(String tipoPisada) {
+		this.tipoPisada = tipoPisada;
+	}
+
+	public String getTipoPalmilha() {
+		return tipoPalmilha;
+	}
+
+	public void setTipoPalmilha(String tipoPalmilha) {
+		this.tipoPalmilha = tipoPalmilha;
+	}
+
+	public Double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Double peso) {
+		this.peso = peso;
+	}
+
+	public String getTipoAmarracao() {
+		return tipoAmarracao;
+	}
+
+	public void setTipoAmarracao(String tipoAmarracao) {
+		this.tipoAmarracao = tipoAmarracao;
+	}
+
+	public String getCorCadarco() {
+		return corCadarco;
+	}
+
+	public void setCorCadarco(String corCadarco) {
+		this.corCadarco = corCadarco;
+	}
+
+}
