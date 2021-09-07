@@ -2,41 +2,71 @@ package model;
 import java.util.*;
 
 public class Venda {
-	private int TAMANHO_VETOR = 50;
 	
-	private int idVenda;
-	private float valorVenda;
-	private float valorDesconto;
+	private int idVenda = 0;
+	private Double valorVenda;
+	private Double valorDesconto;
 	private Date dataPedido;
 	private Funcionario funcionario;
-	private Salto[] saltoVendido = new Salto[TAMANHO_VETOR];
-	private Tenis[] tenisVendido = new Tenis[TAMANHO_VETOR];
-	private Bota[] botaVendida = new Bota[TAMANHO_VETOR];
-	private Sapato[] sapatoVendido = new Sapato[TAMANHO_VETOR];
-	private Pagamento[] pagamento = new Pagamento[TAMANHO_VETOR];
-
-	public Venda(int id, float val, float desc, Date dp, Funcionario func) {
-		idVenda = id;
-		valorVenda = val;
-		valorDesconto = desc;
-		dataPedido = dp;
-		funcionario = func;
+	private final List<Produto> produto;
+	private ArrayList<Pagamento> pagamento;
+	
+	public Venda(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
+			List<Produto> produto, ArrayList<Pagamento> pagamento) {
+		this.idVenda = idVenda;
+		this.valorVenda = valorVenda;
+		this.valorDesconto = valorDesconto;
+		this.dataPedido = dataPedido;
+		this.funcionario = funcionario;
+		this.produto = new ArrayList<>();
+		this.pagamento = new ArrayList<>();
 	}
 	
-	public void cadastrar() {
-		
+	public Venda() {
+		this.idVenda = 0;
+		this.valorVenda = 0.0;
+		this.valorDesconto =0.0;
+		this.dataPedido = null;
+		this.funcionario = null;
+		this.produto = new ArrayList<>();
+		this.pagamento = new ArrayList<>();
+	}
+
+	public void cadastrar(Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
+			Produto produto, Pagamento pagamento) {
+		this.idVenda++;
+		this.valorVenda = valorVenda;
+		this.valorDesconto = valorDesconto;
+		this.dataPedido = dataPedido;
+		this.funcionario = funcionario;
+		this.produto.add(produto);
+		this.pagamento.add(pagamento);
 	}
 
 	public void ler() {
-		
+		int i;
+		System.out.println("\nDados da Venda: ");
+		System.out.println("ID da Venda: " + this.idVenda);
+		System.out.println("Valor da Venda: R$" + this.valorVenda);
+		System.out.println("Valor do Desconto: R$" + this.valorDesconto);
+		System.out.println("Data do Pedido: " + this.dataPedido);
+		System.out.println("Funcionário: " + this.funcionario.getNome());
+		System.out.print("Produtos Vendidos: ");
+		for(i = 0; i < this.produto.size(); i++) {
+			System.out.println(produto.get(i).getNome() + "; ");
+		}
+		System.out.println("Forma de Pagamento: " + this.pagamento.get(this.idVenda - 1).getFormaPag());
 	}
 	
-	public void editar() {
-		
-	}
-	
-	public void deletar() {
-		
+	public void editar(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
+			Produto produto, Pagamento pagamento) {
+		this.idVenda = idVenda;
+		this.valorVenda = valorVenda;
+		this.valorDesconto = valorDesconto;
+		this.dataPedido = dataPedido;
+		this.funcionario = funcionario;
+		this.produto.add(produto);
+		this.pagamento.add(pagamento);
 	}
 
 	@Override
@@ -53,19 +83,19 @@ public class Venda {
 		this.idVenda = idVenda;
 	}
 
-	public float getValorVenda() {
+	public Double getValorVenda() {
 		return valorVenda;
 	}
 
-	public void setValorVenda(float valorVenda) {
+	public void setValorVenda(Double valorVenda) {
 		this.valorVenda = valorVenda;
 	}
 
-	public float getValorDesconto() {
+	public Double getValorDesconto() {
 		return valorDesconto;
 	}
 
-	public void setValorDesconto(float valorDesconto) {
+	public void setValorDesconto(Double valorDesconto) {
 		this.valorDesconto = valorDesconto;
 	}
 
@@ -85,44 +115,16 @@ public class Venda {
 		this.funcionario = funcionario;
 	}
 
-	public Salto[] getSaltoVendido() {
-		return saltoVendido;
-	}
-
-	public void setSaltoVendido(Salto[] saltoVendido) {
-		this.saltoVendido = saltoVendido;
-	}
-
-	public Tenis[] getTenisVendido() {
-		return tenisVendido;
-	}
-
-	public void setTenisVendido(Tenis[] tenisVendido) {
-		this.tenisVendido = tenisVendido;
-	}
-
-	public Bota[] getBotaVendida() {
-		return botaVendida;
-	}
-
-	public void setBotaVendida(Bota[] botaVendida) {
-		this.botaVendida = botaVendida;
-	}
-
-	public Sapato[] getSapatoVendido() {
-		return sapatoVendido;
-	}
-
-	public void setSapatoVendido(Sapato[] sapatoVendido) {
-		this.sapatoVendido = sapatoVendido;
-	}
-
-	public Pagamento[] getPagamento() {
+	public ArrayList<Pagamento> getPagamento() {
 		return pagamento;
 	}
 
-	public void setPagamento(Pagamento[] pagamento) {
+	public void setPagamento(ArrayList<Pagamento> pagamento) {
 		this.pagamento = pagamento;
+	}
+
+	public List<Produto> getProduto() {
+		return produto;
 	}
 
 }

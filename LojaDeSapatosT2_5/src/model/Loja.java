@@ -1,8 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Loja {
-	private int TAMANHO_VETOR = 50;
-	
 	private String nome;
 	private int cnpj;
 	private int horaAbertura;
@@ -10,31 +10,67 @@ public class Loja {
 	private String site;
 	private Endereco endereco;
 	private Estoque estoque;
-	private Funcionario[] nomeFuncionario = new Funcionario[TAMANHO_VETOR];
+	private ArrayList<Funcionario> funcionario;
 
-	public Loja(String nm, int pj, int ha, int hf, String st, Endereco end) {
-		nome = nm;
-		cnpj = pj;
-		horaAbertura = ha;
-		horaFechamento = hf;
-		site = st;
-		endereco = end;
+	
+	public Loja(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
+			Estoque estoque, ArrayList<Funcionario> funcionario) {
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.horaAbertura = horaAbertura;
+		this.horaFechamento = horaFechamento;
+		this.site = site;
+		this.endereco = endereco;
+		this.estoque = estoque;
+		this.funcionario = new ArrayList<>();
 	}
 	
-	public void cadastrar() {
-		
+	public Loja() {
+		this.nome = "";
+		this.cnpj = 0;
+		this.horaAbertura = 0;
+		this.horaFechamento = 0;
+		this.site = "";
+		this.endereco = null;
+		this.estoque = null;
+		this.funcionario = new ArrayList<>();
+	}
+
+	public void cadastrar(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
+			Estoque estoque, Funcionario funcionario) {
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.horaAbertura = horaAbertura;
+		this.horaFechamento = horaFechamento;
+		this.site = site;
+		this.endereco = endereco;
+		this.estoque = estoque;
+		this.funcionario.add(funcionario);
 	}
 
 	public void ler() {
+		System.out.println("\nDados da Loja: ");
+		System.out.println("Nome: " + this.nome);
+		System.out.println("CNPJ: " + this.cnpj);
+		System.out.println("Hora de Abertura: " + this.horaAbertura + "h");
+		System.out.println("Hora de Fechamento: " + this.horaFechamento + "h");
+		System.out.println("Site: " + this.site);
+		System.out.println("Endereço: " + this.endereco.getNomeRua() + ", Número " + this.endereco.getNumero() + ", Bairro " + this.endereco.getBairro() +
+		", " + this.endereco.getCidade() + " - " + this.endereco.getUf());
+		System.out.println("Quantidade de Funcionários: " + this.funcionario.size());
 		
 	}
 	
-	public void editar() {
-		
-	}
-	
-	public void deletar() {
-		
+	public void editar(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
+			Estoque estoque, Funcionario funcionario) {
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.horaAbertura = horaAbertura;
+		this.horaFechamento = horaFechamento;
+		this.site = site;
+		this.endereco = endereco;
+		this.estoque = estoque;
+		this.funcionario.add(funcionario);
 	}
 
 	@Override
@@ -99,12 +135,11 @@ public class Loja {
 		this.estoque = estoque;
 	}
 
-	public Funcionario[] getNomeFuncionario() {
-		return nomeFuncionario;
+	public ArrayList<Funcionario> getFuncionario() {
+		return funcionario;
 	}
 
-	public void setNomeFuncionario(Funcionario[] nomeFuncionario) {
-		this.nomeFuncionario = nomeFuncionario;
+	public void setFuncionario(ArrayList<Funcionario> funcionario) {
+		this.funcionario = funcionario;
 	}	
-
 }

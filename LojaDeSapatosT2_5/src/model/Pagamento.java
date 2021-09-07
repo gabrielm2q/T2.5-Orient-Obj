@@ -2,23 +2,26 @@ package model;
 import java.util.*;
 
 public class Pagamento {
-	private float valorPago;
+	private Double valorPago;
 	private String formaPag;
 	private Date dataPag;
 	private int numParcelas;
+	
+	public Pagamento(Double valorPago, String formaPag, Date dataPag, int numParcelas) {
+		this.valorPago = valorPago;
+		this.formaPag = formaPag;
+		this.dataPag = dataPag;
+		this.numParcelas = numParcelas;
+	}
 
-	public Pagamento(float vp, String fp, Date dp, int np) {
-		valorPago = vp;
-		formaPag = fp;
-		dataPag = dp;
-		numParcelas = np;
-	}
-	
 	public Pagamento() {
-		
+		this.valorPago = 0.0;
+		this.formaPag = "";
+		this.dataPag = null;
+		this.numParcelas = 0;
 	}
 	
-	public void cadastrar(float valorPago, String formaPag, Date dataPag, int numParcelas) {
+	public void cadastrar(Double valorPago, String formaPag, Date dataPag, int numParcelas) {
 		this.valorPago = valorPago;
 		this.formaPag = formaPag;
 		this.dataPag = dataPag;
@@ -32,18 +35,11 @@ public class Pagamento {
 		System.out.println(saida);
 	}
 	
-	public void editar(float valorPago, String formaPag, Date dataPag, int numParcelas) {
+	public void editar(Double valorPago, String formaPag, Date dataPag, int numParcelas) {
 		this.valorPago = valorPago;
 		this.formaPag = formaPag;
 		this.dataPag = dataPag;
 		this.numParcelas = numParcelas;
-	}
-	
-	public void deletar() {
-		this.valorPago = 0;
-		this.formaPag = null;
-		this.dataPag = null;
-		this.numParcelas = 0;
 	}
 
 	@Override
@@ -52,11 +48,11 @@ public class Pagamento {
 		+ ".\nData de Pagamento: " + this.getDataPag() + ".\nNúmero de Parcelas: " + this.getNumParcelas() + ".";
 	}
 
-	public float getValorPago() {
+	public Double getValorPago() {
 		return valorPago;
 	}
 
-	public void setValorPago(float valorPago) {
+	public void setValorPago(Double valorPago) {
 		this.valorPago = valorPago;
 	}
 

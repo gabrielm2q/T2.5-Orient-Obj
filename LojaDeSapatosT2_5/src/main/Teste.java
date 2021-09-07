@@ -1,14 +1,7 @@
 package main;
 import java.util.*;
 
-import model.Bota;
-import model.Cliente;
-import model.Endereco;
-import model.Funcionario;
-import model.Pagamento;
-import model.Salto;
-import model.Sapato;
-import model.Tenis;
+import model.*;
 
 public class Teste {
 	
@@ -24,6 +17,9 @@ public class Teste {
 		Sapato sap;
 		Bota bot;
 		Salto sal;
+		Estoque est;
+		Loja loj;
+		Venda ven;
 		
 		GregorianCalendar d = new GregorianCalendar();
 		Date dat = d.getTime();
@@ -45,10 +41,11 @@ public class Teste {
 		
 		fun = new Funcionario();
 		fun.cadastrar("João", dat, "333.333.333-33", "(61) 93333-3333", dat, "Integral", 8, 17, end2);
+		fun.cadastrar("Mário", dat, "444.444.444-44", "(61) 94444-4444", dat, "Matutino", 8, 12, end);
 		fun.ler();
 		
 		pag = new Pagamento();
-		pag.cadastrar(200.5f, "Débito", dat, 0);
+		pag.cadastrar(90.0, "Débito", dat, 0);
 		pag.ler();
 		
 		ten = new Tenis();
@@ -67,6 +64,23 @@ public class Teste {
 		sal = new Salto();
 		sal.cadastrar(4, "Salto Alto", 40, 500.0, "Schutz", "Brasil", dat, 'F', "01010101", "Couro Orgânico", "Bege", "Scarpin", "Bege", "Vermelho", "Alto");
 		sal.ler();
+		
+		est = new Estoque();
+		est.cadastrar(10, "Tênis", dat, ten);
+		est.cadastrar(20, "Sapatos", dat, sap);
+		est.cadastrar(30, "Bota", dat, bot);
+		est.cadastrar(40, "Salto", dat, sal);
+		est.ler();
+		/*est.editar();
+		est.ler();*/
+		
+		loj = new Loja();
+		loj.cadastrar("Casas Americanas", 34684354, 8, 18, "www.google.com", end, est, fun);
+		loj.ler();
+		
+		ven = new Venda();
+		ven.cadastrar(100.0, 10.0, dat, fun, ten, pag);
+		ven.ler();
 	}
 
 }
