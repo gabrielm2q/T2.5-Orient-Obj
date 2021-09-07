@@ -1,18 +1,48 @@
 package negocio;
+import java.util.Date;
 
 public abstract class Produto {
-	protected int idProd;
-	protected String nome;
-	protected int tamanho;
-	protected float preco;
-	protected String marca;
-	protected String paisOrigem;
-	protected String tempoGarantia;
-	protected char genero;
-	protected String codBarras;
-	protected String cor;
-	protected String material;
+	private int idProd;
+	private String nome;
+	private int tamanho;
+	private Double preco;
+	private String marca;
+	private String paisOrigem;
+	private Date tempoGarantia;
+	private char genero;
+	private String codBarras;
+	private String cor;
+	private String material;
 	
+	protected Produto(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem,
+			Date tempoGarantia, char genero, String codBarras, String cor, String material) {
+		this.idProd = idProd;
+		this.nome = nome;
+		this.tamanho = tamanho;
+		this.preco = preco;
+		this.marca = marca;
+		this.paisOrigem = paisOrigem;
+		this.tempoGarantia = tempoGarantia;
+		this.genero = genero;
+		this.codBarras = codBarras;
+		this.cor = cor;
+		this.material = material;
+	}
+	
+	protected Produto() {
+		this.idProd = 0;
+		this.nome = "";
+		this.tamanho = 0;
+		this.preco = 0.0;
+		this.marca = "";
+		this.paisOrigem = "";
+		this.tempoGarantia = null;
+		this.genero = '0';
+		this.codBarras = "";
+		this.cor = "";
+		this.material = "";
+	}
+
 	public void cadastrar() {
 		
 	}
@@ -22,10 +52,6 @@ public abstract class Produto {
 	}
 	
 	public void editar() {
-		
-	}
-	
-	public void deletar() {
 		
 	}
 	
@@ -53,11 +79,11 @@ public abstract class Produto {
 		this.tamanho = tamanho;
 	}
 	
-	public float getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 	
-	public void setPreco(float preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 	
@@ -77,11 +103,11 @@ public abstract class Produto {
 		this.paisOrigem = paisOrigem;
 	}
 	
-	public String getTempoGarantia() {
+	public Date getTempoGarantia() {
 		return tempoGarantia;
 	}
 	
-	public void setTempoGarantia(String tempoGarantia) {
+	public void setTempoGarantia(Date tempoGarantia) {
 		this.tempoGarantia = tempoGarantia;
 	}
 	
@@ -116,5 +142,4 @@ public abstract class Produto {
 	public void setMaterial(String material) {
 		this.material = material;
 	}
-	
 }

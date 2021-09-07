@@ -44,20 +44,20 @@ public class Teste {
 		pag.ler();
 		
 		ten = new Tenis();
-		ten.cadastrar(1, "Run 7", 41, 210.5f, "Asics", "Taiwan", "1 ano", 'M', "00010001", "Tecido Mash", 
-					  "Vermelho", "Corrida", "Gel", "Pronada", "Gel", 250.1f, "Cadarço", "Azul");
+		ten.cadastrar(1, "Run 7", 41, 210.5, "Asics", "Taiwan", dat, 'M', "00010001", "Tecido Mash", 
+					  "Vermelho", "Corrida", "Gel", "Pronada", "Gel", 250.1, "Cadarço", "Azul");
 		ten.ler();
 		
 		sap = new Sapato();
-		sap.cadastrar(2, "Mocassim", 42, 200.99f, "Democrata", "Brasil", "1 ano", 'U', "11101110", "Nappa", "Preto", "Borracha", "Espuma", "Quadrado", "Baixo", "Comum");
+		sap.cadastrar(2, "Mocassim", 42, 200.99, "Democrata", "Brasil", dat, 'U', "11101110", "Nappa", "Preto", "Borracha", "Espuma", "Quadrado", "Baixo", "Comum");
 		sap.ler();
 		
 		bot = new Bota();
-		bot.cadastrar(3, "Botina", 43, 152.8f, "Rio Branco", "Brasil", "2 anos", 'U', "10101010", "Couro", "Marrom", "Trabalho", "Médio", "Pequeno", "Não possui", "Borracha");
+		bot.cadastrar(3, "Botina", 43, 152.8, "Rio Branco", "Brasil", dat, 'U', "10101010", "Couro", "Marrom", "Trabalho", "Médio", "Pequeno", "Não possui", "Borracha");
 		bot.ler();
 		
 		sal = new Salto();
-		sal.cadastrar(4, "Salto Alto", 40, 500.0f, "Schutz", "Brasil", "2 anos", 'F', "01010101", "Couro Orgânico", "Bege", "Scarpin", "Bege", "Vermelho", "Alto");
+		sal.cadastrar(4, "Salto Alto", 40, 500.0, "Schutz", "Brasil", dat, 'F', "01010101", "Couro Orgânico", "Bege", "Scarpin", "Bege", "Vermelho", "Alto");
 		sal.ler();
 	}
 
