@@ -2,23 +2,14 @@ package data;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Bota;
-import model.Cliente;
-import model.Endereco;
-import model.Funcionario;
-import model.Pagamento;
-import model.Salto;
-import model.Sapato;
-import model.Tenis;
-import model.Venda;
-import model.Loja;
+import model.*;
 
 public class Dados {
 	private ArrayList<Cliente> cliente;
 	private ArrayList<Funcionario> funcionario;
 	private ArrayList<Venda> venda;
 	private ArrayList<Endereco> endereco;
-	private ArrayList<Loja> loja;
+	private final List<Produto> produto;
 	
 
 	public Dados() {
@@ -26,7 +17,7 @@ public class Dados {
 		funcionario = new ArrayList<>();
 		venda = new ArrayList<>();
 		endereco = new ArrayList<>();
-		loja = new ArrayList<>();
+		produto = new ArrayList<>();
 	}
 
 }
