@@ -47,7 +47,7 @@ public abstract class Produto {
 		
 	}
 
-	public void ler() {
+	public void imprimir() {
 		
 	}
 	

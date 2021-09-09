@@ -49,7 +49,7 @@ public class Endereco {
 		this.complemento = complemento; 
 	}
 	
-	public void ler() {
+	public void imprimir() {
 		System.out.println("Cidade: " + this.getCidade() + ".\nCEP: " + this.getCep() + ".\nUF: " + this.getUf() + "\nNome da Rua: " +
 				this.getNomeRua() + ".\nNúmero: " + this.getNumero() + ".\nQuadra: " + this.getQuadra() + ".\nBairro: " + this.getBairro() +
 				".\nNúmero do Apartamento: " + this.getNumApart() + ".\nComplemento: " + this.getComplemento() + ".");

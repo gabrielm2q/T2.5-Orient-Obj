@@ -14,11 +14,11 @@ public class Venda {
 	
 	public Venda(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
 			List<Produto> produto, ArrayList<Pagamento> pagamento, ArrayList<Integer> qtdVendida) {
-		this.idVenda = idVenda;
-		this.valorVenda = valorVenda;
-		this.valorDesconto = valorDesconto;
-		this.dataPedido = dataPedido;
-		this.funcionario = funcionario;
+		setIdVenda(this.idVenda++);
+		setValorVenda(valorVenda);
+		setValorDesconto(valorDesconto);
+		setDataPedido(dataPedido);
+		setFuncionario(funcionario);
 		this.produto = new ArrayList<>();
 		this.pagamento = new ArrayList<>();
 		this.qtdVendida = new ArrayList<>();
@@ -37,7 +37,7 @@ public class Venda {
 
 	public void cadastrar(Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
 			List<Produto> produto, ArrayList<Pagamento> pagamento, ArrayList<Integer> qtdVendida) {
-		this.idVenda++;
+		setIdVenda(this.idVenda++);
 		setValorVenda(valorVenda);
 		setValorDesconto(valorDesconto);
 		setDataPedido(dataPedido);
@@ -56,7 +56,7 @@ public class Venda {
 		}
 	}
 
-	public void ler() {
+	public void imprimir() {
 		int i;
 		System.out.println("ID da Venda: " + this.idVenda);
 		System.out.println("Valor da Venda: R$" + this.valorVenda);

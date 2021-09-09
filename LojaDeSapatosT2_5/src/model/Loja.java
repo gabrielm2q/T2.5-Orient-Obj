@@ -15,13 +15,13 @@ public class Loja {
 	
 	public Loja(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
 			Estoque estoque, ArrayList<Funcionario> funcionario) {
-		this.nome = nome;
-		this.cnpj = cnpj;
-		this.horaAbertura = horaAbertura;
-		this.horaFechamento = horaFechamento;
-		this.site = site;
-		this.endereco = endereco;
-		this.estoque = estoque;
+		setNome(nome);
+		setCnpj(cnpj);
+		setHoraAbertura(horaAbertura);
+		setHoraFechamento(horaFechamento);
+		setSite(site);
+		setEndereco(endereco);
+		setEstoque(estoque);
 		this.funcionario = new ArrayList<>();
 	}
 	
@@ -37,18 +37,21 @@ public class Loja {
 	}
 
 	public void cadastrar(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
-			Estoque estoque, Funcionario funcionario) {
-		this.nome = nome;
-		this.cnpj = cnpj;
-		this.horaAbertura = horaAbertura;
-		this.horaFechamento = horaFechamento;
-		this.site = site;
-		this.endereco = endereco;
-		this.estoque = estoque;
-		this.funcionario.add(funcionario);
+			Estoque estoque, ArrayList<Funcionario> funcionario) {
+		setNome(nome);
+		setCnpj(cnpj);
+		setHoraAbertura(horaAbertura);
+		setHoraFechamento(horaFechamento);
+		setSite(site);
+		setEndereco(endereco);
+		setEstoque(estoque);
+		
+		for(int i = 0; i < funcionario.size(); i++) {
+			setFuncionario(funcionario.get(i));
+		}
 	}
 
-	public void ler() {
+	public void imprimir() {
 		System.out.println("\n~DADOS DA LOJA~");
 		System.out.println("Nome: " + this.nome);
 		System.out.println("CNPJ: " + this.cnpj);
@@ -139,7 +142,7 @@ public class Loja {
 		return funcionario;
 	}
 
-	public void setFuncionario(ArrayList<Funcionario> funcionario) {
-		this.funcionario = funcionario;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario.add(funcionario);
 	}	
 }

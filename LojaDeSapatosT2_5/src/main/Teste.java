@@ -35,11 +35,9 @@ public class Teste {
 		
 		end = new Endereco();
 		end.cadastrar(70000000, "Ciudad", "PR", "Rua JK", 15, 04, "Centro", 00, "Casa Amarela");
-		//end.ler();
 		
 		end2 = new Endereco();
 		end2.cadastrar(73333000, "Cidade", "RS", "Rua GV", 16, 05, "Centro", 16, "Casa Verde");
-		//end2.ler();
 		
 		dado.addEndereco(end);
 		dado.addEndereco(end2);
@@ -50,11 +48,9 @@ public class Teste {
 		
 		cl = new Cliente();
 		cl.cadastrar(end, "Felipe", 'M', dat, "111.111.111-11", "(61) 91111-1111", "felipe@gmail.com");
-		//cl.ler();
 		
 		cl2 = new Cliente();
 		cl2.cadastrar(end2, "Joana", 'F', dat, "222.222.222-22", "(61) 92222-2222", "joana@gmail.com");
-		//cl2.ler();
 		
 		dado.addCliente(cl);
 		dado.addCliente(cl2);
@@ -62,13 +58,16 @@ public class Teste {
 		
 		
 		
+		ArrayList<Funcionario> func = new ArrayList<>();
 		
 		fun = new Funcionario();
 		fun.cadastrar("João", dat, "333.333.333-33", "(61) 93333-3333", dat, "Integral", 8, 17, end2);
 		
 		fun2 = new Funcionario();
 		fun2.cadastrar("Mário", dat, "444.444.444-44", "(61) 94444-4444", dat, "Matutino", 8, 12, end);
-		//fun.ler();
+		
+		func.add(fun);
+		func.add(fun2);
 		
 		dado.addFuncionario(fun);
 		dado.addFuncionario(fun2);
@@ -136,11 +135,11 @@ public class Teste {
 		est.cadastrar(20, "Sapatos", dat, sap);
 		est.cadastrar(30, "Bota", dat, bot);
 		est.cadastrar(40, "Salto", dat, sal);
-		est.ler();
+		est.imprimir();
 		
 		loj = new Loja();
-		loj.cadastrar("Casas Americanas", 34684354, 8, 18, "www.google.com", end, est, fun);
-		loj.ler();
+		loj.cadastrar("Casas Americanas", 34684354, 8, 18, "www.google.com", end, est, func);
+		loj.imprimir();
 		
 				
 	}

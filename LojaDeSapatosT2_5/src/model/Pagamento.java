@@ -28,7 +28,7 @@ public class Pagamento {
 		this.numParcelas = numParcelas;
 	}
 
-	public void ler() {
+	public void imprimir() {
 		String saida = "\nDados do Pagamento: ";
 		saida = saida + "\nValor Pago: R$" + this.getValorPago() + ".\nForma de Pagamento: " + this.getFormaPag()
 		+ ".\nData de Pagamento: " + this.getDataPag() + ".\nNúmero de Parcelas: " + this.getNumParcelas() + ".";

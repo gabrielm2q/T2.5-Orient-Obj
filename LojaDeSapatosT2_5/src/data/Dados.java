@@ -33,7 +33,7 @@ public class Dados {
 		
 		for(int i = 0; i < cliente.size(); i++) {
 			System.out.println(i+1 + "º Cliente: ");
-			cliente.get(i).ler();
+			cliente.get(i).imprimir();
 			System.out.println("");
 		}
 	}
@@ -51,7 +51,7 @@ public class Dados {
 		
 		for(int i = 0; i < funcionario.size(); i++) {
 			System.out.println(i+1 + "º Funcionário: ");
-			funcionario.get(i).ler();
+			funcionario.get(i).imprimir();
 			System.out.println("");
 		}
 	}
@@ -69,7 +69,7 @@ public class Dados {
 		
 		for(int i = 0; i < venda.size(); i++) {
 			System.out.println(i+1 + "º Venda: ");
-			venda.get(i).ler();
+			venda.get(i).imprimir();
 			System.out.println("");
 		}
 	}
@@ -87,7 +87,7 @@ public class Dados {
 		
 		for(int i = 0; i < endereco.size(); i++) {
 			System.out.println(i+1 + "º Endereço: ");
-			endereco.get(i).ler();
+			endereco.get(i).imprimir();
 			System.out.println("");
 		}
 	}
@@ -105,7 +105,7 @@ public class Dados {
 		
 		for(int i = 0; i < produto.size(); i++) {
 			System.out.print(i+1 + "º Produto: ");
-			produto.get(i).ler();
+			produto.get(i).imprimir();
 			System.out.println("");
 		}
 	}

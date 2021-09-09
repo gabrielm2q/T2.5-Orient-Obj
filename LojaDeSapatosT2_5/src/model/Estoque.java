@@ -31,7 +31,7 @@ public class Estoque {
 		this.produto.add(produto);		
 	}
 
-	public void ler() {
+	public void imprimir() {
 		int i;
 		System.out.println("\n~DADOS DO ESTOQUE~");
 		for(i = 0; i < this.produto.size(); i++) {

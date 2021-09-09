@@ -50,7 +50,7 @@ public class Funcionario {
 		this.endereco = endereco;
 	}
 
-	public void ler() {
+	public void imprimir() {
 		String saida = "Nome: " + this.getNome() + ".\nData de Nascimento: " + this.getDataNasc() + ".\nCPF: " 
 		+ this.getCpf() + ".\nTelefone: " + this.getTelefone() + ".\nData de Contratação: " + this.getDataContratacao() + ".\nTurno: " + this.getTurno()
 		+ ".\nHora de Entrada: " + this.getHoraEntrada() + "h.\nHora de Saída: " + this.getHoraSaida() + ".\nEndereco: " + this.getEndereco();

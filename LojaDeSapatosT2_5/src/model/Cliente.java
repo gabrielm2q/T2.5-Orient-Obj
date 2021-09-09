@@ -49,7 +49,7 @@ public class Cliente {
 		this.email = email;
 	}
 	
-	public void ler() {
+	public void imprimir() {
 		 String saida = "Nome: " + this.getNome() + ".\nGênero: " + this.getGenero() + ".\nData de Nascimento: " 
 		+ this.getDataNasc() + ".\nCPF: " + this.getCpf() + ".\nTelefone: " + this.getTelefone() + ".\nE-Mail: " + this.getEmail()
 		+ ".\nEndereço: " + this.getEndereco();

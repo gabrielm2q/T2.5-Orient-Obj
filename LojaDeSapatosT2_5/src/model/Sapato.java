@@ -52,7 +52,7 @@ public class Sapato extends Produto {
 	}
 	
 	@Override
-	public void ler() {
+	public void imprimir() {
 		System.out.print("Sapato");
 		System.out.println("\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
 				"\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nPaís de Origem: " + this.getPaisOrigem() + "\nTempo de Garantia: " +
