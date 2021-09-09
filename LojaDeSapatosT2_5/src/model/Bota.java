@@ -13,11 +13,11 @@ public class Bota extends Produto {
 			char genero, String codBarras, String cor, String material, String modelo, String alturaCano,
 			String tipoSalto, String tipoPalmilha, String materialSolado) {
 		super(idProd, nome, tamanho, preco, marca, paisOrigem, tempoGarantia, genero, codBarras, cor, material);
-		this.modelo = modelo;
-		this.alturaCano = alturaCano;
-		this.tipoSalto = tipoSalto;
-		this.tipoPalmilha = tipoPalmilha;
-		this.materialSolado = materialSolado;
+		setModelo(modelo);
+		setAlturaCano(alturaCano);
+		setTipoSalto(tipoSalto);
+		setTipoPalmilha(tipoPalmilha);
+		setMaterialSolado(materialSolado);
 	}
 
 	public Bota() {

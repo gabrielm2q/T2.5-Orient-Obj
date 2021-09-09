@@ -81,15 +81,11 @@ public class Venda {
 		}
 	}
 	
-	public void editar(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
-			Produto produto, Pagamento pagamento) {
-		this.idVenda = idVenda;
+	public void editar(Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario) {
 		this.valorVenda = valorVenda;
 		this.valorDesconto = valorDesconto;
 		this.dataPedido = dataPedido;
 		this.funcionario = funcionario;
-		this.produto.add(produto);
-		this.pagamento.add(pagamento);
 	}
 
 	@Override

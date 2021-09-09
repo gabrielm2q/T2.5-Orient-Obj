@@ -12,13 +12,13 @@ public class Cliente {
 	
 	public Cliente(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
 			String email) {
-		this.endereco = endereco;
-		this.nome = nome;
-		this.genero = genero;
-		this.dataNasc = dataNasc;
-		this.cpf = cpf;
-		this.telefone = telefone;
-		this.email = email;
+		setEndereco(endereco);
+		setNome(nome);
+		setGenero(genero);
+		setDataNasc(dataNasc);
+		setCpf(cpf);
+		setTelefone(telefone);
+		setEmail(email);
 	}
 
 	public Cliente() {
@@ -29,13 +29,6 @@ public class Cliente {
 		this.cpf = "";
 		this.telefone = "";
 		this.email = "";
-	}
-
-	@Override
-	public String toString() {
-		return "Cliente [endereco=" + endereco + ", nome=" + nome + ", genero=" + genero + ", dataNasc=" + dataNasc
-				+ ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", getEndereco()=" + getEndereco()
-				+ "]";
 	}
 
 	public void cadastrar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
@@ -65,6 +58,13 @@ public class Cliente {
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.email = email;
+	}
+	
+	@Override
+	public String toString() {
+		return "Cliente [endereco=" + endereco + ", nome=" + nome + ", genero=" + genero + ", dataNasc=" + dataNasc
+				+ ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", getEndereco()=" + getEndereco()
+				+ "]";
 	}
 	
 	public Endereco getEndereco() {

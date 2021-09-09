@@ -64,16 +64,26 @@ public class Loja {
 		
 	}
 	
-	public void editar(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
-			Estoque estoque, Funcionario funcionario) {
+	public void editar(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco) {
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.horaAbertura = horaAbertura;
 		this.horaFechamento = horaFechamento;
 		this.site = site;
 		this.endereco = endereco;
-		this.estoque = estoque;
-		this.funcionario.add(funcionario);
+	}
+	
+	public void deletarFuncionario(Funcionario func) {
+		int i;
+		int index = -1;
+		for(i = 0; i < funcionario.size(); i++) {
+			if(func.equals(funcionario.get(i))) {
+				index = i;
+			}
+		}
+		if(index != -1) {
+			funcionario.remove(index);
+		}
 	}
 
 	@Override

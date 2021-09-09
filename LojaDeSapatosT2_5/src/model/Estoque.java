@@ -8,14 +8,6 @@ public class Estoque {
 	private ArrayList<Date> dataCadastro;
 	private final List<Produto> produto;
 	
-	public Estoque(ArrayList<Integer> quantidade, ArrayList<String> categoria,
-			ArrayList<Date> dataCadastro, List<Produto> produto) {
-		this.quantidade = new ArrayList<>();
-		this.categoria = new ArrayList<>();
-		this.dataCadastro = new ArrayList<>();
-		this.produto = new ArrayList<>();
-	}
-	
 	public Estoque() {
 		this.quantidade = new ArrayList<>();
 		this.categoria = new ArrayList<>();
@@ -23,8 +15,7 @@ public class Estoque {
 		this.produto = new ArrayList<>();
 	}
 
-	public void cadastrar(int quantidade, String categoria,
-			Date dataCadastro, Produto produto) {
+	public void cadastrar(int quantidade, String categoria, Date dataCadastro, Produto produto) {
 		this.quantidade.add(quantidade);
 		this.categoria.add(categoria);
 		this.dataCadastro.add(dataCadastro);
@@ -58,9 +49,9 @@ public class Estoque {
 		System.out.print("\nDigite o produto a ser editado: "); editar = sc.nextInt();
 		
 		if(editar <= 0 || editar > this.produto.size()) {
-			System.out.print("\nValor Inválido! Digite novamente!");
+			System.out.print("\nValor Inválido!");
 			do {
-				System.out.print("Digite o produto a ser editado: "); editar = sc.nextInt();
+				System.out.print(" Digite o produto a ser editado: "); editar = sc.nextInt();
 			} while(editar <= 0 || editar > this.produto.size());
 		}
 		sc.nextLine();
@@ -69,9 +60,9 @@ public class Estoque {
 		System.out.println("Digite a nova quantidade: ");
 		qtd = sc.nextInt();
 		if(qtd < 0) {
-			System.out.print("\nValor Inválido! Digite novamente!");
+			System.out.print("\nValor Inválido!");
 			do {
-				System.out.print("Digite o produto a ser editado: "); editar = sc.nextInt();
+				System.out.print(" Digite o produto a ser editado: "); editar = sc.nextInt();
 			} while(qtd < 0);
 		}
 		this.quantidade.set(editar, qtd);
@@ -84,8 +75,26 @@ public class Estoque {
 		this.dataCadastro.set(editar, data);
 	}
 	
-	public void deletarProduto() {
-		
+	public void deletarProduto(Produto prod) {
+		int i;
+		int index = -1;
+		for(i = 0; i < produto.size(); i++) {
+			if(prod.equals(produto.get(i))) {
+				index = i;
+			}
+		}
+		if(index != -1) {
+			produto.remove(index);
+			quantidade.remove(index);
+			categoria.remove(index);
+			dataCadastro.remove(index);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Estoque [quantidade=" + quantidade + ", categoria=" + categoria + ", dataCadastro=" + dataCadastro
+				+ ", produto=" + produto + "]";
 	}
 
 	public ArrayList<Integer> getQuantidade() {

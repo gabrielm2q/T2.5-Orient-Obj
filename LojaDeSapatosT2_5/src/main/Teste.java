@@ -71,7 +71,7 @@ public class Teste {
 		
 		dado.addFuncionario(fun);
 		dado.addFuncionario(fun2);
-		dado.imprimirFuncionarios();		
+		dado.imprimirFuncionarios();
 		
 		
 		
@@ -107,6 +107,20 @@ public class Teste {
 		dado.addProduto(ten);
 		dado.imprimirProdutos();
 		
+		
+		
+		
+		est = new Estoque();
+		est.cadastrar(40, "Tênis", dat, ten);
+		est.cadastrar(10, "Salto", dat, sal);
+		est.cadastrar(20, "Bota", dat, bot);
+		est.cadastrar(30, "Sapatos", dat, sap);
+		//est.editar();
+		est.imprimir();
+		
+		
+		
+		
 		ArrayList<Pagamento> pagmt = new ArrayList<>();
 		
 		pag = new Pagamento();
@@ -126,22 +140,26 @@ public class Teste {
 		
 		dado.addVenda(ven);
 		dado.imprimirVendas();
+		ven.editar(1064.29, 64.29, dat, fun2);
+		ven.imprimir();
 		
 		
 		
 		
-		est = new Estoque();
-		est.cadastrar(10, "Tênis", dat, ten);
-		est.cadastrar(20, "Sapatos", dat, sap);
-		est.cadastrar(30, "Bota", dat, bot);
-		est.cadastrar(40, "Salto", dat, sal);
-		est.imprimir();
+		
 		
 		loj = new Loja();
 		loj.cadastrar("Casas Americanas", 34684354, 8, 18, "www.google.com", end, est, func);
 		loj.imprimir();
+		loj.editar("Magazine", 84343845, 9, 20, "www.google.com.br", end2);
+		loj.imprimir();
+		//dado.deletarClientes();
+		dado.imprimirClientes();
 		
-				
+		//dado.deletarProdutos(est);
+		//dado.imprimirProdutos();
+		//est.deletarProduto(ten);
+		//est.imprimir();
 	}
 
 }
