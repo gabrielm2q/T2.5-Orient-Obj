@@ -52,13 +52,12 @@ public class Bota extends Produto {
 	
 	@Override
 	public void ler() {
-		String saida = "\nCaracterísticas da Bota: ";
-		saida = saida + "\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
+		System.out.print("Bota");
+		System.out.println("\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
 				"\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nPaís de Origem: " + this.getPaisOrigem() + "\nTempo de Garantia: " +
 				this.getTempoGarantia() + "\nGênero: " + this.getGenero() + "\nCódigo de Barras: " + this.getCodBarras() + "\nMaterial: " + this.getMaterial() +
 				"\nCor: " + this.getCor() + "\nModelo: " + this.getModelo() + "\nAltura do Cano: " + this.getAlturaCano() + "\nTipo de Salto: " +
-				this.getTipoSalto() + "\nTipo de Palmilha: " + this.getTipoPalmilha() + "\nMaterial do Solado: " + this.getMaterialSolado() + ".";
-		System.out.println(saida);
+				this.getTipoSalto() + "\nTipo de Palmilha: " + this.getTipoPalmilha() + "\nMaterial do Solado: " + this.getMaterialSolado() + ".");
 	}
 	
 	public void editar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 

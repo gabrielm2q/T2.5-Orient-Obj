@@ -48,13 +48,12 @@ public class Salto extends Produto {
 	
 	@Override
 	public void ler() {
-		String saida = "\nCaracterísticas do Salto: ";
-		saida = saida + "\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
+		System.out.print("Salto");
+		System.out.println("\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
 				"\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nPaís de Origem: " + this.getPaisOrigem() + "\nTempo de Garantia: " +
 				this.getTempoGarantia() + "\nGênero: " + this.getGenero() + "\nCódigo de Barras: " + this.getCodBarras() + "\nMaterial: " + this.getMaterial() +
 				"\nCor: " + this.getCor() + "\nTipo de Salto: " + this.getTipoSalto() + "\nCor Externa: " + this.getCorExterna() + "\nCor do Solado: " + 
-				this.getCorSolado() + "\nAltura do Salto: " + this.getAlturaSalto() + ".";
-		System.out.println(saida);
+				this.getCorSolado() + "\nAltura do Salto: " + this.getAlturaSalto() + ".");
 	}
 	
 	

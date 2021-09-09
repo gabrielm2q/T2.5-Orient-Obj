@@ -62,14 +62,13 @@ public class Tenis extends Produto {
 	
 	@Override
 	public void ler() {
-		String saida = "\nCaracterísticas do Tênis: ";
-		saida = saida + "\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
+		System.out.print("Tênis");
+		System.out.println("\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
 				"\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nPaís de Origem: " + this.getPaisOrigem() + "\nTempo de Garantia: " +
 				this.getTempoGarantia() + "\nGênero: " + this.getGenero() + "\nCódigo de Barras: " + this.getCodBarras() + "\nMaterial: " + this.getMaterial() +
 				"\nCor: " + this.getCor() + "\nAtividade Indicada: " + this.getAtvdIndicada() + "\nTecnologia do Solado: " + this.getTecnoSolado() +
 				"\nTipo de Pisada: " + this.getTipoPisada() + "\nTipo de Palmilha: " + this.getTipoPalmilha() + "\nPeso: " + this.getPeso() +
-				"g\nTipo de Amarração: " + this.getTipoAmarracao() + "\nCor do Cadarço: " + this.getCorCadarco() + ".";
-		System.out.println(saida);
+				"g\nTipo de Amarração: " + this.getTipoAmarracao() + "\nCor do Cadarço: " + this.getCorCadarco() + ".");
 	}
 	
 	public void editar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 

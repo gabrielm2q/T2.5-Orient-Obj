@@ -81,6 +81,16 @@ public class Dados {
 	public void addEndereco(Endereco endereco) {
 		this.endereco.add(endereco);
 	}
+	
+	public void imprimirEnderecos() {
+		System.out.println("\n~IMPRIMINDO TODOS OS ENDERECOS~\n");
+		
+		for(int i = 0; i < endereco.size(); i++) {
+			System.out.println(i+1 + "º Endereço: ");
+			endereco.get(i).ler();
+			System.out.println("");
+		}
+	}
 
 	public List<Produto> getProduto() {
 		return produto;
@@ -88,6 +98,16 @@ public class Dados {
 	
 	public void addProduto(Produto produto) {
 		this.produto.add(produto);
+	}
+	
+	public void imprimirProdutos() {
+		System.out.println("\n~IMPRIMINDO TODOS OS PRODUTOS~\n");
+		
+		for(int i = 0; i < produto.size(); i++) {
+			System.out.print(i+1 + "º Produto: ");
+			produto.get(i).ler();
+			System.out.println("");
+		}
 	}
 
 }

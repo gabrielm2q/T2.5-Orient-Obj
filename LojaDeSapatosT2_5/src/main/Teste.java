@@ -41,6 +41,10 @@ public class Teste {
 		end2.cadastrar(73333000, "Cidade", "RS", "Rua GV", 16, 05, "Centro", 16, "Casa Verde");
 		//end2.ler();
 		
+		dado.addEndereco(end);
+		dado.addEndereco(end2);
+		dado.imprimirEnderecos();
+		
 		
 		
 		
@@ -87,32 +91,30 @@ public class Teste {
 		sap.cadastrar(2, "Mocassim", 42, 200.99, "Democrata", "Brasil", dat, 'U', "11101110", "Nappa", "Preto", "Borracha", "Espuma", "Quadrado", "Baixo", "Comum");
 		prod.add(sap);
 		qtdVend.add(1);
-		//sap.ler();
 		
 		bot = new Bota();
 		bot.cadastrar(3, "Botina", 43, 152.8, "Rio Branco", "Brasil", dat, 'U', "10101010", "Couro", "Marrom", "Trabalho", "Médio", "Pequeno", "Não possui", "Borracha");
 		prod.add(bot);
 		qtdVend.add(1);
-		//bot.ler();
 		
 		sal = new Salto();
 		sal.cadastrar(4, "Salto Alto", 40, 500.0, "Schutz", "Brasil", dat, 'F', "01010101", "Couro Orgânico", "Bege", "Scarpin", "Bege", "Vermelho", "Alto");
 		prod.add(sal);
 		qtdVend.add(1);
-		//sal.ler();
 		
-		
-		
+		dado.addProduto(sal);
+		dado.addProduto(bot);
+		dado.addProduto(sap);
+		dado.addProduto(ten);
+		dado.imprimirProdutos();
 		
 		ArrayList<Pagamento> pagmt = new ArrayList<>();
 		
 		pag = new Pagamento();
 		pag.cadastrar(500.0, "Débito", dat, 0);
-		//pag.ler();
 		
 		pag2 = new Pagamento();
 		pag2.cadastrar(500.0, "Crédito", dat, 5);
-		//pag2.ler();
 		
 		pagmt.add(pag);
 		pagmt.add(pag2);
@@ -126,18 +128,21 @@ public class Teste {
 		dado.addVenda(ven);
 		dado.imprimirVendas();
 		
+		
+		
+		
 		est = new Estoque();
 		est.cadastrar(10, "Tênis", dat, ten);
 		est.cadastrar(20, "Sapatos", dat, sap);
 		est.cadastrar(30, "Bota", dat, bot);
 		est.cadastrar(40, "Salto", dat, sal);
-		//est.ler();
-		//est.ler();
+		est.ler();
 		
 		loj = new Loja();
 		loj.cadastrar("Casas Americanas", 34684354, 8, 18, "www.google.com", end, est, fun);
-		//loj.ler();
+		loj.ler();
 		
+				
 	}
 
 }

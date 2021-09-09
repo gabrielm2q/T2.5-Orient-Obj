@@ -49,7 +49,7 @@ public class Loja {
 	}
 
 	public void ler() {
-		System.out.println("\nDados da Loja: ");
+		System.out.println("\n~DADOS DA LOJA~");
 		System.out.println("Nome: " + this.nome);
 		System.out.println("CNPJ: " + this.cnpj);
 		System.out.println("Hora de Abertura: " + this.horaAbertura + "h");

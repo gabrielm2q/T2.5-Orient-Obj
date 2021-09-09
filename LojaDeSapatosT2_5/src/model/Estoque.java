@@ -33,7 +33,7 @@ public class Estoque {
 
 	public void ler() {
 		int i;
-		System.out.println("\nDados do Estoque: ");
+		System.out.println("\n~DADOS DO ESTOQUE~");
 		for(i = 0; i < this.produto.size(); i++) {
 			System.out.println("\n" + (i+1) + "º Produto: " + produto.get(i));
 			System.out.println("Quantidade: " + quantidade.get(i));
