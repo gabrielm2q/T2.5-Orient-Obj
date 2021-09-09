@@ -72,9 +72,9 @@ public class Endereco {
 	
 	@Override
 	public String toString() {
-		return "\nCidade: " + this.getCidade() + ".\nCEP: " + this.getCep() + ".\nUF: " + this.getUf() + "\nNome da Rua: " + this.getNomeRua()
-				+ ".\nNúmero: " + this.getNumero() + ".\nQuadra: " + this.getQuadra() + ".\nBairro: " + this.getBairro() +
-				".\nNúmero do Apartamento: " + this.getNumApart() + ".\nComplemento: " + this.getComplemento() + ".";
+		return "\n  Cidade: " + this.getCidade() + ".\n  CEP: " + this.getCep() + ".\n  UF: " + this.getUf() + "\n  Nome da Rua: " + this.getNomeRua()
+				+ ".\n  Número: " + this.getNumero() + ".\n  Quadra: " + this.getQuadra() + ".\n  Bairro: " + this.getBairro() +
+				".\n  Número do Apartamento: " + this.getNumApart() + ".\n  Complemento: " + this.getComplemento() + ".";
 	}
 	
 	public int getCep() {

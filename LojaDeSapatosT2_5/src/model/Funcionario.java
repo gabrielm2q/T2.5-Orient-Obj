@@ -51,8 +51,7 @@ public class Funcionario {
 	}
 
 	public void ler() {
-		String saida = "\nDados do Funcionario: ";
-		saida = saida + "\nNome: " + this.getNome() + ".\nData de Nascimento: " + this.getDataNasc() + ".\nCPF: " 
+		String saida = "Nome: " + this.getNome() + ".\nData de Nascimento: " + this.getDataNasc() + ".\nCPF: " 
 		+ this.getCpf() + ".\nTelefone: " + this.getTelefone() + ".\nData de Contratação: " + this.getDataContratacao() + ".\nTurno: " + this.getTurno()
 		+ ".\nHora de Entrada: " + this.getHoraEntrada() + "h.\nHora de Saída: " + this.getHoraSaida() + ".\nEndereco: " + this.getEndereco();
 		System.out.println(saida);

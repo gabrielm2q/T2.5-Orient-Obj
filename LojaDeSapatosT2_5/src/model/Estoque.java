@@ -111,5 +111,8 @@ public class Estoque {
 	public List<Produto> getProduto() {
 		return produto;
 	}
-
+	
+	public void setProduto(Produto produto) {
+		this.produto.add(produto);
+	}
 }

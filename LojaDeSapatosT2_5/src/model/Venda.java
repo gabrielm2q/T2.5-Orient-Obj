@@ -10,9 +10,10 @@ public class Venda {
 	private Funcionario funcionario;
 	private final List<Produto> produto;
 	private ArrayList<Pagamento> pagamento;
+	private ArrayList<Integer> qtdVendida;
 	
 	public Venda(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
-			List<Produto> produto, ArrayList<Pagamento> pagamento) {
+			List<Produto> produto, ArrayList<Pagamento> pagamento, ArrayList<Integer> qtdVendida) {
 		this.idVenda = idVenda;
 		this.valorVenda = valorVenda;
 		this.valorDesconto = valorDesconto;
@@ -20,6 +21,7 @@ public class Venda {
 		this.funcionario = funcionario;
 		this.produto = new ArrayList<>();
 		this.pagamento = new ArrayList<>();
+		this.qtdVendida = new ArrayList<>();
 	}
 	
 	public Venda() {
@@ -30,32 +32,48 @@ public class Venda {
 		this.funcionario = null;
 		this.produto = new ArrayList<>();
 		this.pagamento = new ArrayList<>();
+		this.qtdVendida = new ArrayList<>();
 	}
 
 	public void cadastrar(Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
-			Produto produto, Pagamento pagamento) {
+			List<Produto> produto, ArrayList<Pagamento> pagamento, ArrayList<Integer> qtdVendida) {
 		this.idVenda++;
-		this.valorVenda = valorVenda;
-		this.valorDesconto = valorDesconto;
-		this.dataPedido = dataPedido;
-		this.funcionario = funcionario;
-		this.produto.add(produto);
-		this.pagamento.add(pagamento);
+		setValorVenda(valorVenda);
+		setValorDesconto(valorDesconto);
+		setDataPedido(dataPedido);
+		setFuncionario(funcionario);
+		
+		for(int i = 0; i < produto.size(); i++) {
+			setProduto(produto.get(i));
+		}
+		
+		for(int i = 0; i < pagamento.size(); i++) {
+			setPagamento(pagamento.get(i));
+		}
+		
+		for(int i = 0; i < qtdVendida.size(); i++) {
+			setQtdVendida(qtdVendida.get(i));
+		}
 	}
 
 	public void ler() {
 		int i;
-		System.out.println("\nDados da Venda: ");
 		System.out.println("ID da Venda: " + this.idVenda);
 		System.out.println("Valor da Venda: R$" + this.valorVenda);
 		System.out.println("Valor do Desconto: R$" + this.valorDesconto);
 		System.out.println("Data do Pedido: " + this.dataPedido);
 		System.out.println("Funcionário: " + this.funcionario.getNome());
-		System.out.print("Produtos Vendidos: ");
+		System.out.println("Produtos Vendidos: ");
+		
 		for(i = 0; i < this.produto.size(); i++) {
-			System.out.println(produto.get(i).getNome() + "; ");
+			System.out.println(" + Nome: " + produto.get(i).getNome() + "\n   Preço: R$" + produto.get(i).getPreco() +
+			"\n   Marca: " + produto.get(i).getMarca() + "\n   Quantidade Vendida: " + qtdVendida.get(i));
 		}
-		System.out.println("Forma de Pagamento: " + this.pagamento.get(this.idVenda - 1).getFormaPag());
+		
+		System.out.println("Formas de Pagamento: ");
+		for(i = 0; i < this.pagamento.size(); i++) {
+			System.out.println("+ Forma: " + pagamento.get(i).getFormaPag() + "\n  Valor: R$" + pagamento.get(i).getValorPago());
+		}
 	}
 	
 	public void editar(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
@@ -119,12 +137,24 @@ public class Venda {
 		return pagamento;
 	}
 
-	public void setPagamento(ArrayList<Pagamento> pagamento) {
-		this.pagamento = pagamento;
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento.add(pagamento);
 	}
 
 	public List<Produto> getProduto() {
 		return produto;
+	}
+	
+	public void setProduto(Produto produto) {
+		this.produto.add(produto);
+	}
+
+	public ArrayList<Integer> getQtdVendida() {
+		return qtdVendida;
+	}
+
+	public void setQtdVendida(int qtdVendida) {
+		this.qtdVendida.add(qtdVendida);
 	}
 
 }

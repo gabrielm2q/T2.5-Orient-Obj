@@ -50,10 +50,9 @@ public class Cliente {
 	}
 	
 	public void ler() {
-		String saida = "\nDados do Cliente: ";
-		saida = saida + "\nNome: " + this.getNome() + ".\nGênero: " + this.getGenero() + ".\nData de Nascimento: " 
+		 String saida = "Nome: " + this.getNome() + ".\nGênero: " + this.getGenero() + ".\nData de Nascimento: " 
 		+ this.getDataNasc() + ".\nCPF: " + this.getCpf() + ".\nTelefone: " + this.getTelefone() + ".\nE-Mail: " + this.getEmail()
-		+ ".\nEndereco: " + this.getEndereco();
+		+ ".\nEndereço: " + this.getEndereco();
 		System.out.println(saida);
 	}
 	
