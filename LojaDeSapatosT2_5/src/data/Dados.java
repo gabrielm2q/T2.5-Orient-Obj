@@ -37,6 +37,10 @@ public class Dados {
 			System.out.println("");
 		}
 	}
+	
+	public void deletarClientes() {
+		
+	}
 
 	public List<Funcionario> getFuncionario() {
 		return funcionario;
@@ -54,6 +58,10 @@ public class Dados {
 			funcionario.get(i).imprimir();
 			System.out.println("");
 		}
+	}
+	
+	public void deletarFuncionarios() {
+		
 	}
 
 	public List<Venda> getVenda() {
@@ -73,6 +81,10 @@ public class Dados {
 			System.out.println("");
 		}
 	}
+	
+	public void deletarVendas() {
+		
+	}
 
 	public List<Endereco> getEndereco() {
 		return endereco;
@@ -91,6 +103,10 @@ public class Dados {
 			System.out.println("");
 		}
 	}
+	
+	public void deletarEnderecos() {
+		
+	}
 
 	public List<Produto> getProduto() {
 		return produto;
@@ -108,6 +124,10 @@ public class Dados {
 			produto.get(i).imprimir();
 			System.out.println("");
 		}
+	}
+	
+	public void deletarProdutos() {
+		
 	}
 
 }

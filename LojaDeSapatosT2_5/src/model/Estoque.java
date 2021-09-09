@@ -83,6 +83,10 @@ public class Estoque {
 		
 		this.dataCadastro.set(editar, data);
 	}
+	
+	public void deletarProduto() {
+		
+	}
 
 	public ArrayList<Integer> getQuantidade() {
 		return quantidade;

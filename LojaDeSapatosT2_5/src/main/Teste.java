@@ -122,7 +122,7 @@ public class Teste {
 		
 		
 		ven = new Venda();
-		ven.cadastrar(1064.29, 64.29, dat, fun, prod, pagmt, qtdVend);
+		ven.cadastrar(1064.29, 64.29, dat, fun, cl, prod, pagmt, qtdVend);
 		
 		dado.addVenda(ven);
 		dado.imprimirVendas();

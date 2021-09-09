@@ -8,17 +8,19 @@ public class Venda {
 	private Double valorDesconto;
 	private Date dataPedido;
 	private Funcionario funcionario;
+	private Cliente cliente;
 	private final List<Produto> produto;
 	private ArrayList<Pagamento> pagamento;
 	private ArrayList<Integer> qtdVendida;
 	
-	public Venda(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
+	public Venda(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario, Cliente cliente,
 			List<Produto> produto, ArrayList<Pagamento> pagamento, ArrayList<Integer> qtdVendida) {
 		setIdVenda(this.idVenda++);
 		setValorVenda(valorVenda);
 		setValorDesconto(valorDesconto);
 		setDataPedido(dataPedido);
 		setFuncionario(funcionario);
+		setCliente(cliente);
 		this.produto = new ArrayList<>();
 		this.pagamento = new ArrayList<>();
 		this.qtdVendida = new ArrayList<>();
@@ -35,13 +37,14 @@ public class Venda {
 		this.qtdVendida = new ArrayList<>();
 	}
 
-	public void cadastrar(Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
+	public void cadastrar(Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario, Cliente cliente,
 			List<Produto> produto, ArrayList<Pagamento> pagamento, ArrayList<Integer> qtdVendida) {
 		setIdVenda(this.idVenda++);
 		setValorVenda(valorVenda);
 		setValorDesconto(valorDesconto);
 		setDataPedido(dataPedido);
 		setFuncionario(funcionario);
+		setCliente(cliente);
 		
 		for(int i = 0; i < produto.size(); i++) {
 			setProduto(produto.get(i));
@@ -63,6 +66,8 @@ public class Venda {
 		System.out.println("Valor do Desconto: R$" + this.valorDesconto);
 		System.out.println("Data do Pedido: " + this.dataPedido);
 		System.out.println("Funcionário: " + this.funcionario.getNome());
+		System.out.println("Cliente: " + this.cliente.getNome());
+		System.out.println("Endereço: " + this.cliente.getEndereco());
 		System.out.println("Produtos Vendidos: ");
 		
 		for(i = 0; i < this.produto.size(); i++) {
@@ -131,6 +136,14 @@ public class Venda {
 
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public ArrayList<Pagamento> getPagamento() {
