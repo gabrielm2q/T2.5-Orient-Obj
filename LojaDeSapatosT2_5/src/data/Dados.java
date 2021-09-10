@@ -21,7 +21,8 @@ public class Dados {
 		endereco = new ArrayList<>();
 		produto = new ArrayList<>();
 	}
-
+	
+	//Cliente
 	public List<Cliente> getCliente() {
 		return cliente;
 	}
@@ -60,7 +61,8 @@ public class Dados {
 		cliente.remove(opc);
 		System.out.println("Cliente removido!");
 	}
-
+	
+	//Funcionário
 	public List<Funcionario> getFuncionario() {
 		return funcionario;
 	}
@@ -100,7 +102,8 @@ public class Dados {
 		funcionario.remove(opc);
 		System.out.println("Funcionário removido!");
 	}
-
+	
+	//Venda
 	public List<Venda> getVenda() {
 		return venda;
 	}
@@ -119,6 +122,7 @@ public class Dados {
 		}
 	}
 	
+	//Endereço
 	public ArrayList<Endereco> getEndereco() {
 		return endereco;
 	}
@@ -136,7 +140,8 @@ public class Dados {
 			System.out.println("");
 		}
 	}
-
+	
+	//Produto
 	public List<Produto> getProduto() {
 		return produto;
 	}

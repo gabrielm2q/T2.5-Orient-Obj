@@ -8,10 +8,11 @@ public class Teste {
 	
 
 	public static void main(String[] args){
-		Cliente cl;
-		Cliente cl2;
+		//Objetos
 		Endereco end;
 		Endereco end2;
+		Cliente cl;
+		Cliente cl2;
 		Funcionario fun;
 		Funcionario fun2;
 		Pagamento pag;
@@ -23,28 +24,37 @@ public class Teste {
 		Estoque est;
 		Loja loj;
 		Venda ven;
-		Dados dado;
+		Dados dado = new Dados();
 		
+		//Cadastrando datas
 		GregorianCalendar d = new GregorianCalendar();
 		Date dat = d.getTime();
 		
-		dado = new Dados();
-		
-		
-		
-		
+		//ENDEREÇO: Instanciando e Inserindo dados		
 		end = new Endereco();
 		end.cadastrar(70000000, "Ciudad", "PR", "Rua JK", 15, 04, "Centro", 00, "Casa Amarela");
 		
 		end2 = new Endereco();
-		end2.cadastrar(73333000, "Cidade", "RS", "Rua GV", 16, 05, "Centro", 16, "Casa Verde");
+		end2.cadastrar("Goiânia", "Rua 7 de Setembro", 488, "Setor Oeste");
 		
+		//Editando dados
+		end.editar(73000000, "Cascavel", "PR", "Rua Python", 6, 7, "Setor Sul", 6, "Casa coral");
+		
+		//Imprimindo dados separadamente
+		System.out.println("Imprimindo endereços separadamente: \nEndereço 1: ");
+		end.imprimir();
+		System.out.println("\nEndereço 2: ");
+		end2.imprimir();
+		
+		//Salvando dados na classe Dados
 		dado.addEndereco(end);
 		dado.addEndereco(end2);
+		
+		//Imprimindo todos os endereços
 		dado.imprimirEnderecos();
 		
 		
-		
+		/*
 		
 		cl = new Cliente();
 		cl.cadastrar(end, "Felipe", 'M', dat, "111.111.111-11", "(61) 91111-1111", "felipe@gmail.com");
@@ -160,6 +170,9 @@ public class Teste {
 		//dado.imprimirProdutos();
 		//est.deletarProduto(ten);
 		//est.imprimir();
+		 * 
+		 * 
+		 */
 	}
 
 }

@@ -13,66 +13,74 @@ public class Endereco {
 	
 	public Endereco(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
 			int numApart, String complemento) {
-		this.cep = cep;
-		this.cidade = cidade;
-		this.uf = uf;
-		this.nomeRua = nomeRua;
-		this.numero = numero;
-		this.quadra = quadra;
-		this.bairro = bairro;
-		this.numApart = numApart;
-		this.complemento = complemento;
+		setCep(cep);
+		setCidade(cidade);
+		setUf(uf);
+		setNomeRua(nomeRua);
+		setNumero(numero);
+		setQuadra(quadra);
+		setBairro(bairro);
+		setNumApart(numApart);
+		setComplemento(complemento);
 	}
 
 	public Endereco() {
-		this.cep = 0;
-		this.cidade = "";
-		this.uf = "";
-		this.nomeRua = "";
-		this.numero = 0;
-		this.quadra = 0;
-		this.bairro = "";
-		this.numApart = 0;
-		this.complemento = "";
+		setCep(0);
+		setCidade("");
+		setUf("");
+		setNomeRua("");
+		setNumero(0);
+		setQuadra(0);
+		setBairro("");
+		setNumApart(0);
+		setComplemento("");
 	}
 
 	public void cadastrar(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
 			int numApart, String complemento) {
-		this.cep = cep;
-		this.cidade = cidade;
-		this.uf = uf;
-		this.nomeRua = nomeRua; 
-		this.numero = numero; 
-		this.quadra = quadra; 
-		this.bairro = bairro; 
-		this.numApart = numApart; 
-		this.complemento = complemento; 
+		setCep(cep);
+		setCidade(cidade);
+		setUf(uf);
+		setNomeRua(nomeRua);
+		setNumero(numero);
+		setQuadra(quadra);
+		setBairro(bairro);
+		setNumApart(numApart);
+		setComplemento(complemento);
 	}
 	
 	public void imprimir() {
-		System.out.println("Cidade: " + this.getCidade() + ".\nCEP: " + this.getCep() + ".\nUF: " + this.getUf() + "\nNome da Rua: " +
-				this.getNomeRua() + ".\nNúmero: " + this.getNumero() + ".\nQuadra: " + this.getQuadra() + ".\nBairro: " + this.getBairro() +
-				".\nNúmero do Apartamento: " + this.getNumApart() + ".\nComplemento: " + this.getComplemento() + ".");
+		System.out.println("Cidade: " + getCidade() + ".\nCEP: " + getCep() + ".\nUF: " + getUf() + "\nNome da Rua: " +
+				getNomeRua() + ".\nNúmero: " + getNumero() + ".\nQuadra: " + getQuadra() + ".\nBairro: " + getBairro() +
+				".\nNúmero do Apartamento: " + getNumApart() + ".\nComplemento: " + getComplemento() + ".");
 	}
 	
 	public void editar(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
 			int numApart, String complemento) {
-		this.cep = cep;
-		this.cidade = cidade;
-		this.uf = uf;
-		this.nomeRua = nomeRua; 
-		this.numero = numero; 
-		this.quadra = quadra; 
-		this.bairro = bairro; 
-		this.numApart = numApart; 
-		this.complemento = complemento; 
+		setCep(cep);
+		setCidade(cidade);
+		setUf(uf);
+		setNomeRua(nomeRua);
+		setNumero(numero);
+		setQuadra(quadra);
+		setBairro(bairro);
+		setNumApart(numApart);
+		setComplemento(complemento);
+	}
+	
+	//Realizando a sobrecarga do método cadastrar apenas com Cidade, Nome da Rua, Número e Bairro
+	public void cadastrar(String cidade, String nomeRua, int numero, String bairro) {
+		setCidade(cidade);
+		setNomeRua(nomeRua);
+		setNumero(numero);
+		setBairro(bairro);
 	}
 	
 	@Override
 	public String toString() {
-		return "\n  Cidade: " + this.getCidade() + ".\n  CEP: " + this.getCep() + ".\n  UF: " + this.getUf() + "\n  Nome da Rua: " + this.getNomeRua()
-				+ ".\n  Número: " + this.getNumero() + ".\n  Quadra: " + this.getQuadra() + ".\n  Bairro: " + this.getBairro() +
-				".\n  Número do Apartamento: " + this.getNumApart() + ".\n  Complemento: " + this.getComplemento() + ".";
+		return "\n  Cidade: " + getCidade() + ".\n  CEP: " + getCep() + ".\n  UF: " + getUf() + "\n  Nome da Rua: " + getNomeRua()
+				+ ".\n  Número: " + getNumero() + ".\n  Quadra: " + getQuadra() + ".\n  Bairro: " + getBairro() +
+				".\n  Número do Apartamento: " + getNumApart() + ".\n  Complemento: " + getComplemento() + ".";
 	}
 	
 	public int getCep() {
