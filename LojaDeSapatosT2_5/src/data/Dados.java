@@ -172,13 +172,13 @@ public class Dados {
 		System.out.print("Opção escolhida: "); int opc = sc.nextInt();
 		sc.nextLine(); // Limpando o Buffer
 		
-		while(opc < 1 || opc > produto.size()) { //Verificação de validade do valor inserido
+		while(opc < 1 || opc > produto.size()) { //Validando valor inserido
 			System.out.println("\nVALOR INCORRETO! ESCOLHA UMA OPÇÃO DO MENU!");
 			System.out.print("Opção escolhida: "); opc = sc.nextInt();
 		}
 		opc--;
-		estoque.deletarProduto(produto.get(opc));
-		produto.remove(opc);
+		estoque.deletarProduto(produto.get(opc)); //Enviando produto para que este também seja deletado em Estoque
+		produto.remove(opc); //Deletando produto em Dados
 		System.out.println("Produto removido!");
 	}
 

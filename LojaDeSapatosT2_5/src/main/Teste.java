@@ -183,19 +183,26 @@ public class Teste {
 		
 		System.out.println("===================================================================");
 		
-		
-		/*
-				est = new Estoque();
-		est.cadastrar(40, "Tênis", dat, ten);
+		//ESTOQUE: Instanciando e inserindo dados
+		est = new Estoque();
 		est.cadastrar(10, "Salto", dat, sal);
 		est.cadastrar(20, "Bota", dat, bot);
 		est.cadastrar(30, "Sapatos", dat, sap);
-		//est.editar();
+		est.cadastrar(40, "Tênis", dat, ten);
+		
+		//Editando dados
+		est.editar();
+		
+		System.out.println("-------------------------------------------------------------------");
+		
+		//Imprimindo dados
 		est.imprimir();
 		
+		System.out.println("===================================================================");
+
 		
 		
-		
+		/*
 		ArrayList<Pagamento> pagmt = new ArrayList<>();
 		
 		pag = new Pagamento();
