@@ -14,40 +14,40 @@ public class Funcionario {
 	
 	public Funcionario(String nome, Date dataNasc, String cpf, String telefone, Date dataContratacao, String turno,
 			int horaEntrada, int horaSaida, Endereco endereco) {
-		this.nome = nome;
-		this.dataNasc = dataNasc;
-		this.cpf = cpf;
-		this.telefone = telefone;
-		this.dataContratacao = dataContratacao;
-		this.turno = turno;
-		this.horaEntrada = horaEntrada;
-		this.horaSaida = horaSaida;
-		this.endereco = endereco;
+		setNome(nome);
+		setDataNasc(dataNasc);
+		setCpf(cpf);
+		setTelefone(telefone);
+		setDataContratacao(dataContratacao);
+		setTurno(turno);
+		setHoraEntrada(horaEntrada);
+		setHoraSaida(horaSaida);
+		setEndereco(endereco);
 	}
 
 	public Funcionario() {
-		this.nome = "";
-		this.dataNasc = null;
-		this.cpf = "";
-		this.telefone = "";
-		this.dataContratacao = null;
-		this.turno = "";
-		this.horaEntrada = 0;
-		this.horaSaida = 0;
-		this.endereco = null;
+		setNome("");
+		setDataNasc(null);
+		setCpf("");
+		setTelefone("");
+		setDataContratacao(null);
+		setTurno("");
+		setHoraEntrada(0);
+		setHoraSaida(0);
+		setEndereco(null);
 	}
 	
 	public void cadastrar(String nome, Date dataNasc, String cpf, String telefone, Date dataContratacao, String turno,
 			int horaEntrada, int horaSaida, Endereco endereco) {
-		this.nome = nome;
-		this.dataNasc = dataNasc;
-		this.cpf = cpf;
-		this.telefone = telefone;
-		this.dataContratacao = dataContratacao;
-		this.turno = turno;
-		this.horaEntrada = horaEntrada;
-		this.horaSaida = horaSaida;
-		this.endereco = endereco;
+		setNome(nome);
+		setDataNasc(dataNasc);
+		setCpf(cpf);
+		setTelefone(telefone);
+		setDataContratacao(dataContratacao);
+		setTurno(turno);
+		setHoraEntrada(horaEntrada);
+		setHoraSaida(horaSaida);
+		setEndereco(endereco);
 	}
 
 	public void imprimir() {
@@ -59,15 +59,15 @@ public class Funcionario {
 	
 	public void editar(String nome, Date dataNasc, String cpf, String telefone, Date dataContratacao, String turno,
 			int horaEntrada, int horaSaida, Endereco endereco) {
-		this.nome = nome;
-		this.dataNasc = dataNasc;
-		this.cpf = cpf;
-		this.telefone = telefone;
-		this.dataContratacao = dataContratacao;
-		this.turno = turno;
-		this.horaEntrada = horaEntrada;
-		this.horaSaida = horaSaida;
-		this.endereco = endereco;
+		setNome(nome);
+		setDataNasc(dataNasc);
+		setCpf(cpf);
+		setTelefone(telefone);
+		setDataContratacao(dataContratacao);
+		setTurno(turno);
+		setHoraEntrada(horaEntrada);
+		setHoraSaida(horaSaida);
+		setEndereco(endereco);
 	}
 
 	@Override

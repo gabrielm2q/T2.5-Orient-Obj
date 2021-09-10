@@ -30,7 +30,8 @@ public class Teste {
 		GregorianCalendar d = new GregorianCalendar();
 		Date dat = d.getTime();
 		
-		//ENDEREÇO: Instanciando e Inserindo dados		
+		System.out.println("===================================================================");
+		//ENDEREÇO: Instanciando e inserindo dados		
 		end = new Endereco();
 		end.cadastrar(70000000, "Ciudad", "PR", "Rua JK", 15, 04, "Centro", 00, "Casa Amarela");
 		
@@ -50,42 +51,74 @@ public class Teste {
 		dado.addEndereco(end);
 		dado.addEndereco(end2);
 		
+		System.out.println("-------------------------------------------------------------------");
+		
 		//Imprimindo todos os endereços
 		dado.imprimirEnderecos();
 		
+		System.out.println("===================================================================");
 		
-		/*
+		//FUNCIONÁRIO: Instanciando e inserindo dados
+		fun = new Funcionario();
+		fun.cadastrar("João", dat, "333.333.333-33", "(61) 93333-3333", dat, "Integral", 8, 17, end);
 		
+		fun2 = new Funcionario();
+		fun2.cadastrar("Mário", dat, "444.444.444-44", "(61) 94444-4444", dat, "Matutino", 8, 12, end2);
+		
+		//Editando dados
+		fun.editar("José", dat, "343.434.343-34", "(61) 93443-4334", dat, "Vespertino", 12, 18, end);
+		
+		//Imprimindo dados separadamente
+		System.out.println("Imprimindo funcionários separadamente: \nFuncionário 1: ");
+		fun.imprimir();
+		System.out.println("\nEndereço 2: ");
+		fun2.imprimir();
+		
+		//Salvando todos os funcionários em uma ArrayList
+		ArrayList<Funcionario> funcio = new ArrayList<>();		
+		funcio.add(fun);
+		funcio.add(fun2);
+		
+		//Salvando dados na classe Dados
+		dado.addFuncionario(fun);
+		dado.addFuncionario(fun2);
+		
+		System.out.println("-------------------------------------------------------------------");
+		
+		//Imprimindo todos os funcionários
+		dado.imprimirFuncionarios();
+		
+		System.out.println("===================================================================");
+		
+		//CLIENTE: Instanciando e inserindo dados
 		cl = new Cliente();
 		cl.cadastrar(end, "Felipe", 'M', dat, "111.111.111-11", "(61) 91111-1111", "felipe@gmail.com");
 		
 		cl2 = new Cliente();
 		cl2.cadastrar(end2, "Joana", 'F', dat, "222.222.222-22", "(61) 92222-2222", "joana@gmail.com");
 		
+		//Editando dados
+		cl2.editar(end2, "Júlia", 'F', dat, "121.212.121-12", "(61) 92112-1221", "julia@gmail.com");
+		
+		//Imprimindo dados separadamente
+		System.out.println("Imprimindo clientes separadamente: \nCliente 1: ");
+		cl.imprimir();
+		System.out.println("\nCliente 2: ");
+		cl2.imprimir();
+		
+		//Salvando dados na classe Dados
 		dado.addCliente(cl);
 		dado.addCliente(cl2);
+		
+		System.out.println("-------------------------------------------------------------------");
+		
+		//Imprimindo todos os clientes
 		dado.imprimirClientes();
 		
+		System.out.println("===================================================================");
 		
 		
-		ArrayList<Funcionario> func = new ArrayList<>();
-		
-		fun = new Funcionario();
-		fun.cadastrar("João", dat, "333.333.333-33", "(61) 93333-3333", dat, "Integral", 8, 17, end2);
-		
-		fun2 = new Funcionario();
-		fun2.cadastrar("Mário", dat, "444.444.444-44", "(61) 94444-4444", dat, "Matutino", 8, 12, end);
-		
-		func.add(fun);
-		func.add(fun2);
-		
-		dado.addFuncionario(fun);
-		dado.addFuncionario(fun2);
-		dado.imprimirFuncionarios();
-		
-		
-		
-		
+		/*
 		ArrayList<Integer> qtdVend = new ArrayList<>();
 		final List<Produto> prod = new ArrayList<>();
 		

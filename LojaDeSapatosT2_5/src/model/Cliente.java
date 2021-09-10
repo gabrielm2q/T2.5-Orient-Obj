@@ -22,24 +22,24 @@ public class Cliente {
 	}
 
 	public Cliente() {
-		this.endereco = null;
-		this.nome = "";
-		this.genero = '0';
-		this.dataNasc = null;
-		this.cpf = "";
-		this.telefone = "";
-		this.email = "";
+		setEndereco(null);
+		setNome("");
+		setGenero('0');
+		setDataNasc(null);
+		setCpf("");
+		setTelefone("");
+		setEmail("");
 	}
 
 	public void cadastrar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
 			String email) {
-		this.endereco = endereco;
-		this.nome = nome;
-		this.genero = genero;
-		this.dataNasc = dataNasc;
-		this.cpf = cpf;
-		this.telefone = telefone;
-		this.email = email;
+		setEndereco(endereco);
+		setNome(nome);
+		setGenero(genero);
+		setDataNasc(dataNasc);
+		setCpf(cpf);
+		setTelefone(telefone);
+		setEmail(email);
 	}
 	
 	public void imprimir() {
@@ -51,13 +51,13 @@ public class Cliente {
 	
 	public void editar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
 			String email) {
-		this.endereco = endereco;
-		this.nome = nome;
-		this.genero = genero;
-		this.dataNasc = dataNasc;
-		this.cpf = cpf;
-		this.telefone = telefone;
-		this.email = email;
+		setEndereco(endereco);
+		setNome(nome);
+		setGenero(genero);
+		setDataNasc(dataNasc);
+		setCpf(cpf);
+		setTelefone(telefone);
+		setEmail(email);
 	}
 	
 	@Override
