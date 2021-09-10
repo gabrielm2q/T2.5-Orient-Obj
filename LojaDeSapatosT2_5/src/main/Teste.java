@@ -265,29 +265,44 @@ public class Teste {
 		
 		System.out.println("===================================================================");
 		
+		//DADOS: Utilizando métodos que não foram utilizados acima
+		/* Destaca-se que acima já foram utilizados os seguintes métodos: 
+		 * imprimirClientes()
+		 * imprimirFuncionarios()
+		 * imprimirVendas()
+		 * imprimirEnderecos()
+		 * imprimirProdutos()
+		 * */
 		
-		/*
+		//Deletando produtos
+		dado.deletarProdutos(est);
 		
+		System.out.println("-------------------------------------------------------------------");
 		
+		//Imprimindo todos os produtos restantes
+		dado.imprimirProdutos();
 		
+		System.out.println("-------------------------------------------------------------------");
 		
+		//Deletando funcionários
+		dado.deletarFuncionarios(loj);
 		
+		System.out.println("-------------------------------------------------------------------");
+				
+		//Imprimindo todos os funcionários restantes
+		dado.imprimirFuncionarios();
+				
+		System.out.println("-------------------------------------------------------------------");
 		
+		//Deletando clientes
+		dado.deletarClientes();
 		
-		
-		
-		
-		
-		
-		
-		
-		//dado.deletarProdutos(est);
-		//dado.imprimirProdutos();
-		//est.deletarProduto(ten);
-		//est.imprimir();
-		 * 
-		 * 
-		 */
+		System.out.println("-------------------------------------------------------------------");
+						
+		//Imprimindo todos os funcionários restantes
+		dado.imprimirClientes();
+						
+		System.out.println("-------------------------------------------------------------------");
 	}
 
 }

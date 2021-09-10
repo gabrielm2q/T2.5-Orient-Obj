@@ -22,7 +22,7 @@ public class Dados {
 		produto = new ArrayList<>();
 	}
 	
-	//Cliente
+	//CLIENTE
 	public List<Cliente> getCliente() {
 		return cliente;
 	}
@@ -62,7 +62,7 @@ public class Dados {
 		System.out.println("Cliente removido!");
 	}
 	
-	//Funcionário
+	//FUNCIONARIO
 	public List<Funcionario> getFuncionario() {
 		return funcionario;
 	}
@@ -98,12 +98,12 @@ public class Dados {
 			System.out.print("Opção escolhida: "); opc = sc.nextInt();
 		}
 		opc--;
-		loja.deletarFuncionario(funcionario.get(opc));
+		loja.deletarFuncionario(funcionario.get(opc)); //Deletando o funcionário da instância da classe Loja através do método loja.deletarFuncionario()
 		funcionario.remove(opc);
 		System.out.println("Funcionário removido!");
 	}
 	
-	//Venda
+	//VENDA
 	public List<Venda> getVenda() {
 		return venda;
 	}
@@ -122,7 +122,7 @@ public class Dados {
 		}
 	}
 	
-	//Endereço
+	//ENDERECO
 	public ArrayList<Endereco> getEndereco() {
 		return endereco;
 	}
@@ -141,7 +141,7 @@ public class Dados {
 		}
 	}
 	
-	//Produto
+	//PRODUTO
 	public List<Produto> getProduto() {
 		return produto;
 	}
