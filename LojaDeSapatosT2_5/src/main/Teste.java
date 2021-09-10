@@ -117,43 +117,75 @@ public class Teste {
 		
 		System.out.println("===================================================================");
 		
+		//Classes Filhas de PRODUTO (SALTO, SAPATO, TÊNIS E BOTA): Instanciando e inserindo dados
+		ten = new Tenis();
+		ten.cadastrar(1, "Run 7", 41, 210.5, "Asics", "Taiwan", dat, 'M', "00010001", "Tecido Mash", 
+				"Vermelho", "Corrida", "Gel", "Pronada", "Gel", 250.1, "Cadarço", "Azul");
 		
-		/*
+		sap = new Sapato();
+		sap.cadastrar(2, "Mocassim", 42, 200.99, "Democrata", "Brasil", dat, 'U', "11101110", "Nappa",
+				"Preto", "Borracha", "Espuma", "Quadrado", "Baixo", "Comum");
+		
+		bot = new Bota();
+		bot.cadastrar(3, "Botina", 43, 152.8, "Rio Branco", "Brasil", dat, 'U', "10101010", "Couro",
+				"Marrom", "Trabalho", "Médio", "Pequeno", "Não possui", "Borracha");
+		
+		sal = new Salto();
+		sal.cadastrar(4, "Salto Alto", 40, 500.0, "Schutz", "Brasil", dat, 'F', "01010101",
+				"Couro Orgânico", "Bege", "Scarpin", "Bege", "Vermelho", "Alto");
+		
+		//Editando dados
+		ten.editar(1, "Tênis Performance Run 7", 45, 200.0, "Asics", "EUA", dat, 'M', "0100110101",
+				"Tecido Mash", "Azul", "Corrida", "Gel", "Comum", "Gel", 250.5, "Cadarço", "Preto");
+		sap.editar(2, "Mocassim", 40, 200.99, "Havana", "Portugal", dat, 'U', "01011111", "Couro",
+				"Marrom", "Borracha", "Tecido", "Arredondado", "Não Possui", "EVA");
+		bot.editar(3, "Bota Americana", 37, 163.3, "Texans", "China", dat, 'F', "0000010000", "Couro",
+				"Branco", "Passeio", "Alto", "Baixo", "Não Possui", "Borracha");
+		sal.editar(4, "Salto Alto", 38, 500.0, "NotHere", "Argentina", dat, 'F', "01000110010",
+				"Couro Orgânico", "Preto", "Scarpin", "Preto", "Vermelho", "Alto");
+		
+		//Imprimindo dados separadamente
+		System.out.println("Imprimindo produtos separadamente: \nProduto 1: ");
+		ten.imprimir();
+		System.out.println("\nProduto 2: ");
+		sap.imprimir();
+		System.out.println("\nProduto 3: ");
+		bot.imprimir();
+		System.out.println("\nProduto 4: ");
+		sal.imprimir();		
+		
+		//Salvando todos os produtos e suas quantidades vendidas em Lists e ArrayLists
 		ArrayList<Integer> qtdVend = new ArrayList<>();
 		final List<Produto> prod = new ArrayList<>();
 		
-		ten = new Tenis();
-		ten.cadastrar(1, "Run 7", 41, 210.5, "Asics", "Taiwan", dat, 'M', "00010001", "Tecido Mash", 
-					  "Vermelho", "Corrida", "Gel", "Pronada", "Gel", 250.1, "Cadarço", "Azul");
 		prod.add(ten);
 		qtdVend.add(1);
-		//ten.ler();
 		
-		sap = new Sapato();
-		sap.cadastrar(2, "Mocassim", 42, 200.99, "Democrata", "Brasil", dat, 'U', "11101110", "Nappa", "Preto", "Borracha", "Espuma", "Quadrado", "Baixo", "Comum");
 		prod.add(sap);
 		qtdVend.add(1);
 		
-		bot = new Bota();
-		bot.cadastrar(3, "Botina", 43, 152.8, "Rio Branco", "Brasil", dat, 'U', "10101010", "Couro", "Marrom", "Trabalho", "Médio", "Pequeno", "Não possui", "Borracha");
 		prod.add(bot);
 		qtdVend.add(1);
 		
-		sal = new Salto();
-		sal.cadastrar(4, "Salto Alto", 40, 500.0, "Schutz", "Brasil", dat, 'F', "01010101", "Couro Orgânico", "Bege", "Scarpin", "Bege", "Vermelho", "Alto");
 		prod.add(sal);
 		qtdVend.add(1);
 		
+		//Salvando dados na classe Dados		
 		dado.addProduto(sal);
 		dado.addProduto(bot);
 		dado.addProduto(sap);
 		dado.addProduto(ten);
+		
+		System.out.println("-------------------------------------------------------------------");
+		
+		//Imprimindo todos os produtos
 		dado.imprimirProdutos();
 		
+		System.out.println("===================================================================");
 		
 		
-		
-		est = new Estoque();
+		/*
+				est = new Estoque();
 		est.cadastrar(40, "Tênis", dat, ten);
 		est.cadastrar(10, "Salto", dat, sal);
 		est.cadastrar(20, "Bota", dat, bot);

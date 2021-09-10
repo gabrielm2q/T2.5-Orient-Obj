@@ -12,38 +12,38 @@ public class Salto extends Produto {
 			Date tempoGarantia, char genero, String codBarras, String cor, String material, String tipoSalto,
 			String corExterna, String corSolado, String alturaSalto) {
 		super(idProd, nome, tamanho, preco, marca, paisOrigem, tempoGarantia, genero, codBarras, cor, material);
-		this.tipoSalto = tipoSalto;
-		this.corExterna = corExterna;
-		this.corSolado = corSolado;
-		this.alturaSalto = alturaSalto;
+		setTipoSalto(tipoSalto);
+		setCorExterna(corExterna);
+		setCorSolado(corSolado);
+		setAlturaSalto(alturaSalto);
 	}
 	
 	public Salto() {
 		super();
-		this.tipoSalto = "";
-		this.corExterna = "";
-		this.corSolado = "";
-		this.alturaSalto = "";
+		setTipoSalto("");
+		setCorExterna("");
+		setCorSolado("");
+		setAlturaSalto("");
 	}
 	
 	public void cadastrar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem,
 			Date tempoGarantia, char genero, String codBarras, String cor, String material, String tipoSalto,
 			String corExterna, String corSolado, String alturaSalto) {
-		this.setIdProd(idProd);
-		this.setNome(nome);
-		this.setTamanho(tamanho);
-		this.setPreco(preco);
-		this.setMarca(marca);
-		this.setPaisOrigem(paisOrigem);
-		this.setTempoGarantia(tempoGarantia);
-		this.setGenero(genero);
-		this.setCodBarras(codBarras);
-		this.setCor(cor);
-		this.setMaterial(material);
-		this.tipoSalto = tipoSalto;
-		this.corExterna = corExterna;
-		this.corSolado = corSolado;
-		this.alturaSalto = alturaSalto;
+		setIdProd(idProd);
+		setNome(nome);
+		setTamanho(tamanho);
+		setPreco(preco);
+		setMarca(marca);
+		setPaisOrigem(paisOrigem);
+		setTempoGarantia(tempoGarantia);
+		setGenero(genero);
+		setCodBarras(codBarras);
+		setCor(cor);
+		setMaterial(material);
+		setTipoSalto(tipoSalto);
+		setCorExterna(corExterna);
+		setCorSolado(corSolado);
+		setAlturaSalto(alturaSalto);
 	}
 	
 	@Override
@@ -59,21 +59,21 @@ public class Salto extends Produto {
 	
 	public void editar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
  			  		   String codBarras, String material, String cor, String tipoSalto, String corExterna, String corSolado, String alturaSalto) {
-		this.setIdProd(idProd);
-		this.setNome(nome);
-		this.setTamanho(tamanho);
-		this.setPreco(preco);
-		this.setMarca(marca);
-		this.setPaisOrigem(paisOrigem);
-		this.setTempoGarantia(tempoGarantia);
-		this.setGenero(genero);
-		this.setCodBarras(codBarras);
-		this.setCor(cor);
-		this.setMaterial(material);
-		this.tipoSalto = tipoSalto;
-		this.corExterna = corExterna;
-		this.corSolado = corSolado;
-		this.alturaSalto = alturaSalto;
+		setIdProd(idProd);
+		setNome(nome);
+		setTamanho(tamanho);
+		setPreco(preco);
+		setMarca(marca);
+		setPaisOrigem(paisOrigem);
+		setTempoGarantia(tempoGarantia);
+		setGenero(genero);
+		setCodBarras(codBarras);
+		setCor(cor);
+		setMaterial(material);
+		setTipoSalto(tipoSalto);
+		setCorExterna(corExterna);
+		setCorSolado(corSolado);
+		setAlturaSalto(alturaSalto);
 	}
 	
 	@Override

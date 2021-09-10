@@ -22,32 +22,32 @@ public class Bota extends Produto {
 
 	public Bota() {
 		super();
-		this.modelo = "";
-		this.alturaCano = "";
-		this.tipoSalto = "";
-		this.tipoPalmilha = "";
-		this.materialSolado = "";
+		setModelo("");
+		setAlturaCano("");
+		setTipoSalto("");
+		setTipoPalmilha("");
+		setMaterialSolado("");
 	}
 	
 	public void cadastrar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
 			   			  String codBarras, String material, String cor, String modelo, String alturaCano, String tipoSalto, String tipoPalmilha,
 			   			  String materialSolado) {
-		this.setIdProd(idProd);
-		this.setNome(nome);
-		this.setTamanho(tamanho);
-		this.setPreco(preco);
-		this.setMarca(marca);
-		this.setPaisOrigem(paisOrigem);
-		this.setTempoGarantia(tempoGarantia);
-		this.setGenero(genero);
-		this.setCodBarras(codBarras);
-		this.setCor(cor);
-		this.setMaterial(material);
-		this.modelo = modelo;
-		this.alturaCano = alturaCano;
-		this.tipoSalto = tipoSalto;
-		this.tipoPalmilha = tipoPalmilha;
-		this.materialSolado = materialSolado;
+		setIdProd(idProd);
+		setNome(nome);
+		setTamanho(tamanho);
+		setPreco(preco);
+		setMarca(marca);
+		setPaisOrigem(paisOrigem);
+		setTempoGarantia(tempoGarantia);
+		setGenero(genero);
+		setCodBarras(codBarras);
+		setCor(cor);
+		setMaterial(material);
+		setModelo(modelo);
+		setAlturaCano(alturaCano);
+		setTipoSalto(tipoSalto);
+		setTipoPalmilha(tipoPalmilha);
+		setMaterialSolado(materialSolado);
 	}
 	
 	@Override
@@ -63,22 +63,22 @@ public class Bota extends Produto {
 	public void editar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
  			  String codBarras, String material, String cor, String modelo, String alturaCano, String tipoSalto, String tipoPalmilha,
  			  String materialSolado) {
-		this.setIdProd(idProd);
-		this.setNome(nome);
-		this.setTamanho(tamanho);
-		this.setPreco(preco);
-		this.setMarca(marca);
-		this.setPaisOrigem(paisOrigem);
-		this.setTempoGarantia(tempoGarantia);
-		this.setGenero(genero);
-		this.setCodBarras(codBarras);
-		this.setCor(cor);
-		this.setMaterial(material);
-		this.modelo = modelo;
-		this.alturaCano = alturaCano;
-		this.tipoSalto = tipoSalto;
-		this.tipoPalmilha = tipoPalmilha;
-		this.materialSolado = materialSolado;
+		setIdProd(idProd);
+		setNome(nome);
+		setTamanho(tamanho);
+		setPreco(preco);
+		setMarca(marca);
+		setPaisOrigem(paisOrigem);
+		setTempoGarantia(tempoGarantia);
+		setGenero(genero);
+		setCodBarras(codBarras);
+		setCor(cor);
+		setMaterial(material);
+		setModelo(modelo);
+		setAlturaCano(alturaCano);
+		setTipoSalto(tipoSalto);
+		setTipoPalmilha(tipoPalmilha);
+		setMaterialSolado(materialSolado);
 	}
 	
 	@Override

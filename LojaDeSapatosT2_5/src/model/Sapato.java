@@ -15,40 +15,40 @@ public class Sapato extends Produto {
 			Date tempoGarantia, char genero, String codBarras, String cor, String material, String materialSolado,
 			String materialInterno, String tipoBico, String alturaSalto, String tipoPalmilha) {
 		super(idProd, nome, tamanho, preco, marca, paisOrigem, tempoGarantia, genero, codBarras, cor, material);
-		this.materialSolado = materialSolado;
-		this.materialInterno = materialInterno;
-		this.tipoBico = tipoBico;
-		this.alturaSalto = alturaSalto;
-		this.tipoPalmilha = tipoPalmilha;
+		setMaterialSolado(materialSolado);
+		setMaterialInterno(materialInterno);
+		setTipoBico(tipoBico);
+		setAlturaSalto(alturaSalto);
+		setTipoPalmilha(tipoPalmilha);
 	}
 
 	public Sapato() {
 		super();
-		this.materialSolado = "";
-		this.materialInterno = "";
-		this.tipoBico = "";
-		this.alturaSalto = "";
-		this.tipoPalmilha = "";
+		setMaterialSolado("");
+		setMaterialInterno("");
+		setTipoBico("");
+		setAlturaSalto("");
+		setTipoPalmilha("");
 	}
 	
 	public void cadastrar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
 			 String codBarras, String material, String cor, String materialSolado, String materialInterno, String tipoBico, String alturaSalto, String tipoPalmilha) {
-		this.setIdProd(idProd);
-		this.setNome(nome);
-		this.setTamanho(tamanho);
-		this.setPreco(preco);
-		this.setMarca(marca);
-		this.setPaisOrigem(paisOrigem);
-		this.setTempoGarantia(tempoGarantia);
-		this.setGenero(genero);
-		this.setCodBarras(codBarras);
-		this.setCor(cor);
-		this.setMaterial(material);
-		this.materialSolado = materialSolado;
-		this.materialInterno = materialInterno;
-		this.tipoBico = tipoBico;
-		this.alturaSalto = alturaSalto;
-		this.tipoPalmilha = tipoPalmilha;
+		setIdProd(idProd);
+		setNome(nome);
+		setTamanho(tamanho);
+		setPreco(preco);
+		setMarca(marca);
+		setPaisOrigem(paisOrigem);
+		setTempoGarantia(tempoGarantia);
+		setGenero(genero);
+		setCodBarras(codBarras);
+		setCor(cor);
+		setMaterial(material);
+		setMaterialSolado(materialSolado);
+		setMaterialInterno(materialInterno);
+		setTipoBico(tipoBico);
+		setAlturaSalto(alturaSalto);
+		setTipoPalmilha(tipoPalmilha);
 	}
 	
 	@Override
@@ -63,22 +63,22 @@ public class Sapato extends Produto {
 	
 	public void editar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
 			 String codBarras, String material, String cor, String materialSolado, String materialInterno, String tipoBico, String alturaSalto, String tipoPalmilha) {
-		this.setIdProd(idProd);
-		this.setNome(nome);
-		this.setTamanho(tamanho);
-		this.setPreco(preco);
-		this.setMarca(marca);
-		this.setPaisOrigem(paisOrigem);
-		this.setTempoGarantia(tempoGarantia);
-		this.setGenero(genero);
-		this.setCodBarras(codBarras);
-		this.setCor(cor);
-		this.setMaterial(material);
-		this.materialSolado = materialSolado;
-		this.materialInterno = materialInterno;
-		this.tipoBico = tipoBico;
-		this.alturaSalto = alturaSalto;
-		this.tipoPalmilha = tipoPalmilha;
+		setIdProd(idProd);
+		setNome(nome);
+		setTamanho(tamanho);
+		setPreco(preco);
+		setMarca(marca);
+		setPaisOrigem(paisOrigem);
+		setTempoGarantia(tempoGarantia);
+		setGenero(genero);
+		setCodBarras(codBarras);
+		setCor(cor);
+		setMaterial(material);
+		setMaterialSolado(materialSolado);
+		setMaterialInterno(materialInterno);
+		setTipoBico(tipoBico);
+		setAlturaSalto(alturaSalto);
+		setTipoPalmilha(tipoPalmilha);
 	}
 	
 	@Override

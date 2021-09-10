@@ -16,31 +16,31 @@ public abstract class Produto {
 	
 	protected Produto(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem,
 			Date tempoGarantia, char genero, String codBarras, String cor, String material) {
-		this.idProd = idProd;
-		this.nome = nome;
-		this.tamanho = tamanho;
-		this.preco = preco;
-		this.marca = marca;
-		this.paisOrigem = paisOrigem;
-		this.tempoGarantia = tempoGarantia;
-		this.genero = genero;
-		this.codBarras = codBarras;
-		this.cor = cor;
-		this.material = material;
+		setIdProd(idProd);
+		setNome(nome);
+		setTamanho(tamanho);
+		setPreco(preco);
+		setMarca(marca);
+		setPaisOrigem(paisOrigem);
+		setTempoGarantia(tempoGarantia);
+		setGenero(genero);
+		setCodBarras(codBarras);
+		setCor(cor);
+		setMaterial(material);
 	}
 	
 	protected Produto() {
-		this.idProd = 0;
-		this.nome = "";
-		this.tamanho = 0;
-		this.preco = 0.0;
-		this.marca = "";
-		this.paisOrigem = "";
-		this.tempoGarantia = null;
-		this.genero = '0';
-		this.codBarras = "";
-		this.cor = "";
-		this.material = "";
+		setIdProd(0);
+		setNome("");
+		setTamanho(0);
+		setPreco(0.0);
+		setMarca("");
+		setPaisOrigem("");
+		setTempoGarantia(null);
+		setGenero('0');
+		setCodBarras("");
+		setCor("");
+		setMaterial("");
 	}
 
 	public void cadastrar() {

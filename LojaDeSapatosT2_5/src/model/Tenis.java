@@ -17,47 +17,47 @@ public class Tenis extends Produto {
 			String tecnoSolado, String tipoPisada, String tipoPalmilha, Double peso, String tipoAmarracao,
 			String corCadarco) {
 		super(idProd, nome, tamanho, preco, marca, paisOrigem, tempoGarantia, genero, codBarras, cor, material);
-		this.atvdIndicada = atvdIndicada;
-		this.tecnoSolado = tecnoSolado;
-		this.tipoPisada = tipoPisada;
-		this.tipoPalmilha = tipoPalmilha;
-		this.peso = peso;
-		this.tipoAmarracao = tipoAmarracao;
-		this.corCadarco = corCadarco;
+		setAtvdIndicada(atvdIndicada);
+		setTecnoSolado(tecnoSolado);
+		setTipoPisada(tipoPisada);
+		setTipoPalmilha(tipoPalmilha);
+		setPeso(peso);
+		setTipoAmarracao(tipoAmarracao);
+		setCorCadarco(corCadarco);
 	}
 
 	public Tenis() {
 		super();
-		this.atvdIndicada = "";
-		this.tecnoSolado = "";
-		this.tipoPisada = "";
-		this.tipoPalmilha = "";
-		this.peso = 0.0;
-		this.tipoAmarracao = "";
-		this.corCadarco = "";
+		setAtvdIndicada("");
+		setTecnoSolado("");
+		setTipoPisada("");
+		setTipoPalmilha("");
+		setPeso(0.0);
+		setTipoAmarracao("");
+		setCorCadarco("");
 	}
 	
 	public void cadastrar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
 			 String codBarras, String material, String cor, String atvdIndicada, String tecnoSolado, String tipoPisada, String tipoPalmilha,
 			 Double peso, String tipoAmarracao, String corCadarco) {
-		this.setIdProd(idProd);
-		this.setNome(nome);
-		this.setTamanho(tamanho);
-		this.setPreco(preco);
-		this.setMarca(marca);
-		this.setPaisOrigem(paisOrigem);
-		this.setTempoGarantia(tempoGarantia);
-		this.setGenero(genero);
-		this.setCodBarras(codBarras);
-		this.setCor(cor);
-		this.setMaterial(material);
-		this.atvdIndicada = atvdIndicada;
-		this.tecnoSolado = tecnoSolado;
-		this.tipoPisada = tipoPisada;
-		this.tipoPalmilha = tipoPalmilha;
-		this.peso = peso;
-		this.tipoAmarracao = tipoAmarracao;
-		this.corCadarco = corCadarco;
+		setIdProd(idProd);
+		setNome(nome);
+		setTamanho(tamanho);
+		setPreco(preco);
+		setMarca(marca);
+		setPaisOrigem(paisOrigem);
+		setTempoGarantia(tempoGarantia);
+		setGenero(genero);
+		setCodBarras(codBarras);
+		setCor(cor);
+		setMaterial(material);
+		setAtvdIndicada(atvdIndicada);
+		setTecnoSolado(tecnoSolado);
+		setTipoPisada(tipoPisada);
+		setTipoPalmilha(tipoPalmilha);
+		setPeso(peso);
+		setTipoAmarracao(tipoAmarracao);
+		setCorCadarco(corCadarco);
 	}
 	
 	@Override
@@ -74,24 +74,24 @@ public class Tenis extends Produto {
 	public void editar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
 			 String codBarras, String material, String cor, String atvdIndicada, String tecnoSolado, String tipoPisada, String tipoPalmilha,
 			 Double peso, String tipoAmarracao, String corCadarco) {
-		this.setIdProd(idProd);
-		this.setNome(nome);
-		this.setTamanho(tamanho);
-		this.setPreco(preco);
-		this.setMarca(marca);
-		this.setPaisOrigem(paisOrigem);
-		this.setTempoGarantia(tempoGarantia);
-		this.setGenero(genero);
-		this.setCodBarras(codBarras);
-		this.setCor(cor);
-		this.setMaterial(material);
-		this.atvdIndicada = atvdIndicada;
-		this.tecnoSolado = tecnoSolado;
-		this.tipoPisada = tipoPisada;
-		this.tipoPalmilha = tipoPalmilha;
-		this.peso = peso;
-		this.tipoAmarracao = tipoAmarracao;
-		this.corCadarco = corCadarco;
+		setIdProd(idProd);
+		setNome(nome);
+		setTamanho(tamanho);
+		setPreco(preco);
+		setMarca(marca);
+		setPaisOrigem(paisOrigem);
+		setTempoGarantia(tempoGarantia);
+		setGenero(genero);
+		setCodBarras(codBarras);
+		setCor(cor);
+		setMaterial(material);
+		setAtvdIndicada(atvdIndicada);
+		setTecnoSolado(tecnoSolado);
+		setTipoPisada(tipoPisada);
+		setTipoPalmilha(tipoPalmilha);
+		setPeso(peso);
+		setTipoAmarracao(tipoAmarracao);
+		setCorCadarco(corCadarco);
 	}
 
 	@Override
