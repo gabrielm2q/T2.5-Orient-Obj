@@ -47,7 +47,7 @@ public class Teste {
 		System.out.println("\nEndereço 2: ");
 		end2.imprimir();
 		
-		//Salvando dados na classe Dados
+		//Salvando dados na instância da classe Dados
 		dado.addEndereco(end);
 		dado.addEndereco(end2);
 		
@@ -79,7 +79,7 @@ public class Teste {
 		funcio.add(fun);
 		funcio.add(fun2);
 		
-		//Salvando dados na classe Dados
+		//Salvando dados na instância da classe Dados
 		dado.addFuncionario(fun);
 		dado.addFuncionario(fun2);
 		
@@ -106,7 +106,7 @@ public class Teste {
 		System.out.println("\nCliente 2: ");
 		cl2.imprimir();
 		
-		//Salvando dados na classe Dados
+		//Salvando dados na instância da classe Dados
 		dado.addCliente(cl);
 		dado.addCliente(cl2);
 		
@@ -170,7 +170,7 @@ public class Teste {
 		prod.add(sal);
 		qtdVend.add(1);
 		
-		//Salvando dados na classe Dados		
+		//Salvando dados na instância da classe Dados		
 		dado.addProduto(sal);
 		dado.addProduto(bot);
 		dado.addProduto(sap);
@@ -200,43 +200,86 @@ public class Teste {
 		
 		System.out.println("===================================================================");
 
+		//LOJA: Instanciando e inserindo dados
+		loj = new Loja();
+		loj.cadastrar("Casas Americanas", 34684354, 8, 18, "www.google.com", end2, est, funcio); 
+		//Note que no campo de Funcionario estamos inserindo uma ArrayList com todos os funcionários cadastrados
+		
+		//Editando dados
+		loj.editar("Magazine Popular", 84343845, 9, 20, "www.google.com.br", end, est, funcio);
+		
+		/* O método deletarFuncionario(), da classe Loja, será chamado automaticamente quando deletarmos um funcionário
+		 * no objeto dado da classe Dados através do método deletarFuncionarios()
+		 * */
+		
+		//Imprimindo dados
+		loj.imprimir();
+		
+		System.out.println("\n===================================================================");
 		
 		
-		/*
-		ArrayList<Pagamento> pagmt = new ArrayList<>();
-		
+		//PAGAMENTO: Instanciando e inserindo dados
 		pag = new Pagamento();
 		pag.cadastrar(500.0, "Débito", dat, 0);
 		
 		pag2 = new Pagamento();
 		pag2.cadastrar(500.0, "Crédito", dat, 5);
 		
+		//Editando dados
+		pag2.editar(500.0, "Parcelado", dat, 2);
+		
+		//Imprimindo pagamentos separadamente
+		System.out.print("\nImprimindo pagamentos separadamente: \nPagamento 1: ");
+		pag.imprimir();
+		System.out.print("\nPagamento 2: ");
+		pag2.imprimir();
+		
+		//Salvando todos os pagamentos em uma ArrayList
+		ArrayList<Pagamento> pagmt = new ArrayList<>();
 		pagmt.add(pag);
 		pagmt.add(pag2);
 		
+		System.out.println("\n===================================================================");
 		
-		
-		
+		//VENDA: Instanciando e inserindo dados
 		ven = new Venda();
-		ven.cadastrar(1064.29, 64.29, dat, fun, cl, prod, pagmt, qtdVend);
+		ven.cadastrar(1064.29, 64.29, dat, fun, cl, prod, pagmt, qtdVend); 
+		/* Note que nos espaços de Produto, Pagamento e Quantidade Vendida estamos inserindo Lists/ArrayLists
+		 * com os dados previamente cadastrados e armazenados nestas
+		 * */
 		
-		dado.addVenda(ven);
-		dado.imprimirVendas();
-		ven.editar(1064.29, 64.29, dat, fun2);
+		//Editando dados
+		ven.editar(1100.0, 100.0, dat, fun2);
+		
+		//Imprimindo vendas separadamente
+		System.out.println("Imprimindo vendas separadamente: \nVenda 1: ");
 		ven.imprimir();
 		
+		System.out.println("\n-------------------------------------------------------------------");
+		
+		//Salvando dados na instância da classe Dados
+		dado.addVenda(ven);
+		
+		//Imprimindo todas as vendas
+		dado.imprimirVendas();
+		
+		System.out.println("===================================================================");
+		
+		
+		/*
 		
 		
 		
 		
 		
-		loj = new Loja();
-		loj.cadastrar("Casas Americanas", 34684354, 8, 18, "www.google.com", end, est, func);
-		loj.imprimir();
-		loj.editar("Magazine", 84343845, 9, 20, "www.google.com.br", end2);
-		loj.imprimir();
-		//dado.deletarClientes();
-		dado.imprimirClientes();
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		//dado.deletarProdutos(est);
 		//dado.imprimirProdutos();

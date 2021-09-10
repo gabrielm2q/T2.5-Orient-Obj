@@ -13,7 +13,7 @@ public class Venda {
 	private ArrayList<Pagamento> pagamento;
 	private ArrayList<Integer> qtdVendida;
 	
-	public Venda(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario, Cliente cliente,
+	public Venda(Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario, Cliente cliente,
 			List<Produto> produto, ArrayList<Pagamento> pagamento, ArrayList<Integer> qtdVendida) {
 		setIdVenda(this.idVenda++);
 		setValorVenda(valorVenda);
@@ -27,11 +27,12 @@ public class Venda {
 	}
 	
 	public Venda() {
-		this.idVenda = 0;
-		this.valorVenda = 0.0;
-		this.valorDesconto =0.0;
-		this.dataPedido = null;
-		this.funcionario = null;
+		setIdVenda(0);
+		setValorVenda(0.0);
+		setValorDesconto(0.0);
+		setDataPedido(null);
+		setFuncionario(null);
+		setCliente(null);
 		this.produto = new ArrayList<>();
 		this.pagamento = new ArrayList<>();
 		this.qtdVendida = new ArrayList<>();

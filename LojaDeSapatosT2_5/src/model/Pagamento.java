@@ -8,24 +8,24 @@ public class Pagamento {
 	private int numParcelas;
 	
 	public Pagamento(Double valorPago, String formaPag, Date dataPag, int numParcelas) {
-		this.valorPago = valorPago;
-		this.formaPag = formaPag;
-		this.dataPag = dataPag;
-		this.numParcelas = numParcelas;
+		setValorPago(valorPago);
+		setFormaPag(formaPag);
+		setDataPag(dataPag);
+		setNumParcelas(numParcelas);
 	}
 
 	public Pagamento() {
-		this.valorPago = 0.0;
-		this.formaPag = "";
-		this.dataPag = null;
-		this.numParcelas = 0;
+		setValorPago(0.0);
+		setFormaPag("");
+		setDataPag(null);
+		setNumParcelas(0);
 	}
 	
 	public void cadastrar(Double valorPago, String formaPag, Date dataPag, int numParcelas) {
-		this.valorPago = valorPago;
-		this.formaPag = formaPag;
-		this.dataPag = dataPag;
-		this.numParcelas = numParcelas;
+		setValorPago(valorPago);
+		setFormaPag(formaPag);
+		setDataPag(dataPag);
+		setNumParcelas(numParcelas);
 	}
 
 	public void imprimir() {
@@ -36,10 +36,10 @@ public class Pagamento {
 	}
 	
 	public void editar(Double valorPago, String formaPag, Date dataPag, int numParcelas) {
-		this.valorPago = valorPago;
-		this.formaPag = formaPag;
-		this.dataPag = dataPag;
-		this.numParcelas = numParcelas;
+		setValorPago(valorPago);
+		setFormaPag(formaPag);
+		setDataPag(dataPag);
+		setNumParcelas(numParcelas);
 	}
 
 	@Override
