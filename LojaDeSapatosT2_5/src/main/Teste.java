@@ -2,7 +2,6 @@ package main;
 import java.util.*;
 
 import model.*;
-import data.Dados;
 
 public class Teste {
 	

@@ -1,9 +1,7 @@
-package data;
+package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import model.*;
 
 public class Dados {
 	private ArrayList<Cliente> cliente;
