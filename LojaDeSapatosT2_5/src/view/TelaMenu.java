@@ -8,30 +8,31 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import control.ControleMenu;
+
 public class TelaMenu extends JFrame implements ActionListener {
-	private final JPanel fundo = new JPanel();
 	private final JLabel titulo = new JLabel("Loja de Sapatos", JLabel.CENTER);
 	private final JButton btnCliente = new JButton("Cliente");
 	private final JButton btnFuncionario = new JButton("Funcionário");
 	private final JButton btnVenda = new JButton("Venda");
 	private final JButton btnEstoque = new JButton("Estoque");
 	private final JButton btnLoja = new JButton("Loja");
+	private final ControleMenu controlaMenu;
 
 	public TelaMenu() {
 		super("Loja de Sapatos"); // JFrame com nome
+		this.controlaMenu = new ControleMenu(this);
+
 		this.setSize(560, 520);
 		this.setLayout(null);
-
-		this.add(fundo);
-		fundo.setBackground(Color.black);
 
 		// Estilo do Título
 		titulo.setFont(new Font("Montserrat", Font.BOLD, 44));
 		titulo.setForeground(new Color(29, 53, 87));
-		getContentPane().setBackground(new Color(70, 123, 157));
+
+		// Cor do Plano de Fundo
 		getContentPane().setBackground(new Color(70, 123, 157));
 
 		// Fontes dos Botões
@@ -58,18 +59,37 @@ public class TelaMenu extends JFrame implements ActionListener {
 		this.add(btnEstoque);
 		this.add(btnLoja);
 
-		this.setVisible(true);
-
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
 		TelaMenu menu = new TelaMenu();
+		menu.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
+		this.controlaMenu.clicaBtn(e);
+	}
+
+	public JButton getBtnCliente() {
+		return btnCliente;
+	}
+
+	public JButton getBtnFuncionario() {
+		return btnFuncionario;
+	}
+
+	public JButton getBtnVenda() {
+		return btnVenda;
+	}
+
+	public JButton getBtnEstoque() {
+		return btnEstoque;
+	}
+
+	public JButton getBtnLoja() {
+		return btnLoja;
 	}
 
 }
