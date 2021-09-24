@@ -59,6 +59,13 @@ public class TelaMenu extends JFrame implements ActionListener {
 		this.add(btnEstoque);
 		this.add(btnLoja);
 
+		// Adicionando o ActionListener
+		getBtnCliente().addActionListener(this);
+		getBtnFuncionario().addActionListener(this);
+		getBtnVenda().addActionListener(this);
+		getBtnEstoque().addActionListener(this);
+		getBtnLoja().addActionListener(this);
+
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
@@ -90,6 +97,10 @@ public class TelaMenu extends JFrame implements ActionListener {
 
 	public JButton getBtnLoja() {
 		return btnLoja;
+	}
+
+	public ControleMenu getControlaMenu() {
+		return controlaMenu;
 	}
 
 }

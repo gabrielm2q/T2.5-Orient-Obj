@@ -10,7 +10,6 @@ public class ControleMenu {
 	private final TelaMenu menu;
 
 	public ControleMenu(TelaMenu menu) {
-		super();
 		this.menu = menu;
 	}
 
@@ -18,7 +17,9 @@ public class ControleMenu {
 		JButton clicado = (JButton) e.getSource();
 
 		if (clicado == menu.getBtnCliente()) {
-			System.out.println("CLIENTEEEEE");
+			System.out.println("CLIENTE");
+		} else {
+			System.out.println("Não chegou EM CLIENTE");
 		}
 	}
 
