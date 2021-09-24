@@ -3,7 +3,10 @@ package control;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
+import view.TelaCliente;
+import view.TelaFuncionario;
 import view.TelaMenu;
 
 public class ControleMenu {
@@ -17,9 +20,11 @@ public class ControleMenu {
 		JButton clicado = (JButton) e.getSource();
 
 		if (clicado == menu.getBtnCliente()) {
-			System.out.println("CLIENTE");
+			new TelaCliente();
+		} else if (clicado == menu.getBtnFuncionario()) {
+			new TelaFuncionario();
 		} else {
-			System.out.println("Não chegou EM CLIENTE");
+			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
