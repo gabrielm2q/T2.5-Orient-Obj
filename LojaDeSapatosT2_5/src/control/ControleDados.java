@@ -29,24 +29,40 @@ public class ControleDados {
 		return data.getCliente();
 	}
 
+	public void setCliente(Cliente clie) {
+		data.setCliente(clie);
+	}
+
 	public ArrayList<Funcionario> getFuncionario() {
 		return data.getFuncionario();
+	}
+
+	public void setFuncionario(Funcionario funci) {
+		data.setFuncionario(funci);
 	}
 
 	public ArrayList<Venda> getVenda() {
 		return data.getVenda();
 	}
 
+	public void setVenda(Venda ven) {
+		data.setVenda(ven);
+	}
+
 	public ArrayList<Endereco> getEndereco() {
 		return data.getEndereco();
+	}
+
+	public void setEndereco(Endereco ende) {
+		data.setEndereco(ende);
 	}
 
 	public List<Produto> getProduto() {
 		return data.getProduto();
 	}
 
-	public boolean cadastrarCliente() {
-		return true;
+	public void setProduto(Produto prod) {
+		data.setProduto(prod);
 	}
 
 }

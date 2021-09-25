@@ -10,20 +10,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-import control.ControleMenu;
+import control.ControleTelaMenu;
 
 public class TelaMenu extends JFrame implements ActionListener {
-	private final JLabel titulo = new JLabel("Loja de Sapatos", JLabel.CENTER);
-	private final JButton btnCliente = new JButton("Cliente");
-	private final JButton btnFuncionario = new JButton("Funcionário");
-	private final JButton btnVenda = new JButton("Venda");
-	private final JButton btnEstoque = new JButton("Estoque");
-	private final JButton btnLoja = new JButton("Loja");
-	private final ControleMenu controlaMenu;
+	private JLabel titulo = new JLabel("Loja de Sapatos", JLabel.CENTER);
+	private JButton btnCliente = new JButton("Cliente");
+	private JButton btnFuncionario = new JButton("Funcionário");
+	private JButton btnVenda = new JButton("Venda");
+	private JButton btnEstoque = new JButton("Estoque");
+	private JButton btnLoja = new JButton("Loja");
+	private ControleTelaMenu controlaMenu;
 
 	public TelaMenu() {
 		super("Loja de Sapatos"); // JFrame com nome
-		this.controlaMenu = new ControleMenu(this);
+		this.controlaMenu = new ControleTelaMenu(this);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -99,7 +99,7 @@ public class TelaMenu extends JFrame implements ActionListener {
 		return btnLoja;
 	}
 
-	public ControleMenu getControlaMenu() {
+	public ControleTelaMenu getControlaMenu() {
 		return controlaMenu;
 	}
 

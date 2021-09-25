@@ -15,14 +15,13 @@ import control.ControleCliente;
 import control.ControleFuncionario;
 
 public abstract class TemplatePessoa extends JFrame implements ActionListener, ListSelectionListener {
-	private final JLabel texto;
-	private final JButton btnCadastrar = new JButton("Cadastrar");
-	private final JButton btnEditar = new JButton("Editar");
-	private final JButton btnDeletar = new JButton("Deletar");
-	private final JButton btnAtualizar = new JButton("Atualizar");
-	private final JList<String> listaPessoas;
-	private final ControleCliente clientes = new ControleCliente();
-	private final ControleFuncionario funcionarios = new ControleFuncionario();
+	private JLabel texto;
+	private JButton btnCadastrar = new JButton("Cadastrar");
+	private JButton btnOrdenar = new JButton("Ordenar");
+	private JButton btnAtualizar = new JButton("Atualizar");
+	private JList<String> listaPessoas;
+	private ControleCliente clientes = new ControleCliente();
+	private ControleFuncionario funcionarios = new ControleFuncionario();
 
 	public TemplatePessoa(String texto) {
 		super(texto); // JFrame com nome
@@ -40,35 +39,32 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 		// Fontes dos Botões
 		Font f = new Font("Montserrat", Font.PLAIN, 15);
 		btnCadastrar.setFont(f);
-		btnEditar.setFont(f);
-		btnDeletar.setFont(f);
+		btnOrdenar.setFont(f);
 		btnAtualizar.setFont(f);
 
 		// Localização e Tamanho dos componentes da tela
 		this.texto.setBounds(120, 20, 300, 50);
-		btnCadastrar.setBounds(32, 420, 105, 50);
-		btnEditar.setBounds(157, 420, 105, 50);
-		btnDeletar.setBounds(282, 420, 105, 50);
-		btnAtualizar.setBounds(407, 420, 105, 50);
+		btnCadastrar.setBounds(32, 420, 146, 50);
+		btnOrdenar.setBounds(198, 420, 146, 50);
+		btnAtualizar.setBounds(368, 420, 145, 50);
 
 		// Configurando exclusivamente a lista de Funcionários/Clientes
 		listaPessoas = new JList<String>(preencherLista(texto));
 		this.listaPessoas.setBounds(32, 95, 480, 300);
 		this.listaPessoas.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		this.listaPessoas.setVisibleRowCount(10);
+		this.listaPessoas.addListSelectionListener(this);
 
 		// Adicionando componentes a tela
 		this.add(this.texto);
 		this.add(this.listaPessoas);
 		this.add(btnCadastrar);
-		this.add(btnEditar);
-		this.add(btnDeletar);
+		this.add(btnOrdenar);
 		this.add(btnAtualizar);
 
 		// Adicionando o ActionListener
 		getBtnCadastrar().addActionListener(this);
-		getBtnEditar().addActionListener(this);
-		getBtnDeletar().addActionListener(this);
+		getBtnOrdenar().addActionListener(this);
 		getBtnAtualizar().addActionListener(this);
 
 		this.setVisible(true);
@@ -101,12 +97,8 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 		return btnCadastrar;
 	}
 
-	public JButton getBtnEditar() {
-		return btnEditar;
-	}
-
-	public JButton getBtnDeletar() {
-		return btnDeletar;
+	public JButton getBtnOrdenar() {
+		return btnOrdenar;
 	}
 
 	public JButton getBtnAtualizar() {

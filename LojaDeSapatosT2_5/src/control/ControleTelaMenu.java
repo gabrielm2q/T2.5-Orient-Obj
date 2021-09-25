@@ -9,10 +9,10 @@ import view.TelaCliente;
 import view.TelaFuncionario;
 import view.TelaMenu;
 
-public class ControleMenu {
+public class ControleTelaMenu {
 	private final TelaMenu menu;
 
-	public ControleMenu(TelaMenu menu) {
+	public ControleTelaMenu(TelaMenu menu) {
 		this.menu = menu;
 	}
 

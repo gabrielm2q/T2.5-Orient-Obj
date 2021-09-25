@@ -31,6 +31,7 @@ public class Cliente {
 		setEmail("");
 	}
 
+	/*
 	public void cadastrar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
 			String email) {
 		setEndereco(endereco);
@@ -59,6 +60,7 @@ public class Cliente {
 		setTelefone(telefone);
 		setEmail(email);
 	}
+	*/
 	
 	@Override
 	public String toString() {

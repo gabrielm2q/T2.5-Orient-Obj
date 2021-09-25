@@ -4,34 +4,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dados {
-	private final ArrayList<Cliente> cliente = new ArrayList<>();
-	private final ArrayList<Funcionario> funcionario = new ArrayList<>();
-	private final ArrayList<Venda> venda = new ArrayList<>();
-	private final ArrayList<Endereco> endereco = new ArrayList<>();
-	private final List<Produto> produto = new ArrayList<>();
+	private final ArrayList<Cliente> cliente;
+	private final ArrayList<Funcionario> funcionario;
+	private final ArrayList<Venda> venda;
+	private final ArrayList<Endereco> endereco;
+	private final List<Produto> produto;
 
 	public Dados() {
-
+		this.cliente = new ArrayList<>();
+		this.funcionario = new ArrayList<>();
+		this.venda = new ArrayList<>();
+		this.endereco = new ArrayList<>();
+		this.produto = new ArrayList<>();
 	}
 
 	public ArrayList<Cliente> getCliente() {
 		return cliente;
 	}
 
+	public void setCliente(Cliente cli) {
+		this.cliente.add(cli);
+	}
+
 	public ArrayList<Funcionario> getFuncionario() {
 		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario func) {
+		this.funcionario.add(func);
 	}
 
 	public ArrayList<Venda> getVenda() {
 		return venda;
 	}
 
+	public void setVenda(Venda ven) {
+		this.venda.add(ven);
+	}
+
 	public ArrayList<Endereco> getEndereco() {
 		return endereco;
 	}
 
+	public void setEndereco(Endereco end) {
+		this.endereco.add(end);
+	}
+
 	public List<Produto> getProduto() {
 		return produto;
+	}
+
+	public void setProduto(Produto prod) {
+		this.produto.add(prod);
 	}
 
 	/*
