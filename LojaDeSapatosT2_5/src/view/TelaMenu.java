@@ -27,6 +27,7 @@ public class TelaMenu extends JFrame implements ActionListener {
 
 		this.setSize(560, 520);
 		this.setLayout(null);
+		this.setResizable(false);
 
 		// Estilo do Título
 		titulo.setFont(new Font("Montserrat", Font.BOLD, 44));

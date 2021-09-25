@@ -27,6 +27,7 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 		super(texto); // JFrame com nome
 		this.setSize(560, 520);
 		this.setLayout(null);
+		this.setResizable(false);
 
 		// Estilo do Título
 		this.texto = new JLabel(texto, JLabel.CENTER);
