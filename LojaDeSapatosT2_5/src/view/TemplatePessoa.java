@@ -77,7 +77,11 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 		String[] listaNomes;
 		if (texto.equals("Clientes")) {
 			listaPessoas.setListData(clientes.getNomeClientes());
-			System.out.println("O programa recebeu");
+			listaPessoas.updateUI();
+
+			for (int i = 0; i < clientes.getNomeClientes().length; i++) {
+				System.out.println("\nNome: " + clientes.getNomeClientes()[i]);
+			}
 		} else if (texto.equals("Funcionários")) {
 			listaNomes = new String[funcionarios.getNomeFuncionarios().size()];
 
@@ -85,8 +89,6 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 				listaNomes[i] = funcionarios.getNomeFuncionarios().get(i);
 			}
 		}
-
-		listaPessoas.updateUI();
 
 	}
 
@@ -104,6 +106,18 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 
 	public JList<String> getListaPessoas() {
 		return listaPessoas;
+	}
+
+	public JLabel getTexto() {
+		return texto;
+	}
+
+	public ControleCliente getClientes() {
+		return clientes;
+	}
+
+	public ControleFuncionario getFuncionarios() {
+		return funcionarios;
 	}
 
 }
