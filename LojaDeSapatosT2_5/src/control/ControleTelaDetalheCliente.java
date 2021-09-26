@@ -15,19 +15,20 @@ public class ControleTelaDetalheCliente {
 	private ControleCliente cliCtrl;
 	private ControleEndereco endereco;
 	private ControleDados dados = new ControleDados();
-	private int indexCliente;
+	private int indexCliente, opc;
 	Date data = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-	public ControleTelaDetalheCliente(TelaDetalheCliente detalheCliente, ControleDados d) {
+	public ControleTelaDetalheCliente(TelaDetalheCliente detalheCliente, ControleDados d, int editarSalvar, int idx) {
 		this.detalheCliente = detalheCliente;
 		this.dados = d;
 		cliCtrl = new ControleCliente(dados);
 		endereco = new ControleEndereco(dados);
+		opc = editarSalvar;
+		indexCliente = idx;
 	}
 
 	public void imprimirEditarDetalhe(TelaDetalheCliente tela, ControleDados d, int index) {
-		this.setIndexCliente(index);
 
 		// Definindo o index do gênero
 		int iGen = 0;
@@ -63,7 +64,7 @@ public class ControleTelaDetalheCliente {
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 
-		if (clicado == detalheCliente.getBtnSalvar()) {
+		if (clicado == detalheCliente.getBtnSalvar() && opc == 0) {
 			try {
 				// Recebendo os valores do endereço
 				endereco.cadastrarEndereco(Integer.parseInt(detalheCliente.getValorCep().getText()), // CEP
@@ -96,6 +97,7 @@ public class ControleTelaDetalheCliente {
 
 				JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", null,
 						JOptionPane.INFORMATION_MESSAGE);
+				detalheCliente.dispose();
 
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
@@ -103,13 +105,10 @@ public class ControleTelaDetalheCliente {
 				mensagemErroCadastro();
 			}
 
-			detalheCliente.dispose();
-
-		} else if (clicado == detalheCliente.getBtnSalvar() && 0 > 1) {
-
+		} else if (clicado == detalheCliente.getBtnSalvar() && opc == 1) {
 			try {
 				// Recebendo os valores do endereço
-				endereco.editarEndereco(dados, this.getIndexCliente(), // Dados para preencher o endereço
+				endereco.editarEndereco(dados, indexCliente, // Dados para preencher o endereço
 						Integer.parseInt(detalheCliente.getValorCep().getText()), // CEP
 						detalheCliente.getValorCidade().getText(), // Cidade
 						detalheCliente.getValorUf().getSelectedItem().toString(), // UF
@@ -139,16 +138,15 @@ public class ControleTelaDetalheCliente {
 
 				cliCtrl.setNomeAt(detalheCliente.getValorNome().getText(), this.getIndexCliente());
 
-				JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", null,
+				JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!", null,
 						JOptionPane.INFORMATION_MESSAGE);
+				detalheCliente.dispose();
 
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
 			} catch (NumberFormatException exc2) {
 				mensagemErroCadastro();
 			}
-
-			detalheCliente.dispose();
 
 		} else if (clicado == detalheCliente.getBtnDeletar()) {
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
@@ -171,6 +169,14 @@ public class ControleTelaDetalheCliente {
 
 	public void setIndexCliente(int indexCliente) {
 		this.indexCliente = indexCliente;
+	}
+
+	public int getOpc() {
+		return opc;
+	}
+
+	public void setOpc(int opc) {
+		this.opc = opc;
 	}
 
 }

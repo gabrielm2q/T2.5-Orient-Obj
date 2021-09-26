@@ -67,10 +67,10 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	Date data = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-	public TelaDetalheCliente(ControleDados d) {
+	public TelaDetalheCliente(ControleDados d, int opcao, int idx) {
 		super("Cliente"); // JFrame com nome
 		this.dados = d;
-		this.controlaDetalhe = new ControleTelaDetalheCliente(this, dados);
+		this.controlaDetalhe = new ControleTelaDetalheCliente(this, dados, opcao, idx);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
