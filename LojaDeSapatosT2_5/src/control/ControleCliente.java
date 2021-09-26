@@ -46,6 +46,10 @@ public class ControleCliente {
 		d.getCliente().set(index, d.getCliente().get(index));
 	}
 
+	public void deletarCliente(ControleDados d, int index) {
+		d.getCliente().remove(index);
+	}
+
 	public String[] getNomeClientes() {
 		String[] listaNomes = new String[dados.getCliente().size()];
 

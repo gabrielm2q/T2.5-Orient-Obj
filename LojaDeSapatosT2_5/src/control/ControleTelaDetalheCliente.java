@@ -61,10 +61,10 @@ public class ControleTelaDetalheCliente {
 
 	}
 
-	public void clicaBtn(ActionEvent e) {
+	public void clicaBtn(ActionEvent e) { // CONTROLANDO AS AÇÕES DOS BOTÕES DE TelaDetalheCliente
 		JButton clicado = (JButton) e.getSource();
 
-		if (clicado == detalheCliente.getBtnSalvar() && opc == 0) {
+		if (clicado == detalheCliente.getBtnSalvar() && opc == 0) { // SALVAR CLIENTE
 			try {
 				// Recebendo os valores do endereço
 				endereco.cadastrarEndereco(Integer.parseInt(detalheCliente.getValorCep().getText()), // CEP
@@ -105,7 +105,7 @@ public class ControleTelaDetalheCliente {
 				mensagemErroCadastro();
 			}
 
-		} else if (clicado == detalheCliente.getBtnSalvar() && opc == 1) {
+		} else if (clicado == detalheCliente.getBtnSalvar() && opc == 1) { // SALVAR CLIENTE EDITADO
 			try {
 				// Recebendo os valores do endereço
 				endereco.editarEndereco(dados, indexCliente, // Dados para preencher o endereço
@@ -148,10 +148,25 @@ public class ControleTelaDetalheCliente {
 				mensagemErroCadastro();
 			}
 
-		} else if (clicado == detalheCliente.getBtnDeletar()) {
-			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
+		} else if (clicado == detalheCliente.getBtnDeletar()) { // DELETAR CLIENTE
+			try {
+				if (detalheCliente.getValorNome().getText().equals(dados.getCliente().get(indexCliente).getNome())
+						&& detalheCliente.getValorCpf().getText()
+								.equals(dados.getCliente().get(indexCliente).getCpf())) {
+					cliCtrl.deletarCliente(dados, indexCliente);
+					JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!", null,
+							JOptionPane.INFORMATION_MESSAGE);
+					detalheCliente.dispose();
+				} else {
+					JOptionPane.showMessageDialog(null, "ERRO!\nSelecione um cliente na lista para deletar!", null,
+							JOptionPane.ERROR_MESSAGE);
+				}
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, "Erro!\nNão há cliente a ser deletado!", null,
+						JOptionPane.ERROR_MESSAGE);
+			}
 		} else {
-			JOptionPane.showMessageDialog(null, "ERRO!", null, JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ERRO!", null, JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
