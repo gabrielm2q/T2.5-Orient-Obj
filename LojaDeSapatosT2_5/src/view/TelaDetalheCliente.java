@@ -22,29 +22,28 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 			"PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
 
 	// Declarando componentes da tela
+	// CLIENTE
 	private JLabel titulo = new JLabel("Cliente", JLabel.CENTER);
 	private JLabel lblNome = new JLabel("Nome: "); // Nome
 	private JTextField valorNome;
 	private JLabel lblGenero = new JLabel("Gênero: "); // Gênero
 	private String[] gen = { "M", "F", "Outro" };
 	private JComboBox valorGenero = new JComboBox(gen);
-	private JLabel lblDataNasc = new JLabel("Data de Nascimento: "); // Nascimento
-
-	private JTextField valorDia;
-	private JTextField valorMes;
-	private JTextField valorAno;
+	private JLabel lblData = new JLabel("Data de Nascimento: "); // Nascimento
+	private JTextField valorData;
 	private JLabel lblCpf = new JLabel("CPF: "); // CPF
 	private JTextField valorCpf;
 	private JLabel lblFone = new JLabel("Telefone: "); // Telefone
 	private JTextField valorFone;
 	private JLabel lblEmail = new JLabel("Email: "); // Email
 	private JTextField valorEmail;
-	private JLabel endereco = new JLabel("Endereço: ");
+
+	// ENDEREÇO
+	private JLabel endereco = new JLabel("Endereço", JLabel.CENTER);
 	private JLabel lblCep = new JLabel("CEP: "); // CEP
 	private JTextField valorCep;
 	private JLabel lblCidade = new JLabel("Cidade: "); // Cidade
 	private JTextField valorCidade;
-
 	private JLabel lblUf = new JLabel("UF: "); // UF
 	private JComboBox valorUf = new JComboBox(estados);
 	private JLabel lblNomeRua = new JLabel("Nome da Rua: "); // Rua
@@ -114,19 +113,53 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 
 		lblGenero.setFont(labelFont); // CAMPO DE GÊNERO
 		lblGenero.setForeground(new Color(29, 53, 87));
-		lblGenero.setBounds(20, 105, 90, 20);
+		lblGenero.setBounds(20, 109, 90, 20);
 		valorGenero.setFont(textFont);
-		valorGenero.setBounds(90, 105, 100, 20);
+		valorGenero.setBounds(90, 109, 100, 20);
 		this.add(valorGenero);
 		this.add(lblGenero);
 
-		lblGenero.setFont(labelFont); // CAMPO DE
-		lblGenero.setForeground(new Color(29, 53, 87));
-		lblGenero.setBounds(20, 105, 90, 20);
-		valorGenero.setFont(textFont);
-		valorGenero.setBounds(90, 105, 100, 20);
-		this.add(valorGenero);
-		this.add(lblGenero);
+		lblData.setFont(labelFont); // CAMPO DE DATA DE NASCIMENTO
+		lblData.setForeground(new Color(29, 53, 87));
+		lblData.setBounds(210, 109, 180, 20);
+		valorData = new JTextField(10);
+		valorData.setText("dd/mm/aaaa");
+		valorData.setFont(textFont);
+		valorData.setBounds(375, 109, 145, 20);
+		this.add(lblData);
+		this.add(valorData);
+
+		lblCpf.setFont(labelFont); // CAMPO DO CPF
+		lblCpf.setForeground(new Color(29, 53, 87));
+		lblCpf.setBounds(20, 138, 50, 20);
+		valorCpf = new JTextField(15);
+		valorCpf.setFont(textFont);
+		valorCpf.setBounds(70, 138, 195, 20);
+		this.add(lblCpf);
+		this.add(valorCpf);
+
+		lblFone.setFont(labelFont); // CAMPO DO TELEFONE
+		lblFone.setForeground(new Color(29, 53, 87));
+		lblFone.setBounds(280, 138, 100, 20);
+		valorFone = new JTextField(15);
+		valorFone.setFont(textFont);
+		valorFone.setBounds(360, 138, 160, 20);
+		this.add(lblFone);
+		this.add(valorFone);
+
+		lblEmail.setFont(labelFont); // CAMPO DO EMAIL
+		lblEmail.setForeground(new Color(29, 53, 87));
+		lblEmail.setBounds(20, 167, 75, 20);
+		valorEmail = new JTextField(62);
+		valorEmail.setFont(textFont);
+		valorEmail.setBounds(77, 169, 443, 20);
+		this.add(lblEmail);
+		this.add(valorEmail);
+
+		endereco.setFont(new Font("Montserrat", Font.BOLD, 44)); // TÍTULO DA SEÇÃO DE ENDEREÇO
+		endereco.setForeground(new Color(29, 53, 87));
+		endereco.setBounds(155, 202, 250, 65);
+		this.add(endereco);
 
 		// Adicionando o ActionListener
 		getBtnSalvar().addActionListener(this);
