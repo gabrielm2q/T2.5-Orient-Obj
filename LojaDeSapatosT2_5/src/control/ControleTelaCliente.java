@@ -30,15 +30,15 @@ public class ControleTelaCliente {
 		} else {
 			JOptionPane.showMessageDialog(null, "ERRO!", null, JOptionPane.INFORMATION_MESSAGE);
 		}
-
 	}
 
 	public void clicaLista(ListSelectionEvent e) {
 		Object selecionado = e.getSource();
 
 		if (e.getValueIsAdjusting()) {
-			JOptionPane.showMessageDialog(null, cliente.getListaPessoas().getSelectedIndex() + " é o index", null,
-					JOptionPane.INFORMATION_MESSAGE);
+			TelaDetalheCliente detalhe = new TelaDetalheCliente(dados);
+			ControleTelaDetalheCliente ctrlDetalhe = new ControleTelaDetalheCliente(detalhe, dados);
+			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, cliente.getListaPessoas().getSelectedIndex());
 		}
 	}
 

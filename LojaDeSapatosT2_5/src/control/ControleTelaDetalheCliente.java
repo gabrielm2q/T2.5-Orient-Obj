@@ -25,6 +25,28 @@ public class ControleTelaDetalheCliente {
 		endereco = new ControleEndereco(dados);
 	}
 
+	public void imprimirEditarDetalhe(TelaDetalheCliente tela, ControleDados d, int index) {
+		// Definindo o index do gênero
+		int iGen = 0;
+		if (d.getCliente().get(index).getGenero() == 'M') {
+			iGen = 0;
+		} else if (d.getCliente().get(index).getGenero() == 'F') {
+			iGen = 1;
+		} else if (d.getCliente().get(index).getGenero() == 'O') {
+			iGen = 2;
+		}
+
+		tela.getValorNome().setText(d.getCliente().get(index).getNome());
+		tela.getValorGenero().setSelectedIndex(iGen);
+		tela.getValorData().setText(formato.format(d.getCliente().get(index).getDataNasc()));
+		tela.getValorCpf().setText(d.getCliente().get(index).getCpf());
+		tela.getValorFone().setText(d.getCliente().get(index).getTelefone());
+		tela.getValorEmail().setText(d.getCliente().get(index).getEmail());
+
+		// CADASTRAR VALORES DO ENDEREÇO
+
+	}
+
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 
