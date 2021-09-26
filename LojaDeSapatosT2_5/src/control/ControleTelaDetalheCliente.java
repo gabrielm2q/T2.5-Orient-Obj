@@ -12,13 +12,17 @@ import view.TelaDetalheCliente;
 
 public class ControleTelaDetalheCliente {
 	private TelaDetalheCliente detalheCliente;
-	private ControleCliente cliCtrl = new ControleCliente();
-	private ControleEndereco endereco = new ControleEndereco();
+	private ControleCliente cliCtrl;
+	private ControleEndereco endereco;
+	private ControleDados dados = new ControleDados();
 	Date data = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-	public ControleTelaDetalheCliente(TelaDetalheCliente detalheCliente) {
+	public ControleTelaDetalheCliente(TelaDetalheCliente detalheCliente, ControleDados d) {
 		this.detalheCliente = detalheCliente;
+		this.dados = d;
+		cliCtrl = new ControleCliente(dados);
+		endereco = new ControleEndereco(dados);
 	}
 
 	public void clicaBtn(ActionEvent e) {
@@ -48,8 +52,12 @@ public class ControleTelaDetalheCliente {
 				cliCtrl.cadastrarCliente(endereco.getEnder(), // Endereço
 						detalheCliente.getValorNome().getText(), // Nome
 						detalheCliente.getValorGenero().getSelectedItem().toString().charAt(0), // Gênero
-						data, detalheCliente.getValorCpf().getText(), detalheCliente.getValorFone().getText(),
-						detalheCliente.getValorEmail().getText());
+						data, // Data de nascimento
+						detalheCliente.getValorCpf().getText(), // CPF
+						detalheCliente.getValorFone().getText(), // Telefone
+						detalheCliente.getValorEmail().getText()); // Email
+
+				cliCtrl.setNome(detalheCliente.getValorNome().getText());
 
 				JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", null,
 						JOptionPane.INFORMATION_MESSAGE);

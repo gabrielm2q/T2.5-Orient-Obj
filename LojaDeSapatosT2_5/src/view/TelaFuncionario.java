@@ -4,28 +4,25 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.event.ListSelectionEvent;
 
-import model.Dados;
+import control.ControleDados;
 
 public class TelaFuncionario extends TemplatePessoa {
-	private Dados dadosPessoas = new Dados();
+	private ControleDados dados = new ControleDados();
 
-	public TelaFuncionario() {
+	public TelaFuncionario(ControleDados d) {
 		super("Funcionários");
-	}
-
-	public static void main(String[] args) {
-		TelaFuncionario funcionario = new TelaFuncionario();
-		funcionario.setVisible(true);
+		this.dados = d;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { // Botões controlados pela classe ControleTelaFuncionario
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void valueChanged(ListSelectionEvent e) {
+	public void valueChanged(ListSelectionEvent e) { // Lista controlada pela classe ControleTelaFuncionario
+
 		// TODO Auto-generated method stub
 
 	}

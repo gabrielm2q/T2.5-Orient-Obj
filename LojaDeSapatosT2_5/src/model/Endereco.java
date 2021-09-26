@@ -10,7 +10,7 @@ public class Endereco {
 	private String bairro;
 	private int numApart;
 	private String complemento;
-	
+
 	public Endereco(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
 			int numApart, String complemento) {
 		setCep(cep);
@@ -48,13 +48,13 @@ public class Endereco {
 		setNumApart(numApart);
 		setComplemento(complemento);
 	}
-	
+
 	public void imprimir() {
-		System.out.println("Cidade: " + getCidade() + ".\nCEP: " + getCep() + ".\nUF: " + getUf() + "\nNome da Rua: " +
-				getNomeRua() + ".\nNúmero: " + getNumero() + ".\nQuadra: " + getQuadra() + ".\nBairro: " + getBairro() +
-				".\nNúmero do Apartamento: " + getNumApart() + ".\nComplemento: " + getComplemento() + ".");
+		System.out.println("Cidade: " + getCidade() + ".\nCEP: " + getCep() + ".\nUF: " + getUf() + "\nNome da Rua: "
+				+ getNomeRua() + ".\nNúmero: " + getNumero() + ".\nQuadra: " + getQuadra() + ".\nBairro: " + getBairro()
+				+ ".\nNúmero do Apartamento: " + getNumApart() + ".\nComplemento: " + getComplemento() + ".");
 	}
-	
+
 	public void editar(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
 			int numApart, String complemento) {
 		setCep(cep);
@@ -67,22 +67,24 @@ public class Endereco {
 		setNumApart(numApart);
 		setComplemento(complemento);
 	}
-	
-	//Realizando a sobrecarga do método cadastrar apenas com Cidade, Nome da Rua, Número e Bairro
+
+	// Realizando a sobrecarga do método cadastrar apenas com Cidade, Nome da Rua,
+	// Número e Bairro
 	public void cadastrar(String cidade, String nomeRua, int numero, String bairro) {
 		setCidade(cidade);
 		setNomeRua(nomeRua);
 		setNumero(numero);
 		setBairro(bairro);
 	}
-	
+
 	@Override
 	public String toString() {
-		return "\n  Cidade: " + getCidade() + ".\n  CEP: " + getCep() + ".\n  UF: " + getUf() + "\n  Nome da Rua: " + getNomeRua()
-				+ ".\n  Número: " + getNumero() + ".\n  Quadra: " + getQuadra() + ".\n  Bairro: " + getBairro() +
-				".\n  Número do Apartamento: " + getNumApart() + ".\n  Complemento: " + getComplemento() + ".";
+		return "\n  Cidade: " + getCidade() + ".\n  CEP: " + getCep() + ".\n  UF: " + getUf() + "\n  Nome da Rua: "
+				+ getNomeRua() + ".\n  Número: " + getNumero() + ".\n  Quadra: " + getQuadra() + ".\n  Bairro: "
+				+ getBairro() + ".\n  Número do Apartamento: " + getNumApart() + ".\n  Complemento: " + getComplemento()
+				+ ".";
 	}
-	
+
 	public int getCep() {
 		return cep;
 	}
@@ -153,6 +155,6 @@ public class Endereco {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
-	}	
-	
+	}
+
 }

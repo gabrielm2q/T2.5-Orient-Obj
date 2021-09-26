@@ -3,11 +3,11 @@ package control;
 import model.Endereco;
 
 public class ControleEndereco {
-	private ControleDados dadosEndereco = new ControleDados();
+	private ControleDados dados = new ControleDados();
 	private Endereco ender = new Endereco();
 
-	public ControleEndereco() {
-
+	public ControleEndereco(ControleDados d) {
+		this.dados = d;
 	}
 
 	public void cadastrarEndereco(int cep, String cidade, String uf, String nomeRua, int numero, int quadra,
@@ -21,15 +21,15 @@ public class ControleEndereco {
 		ender.setBairro(bairro);
 		ender.setNumApart(numApart);
 		ender.setComplemento(complemento);
-		dadosEndereco.setEndereco(ender);
+		dados.setEndereco(ender);
 	}
 
-	public ControleDados getDadosEndereco() {
-		return dadosEndereco;
+	public ControleDados getDados() {
+		return dados;
 	}
 
-	public void setDadosEndereco(ControleDados dadosEndereco) {
-		this.dadosEndereco = dadosEndereco;
+	public void setDados(ControleDados dadosEndereco) {
+		this.dados = dadosEndereco;
 	}
 
 	public Endereco getEnder() {

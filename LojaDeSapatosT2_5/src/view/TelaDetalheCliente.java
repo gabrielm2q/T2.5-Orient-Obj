@@ -11,15 +11,16 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import control.ControleDados;
 import control.ControleTelaDetalheCliente;
 
 public class TelaDetalheCliente extends JFrame implements ActionListener {
 	// Declarando valores que irão compor as ComboBoxes
 	private String[] estados = { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA",
 			"PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
+	private String[] gen = { "M", "F", "Outro" };
 
 	// Declarando componentes da tela
 	// CLIENTE
@@ -27,7 +28,6 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JLabel lblNome = new JLabel("Nome: "); // Nome
 	private JTextField valorNome;
 	private JLabel lblGenero = new JLabel("Gênero: "); // Gênero
-	private String[] gen = { "M", "F", "Outro" };
 	private JComboBox valorGenero = new JComboBox(gen);
 	private JLabel lblData = new JLabel("Data de Nascimento: "); // Nascimento
 	private JTextField valorData;
@@ -59,17 +59,18 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JTextField valorComp;
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnDeletar = new JButton("Deletar");
+
 	private ControleTelaDetalheCliente controlaDetalhe;
-	private JScrollPane painel = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-			JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	private ControleDados dados = new ControleDados();
 
 	// Trabalhando com datas
 	Date data = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-	public TelaDetalheCliente() {
+	public TelaDetalheCliente(ControleDados d) {
 		super("Cliente"); // JFrame com nome
-		this.controlaDetalhe = new ControleTelaDetalheCliente(this);
+		this.dados = d;
+		this.controlaDetalhe = new ControleTelaDetalheCliente(this, dados);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -535,14 +536,6 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 
 	public void setControlaDetalhe(ControleTelaDetalheCliente controlaDetalhe) {
 		this.controlaDetalhe = controlaDetalhe;
-	}
-
-	public JScrollPane getPainel() {
-		return painel;
-	}
-
-	public void setPainel(JScrollPane painel) {
-		this.painel = painel;
 	}
 
 	public Date getData() {

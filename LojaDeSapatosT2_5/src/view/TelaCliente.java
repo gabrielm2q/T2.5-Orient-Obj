@@ -4,41 +4,29 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.event.ListSelectionEvent;
 
+import control.ControleDados;
 import control.ControleTelaCliente;
-import model.Dados;
 
 public class TelaCliente extends TemplatePessoa {
-	private Dados dadosPessoas = new Dados();
 	private ControleTelaCliente controlTela;
+	private ControleDados dados = new ControleDados();
 
-	public TelaCliente() {
-		super("Clientes");
-		this.controlTela = new ControleTelaCliente(this);
-	}
-
-	public static void main(String[] args) {
-		TelaCliente cliente = new TelaCliente();
-		cliente.setVisible(true);
+	public TelaCliente(ControleDados d) {
+		super("Clientes", d);
+		this.dados = d;
+		this.controlTela = new ControleTelaCliente(this, dados);
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { // Botões controlados pela classe ControleTelaCliente
 		this.controlTela.clicaBtn(e);
 
 	}
 
 	@Override
-	public void valueChanged(ListSelectionEvent e) {
+	public void valueChanged(ListSelectionEvent e) { // Lista controlada pela classe ControleTelaCliente
 		this.controlTela.clicaLista(e);
 
-	}
-
-	public Dados getDadosPessoas() {
-		return dadosPessoas;
-	}
-
-	public void setDadosPessoas(Dados dadosPessoas) {
-		this.dadosPessoas = dadosPessoas;
 	}
 
 }

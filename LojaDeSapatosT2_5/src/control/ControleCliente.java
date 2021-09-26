@@ -7,20 +7,21 @@ import model.Cliente;
 import model.Endereco;
 
 public class ControleCliente {
-	private ArrayList<String> nomeClientes;
-	private ControleDados dadosCliente;
-	private Cliente cli;
+	private ArrayList<String> nomeClientes = new ArrayList<>();
+	private ControleDados dados = new ControleDados();
+	private Endereco end = new Endereco();
 
-	public ControleCliente() {
-		cli = new Cliente();
-		dadosCliente = new ControleDados();
-		this.nomeClientes = new ArrayList<>();
-		this.setNomeClientes(dadosCliente.getCliente());
-		this.nomeClientes.add("João");
+	public ControleCliente(ControleDados d) {
+		Date dat = new Date();
+		this.dados = d;
+
+		this.setNomeClientes(dados.getCliente());
+
 	}
 
 	public void cadastrarCliente(Endereco endereco, String nome, char genero, Date dataNasc, String cpf,
 			String telefone, String email) {
+		Cliente cli = new Cliente();
 		cli.setEndereco(endereco);
 		cli.setNome(nome);
 		cli.setGenero(genero);
@@ -28,16 +29,15 @@ public class ControleCliente {
 		cli.setCpf(cpf);
 		cli.setTelefone(telefone);
 		cli.setEmail(email);
-		dadosCliente.setCliente(cli);
-		this.nomeClientes.add(nome);
-		this.nomeClientes.add("Maria");
+		dados.setCliente(cli);
+		this.nomeClientes.add(cli.getNome());
 	}
 
 	public String[] getNomeClientes() {
-		String[] listaNomes = new String[nomeClientes.size()];
+		String[] listaNomes = new String[dados.getCliente().size()];
 
-		for (int i = 0; i < nomeClientes.size(); i++) {
-			listaNomes[i] = nomeClientes.get(i);
+		for (int i = 0; i < dados.getCliente().size(); i++) {
+			listaNomes[i] = dados.getCliente().get(i).getNome();
 		}
 
 		return listaNomes;
@@ -49,20 +49,16 @@ public class ControleCliente {
 		}
 	}
 
-	public ControleDados getDadosCliente() {
-		return dadosCliente;
+	public void setNome(String name) {
+		this.nomeClientes.add(name);
 	}
 
-	public void setDadosCliente(ControleDados dadosCliente) {
-		this.dadosCliente = dadosCliente;
+	public ControleDados getDados() {
+		return dados;
 	}
 
-	public Cliente getCli() {
-		return cli;
-	}
-
-	public void setCli(Cliente cli) {
-		this.cli = cli;
+	public void setDados(ControleDados dadosCliente) {
+		this.dados = dadosCliente;
 	}
 
 }

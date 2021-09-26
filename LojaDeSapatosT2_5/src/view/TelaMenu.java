@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
+import control.ControleDados;
 import control.ControleTelaMenu;
 
 public class TelaMenu extends JFrame implements ActionListener {
@@ -20,10 +21,11 @@ public class TelaMenu extends JFrame implements ActionListener {
 	private JButton btnEstoque = new JButton("Estoque");
 	private JButton btnLoja = new JButton("Loja");
 	private ControleTelaMenu controlaMenu;
+	private static ControleDados dados = new ControleDados();
 
 	public TelaMenu() {
 		super("Loja de Sapatos"); // JFrame com nome
-		this.controlaMenu = new ControleTelaMenu(this);
+		this.controlaMenu = new ControleTelaMenu(this, dados);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -76,7 +78,7 @@ public class TelaMenu extends JFrame implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { // ActionPerformed controlado pela classe ControleTelaMenu
 		this.controlaMenu.clicaBtn(e);
 	}
 

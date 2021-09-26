@@ -11,21 +11,22 @@ import view.TelaDetalheCliente;
 
 public class ControleTelaCliente {
 	private TelaCliente cliente;
+	private ControleDados dados = new ControleDados();
 
-	public ControleTelaCliente(TelaCliente cliente) {
+	public ControleTelaCliente(TelaCliente cliente, ControleDados d) {
 		this.cliente = cliente;
+		this.dados = d;
 	}
 
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 
 		if (clicado == cliente.getBtnCadastrar()) {
-			new TelaDetalheCliente();
+			new TelaDetalheCliente(dados);
 		} else if (clicado == cliente.getBtnOrdenar()) {
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
 		} else if (clicado == cliente.getBtnAtualizar()) {
-			cliente.preencherLista("Clientes");
-			JOptionPane.showMessageDialog(null, "Por favor preencha isto", null, JOptionPane.INFORMATION_MESSAGE);
+			cliente.preencherLista("Clientes", dados);
 		} else {
 			JOptionPane.showMessageDialog(null, "ERRO!", null, JOptionPane.INFORMATION_MESSAGE);
 		}
