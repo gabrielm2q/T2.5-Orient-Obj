@@ -8,15 +8,15 @@ import model.Endereco;
 
 public class ControleCliente {
 	private ArrayList<String> nomeClientes;
-	private ControleDados dadosCliente = new ControleDados();
-	private Cliente cli = new Cliente();
+	private ControleDados dadosCliente;
+	private Cliente cli;
 
 	public ControleCliente() {
+		cli = new Cliente();
+		dadosCliente = new ControleDados();
 		this.nomeClientes = new ArrayList<>();
 		this.setNomeClientes(dadosCliente.getCliente());
-		nomeClientes.add("Julia");
-		nomeClientes.add("Pedro");
-		nomeClientes.add("Fernanda");
+		this.nomeClientes.add("João");
 	}
 
 	public void cadastrarCliente(Endereco endereco, String nome, char genero, Date dataNasc, String cpf,
@@ -29,10 +29,18 @@ public class ControleCliente {
 		cli.setTelefone(telefone);
 		cli.setEmail(email);
 		dadosCliente.setCliente(cli);
+		this.nomeClientes.add(nome);
+		this.nomeClientes.add("Maria");
 	}
 
-	public ArrayList<String> getNomeClientes() {
-		return nomeClientes;
+	public String[] getNomeClientes() {
+		String[] listaNomes = new String[nomeClientes.size()];
+
+		for (int i = 0; i < nomeClientes.size(); i++) {
+			listaNomes[i] = nomeClientes.get(i);
+		}
+
+		return listaNomes;
 	}
 
 	public void setNomeClientes(ArrayList<Cliente> cliente) {

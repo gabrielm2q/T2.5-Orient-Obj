@@ -50,7 +50,8 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 		btnAtualizar.setBounds(368, 420, 145, 50);
 
 		// Configurando exclusivamente a lista de Funcionários/Clientes
-		listaPessoas = new JList<String>(preencherLista(texto));
+		listaPessoas = new JList<>();
+		preencherLista(texto);
 		this.listaPessoas.setBounds(32, 95, 480, 300);
 		this.listaPessoas.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		this.listaPessoas.setVisibleRowCount(10);
@@ -72,26 +73,21 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 
 	}
 
-	public String[] preencherLista(String texto) {
+	public void preencherLista(String texto) {
 		String[] listaNomes;
-
-		if (texto == "Clientes") {
-			listaNomes = new String[clientes.getNomeClientes().size()];
-
-			for (int i = 0; i < clientes.getNomeClientes().size(); i++) {
-				listaNomes[i] = clientes.getNomeClientes().get(i);
-			}
-		} else if (texto == "Funcionários") {
+		if (texto.equals("Clientes")) {
+			listaPessoas.setListData(clientes.getNomeClientes());
+			System.out.println("O programa recebeu");
+		} else if (texto.equals("Funcionários")) {
 			listaNomes = new String[funcionarios.getNomeFuncionarios().size()];
 
 			for (int i = 0; i < funcionarios.getNomeFuncionarios().size(); i++) {
 				listaNomes[i] = funcionarios.getNomeFuncionarios().get(i);
 			}
-		} else {
-			listaNomes = null;
 		}
 
-		return listaNomes;
+		listaPessoas.updateUI();
+
 	}
 
 	public JButton getBtnCadastrar() {

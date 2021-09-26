@@ -249,20 +249,316 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 
 	}
 
+	public String[] getEstados() {
+		return estados;
+	}
+
+	public void setEstados(String[] estados) {
+		this.estados = estados;
+	}
+
 	public JLabel getTitulo() {
 		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JLabel getLblNome() {
+		return lblNome;
+	}
+
+	public void setLblNome(JLabel lblNome) {
+		this.lblNome = lblNome;
+	}
+
+	public JTextField getValorNome() {
+		return valorNome;
+	}
+
+	public void setValorNome(JTextField valorNome) {
+		this.valorNome = valorNome;
+	}
+
+	public JLabel getLblGenero() {
+		return lblGenero;
+	}
+
+	public void setLblGenero(JLabel lblGenero) {
+		this.lblGenero = lblGenero;
+	}
+
+	public String[] getGen() {
+		return gen;
+	}
+
+	public void setGen(String[] gen) {
+		this.gen = gen;
+	}
+
+	public JComboBox getValorGenero() {
+		return valorGenero;
+	}
+
+	public void setValorGenero(JComboBox valorGenero) {
+		this.valorGenero = valorGenero;
+	}
+
+	public JLabel getLblData() {
+		return lblData;
+	}
+
+	public void setLblData(JLabel lblData) {
+		this.lblData = lblData;
+	}
+
+	public JTextField getValorData() {
+		return valorData;
+	}
+
+	public void setValorData(JTextField valorData) {
+		this.valorData = valorData;
+	}
+
+	public JLabel getLblCpf() {
+		return lblCpf;
+	}
+
+	public void setLblCpf(JLabel lblCpf) {
+		this.lblCpf = lblCpf;
+	}
+
+	public JTextField getValorCpf() {
+		return valorCpf;
+	}
+
+	public void setValorCpf(JTextField valorCpf) {
+		this.valorCpf = valorCpf;
+	}
+
+	public JLabel getLblFone() {
+		return lblFone;
+	}
+
+	public void setLblFone(JLabel lblFone) {
+		this.lblFone = lblFone;
+	}
+
+	public JTextField getValorFone() {
+		return valorFone;
+	}
+
+	public void setValorFone(JTextField valorFone) {
+		this.valorFone = valorFone;
+	}
+
+	public JLabel getLblEmail() {
+		return lblEmail;
+	}
+
+	public void setLblEmail(JLabel lblEmail) {
+		this.lblEmail = lblEmail;
+	}
+
+	public JTextField getValorEmail() {
+		return valorEmail;
+	}
+
+	public void setValorEmail(JTextField valorEmail) {
+		this.valorEmail = valorEmail;
+	}
+
+	public JLabel getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(JLabel endereco) {
+		this.endereco = endereco;
+	}
+
+	public JLabel getLblCep() {
+		return lblCep;
+	}
+
+	public void setLblCep(JLabel lblCep) {
+		this.lblCep = lblCep;
+	}
+
+	public JTextField getValorCep() {
+		return valorCep;
+	}
+
+	public void setValorCep(JTextField valorCep) {
+		this.valorCep = valorCep;
+	}
+
+	public JLabel getLblCidade() {
+		return lblCidade;
+	}
+
+	public void setLblCidade(JLabel lblCidade) {
+		this.lblCidade = lblCidade;
+	}
+
+	public JTextField getValorCidade() {
+		return valorCidade;
+	}
+
+	public void setValorCidade(JTextField valorCidade) {
+		this.valorCidade = valorCidade;
+	}
+
+	public JComboBox getValorUf() {
+		return valorUf;
+	}
+
+	public void setValorUf(JComboBox valorUf) {
+		this.valorUf = valorUf;
+	}
+
+	public JLabel getLblRua() {
+		return lblRua;
+	}
+
+	public void setLblRua(JLabel lblRua) {
+		this.lblRua = lblRua;
+	}
+
+	public JTextField getValorRua() {
+		return valorRua;
+	}
+
+	public void setValorRua(JTextField valorRua) {
+		this.valorRua = valorRua;
+	}
+
+	public JLabel getLblNum() {
+		return lblNum;
+	}
+
+	public void setLblNum(JLabel lblNum) {
+		this.lblNum = lblNum;
+	}
+
+	public JTextField getValorNum() {
+		return valorNum;
+	}
+
+	public void setValorNum(JTextField valorNum) {
+		this.valorNum = valorNum;
+	}
+
+	public JLabel getLblQd() {
+		return lblQd;
+	}
+
+	public void setLblQd(JLabel lblQd) {
+		this.lblQd = lblQd;
+	}
+
+	public JTextField getValorQd() {
+		return valorQd;
+	}
+
+	public void setValorQd(JTextField valorQd) {
+		this.valorQd = valorQd;
+	}
+
+	public JLabel getLblBairro() {
+		return lblBairro;
+	}
+
+	public void setLblBairro(JLabel lblBairro) {
+		this.lblBairro = lblBairro;
+	}
+
+	public JTextField getValorBairro() {
+		return valorBairro;
+	}
+
+	public void setValorBairro(JTextField valorBairro) {
+		this.valorBairro = valorBairro;
+	}
+
+	public JLabel getLblApart() {
+		return lblApart;
+	}
+
+	public void setLblApart(JLabel lblApart) {
+		this.lblApart = lblApart;
+	}
+
+	public JTextField getValorApart() {
+		return valorApart;
+	}
+
+	public void setValorApart(JTextField valorApart) {
+		this.valorApart = valorApart;
+	}
+
+	public JLabel getLblComp() {
+		return lblComp;
+	}
+
+	public void setLblComp(JLabel lblComp) {
+		this.lblComp = lblComp;
+	}
+
+	public JTextField getValorComp() {
+		return valorComp;
+	}
+
+	public void setValorComp(JTextField valorComp) {
+		this.valorComp = valorComp;
 	}
 
 	public JButton getBtnSalvar() {
 		return btnSalvar;
 	}
 
+	public void setBtnSalvar(JButton btnSalvar) {
+		this.btnSalvar = btnSalvar;
+	}
+
 	public JButton getBtnDeletar() {
 		return btnDeletar;
 	}
 
+	public void setBtnDeletar(JButton btnDeletar) {
+		this.btnDeletar = btnDeletar;
+	}
+
 	public ControleTelaDetalheCliente getControlaDetalhe() {
 		return controlaDetalhe;
+	}
+
+	public void setControlaDetalhe(ControleTelaDetalheCliente controlaDetalhe) {
+		this.controlaDetalhe = controlaDetalhe;
+	}
+
+	public JScrollPane getPainel() {
+		return painel;
+	}
+
+	public void setPainel(JScrollPane painel) {
+		this.painel = painel;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public SimpleDateFormat getFormato() {
+		return formato;
+	}
+
+	public void setFormato(SimpleDateFormat formato) {
+		this.formato = formato;
 	}
 
 }

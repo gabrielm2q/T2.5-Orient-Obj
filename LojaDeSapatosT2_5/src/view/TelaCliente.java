@@ -41,8 +41,4 @@ public class TelaCliente extends TemplatePessoa {
 		this.dadosPessoas = dadosPessoas;
 	}
 
-	public ControleTelaCliente getControlTela() {
-		return controlTela;
-	}
-
 }
