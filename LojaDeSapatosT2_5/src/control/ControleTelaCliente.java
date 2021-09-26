@@ -27,8 +27,6 @@ public class ControleTelaCliente {
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
 		} else if (clicado == cliente.getBtnAtualizar()) {
 			cliente.preencherLista("Clientes", dados);
-		} else {
-			JOptionPane.showMessageDialog(null, "ERRO!", null, JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 

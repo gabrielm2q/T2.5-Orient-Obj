@@ -24,6 +24,19 @@ public class ControleEndereco {
 		dados.setEndereco(ender);
 	}
 
+	public void editarEndereco(ControleDados d, int index, int cep, String cidade, String uf, String nomeRua,
+			int numero, int quadra, String bairro, int numApart, String complemento) {
+		d.getEndereco().get(index).setCep(cep);
+		d.getEndereco().get(index).setCidade(cidade);
+		d.getEndereco().get(index).setUf(uf);
+		d.getEndereco().get(index).setNomeRua(nomeRua);
+		d.getEndereco().get(index).setNumero(numero);
+		d.getEndereco().get(index).setBairro(bairro);
+		d.getEndereco().get(index).setNumApart(numApart);
+		d.getEndereco().get(index).setComplemento(complemento);
+		d.getEndereco().set(index, d.getEndereco().get(index));
+	}
+
 	public ControleDados getDados() {
 		return dados;
 	}
