@@ -39,25 +39,24 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JTextField valorEmail;
 
 	// ENDEREÇO
-	private JLabel endereco = new JLabel("Endereço", JLabel.CENTER);
+	private JLabel endereco = new JLabel("Endereço", JLabel.CENTER); // Título da seção
 	private JLabel lblCep = new JLabel("CEP: "); // CEP
 	private JTextField valorCep;
-	private JLabel lblCidade = new JLabel("Cidade: "); // Cidade
+	private JLabel lblCidade = new JLabel("Cidade (UF): "); // Cidade
 	private JTextField valorCidade;
-	private JLabel lblUf = new JLabel("UF: "); // UF
-	private JComboBox valorUf = new JComboBox(estados);
-	private JLabel lblNomeRua = new JLabel("Nome da Rua: "); // Rua
-	private JTextField valorNomeRua;
-	private JLabel lblNumero = new JLabel("Número: "); // Número
-	private JTextField valorNumero;
-	private JLabel lblQuadra = new JLabel("Quadra: "); // Quadra
-	private JTextField valorQuadra;
-	private JLabel lblBairro = new JLabel("Bairro: ");
+	private JComboBox valorUf = new JComboBox(estados); // UF
+	private JLabel lblRua = new JLabel("Nome da Rua: "); // Rua
+	private JTextField valorRua;
+	private JLabel lblNum = new JLabel("Número: "); // Número
+	private JTextField valorNum;
+	private JLabel lblQd = new JLabel("Quadra: "); // Quadra
+	private JTextField valorQd;
+	private JLabel lblBairro = new JLabel("Bairro: "); // Bairro
 	private JTextField valorBairro;
-	private JLabel lblNumApart = new JLabel("NumApart: ");
-	private JTextField valorNumApart;
-	private JLabel lblComplemento = new JLabel("Complemento: ");
-	private JTextField valorComplemento;
+	private JLabel lblApart = new JLabel("Apartamento: "); // Apartamento
+	private JTextField valorApart;
+	private JLabel lblComp = new JLabel("Complemento: "); // Complemento
+	private JTextField valorComp;
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnDeletar = new JButton("Deletar");
 	private ControleTelaDetalheCliente controlaDetalhe;
@@ -72,7 +71,7 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		super("Cliente"); // JFrame com nome
 		this.controlaDetalhe = new ControleTelaDetalheCliente(this);
 
-		this.setSize(560, 700);
+		this.setSize(560, 520);
 		this.setLayout(null);
 		this.setResizable(false);
 
@@ -89,9 +88,9 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		btnDeletar.setFont(f);
 
 		// Localização e Tamanho dos componentes da tela
-		titulo.setBounds(110, 20, 340, 50);
-		btnSalvar.setBounds(110, 600, 200, 75);
-		btnDeletar.setBounds(50, 600, 200, 75);
+		titulo.setBounds(90, 20, 340, 50);
+		btnDeletar.setBounds(20, 400, 239, 75);
+		btnSalvar.setBounds(279, 400, 239, 75);
 
 		// Adicionando componentes a tela
 		this.add(titulo);
@@ -152,14 +151,89 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		lblEmail.setBounds(20, 167, 75, 20);
 		valorEmail = new JTextField(62);
 		valorEmail.setFont(textFont);
-		valorEmail.setBounds(77, 169, 443, 20);
+		valorEmail.setBounds(77, 167, 443, 20);
 		this.add(lblEmail);
 		this.add(valorEmail);
 
 		endereco.setFont(new Font("Montserrat", Font.BOLD, 44)); // TÍTULO DA SEÇÃO DE ENDEREÇO
 		endereco.setForeground(new Color(29, 53, 87));
-		endereco.setBounds(155, 202, 250, 65);
+		endereco.setBounds(135, 202, 250, 65);
 		this.add(endereco);
+
+		lblCep.setFont(labelFont); // CAMPO DO CEP
+		lblCep.setForeground(new Color(29, 53, 87));
+		lblCep.setBounds(20, 276, 50, 20);
+		valorCep = new JTextField(10);
+		valorCep.setFont(textFont);
+		valorCep.setBounds(67, 276, 90, 20);
+		this.add(lblCep);
+		this.add(valorCep);
+
+		lblCidade.setFont(labelFont); // CAMPOS DA CIDADE e da UF
+		lblCidade.setForeground(new Color(29, 53, 87));
+		lblCidade.setBounds(170, 276, 100, 20);
+		valorCidade = new JTextField(30);
+		valorCidade.setFont(textFont);
+		valorCidade.setBounds(270, 276, 175, 20);
+		this.add(lblCidade);
+		this.add(valorCidade);
+		valorUf.setFont(textFont);
+		valorUf.setBounds(455, 276, 62, 20);
+		this.add(valorUf);
+
+		lblRua.setFont(labelFont); // CAMPO DA RUA
+		lblRua.setForeground(new Color(29, 53, 87));
+		lblRua.setBounds(20, 305, 120, 20);
+		valorRua = new JTextField(50);
+		valorRua.setFont(textFont);
+		valorRua.setBounds(137, 305, 200, 20);
+		this.add(lblRua);
+		this.add(valorRua);
+
+		lblNum.setFont(labelFont); // CAMPO DO NÚMERO
+		lblNum.setForeground(new Color(29, 53, 87));
+		lblNum.setBounds(350, 305, 75, 20);
+		valorNum = new JTextField(5);
+		valorNum.setFont(textFont);
+		valorNum.setBounds(420, 305, 97, 20);
+		this.add(lblNum);
+		this.add(valorNum);
+
+		lblQd.setFont(labelFont); // CAMPO DA QUADRA
+		lblQd.setForeground(new Color(29, 53, 87));
+		lblQd.setBounds(20, 334, 75, 20);
+		valorQd = new JTextField(5);
+		valorQd.setFont(textFont);
+		valorQd.setBounds(90, 334, 97, 20);
+		this.add(lblQd);
+		this.add(valorQd);
+
+		lblBairro.setFont(labelFont); // CAMPO DO BAIRRO
+		lblBairro.setForeground(new Color(29, 53, 87));
+		lblBairro.setBounds(200, 334, 75, 20);
+		valorBairro = new JTextField(30);
+		valorBairro.setFont(textFont);
+		valorBairro.setBounds(265, 334, 253, 20);
+		this.add(lblBairro);
+		this.add(valorBairro);
+
+		lblApart.setFont(labelFont); // CAMPO DO APARTAMENTO
+		lblApart.setForeground(new Color(29, 53, 87));
+		lblApart.setBounds(20, 363, 110, 20);
+		valorApart = new JTextField(5);
+		valorApart.setFont(textFont);
+		valorApart.setBounds(131, 363, 57, 20);
+		this.add(lblApart);
+		this.add(valorApart);
+
+		lblComp.setFont(labelFont); // CAMPO DO COMPLEMENTO
+		lblComp.setForeground(new Color(29, 53, 87));
+		lblComp.setBounds(200, 363, 130, 20);
+		valorComp = new JTextField(5);
+		valorComp.setFont(textFont);
+		valorComp.setBounds(317, 363, 201, 20);
+		this.add(lblComp);
+		this.add(valorComp);
 
 		// Adicionando o ActionListener
 		getBtnSalvar().addActionListener(this);
