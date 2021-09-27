@@ -49,12 +49,29 @@ public class ControleDados {
 		data.setVenda(ven);
 	}
 
-	public ArrayList<Endereco> getEndereco() {
-		return data.getEndereco();
+	public ArrayList<Endereco> getEnderecoCliente() {
+		return data.getEnderecoCliente();
 	}
 
-	public void setEndereco(Endereco ende) {
-		data.setEndereco(ende);
+	public void setEnderecoCliente(Endereco ende) {
+		data.setEnderecoCliente(ende);
+	}
+
+	public ArrayList<Endereco> getEnderecoFuncionario() {
+		return data.getEnderecoFuncionario();
+	}
+
+	public void setEnderecoFuncionario(Endereco ende) {
+		data.setEnderecoFuncionario(ende);
+	}
+
+	public Endereco getEnderecoLoja() {
+		return data.getEnderecoLoja();
+	}
+
+	public void setEnderecoLoja(int cep, String cidade, String uf, String rua, int num, int qd, String bairro,
+			int Apart, String comp) {
+		data.setEnderecoLoja(cep, cidade, uf, rua, num, qd, bairro, Apart, comp);
 	}
 
 	public List<Produto> getProduto() {

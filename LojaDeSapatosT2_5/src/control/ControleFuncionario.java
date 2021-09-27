@@ -48,6 +48,7 @@ public class ControleFuncionario {
 
 	public void deletarFuncionario(ControleDados d, int index) {
 		d.getFuncionario().remove(index);
+		d.getEnderecoFuncionario().remove(index);
 	}
 
 	public String[] getNomeFuncionarios() {

@@ -49,15 +49,15 @@ public class ControleTelaDetalheCliente {
 		tela.getValorEmail().setText(d.getCliente().get(index).getEmail());
 
 		// Imprimindo dados do endereço do cliente
-		tela.getValorCep().setText(String.valueOf(d.getEndereco().get(index).getCep()));
-		tela.getValorCidade().setText(d.getEndereco().get(index).getCidade());
-		tela.getValorUf().setSelectedItem(d.getEndereco().get(index).getUf());
-		tela.getValorRua().setText(d.getEndereco().get(index).getNomeRua());
-		tela.getValorNum().setText(String.valueOf(d.getEndereco().get(index).getNumero()));
-		tela.getValorQd().setText(String.valueOf(d.getEndereco().get(index).getQuadra()));
-		tela.getValorBairro().setText(d.getEndereco().get(index).getBairro());
-		tela.getValorApart().setText(String.valueOf(d.getEndereco().get(index).getNumApart()));
-		tela.getValorComp().setText(d.getEndereco().get(index).getComplemento());
+		tela.getValorCep().setText(String.valueOf(d.getEnderecoCliente().get(index).getCep()));
+		tela.getValorCidade().setText(d.getEnderecoCliente().get(index).getCidade());
+		tela.getValorUf().setSelectedItem(d.getEnderecoCliente().get(index).getUf());
+		tela.getValorRua().setText(d.getEnderecoCliente().get(index).getNomeRua());
+		tela.getValorNum().setText(String.valueOf(d.getEnderecoCliente().get(index).getNumero()));
+		tela.getValorQd().setText(String.valueOf(d.getEnderecoCliente().get(index).getQuadra()));
+		tela.getValorBairro().setText(d.getEnderecoCliente().get(index).getBairro());
+		tela.getValorApart().setText(String.valueOf(d.getEnderecoCliente().get(index).getNumApart()));
+		tela.getValorComp().setText(d.getEnderecoCliente().get(index).getComplemento());
 
 	}
 
@@ -67,7 +67,7 @@ public class ControleTelaDetalheCliente {
 		if (clicado == detalheCliente.getBtnSalvar() && opc == 0) { // SALVAR CLIENTE
 			try {
 				// Recebendo os valores do endereço
-				endereco.cadastrarEndereco(Integer.parseInt(detalheCliente.getValorCep().getText()), // CEP
+				endereco.cadastrarEndereco(1, Integer.parseInt(detalheCliente.getValorCep().getText()), // CEP
 						detalheCliente.getValorCidade().getText(), // Cidade
 						detalheCliente.getValorUf().getSelectedItem().toString(), // UF
 						detalheCliente.getValorRua().getText(), // Nome da Rua
@@ -107,7 +107,7 @@ public class ControleTelaDetalheCliente {
 		} else if (clicado == detalheCliente.getBtnSalvar() && opc == 1) { // SALVAR CLIENTE EDITADO
 			try {
 				// Recebendo os valores do endereço
-				endereco.editarEndereco(dados, indexCliente, // Dados para preencher o endereço
+				endereco.editarEndereco(1, dados, indexCliente, // Dados para preencher o endereço
 						Integer.parseInt(detalheCliente.getValorCep().getText()), // CEP
 						detalheCliente.getValorCidade().getText(), // Cidade
 						detalheCliente.getValorUf().getSelectedItem().toString(), // UF

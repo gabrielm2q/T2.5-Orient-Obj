@@ -43,15 +43,15 @@ public class ControleTelaDetalheFuncionario {
 		tela.getValorEntrada().setSelectedItem(String.valueOf(d.getFuncionario().get(index).getHoraSaida()));
 
 		// Imprimindo dados do endereço do funcionário
-		tela.getValorCep().setText(String.valueOf(d.getEndereco().get(index).getCep()));
-		tela.getValorCidade().setText(d.getEndereco().get(index).getCidade());
-		tela.getValorUf().setSelectedItem(d.getEndereco().get(index).getUf());
-		tela.getValorRua().setText(d.getEndereco().get(index).getNomeRua());
-		tela.getValorNum().setText(String.valueOf(d.getEndereco().get(index).getNumero()));
-		tela.getValorQd().setText(String.valueOf(d.getEndereco().get(index).getQuadra()));
-		tela.getValorBairro().setText(d.getEndereco().get(index).getBairro());
-		tela.getValorApart().setText(String.valueOf(d.getEndereco().get(index).getNumApart()));
-		tela.getValorComp().setText(d.getEndereco().get(index).getComplemento());
+		tela.getValorCep().setText(String.valueOf(d.getEnderecoFuncionario().get(index).getCep()));
+		tela.getValorCidade().setText(d.getEnderecoFuncionario().get(index).getCidade());
+		tela.getValorUf().setSelectedItem(d.getEnderecoFuncionario().get(index).getUf());
+		tela.getValorRua().setText(d.getEnderecoFuncionario().get(index).getNomeRua());
+		tela.getValorNum().setText(String.valueOf(d.getEnderecoFuncionario().get(index).getNumero()));
+		tela.getValorQd().setText(String.valueOf(d.getEnderecoFuncionario().get(index).getQuadra()));
+		tela.getValorBairro().setText(d.getEnderecoFuncionario().get(index).getBairro());
+		tela.getValorApart().setText(String.valueOf(d.getEnderecoFuncionario().get(index).getNumApart()));
+		tela.getValorComp().setText(d.getEnderecoFuncionario().get(index).getComplemento());
 
 	}
 
@@ -61,7 +61,7 @@ public class ControleTelaDetalheFuncionario {
 		if (clicado == detalheFunc.getBtnSalvar() && opc == 0) { // SALVAR FUNCIONARIO
 			try {
 				// Recebendo os valores do endereço
-				endereco.cadastrarEndereco(Integer.parseInt(detalheFunc.getValorCep().getText()), // CEP
+				endereco.cadastrarEndereco(2, Integer.parseInt(detalheFunc.getValorCep().getText()), // CEP
 						detalheFunc.getValorCidade().getText(), // Cidade
 						detalheFunc.getValorUf().getSelectedItem().toString(), // UF
 						detalheFunc.getValorRua().getText(), // Nome da Rua
@@ -104,7 +104,7 @@ public class ControleTelaDetalheFuncionario {
 		} else if (clicado == detalheFunc.getBtnSalvar() && opc == 1) { // SALVAR FUNCIONARIO EDITADO
 			try {
 				// Recebendo os valores do endereço
-				endereco.editarEndereco(dados, indexFunc, // Dados para preencher o endereço
+				endereco.editarEndereco(2, dados, indexFunc, // Dados para preencher o endereço
 						Integer.parseInt(detalheFunc.getValorCep().getText()), // CEP
 						detalheFunc.getValorCidade().getText(), // Cidade
 						detalheFunc.getValorUf().getSelectedItem().toString(), // UF

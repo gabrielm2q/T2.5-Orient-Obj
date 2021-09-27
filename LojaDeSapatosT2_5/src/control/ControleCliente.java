@@ -44,6 +44,7 @@ public class ControleCliente {
 
 	public void deletarCliente(ControleDados d, int index) {
 		d.getCliente().remove(index);
+		d.getEnderecoCliente().remove(index);
 	}
 
 	public String[] getNomeClientes() {

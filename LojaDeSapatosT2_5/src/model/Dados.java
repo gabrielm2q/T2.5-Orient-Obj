@@ -7,14 +7,18 @@ public class Dados {
 	private final ArrayList<Cliente> cliente;
 	private final ArrayList<Funcionario> funcionario;
 	private final ArrayList<Venda> venda;
-	private final ArrayList<Endereco> endereco;
+	private final ArrayList<Endereco> enderecoCliente;
+	private final ArrayList<Endereco> enderecoFuncionario;
+	private final Endereco enderecoLoja;
 	private final List<Produto> produto;
 
 	public Dados() {
 		this.cliente = new ArrayList<>();
 		this.funcionario = new ArrayList<>();
 		this.venda = new ArrayList<>();
-		this.endereco = new ArrayList<>();
+		this.enderecoCliente = new ArrayList<>();
+		this.enderecoFuncionario = new ArrayList<>();
+		this.enderecoLoja = new Endereco();
 		this.produto = new ArrayList<>();
 	}
 
@@ -42,12 +46,37 @@ public class Dados {
 		this.venda.add(ven);
 	}
 
-	public ArrayList<Endereco> getEndereco() {
-		return endereco;
+	public ArrayList<Endereco> getEnderecoCliente() {
+		return enderecoCliente;
 	}
 
-	public void setEndereco(Endereco end) {
-		this.endereco.add(end);
+	public void setEnderecoCliente(Endereco end) {
+		this.enderecoCliente.add(end);
+	}
+
+	public ArrayList<Endereco> getEnderecoFuncionario() {
+		return enderecoFuncionario;
+	}
+
+	public void setEnderecoFuncionario(Endereco end) {
+		this.enderecoFuncionario.add(end);
+	}
+
+	public Endereco getEnderecoLoja() {
+		return enderecoLoja;
+	}
+
+	public void setEnderecoLoja(int cep, String cidade, String uf, String nomeRua, int numero, int quadra,
+			String bairro, int numApart, String complemento) {
+		this.enderecoLoja.setCep(cep);
+		this.enderecoLoja.setCidade(cidade);
+		this.enderecoLoja.setUf(uf);
+		this.enderecoLoja.setNomeRua(nomeRua);
+		this.enderecoLoja.setNumero(numero);
+		this.enderecoLoja.setQuadra(quadra);
+		this.enderecoLoja.setBairro(bairro);
+		this.enderecoLoja.setNumApart(numApart);
+		this.enderecoLoja.setComplemento(complemento);
 	}
 
 	public List<Produto> getProduto() {
