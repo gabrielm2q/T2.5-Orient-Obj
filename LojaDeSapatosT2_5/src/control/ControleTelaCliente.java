@@ -34,10 +34,11 @@ public class ControleTelaCliente {
 		Object selecionado = e.getSource();
 
 		if (e.getValueIsAdjusting()) {
-			TelaDetalheCliente detalhe = new TelaDetalheCliente(dados, 1, cliente.getListaPessoas().getSelectedIndex());
+			TelaDetalheCliente detalhe = new TelaDetalheCliente(dados, 1,
+					cliente.getListaPessoasProd().getSelectedIndex());
 			ControleTelaDetalheCliente ctrlDetalhe = new ControleTelaDetalheCliente(detalhe, dados, 1,
-					cliente.getListaPessoas().getSelectedIndex());
-			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, cliente.getListaPessoas().getSelectedIndex());
+					cliente.getListaPessoasProd().getSelectedIndex());
+			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, cliente.getListaPessoasProd().getSelectedIndex());
 		}
 	}
 

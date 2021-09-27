@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 public class Sapato extends Produto {
 	private String materialSolado;
 	private String materialInterno;
@@ -9,10 +7,8 @@ public class Sapato extends Produto {
 	private String alturaSalto;
 	private String tipoPalmilha;
 
-	
-	
 	public Sapato(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem,
-			Date tempoGarantia, char genero, String codBarras, String cor, String material, String materialSolado,
+			String tempoGarantia, char genero, String codBarras, String cor, String material, String materialSolado,
 			String materialInterno, String tipoBico, String alturaSalto, String tipoPalmilha) {
 		super(idProd, nome, tamanho, preco, marca, paisOrigem, tempoGarantia, genero, codBarras, cor, material);
 		setMaterialSolado(materialSolado);
@@ -30,62 +26,49 @@ public class Sapato extends Produto {
 		setAlturaSalto("");
 		setTipoPalmilha("");
 	}
-	
-	public void cadastrar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
-			 String codBarras, String material, String cor, String materialSolado, String materialInterno, String tipoBico, String alturaSalto, String tipoPalmilha) {
-		setIdProd(idProd);
-		setNome(nome);
-		setTamanho(tamanho);
-		setPreco(preco);
-		setMarca(marca);
-		setPaisOrigem(paisOrigem);
-		setTempoGarantia(tempoGarantia);
-		setGenero(genero);
-		setCodBarras(codBarras);
-		setCor(cor);
-		setMaterial(material);
-		setMaterialSolado(materialSolado);
-		setMaterialInterno(materialInterno);
-		setTipoBico(tipoBico);
-		setAlturaSalto(alturaSalto);
-		setTipoPalmilha(tipoPalmilha);
-	}
-	
-	@Override
-	public void imprimir() {
-		System.out.print("Sapato");
-		System.out.println("\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
-				"\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nPaís de Origem: " + this.getPaisOrigem() + "\nTempo de Garantia: " +
-				this.getTempoGarantia() + "\nGênero: " + this.getGenero() + "\nCódigo de Barras: " + this.getCodBarras() + "\nMaterial: " + this.getMaterial() +
-				"\nCor: " + this.getCor() + "\nMaterial do Solado: " + this.getMaterialSolado() + "\nMaterial Interno: " + this.getMaterialInterno() +
-				"\nTipo de Bico: " + this.getTipoBico() + "\nAltura do Salto: " + this.getAlturaSalto() + "\nTipo de Palmilha: " + this.getTipoPalmilha() + ".");
-	}
-	
-	public void editar(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem, Date tempoGarantia, char genero, 
-			 String codBarras, String material, String cor, String materialSolado, String materialInterno, String tipoBico, String alturaSalto, String tipoPalmilha) {
-		setIdProd(idProd);
-		setNome(nome);
-		setTamanho(tamanho);
-		setPreco(preco);
-		setMarca(marca);
-		setPaisOrigem(paisOrigem);
-		setTempoGarantia(tempoGarantia);
-		setGenero(genero);
-		setCodBarras(codBarras);
-		setCor(cor);
-		setMaterial(material);
-		setMaterialSolado(materialSolado);
-		setMaterialInterno(materialInterno);
-		setTipoBico(tipoBico);
-		setAlturaSalto(alturaSalto);
-		setTipoPalmilha(tipoPalmilha);
-	}
-	
+
+	/*
+	 * public void cadastrar(int idProd, String nome, int tamanho, Double preco,
+	 * String marca, String paisOrigem, Date tempoGarantia, char genero, String
+	 * codBarras, String material, String cor, String materialSolado, String
+	 * materialInterno, String tipoBico, String alturaSalto, String tipoPalmilha) {
+	 * setIdProd(idProd); setNome(nome); setTamanho(tamanho); setPreco(preco);
+	 * setMarca(marca); setPaisOrigem(paisOrigem); setTempoGarantia(tempoGarantia);
+	 * setGenero(genero); setCodBarras(codBarras); setCor(cor);
+	 * setMaterial(material); setMaterialSolado(materialSolado);
+	 * setMaterialInterno(materialInterno); setTipoBico(tipoBico);
+	 * setAlturaSalto(alturaSalto); setTipoPalmilha(tipoPalmilha); }
+	 * 
+	 * @Override public void imprimir() { System.out.print("Sapato");
+	 * System.out.println("\nID do Produto: " + this.getIdProd() + "\nNome: " +
+	 * this.getNome() + "\nTamanho: " + this.getTamanho() + "\nPreço: R$" +
+	 * this.getPreco() + "\nMarca: " + this.getMarca() + "\nPaís de Origem: " +
+	 * this.getPaisOrigem() + "\nTempo de Garantia: " + this.getTempoGarantia() +
+	 * "\nGênero: " + this.getGenero() + "\nCódigo de Barras: " +
+	 * this.getCodBarras() + "\nMaterial: " + this.getMaterial() + "\nCor: " +
+	 * this.getCor() + "\nMaterial do Solado: " + this.getMaterialSolado() +
+	 * "\nMaterial Interno: " + this.getMaterialInterno() + "\nTipo de Bico: " +
+	 * this.getTipoBico() + "\nAltura do Salto: " + this.getAlturaSalto() +
+	 * "\nTipo de Palmilha: " + this.getTipoPalmilha() + "."); }
+	 * 
+	 * public void editar(int idProd, String nome, int tamanho, Double preco, String
+	 * marca, String paisOrigem, Date tempoGarantia, char genero, String codBarras,
+	 * String material, String cor, String materialSolado, String materialInterno,
+	 * String tipoBico, String alturaSalto, String tipoPalmilha) {
+	 * setIdProd(idProd); setNome(nome); setTamanho(tamanho); setPreco(preco);
+	 * setMarca(marca); setPaisOrigem(paisOrigem); setTempoGarantia(tempoGarantia);
+	 * setGenero(genero); setCodBarras(codBarras); setCor(cor);
+	 * setMaterial(material); setMaterialSolado(materialSolado);
+	 * setMaterialInterno(materialInterno); setTipoBico(tipoBico);
+	 * setAlturaSalto(alturaSalto); setTipoPalmilha(tipoPalmilha); }
+	 */
+
 	@Override
 	public String toString() {
-		return "\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho() +
-				"\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nGênero: " + this.getGenero() + "\nMaterial: " + this.getMaterial() +
-				"\nCor: " + this.getCor() + "\nAltura do Salto: " + this.getAlturaSalto() + ".";
+		return "\nID do Produto: " + this.getIdProd() + "\nNome: " + this.getNome() + "\nTamanho: " + this.getTamanho()
+				+ "\nPreço: R$" + this.getPreco() + "\nMarca: " + this.getMarca() + "\nGênero: " + this.getGenero()
+				+ "\nMaterial: " + this.getMaterial() + "\nCor: " + this.getCor() + "\nAltura do Salto: "
+				+ this.getAlturaSalto() + ".";
 	}
 
 	public String getMaterialSolado() {
@@ -127,5 +110,5 @@ public class Sapato extends Produto {
 	public void setTipoPalmilha(String tipoPalmilha) {
 		this.tipoPalmilha = tipoPalmilha;
 	}
-	
+
 }

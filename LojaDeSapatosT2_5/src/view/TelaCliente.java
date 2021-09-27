@@ -7,7 +7,7 @@ import javax.swing.event.ListSelectionEvent;
 import control.ControleDados;
 import control.ControleTelaCliente;
 
-public class TelaCliente extends TemplatePessoa {
+public class TelaCliente extends Template {
 	private ControleTelaCliente controlTela;
 	private ControleDados dados = new ControleDados();
 

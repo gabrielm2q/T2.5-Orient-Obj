@@ -13,15 +13,15 @@ import javax.swing.event.ListSelectionListener;
 
 import control.ControleDados;
 
-public abstract class TemplatePessoa extends JFrame implements ActionListener, ListSelectionListener {
+public abstract class Template extends JFrame implements ActionListener, ListSelectionListener {
 	private JLabel texto;
 	private JButton btnCadastrar = new JButton("Cadastrar");
 	private JButton btnOrdenar = new JButton("Ordenar");
 	private JButton btnAtualizar = new JButton("Atualizar");
-	private JList<String> listaPessoas = new JList<>();
+	private JList<String> listaPessoasProd = new JList<>();
 	private ControleDados dados = new ControleDados();
 
-	public TemplatePessoa(String texto, ControleDados d) {
+	public Template(String texto, ControleDados d) {
 		super(texto); // JFrame com nome
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -49,15 +49,15 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 
 		// Configurando exclusivamente a lista de Funcionários/Clientes
 		preencherLista(texto, d);
-		this.listaPessoas.setBackground(Color.white);
-		this.listaPessoas.setBounds(32, 95, 480, 300);
-		this.listaPessoas.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		this.listaPessoas.setVisibleRowCount(10);
-		this.listaPessoas.addListSelectionListener(this);
+		this.listaPessoasProd.setBackground(Color.white);
+		this.listaPessoasProd.setBounds(32, 95, 480, 300);
+		this.listaPessoasProd.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		this.listaPessoasProd.setVisibleRowCount(10);
+		this.listaPessoasProd.addListSelectionListener(this);
 
 		// Adicionando componentes a tela
 		this.add(this.texto);
-		this.add(this.listaPessoas);
+		this.add(this.listaPessoasProd);
 		this.add(btnCadastrar);
 		this.add(btnOrdenar);
 		this.add(btnAtualizar);
@@ -73,6 +73,7 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 
 	public void preencherLista(String texto, ControleDados d) {
 		String[] listaNomes;
+		String[] listaProdutos;
 		this.dados = d;
 
 		if (texto.equals("Clientes")) {
@@ -82,8 +83,8 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 				listaNomes[i] = dados.getCliente().get(i).getNome();
 			}
 
-			listaPessoas.setListData(listaNomes);
-			listaPessoas.updateUI();
+			listaPessoasProd.setListData(listaNomes);
+			listaPessoasProd.updateUI();
 
 		} else if (texto.equals("Funcionários")) {
 			listaNomes = new String[dados.getFuncionario().size()];
@@ -92,8 +93,17 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 				listaNomes[i] = dados.getFuncionario().get(i).getNome();
 			}
 
-			listaPessoas.setListData(listaNomes);
-			listaPessoas.updateUI();
+			listaPessoasProd.setListData(listaNomes);
+			listaPessoasProd.updateUI();
+		} else if (texto.equals("Estoque")) {
+			listaProdutos = new String[dados.getProduto().size()];
+
+			for (int i = 0; i < dados.getProduto().size(); i++) {
+				listaProdutos[i] = dados.getProduto().get(i).getNome();
+			}
+
+			listaPessoasProd.setListData(listaProdutos);
+			listaPessoasProd.updateUI();
 		}
 
 	}
@@ -110,8 +120,8 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 		return btnAtualizar;
 	}
 
-	public JList<String> getListaPessoas() {
-		return listaPessoas;
+	public JList<String> getListaPessoasProd() {
+		return listaPessoasProd;
 	}
 
 	public JLabel getTexto() {

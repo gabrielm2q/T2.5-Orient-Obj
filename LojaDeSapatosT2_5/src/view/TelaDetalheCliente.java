@@ -21,6 +21,13 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnDeletar = new JButton("Deletar");
 
+	private ControleTelaDetalheCliente controlaDetalhe;
+	private ControleDados dados = new ControleDados();
+
+	// Trabalhando com datas
+	Date data = new Date();
+	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
 	// Declarando valores que irão compor as ComboBoxes
 	private String[] estados = { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA",
 			"PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
@@ -60,13 +67,6 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JTextField valorApart;
 	private JLabel lblComp = new JLabel("Complemento: "); // Complemento
 	private JTextField valorComp;
-
-	private ControleTelaDetalheCliente controlaDetalhe;
-	private ControleDados dados = new ControleDados();
-
-	// Trabalhando com datas
-	Date data = new Date();
-	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
 	public TelaDetalheCliente(ControleDados d, int opcao, int idx) {
 		super("Cliente"); // JFrame com nome
