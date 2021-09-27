@@ -16,30 +16,37 @@ import javax.swing.JTextField;
 import control.ControleDados;
 import control.ControleTelaDetalheCliente;
 
-public class TelaDetalheCliente extends JFrame implements ActionListener {
+public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 	private JLabel titulo = new JLabel("Cliente", JLabel.CENTER);
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnDeletar = new JButton("Deletar");
+	private ControleTelaDetalheCliente controlaDetalhe;
+	private ControleDados dados = new ControleDados();
 
 	// Declarando valores que irão compor as ComboBoxes
 	private String[] estados = { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA",
 			"PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
-	private String[] gen = { "M", "F", "Outro" };
+	private String[] turno = { "Matutino", "Vespertino", "Noturno", "Outros" };
+	private String[] hora = { "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22",
+			"23", "00", "01", "02", "03", "04", "05", "06", "07" };
 
-	// Declarando componentes da tela
-	// CLIENTE
+	// FUNCIONÁRIO
 	private JLabel lblNome = new JLabel("Nome: "); // Nome
 	private JTextField valorNome;
-	private JLabel lblGenero = new JLabel("Gênero: "); // Gênero
-	private JComboBox valorGenero = new JComboBox(gen);
 	private JLabel lblData = new JLabel("Data de Nascimento: "); // Nascimento
 	private JTextField valorData;
 	private JLabel lblCpf = new JLabel("CPF: "); // CPF
 	private JTextField valorCpf;
 	private JLabel lblFone = new JLabel("Telefone: "); // Telefone
 	private JTextField valorFone;
-	private JLabel lblEmail = new JLabel("Email: "); // Email
-	private JTextField valorEmail;
+	private JLabel lblDataCon = new JLabel("Data de Contratação: "); // Data de Contratação
+	private JTextField valorDataCon;
+	private JLabel lblTurno = new JLabel("Turno: "); // Turno
+	private JComboBox valorTurno = new JComboBox(turno);
+	private JLabel lblEntrada = new JLabel("Entrada: "); // Hora de Entrada
+	private JComboBox valorEntrada = new JComboBox(hora);
+	private JLabel lblSaida = new JLabel("Saída: "); // Hora de Saída
+	private JComboBox valorSaida = new JComboBox(hora);
 
 	// ENDEREÇO
 	private JLabel endereco = new JLabel("Endereço", JLabel.CENTER); // Título da seção
@@ -61,17 +68,15 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JLabel lblComp = new JLabel("Complemento: "); // Complemento
 	private JTextField valorComp;
 
-	private ControleTelaDetalheCliente controlaDetalhe;
-	private ControleDados dados = new ControleDados();
-
 	// Trabalhando com datas
 	Date data = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-	public TelaDetalheCliente(ControleDados d, int opcao, int idx) {
-		super("Cliente"); // JFrame com nome
+	public TelaDetalheFuncionario(ControleDados d, int opcao, int idx) {
+		super("Funcionário"); // JFrame com nome
 		this.dados = d;
-		this.controlaDetalhe = new ControleTelaDetalheCliente(this, dados, opcao, idx);
+		// this.controlaDetalhe = new ControleTelaDetalheFuncionario(this, dados, opcao,
+		// idx);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -112,52 +117,69 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		this.add(valorNome);
 		this.add(lblNome);
 
-		lblGenero.setFont(labelFont); // CAMPO DE GÊNERO
-		lblGenero.setForeground(new Color(29, 53, 87));
-		lblGenero.setBounds(20, 109, 90, 20);
-		valorGenero.setFont(textFont);
-		valorGenero.setBounds(90, 109, 100, 20);
-		this.add(valorGenero);
-		this.add(lblGenero);
-
 		lblData.setFont(labelFont); // CAMPO DE DATA DE NASCIMENTO
 		lblData.setForeground(new Color(29, 53, 87));
-		lblData.setBounds(210, 109, 180, 20);
+		lblData.setBounds(20, 109, 185, 20);
 		valorData = new JTextField(10);
 		valorData.setText("dd/mm/aaaa");
 		valorData.setFont(textFont);
-		valorData.setBounds(375, 109, 145, 20);
+		valorData.setBounds(185, 109, 110, 20);
 		this.add(lblData);
 		this.add(valorData);
 
 		lblCpf.setFont(labelFont); // CAMPO DO CPF
 		lblCpf.setForeground(new Color(29, 53, 87));
-		lblCpf.setBounds(20, 138, 50, 20);
+		lblCpf.setBounds(307, 109, 50, 20);
 		valorCpf = new JTextField(15);
 		valorCpf.setFont(textFont);
 		valorCpf.setText("000.000.000-00");
-		valorCpf.setBounds(70, 138, 195, 20);
+		valorCpf.setBounds(350, 109, 170, 20);
 		this.add(lblCpf);
 		this.add(valorCpf);
 
 		lblFone.setFont(labelFont); // CAMPO DO TELEFONE
 		lblFone.setForeground(new Color(29, 53, 87));
-		lblFone.setBounds(280, 138, 100, 20);
+		lblFone.setBounds(20, 138, 100, 20);
 		valorFone = new JTextField(15);
 		valorFone.setFont(textFont);
 		valorFone.setText("(00) 00000-0000");
-		valorFone.setBounds(360, 138, 160, 20);
+		valorFone.setBounds(100, 138, 120, 20);
 		this.add(lblFone);
 		this.add(valorFone);
 
-		lblEmail.setFont(labelFont); // CAMPO DO EMAIL
-		lblEmail.setForeground(new Color(29, 53, 87));
-		lblEmail.setBounds(20, 167, 75, 20);
-		valorEmail = new JTextField(62);
-		valorEmail.setFont(textFont);
-		valorEmail.setBounds(77, 167, 443, 20);
-		this.add(lblEmail);
-		this.add(valorEmail);
+		lblDataCon.setFont(labelFont); // CAMPO DA DATA DE CONTRATAÇÃO
+		lblDataCon.setForeground(new Color(29, 53, 87));
+		lblDataCon.setBounds(230, 138, 185, 20);
+		valorDataCon = new JTextField(10);
+		valorDataCon.setText("dd/mm/aaaa");
+		valorDataCon.setFont(textFont);
+		valorDataCon.setBounds(395, 138, 125, 20);
+		this.add(lblDataCon);
+		this.add(valorDataCon);
+
+		lblTurno.setFont(labelFont); // CAMPO DO TURNO
+		lblTurno.setForeground(new Color(29, 53, 87));
+		lblTurno.setBounds(20, 167, 75, 20);
+		valorTurno.setFont(textFont);
+		valorTurno.setBounds(80, 168, 110, 20);
+		this.add(lblTurno);
+		this.add(valorTurno);
+
+		lblEntrada.setFont(labelFont); // CAMPO DA HORA DE ENTRADA
+		lblEntrada.setForeground(new Color(29, 53, 87));
+		lblEntrada.setBounds(207, 167, 75, 20);
+		valorEntrada.setFont(textFont);
+		valorEntrada.setBounds(280, 168, 85, 20);
+		this.add(lblEntrada);
+		this.add(valorEntrada);
+
+		lblSaida.setFont(labelFont); // CAMPO DA HORA DE SAIDA
+		lblSaida.setForeground(new Color(29, 53, 87));
+		lblSaida.setBounds(380, 167, 75, 20);
+		valorSaida.setFont(textFont);
+		valorSaida.setBounds(435, 168, 85, 20);
+		this.add(lblSaida);
+		this.add(valorSaida);
 
 		endereco.setFont(new Font("Montserrat", Font.BOLD, 44)); // TÍTULO DA SEÇÃO DE ENDEREÇO
 		endereco.setForeground(new Color(29, 53, 87));
@@ -248,13 +270,52 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		getBtnDeletar().addActionListener(this);
 
 		this.setVisible(true);
-
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.controlaDetalhe.clicaBtn(e);
 
+	}
+
+	public JLabel getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JButton getBtnSalvar() {
+		return btnSalvar;
+	}
+
+	public void setBtnSalvar(JButton btnSalvar) {
+		this.btnSalvar = btnSalvar;
+	}
+
+	public JButton getBtnDeletar() {
+		return btnDeletar;
+	}
+
+	public void setBtnDeletar(JButton btnDeletar) {
+		this.btnDeletar = btnDeletar;
+	}
+
+	public ControleTelaDetalheCliente getControlaDetalhe() {
+		return controlaDetalhe;
+	}
+
+	public void setControlaDetalhe(ControleTelaDetalheCliente controlaDetalhe) {
+		this.controlaDetalhe = controlaDetalhe;
+	}
+
+	public ControleDados getDados() {
+		return dados;
+	}
+
+	public void setDados(ControleDados dados) {
+		this.dados = dados;
 	}
 
 	public String[] getEstados() {
@@ -265,12 +326,20 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		this.estados = estados;
 	}
 
-	public JLabel getTitulo() {
-		return titulo;
+	public String[] getTurno() {
+		return turno;
 	}
 
-	public void setTitulo(JLabel titulo) {
-		this.titulo = titulo;
+	public void setTurno(String[] turno) {
+		this.turno = turno;
+	}
+
+	public String[] getHora() {
+		return hora;
+	}
+
+	public void setHora(String[] hora) {
+		this.hora = hora;
 	}
 
 	public JLabel getLblNome() {
@@ -287,30 +356,6 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 
 	public void setValorNome(JTextField valorNome) {
 		this.valorNome = valorNome;
-	}
-
-	public JLabel getLblGenero() {
-		return lblGenero;
-	}
-
-	public void setLblGenero(JLabel lblGenero) {
-		this.lblGenero = lblGenero;
-	}
-
-	public String[] getGen() {
-		return gen;
-	}
-
-	public void setGen(String[] gen) {
-		this.gen = gen;
-	}
-
-	public JComboBox getValorGenero() {
-		return valorGenero;
-	}
-
-	public void setValorGenero(JComboBox valorGenero) {
-		this.valorGenero = valorGenero;
 	}
 
 	public JLabel getLblData() {
@@ -361,20 +406,68 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		this.valorFone = valorFone;
 	}
 
-	public JLabel getLblEmail() {
-		return lblEmail;
+	public JLabel getLblDataCon() {
+		return lblDataCon;
 	}
 
-	public void setLblEmail(JLabel lblEmail) {
-		this.lblEmail = lblEmail;
+	public void setLblDataCon(JLabel lblDataCon) {
+		this.lblDataCon = lblDataCon;
 	}
 
-	public JTextField getValorEmail() {
-		return valorEmail;
+	public JTextField getValorDataCon() {
+		return valorDataCon;
 	}
 
-	public void setValorEmail(JTextField valorEmail) {
-		this.valorEmail = valorEmail;
+	public void setValorDataCon(JTextField valorDataCon) {
+		this.valorDataCon = valorDataCon;
+	}
+
+	public JLabel getLblTurno() {
+		return lblTurno;
+	}
+
+	public void setLblTurno(JLabel lblTurno) {
+		this.lblTurno = lblTurno;
+	}
+
+	public JComboBox getValorTurno() {
+		return valorTurno;
+	}
+
+	public void setValorTurno(JComboBox valorTurno) {
+		this.valorTurno = valorTurno;
+	}
+
+	public JLabel getLblEntrada() {
+		return lblEntrada;
+	}
+
+	public void setLblEntrada(JLabel lblEntrada) {
+		this.lblEntrada = lblEntrada;
+	}
+
+	public JComboBox getValorEntrada() {
+		return valorEntrada;
+	}
+
+	public void setValorEntrada(JComboBox valorEntrada) {
+		this.valorEntrada = valorEntrada;
+	}
+
+	public JLabel getLblSaida() {
+		return lblSaida;
+	}
+
+	public void setLblSaida(JLabel lblSaida) {
+		this.lblSaida = lblSaida;
+	}
+
+	public JComboBox getValorSaida() {
+		return valorSaida;
+	}
+
+	public void setValorSaida(JComboBox valorSaida) {
+		this.valorSaida = valorSaida;
 	}
 
 	public JLabel getEndereco() {
@@ -519,30 +612,6 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 
 	public void setValorComp(JTextField valorComp) {
 		this.valorComp = valorComp;
-	}
-
-	public JButton getBtnSalvar() {
-		return btnSalvar;
-	}
-
-	public void setBtnSalvar(JButton btnSalvar) {
-		this.btnSalvar = btnSalvar;
-	}
-
-	public JButton getBtnDeletar() {
-		return btnDeletar;
-	}
-
-	public void setBtnDeletar(JButton btnDeletar) {
-		this.btnDeletar = btnDeletar;
-	}
-
-	public ControleTelaDetalheCliente getControlaDetalhe() {
-		return controlaDetalhe;
-	}
-
-	public void setControlaDetalhe(ControleTelaDetalheCliente controlaDetalhe) {
-		this.controlaDetalhe = controlaDetalhe;
 	}
 
 	public Date getData() {
