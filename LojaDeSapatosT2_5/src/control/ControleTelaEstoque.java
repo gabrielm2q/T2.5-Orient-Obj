@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
-import view.TelaDetalheCliente;
 import view.TelaDetalheEstoque;
 import view.TelaEstoque;
 
@@ -23,7 +22,14 @@ public class ControleTelaEstoque {
 		JButton clicado = (JButton) e.getSource();
 
 		if (clicado == tela.getBtnCadastrar()) {
-			new TelaDetalheCliente(dados, 0, 0);
+			try {
+				String[] produtos = { "Salto", "Tênis", "Bota", "Sapato" };
+				Object prodEscolhido = JOptionPane.showInputDialog(null, "Deseja cadastrar qual produto?", "Produto",
+						JOptionPane.INFORMATION_MESSAGE, null, produtos, produtos[0]);
+				new TelaDetalheEstoque(dados, 0, 0, prodEscolhido.toString());
+			} catch (NullPointerException exc1) {
+
+			}
 		} else if (clicado == tela.getBtnOrdenar()) {
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
 		} else if (clicado == tela.getBtnAtualizar()) {
@@ -35,8 +41,8 @@ public class ControleTelaEstoque {
 		Object selecionado = e.getSource();
 
 		if (e.getValueIsAdjusting()) {
-			TelaDetalheEstoque detalhe = new TelaDetalheEstoque(dados, 1,
-					tela.getListaPessoasProd().getSelectedIndex());
+			TelaDetalheEstoque detalhe = new TelaDetalheEstoque(dados, 1, tela.getListaPessoasProd().getSelectedIndex(),
+					tela.getListaPessoasProd().getSelectedValue());
 			ControleTelaDetalheEstoque ctrlDetalhe = new ControleTelaDetalheEstoque(detalhe, dados, 1,
 					tela.getListaPessoasProd().getSelectedIndex());
 			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, tela.getListaPessoasProd().getSelectedIndex());

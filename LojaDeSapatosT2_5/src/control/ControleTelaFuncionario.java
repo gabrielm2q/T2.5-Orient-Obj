@@ -35,10 +35,10 @@ public class ControleTelaFuncionario {
 
 		if (e.getValueIsAdjusting()) {
 			TelaDetalheFuncionario detalhe = new TelaDetalheFuncionario(dados, 1,
-					funcionario.getListaPessoas().getSelectedIndex());
+					funcionario.getListaPessoasProd().getSelectedIndex());
 			ControleTelaDetalheFuncionario ctrlDetalhe = new ControleTelaDetalheFuncionario(detalhe, dados, 1,
-					funcionario.getListaPessoas().getSelectedIndex());
-			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, funcionario.getListaPessoas().getSelectedIndex());
+					funcionario.getListaPessoasProd().getSelectedIndex());
+			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, funcionario.getListaPessoasProd().getSelectedIndex());
 		}
 	}
 

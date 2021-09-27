@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -12,14 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import control.ControleDados;
-import control.ControleTelaDetalheCliente;
+import control.ControleTelaDetalheEstoque;
 
 public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JLabel titulo;
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnDeletar = new JButton("Deletar");
 
-	private ControleTelaDetalheCliente controlaDetalhe;
+	private ControleTelaDetalheEstoque controlaDetalhe;
 	private ControleDados dados = new ControleDados();
 
 	// Declarando valores que irão compor as ComboBoxes
@@ -116,12 +118,80 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 
 	public TelaDetalheEstoque(ControleDados d, int opcao, int idx, String tipoProd) {
 		super(tipoProd); // JFrame com o tipo do produto
+		this.dados = d;
+		this.controlaDetalhe = new ControleTelaDetalheEstoque(this, dados, opcao, idx);
+
+		this.setSize(560, 520);
+		this.setLayout(null);
+		this.setResizable(false);
+
+		// Estilo do Título
+		titulo = new JLabel(tipoProd, JLabel.CENTER);
+		titulo.setFont(new Font("Montserrat", Font.BOLD, 44));
+		titulo.setForeground(new Color(29, 53, 87));
+
+		// Cor do Plano de Fundo
+		getContentPane().setBackground(new Color(70, 123, 157));
+
+		// Fontes dos Botões
+		Font f = new Font("Montserrat", Font.PLAIN, 20);
+		btnSalvar.setFont(f);
+		btnDeletar.setFont(f);
+
+		// Localização e Tamanho dos componentes da tela
+		titulo.setBounds(90, 20, 340, 50);
+		btnDeletar.setBounds(20, 400, 239, 75);
+		btnSalvar.setBounds(279, 400, 239, 75);
+
+		// Adicionando componentes a tela
+		this.add(titulo);
+		this.add(btnSalvar);
+		this.add(btnDeletar);
+
+		// Definindo posição dos JLabels e JTextFields e suas fontes
+		Font labelFont = new Font("Montserrat", Font.BOLD, 16);
+		Font textFont = new Font("Montserrat", Font.BOLD, 14);
+
+		/*
+		 * A partir de agora, será gerada uma tela diferente para cada tipo de produto
+		 * da lista (Salto, Sapato, Tênis e Bota).
+		 */
+
+		// Adicionando o ActionListener
+		getBtnSalvar().addActionListener(this);
+		getBtnDeletar().addActionListener(this);
+
+		this.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public JButton getBtnSalvar() {
+		return btnSalvar;
+	}
+
+	public void setBtnSalvar(JButton btnSalvar) {
+		this.btnSalvar = btnSalvar;
+	}
+
+	public JButton getBtnDeletar() {
+		return btnDeletar;
+	}
+
+	public void setBtnDeletar(JButton btnDeletar) {
+		this.btnDeletar = btnDeletar;
+	}
+
+	public ControleDados getDados() {
+		return dados;
+	}
+
+	public void setDados(ControleDados dados) {
+		this.dados = dados;
 	}
 
 }
