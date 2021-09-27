@@ -78,11 +78,7 @@ public class ControleTelaDetalheCliente {
 						detalheCliente.getValorComp().getText()); // Complemento
 
 				// Formatando a data inserida
-				try {
-					data = formato.parse(detalheCliente.getValorData().getText());
-				} catch (ParseException excData) {
-					excData.printStackTrace();
-				}
+				data = formato.parse(detalheCliente.getValorData().getText());
 
 				// Cadastrando o cliente
 				cliCtrl.cadastrarCliente(endereco.getEnder(), // Endereço
@@ -103,6 +99,9 @@ public class ControleTelaDetalheCliente {
 				mensagemErroCadastro();
 			} catch (NumberFormatException exc2) {
 				mensagemErroCadastro();
+			} catch (ParseException excData) {
+				excData.printStackTrace();
+				mensagemErroCadastro();
 			}
 
 		} else if (clicado == detalheCliente.getBtnSalvar() && opc == 1) { // SALVAR CLIENTE EDITADO
@@ -120,14 +119,10 @@ public class ControleTelaDetalheCliente {
 						detalheCliente.getValorComp().getText()); // Complemento
 
 				// Formatando a data inserida
-				try {
-					data = formato.parse(detalheCliente.getValorData().getText());
-				} catch (ParseException excData) {
-					excData.printStackTrace();
-				}
+				data = formato.parse(detalheCliente.getValorData().getText());
 
-				// Cadastrando o cliente
-				cliCtrl.editarCliente(dados, this.getIndexCliente(), // Dados para preencher o endereço
+				// Editando o cliente
+				cliCtrl.editarCliente(dados, this.getIndexCliente(), // Index do cliente a ser editado
 						endereco.getEnder(), // Endereço
 						detalheCliente.getValorNome().getText(), // Nome
 						detalheCliente.getValorGenero().getSelectedItem().toString().charAt(0), // Gênero
@@ -145,6 +140,9 @@ public class ControleTelaDetalheCliente {
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
 			} catch (NumberFormatException exc2) {
+				mensagemErroCadastro();
+			} catch (ParseException excData) {
+				excData.printStackTrace();
 				mensagemErroCadastro();
 			}
 

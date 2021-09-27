@@ -12,7 +12,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 
 import control.ControleDados;
-import control.ControleFuncionario;
 
 public abstract class TemplatePessoa extends JFrame implements ActionListener, ListSelectionListener {
 	private JLabel texto;
@@ -20,7 +19,6 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 	private JButton btnOrdenar = new JButton("Ordenar");
 	private JButton btnAtualizar = new JButton("Atualizar");
 	private JList<String> listaPessoas = new JList<>();
-	private ControleFuncionario funcionarios = new ControleFuncionario();
 	private ControleDados dados = new ControleDados();
 
 	public TemplatePessoa(String texto, ControleDados d) {
@@ -88,11 +86,14 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 			listaPessoas.updateUI();
 
 		} else if (texto.equals("Funcionários")) {
-			listaNomes = new String[funcionarios.getNomeFuncionarios().size()];
+			listaNomes = new String[dados.getFuncionario().size()];
 
-			for (int i = 0; i < funcionarios.getNomeFuncionarios().size(); i++) {
-				listaNomes[i] = funcionarios.getNomeFuncionarios().get(i);
+			for (int i = 0; i < dados.getFuncionario().size(); i++) {
+				listaNomes[i] = dados.getFuncionario().get(i).getNome();
 			}
+
+			listaPessoas.setListData(listaNomes);
+			listaPessoas.updateUI();
 		}
 
 	}
@@ -115,10 +116,6 @@ public abstract class TemplatePessoa extends JFrame implements ActionListener, L
 
 	public JLabel getTexto() {
 		return texto;
-	}
-
-	public ControleFuncionario getFuncionarios() {
-		return funcionarios;
 	}
 
 }

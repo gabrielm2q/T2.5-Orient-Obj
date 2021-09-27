@@ -14,13 +14,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import control.ControleDados;
-import control.ControleTelaDetalheCliente;
+import control.ControleTelaDetalheFuncionario;
 
 public class TelaDetalheFuncionario extends JFrame implements ActionListener {
-	private JLabel titulo = new JLabel("Cliente", JLabel.CENTER);
+	private JLabel titulo = new JLabel("Funcionário", JLabel.CENTER);
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnDeletar = new JButton("Deletar");
-	private ControleTelaDetalheCliente controlaDetalhe;
+	private ControleTelaDetalheFuncionario controlaDetalhe;
 	private ControleDados dados = new ControleDados();
 
 	// Declarando valores que irão compor as ComboBoxes
@@ -75,8 +75,7 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 	public TelaDetalheFuncionario(ControleDados d, int opcao, int idx) {
 		super("Funcionário"); // JFrame com nome
 		this.dados = d;
-		// this.controlaDetalhe = new ControleTelaDetalheFuncionario(this, dados, opcao,
-		// idx);
+		this.controlaDetalhe = new ControleTelaDetalheFuncionario(this, dados, opcao, idx);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -302,11 +301,11 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 		this.btnDeletar = btnDeletar;
 	}
 
-	public ControleTelaDetalheCliente getControlaDetalhe() {
+	public ControleTelaDetalheFuncionario getControlaDetalhe() {
 		return controlaDetalhe;
 	}
 
-	public void setControlaDetalhe(ControleTelaDetalheCliente controlaDetalhe) {
+	public void setControlaDetalhe(ControleTelaDetalheFuncionario controlaDetalhe) {
 		this.controlaDetalhe = controlaDetalhe;
 	}
 

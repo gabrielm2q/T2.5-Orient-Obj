@@ -9,12 +9,9 @@ import model.Endereco;
 public class ControleCliente {
 	private ArrayList<String> nomeClientes = new ArrayList<>();
 	private ControleDados dados = new ControleDados();
-	private Endereco end = new Endereco();
 
 	public ControleCliente(ControleDados d) {
-		Date dat = new Date();
 		this.dados = d;
-
 		this.setNomeClientes(dados.getCliente());
 
 	}
@@ -42,7 +39,6 @@ public class ControleCliente {
 		d.getCliente().get(index).setCpf(cpf);
 		d.getCliente().get(index).setTelefone(telefone);
 		d.getCliente().get(index).setEmail(email);
-		d.getCliente().get(index).setEndereco(endereco);
 		d.getCliente().set(index, d.getCliente().get(index));
 	}
 
