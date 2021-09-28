@@ -40,21 +40,17 @@ public class ControleProduto {
 
 	}
 
-	public void editarSalto(ControleDados d, int index, int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem,
-			String tempoGarantia, char genero, String codBarras, String cor, String material, String tipoSalto,
-			String corExterna, String corSolado, String alturaSalto) {
-		dados.getProduto().get(index).setIdProd(idProd);
-		dados.getProduto().get(index).setNome(nome);
-		dados.getProduto().get(index).setTamanho(tamanho);
-		dados.getProduto().get(index).setPreco(preco);
-		dados.getProduto().get(index).setMarca(marca);
-		dados.getProduto().get(index).setPaisOrigem(paisOrigem);
-		dados.getProduto().get(index).setTempoGarantia(tempoGarantia);
-		dados.getProduto().get(index).setGenero(genero);
-		dados.getProduto().get(index).setCodBarras(codBarras);
-		dados.getProduto().get(index).setCor(cor);
-		dados.getProduto().get(index).setMaterial(material);
-		dados.getProduto().get(index)
+	public void editarSalto(ControleDados d, int index, int idProd, String nome, int tamanho, Double preco,
+			String marca, String paisOrigem, String tempoGarantia, char genero, String codBarras, String cor,
+			String material, String tipoSalto, String corExterna, String corSolado, String alturaSalto) {
+		int indexSalto = dados.getSalto().indexOf(dados.getProduto().get(index));
+		dados.getSalto().get(indexSalto).setIdProd(idProd);
+		dados.getSalto().get(indexSalto).setNome(nome);
+		dados.getSalto().get(indexSalto).setTamanho(tamanho);
+		dados.getSalto().get(indexSalto).setPreco(preco);
+		dados.getSalto().get(indexSalto).setMarca(marca);
+		// dados.getSalto().get(indexSalto).set(); Terminar
+		dados.getProduto().set(indexSalto, dados.getSalto().get(indexSalto));
 
 	}
 

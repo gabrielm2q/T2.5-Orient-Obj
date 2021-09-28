@@ -38,6 +38,7 @@ public class ControleTelaDetalheEstoque {
 
 		if (clicado == detalheEstoque.getBtnSalvar() && opc == 0) { // SALVAR CLIENTE
 			try {
+				// Cadastrando cada produto
 
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
