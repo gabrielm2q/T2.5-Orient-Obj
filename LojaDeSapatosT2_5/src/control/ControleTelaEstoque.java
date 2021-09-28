@@ -43,7 +43,8 @@ public class ControleTelaEstoque {
 
 		if (e.getValueIsAdjusting()) {
 			TelaDetalheEstoque detalhe = new TelaDetalheEstoque(dados, 1, tela.getListaPessoasProd().getSelectedIndex(),
-					tela.getListaPessoasProd().getSelectedValue());
+					dados.getProdEstoque().get(tela.getListaPessoasProd().getSelectedIndex()).getCategoria()
+							.get(tela.getListaPessoasProd().getSelectedIndex()));
 			ControleTelaDetalheEstoque ctrlDetalhe = new ControleTelaDetalheEstoque(detalhe, dados, 1,
 					tela.getListaPessoasProd().getSelectedIndex(), tela.getListaPessoasProd().getSelectedValue());
 			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, tela.getListaPessoasProd().getSelectedIndex());
