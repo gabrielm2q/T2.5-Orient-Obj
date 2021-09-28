@@ -34,9 +34,22 @@ public class ControleEstoque {
 		d.getProdEstoque().set(index, d.getProdEstoque().get(index));
 	}
 
-	public void deletarProduto(ControleDados d, int index) {
+	public void deletarProduto(ControleDados d, int index, String tipoProd) {
 		d.getProdEstoque().remove(index);
 		d.getProduto().remove(index);
+		if (tipoProd.equals("Salto")) {
+			d.getSalto().remove(index);
+			d.getSaltoPosicaoLista().remove(index);
+		} else if (tipoProd.equals("Tênis")) {
+			d.getTenis().remove(index);
+			d.getTenisPosicaoLista().remove(index);
+		} else if (tipoProd.equals("Bota")) {
+			d.getBota().remove(index);
+			d.getBotaPosicaoLista().remove(index);
+		} else if (tipoProd.equals("Sapato")) {
+			d.getSapato().remove(index);
+			d.getSapatoPosicaoLista().remove(index);
+		}
 	}
 
 	public String[] getNomeProdutos() {

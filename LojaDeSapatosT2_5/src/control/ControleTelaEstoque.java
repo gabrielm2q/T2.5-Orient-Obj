@@ -26,7 +26,7 @@ public class ControleTelaEstoque {
 				String[] produtos = { "Salto", "Tênis", "Bota", "Sapato" };
 				Object prodEscolhido = JOptionPane.showInputDialog(null, "Deseja cadastrar qual produto?", "Produto",
 						JOptionPane.INFORMATION_MESSAGE, null, produtos, produtos[0]);
-				new TelaDetalheEstoque(dados, 0, 0, prodEscolhido.toString());
+				new TelaDetalheEstoque(dados, 0, dados.getProdEstoque().size(), prodEscolhido.toString());
 
 			} catch (NullPointerException exc1) {
 
@@ -42,12 +42,14 @@ public class ControleTelaEstoque {
 		Object selecionado = e.getSource();
 
 		if (e.getValueIsAdjusting()) {
+
 			TelaDetalheEstoque detalhe = new TelaDetalheEstoque(dados, 1, tela.getListaPessoasProd().getSelectedIndex(),
-					dados.getProdEstoque().get(tela.getListaPessoasProd().getSelectedIndex()).getCategoria()
-							.get(tela.getListaPessoasProd().getSelectedIndex()));
+					dados.getProdEstoque().get(tela.getListaPessoasProd().getSelectedIndex()).getCategoria().get(0));
 			ControleTelaDetalheEstoque ctrlDetalhe = new ControleTelaDetalheEstoque(detalhe, dados, 1,
-					tela.getListaPessoasProd().getSelectedIndex(), tela.getListaPessoasProd().getSelectedValue());
+					tela.getListaPessoasProd().getSelectedIndex(),
+					dados.getProdEstoque().get(tela.getListaPessoasProd().getSelectedIndex()).getCategoria().get(0));
 			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, tela.getListaPessoasProd().getSelectedIndex());
+
 		}
 	}
 

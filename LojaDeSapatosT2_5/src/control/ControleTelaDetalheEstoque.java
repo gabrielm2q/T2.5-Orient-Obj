@@ -112,7 +112,7 @@ public class ControleTelaDetalheEstoque {
 				excData.printStackTrace();
 				mensagemErroCadastro();
 			}
-		} else if (clicado == detalheEstoque.getBtnSalvar() && opc == 1) { // SALVAR PRODUTOS
+		} else if (clicado == detalheEstoque.getBtnSalvar() && opc == 1) { // SALVAR PRODUTOS EDITADOS
 			try {
 				// Armazenando os valores comuns a todos os tipos de produto
 				int id = Integer.parseInt(detalheEstoque.getValorIdProd().getText());
@@ -158,6 +158,25 @@ public class ControleTelaDetalheEstoque {
 			} catch (ParseException excData) {
 				excData.printStackTrace();
 				mensagemErroCadastro();
+			}
+		} else if (clicado == detalheEstoque.getBtnDeletar()) { // DELETAR PRODUTO
+			try {
+
+				if (tipoProd == "Salto") {
+					if (detalheEstoque.getValorNome().getText().equals(
+							dados.getProdEstoque().get(indexProduto).getProduto().get(indexProduto).getNome())) {
+						estCtrl.deletarProduto(dados, indexProduto, tipoProd);
+						JOptionPane.showMessageDialog(null, tipoProd + " deletado com sucesso!", null,
+								JOptionPane.INFORMATION_MESSAGE);
+						detalheEstoque.dispose();
+					} else {
+						JOptionPane.showMessageDialog(null, "ERRO!\nSelecione um produto na lista para deletar!", null,
+								JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, "Erro!\nNão há cliente a ser deletado!", null,
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
