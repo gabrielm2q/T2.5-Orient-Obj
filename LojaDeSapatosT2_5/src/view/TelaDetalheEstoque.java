@@ -51,7 +51,7 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JTextField valorNome;
 	private JLabel lblTamanho = new JLabel("Tamanho: "); // Tamanho
 	private JComboBox valorTamanho = new JComboBox(tamanhos);
-	private JLabel lblPreco = new JLabel("Preço: R$"); // Preço
+	private JLabel lblPreco = new JLabel("Preço: "); // Preço
 	private JTextField valorPreco;
 	private JLabel lblMarca = new JLabel("Marca: "); // Marca
 	private JTextField valorMarca;
@@ -220,13 +220,80 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.add(valorTamanho);
 		this.add(lblTamanho);
 
-		lblPreco.setFont(labelFont); // CAMPO DE PREÇO
+		lblPreco.setFont(labelFont); // CAMPO DE PRECO
 		lblPreco.setForeground(new Color(29, 53, 87));
 		lblPreco.setBounds(20, 134, 85, 20);
+		valorPreco = new JTextField(50);
 		valorPreco.setFont(textFont);
-		valorPreco.setBounds(100, 136, 45, 20);
+		valorPreco.setBounds(75, 136, 45, 20);
 		this.add(valorPreco);
 		this.add(lblPreco);
+
+		lblMarca.setFont(labelFont); // CAMPO DE MARCA
+		lblMarca.setForeground(new Color(29, 53, 87));
+		lblMarca.setBounds(133, 134, 65, 20);
+		valorMarca = new JTextField(40);
+		valorMarca.setFont(textFont);
+		valorMarca.setBounds(189, 136, 100, 20);
+		this.add(valorMarca);
+		this.add(lblMarca);
+
+		lblOrigem.setFont(labelFont); // CAMPO DE PAIS DE ORIGEM
+		lblOrigem.setForeground(new Color(29, 53, 87));
+		lblOrigem.setBounds(300, 134, 135, 20);
+		valorOrigem = new JTextField(40);
+		valorOrigem.setFont(textFont);
+		valorOrigem.setBounds(425, 136, 91, 20);
+		this.add(valorOrigem);
+		this.add(lblOrigem);
+
+		// DAQUI
+
+		lblGarantia.setFont(labelFont); // CAMPO DE GARANTIA
+		lblGarantia.setForeground(new Color(29, 53, 87));
+		lblGarantia.setBounds(20, 163, 75, 20);
+		valorGarantia = new JTextField(40);
+		valorGarantia.setFont(textFont);
+		valorGarantia.setText("1 ano");
+		valorGarantia.setBounds(97, 165, 75, 20);
+		this.add(valorGarantia);
+		this.add(lblGarantia);
+
+		lblGenero.setFont(labelFont); // CAMPO DE GENERO
+		lblGenero.setForeground(new Color(29, 53, 87));
+		lblGenero.setBounds(187, 163, 75, 20);
+		valorGenero.setFont(textFont);
+		valorGenero.setBounds(255, 165, 85, 20);
+		this.add(valorGenero);
+		this.add(lblGenero);
+
+		lblCor.setFont(labelFont); // CAMPO DE COR
+		lblCor.setForeground(new Color(29, 53, 87));
+		lblCor.setBounds(355, 163, 50, 20);
+		valorCor = new JTextField(40);
+		valorCor.setFont(textFont);
+		valorCor.setBounds(395, 165, 122, 20);
+		this.add(valorCor);
+		this.add(lblCor);
+
+		lblBarras.setFont(labelFont); // CAMPO DE CODIGO DE BARRAS
+		lblBarras.setForeground(new Color(29, 53, 87));
+		lblBarras.setBounds(20, 192, 150, 20);
+		valorBarras = new JTextField(40);
+		valorBarras.setFont(textFont);
+		valorBarras.setText("010101");
+		valorBarras.setBounds(166, 194, 125, 20);
+		this.add(valorBarras);
+		this.add(lblBarras);
+
+		lblMaterial.setFont(labelFont); // CAMPO DE MATERIAL
+		lblMaterial.setForeground(new Color(29, 53, 87));
+		lblMaterial.setBounds(307, 192, 100, 20);
+		valorMaterial = new JTextField(40);
+		valorMaterial.setFont(textFont);
+		valorMaterial.setBounds(381, 194, 136, 20);
+		this.add(valorMaterial);
+		this.add(lblMaterial);
 
 		// CONSTRUIR DIVERSAS INTERFACES DE ACORDO COM O PRODUTO ESCOLHIDO
 		if (tipoProd.equals("Salto")) {
