@@ -34,7 +34,7 @@ public class ControleTelaEstoque {
 		} else if (clicado == tela.getBtnOrdenar()) {
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
 		} else if (clicado == tela.getBtnAtualizar()) {
-			tela.preencherLista("Clientes", dados);
+			tela.preencherLista("Estoque", dados);
 		}
 	}
 
@@ -45,7 +45,7 @@ public class ControleTelaEstoque {
 			TelaDetalheEstoque detalhe = new TelaDetalheEstoque(dados, 1, tela.getListaPessoasProd().getSelectedIndex(),
 					tela.getListaPessoasProd().getSelectedValue());
 			ControleTelaDetalheEstoque ctrlDetalhe = new ControleTelaDetalheEstoque(detalhe, dados, 1,
-					tela.getListaPessoasProd().getSelectedIndex());
+					tela.getListaPessoasProd().getSelectedIndex(), tela.getListaPessoasProd().getSelectedValue());
 			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, tela.getListaPessoasProd().getSelectedIndex());
 		}
 	}

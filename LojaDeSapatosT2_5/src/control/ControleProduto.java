@@ -49,7 +49,16 @@ public class ControleProduto {
 		dados.getSalto().get(indexSalto).setTamanho(tamanho);
 		dados.getSalto().get(indexSalto).setPreco(preco);
 		dados.getSalto().get(indexSalto).setMarca(marca);
-		// dados.getSalto().get(indexSalto).set(); Terminar
+		dados.getSalto().get(indexSalto).setPaisOrigem(paisOrigem);
+		dados.getSalto().get(indexSalto).setTempoGarantia(tempoGarantia);
+		dados.getSalto().get(indexSalto).setGenero(genero);
+		dados.getSalto().get(indexSalto).setCodBarras(codBarras);
+		dados.getSalto().get(indexSalto).setCor(cor);
+		dados.getSalto().get(indexSalto).setMaterial(material);
+		dados.getSalto().get(indexSalto).setTipoSalto(tipoSalto);
+		dados.getSalto().get(indexSalto).setCorExterna(corExterna);
+		dados.getSalto().get(indexSalto).setCorSolado(corSolado);
+		dados.getSalto().get(indexSalto).setAlturaSalto(alturaSalto);
 		dados.getProduto().set(indexSalto, dados.getSalto().get(indexSalto));
 
 	}
