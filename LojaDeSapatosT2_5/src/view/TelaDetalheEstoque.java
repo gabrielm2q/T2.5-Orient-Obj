@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -25,7 +26,6 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private ControleDados dados = new ControleDados();
 
 	// Declarando valores que irão compor as ComboBoxes
-	private String[] categorias = { "Salto", "Tênis", "Bota", "Sapato" };
 	private String[] tamanhos = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14",
 			"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32",
 			"33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
@@ -34,6 +34,7 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private String[] alturaSaltos = { "Baixo", "Médio", "Alto", "Não Possui" };
 
 	// Trabalhando com datas
+	private GregorianCalendar dataCalendar = new GregorianCalendar();
 	private Date data = new Date();
 	private SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -41,14 +42,16 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JLabel lblQuantidade = new JLabel("Quantidade: "); // Quantidade
 	private JTextField valorQuantidade;
 	private JLabel lblCategoria = new JLabel("Categoria: "); // Categoria
-	private JComboBox valorCategoria = new JComboBox(categorias);
-	private JLabel lblDataCadastro; // Data de Cadastro
-	private JLabel lblIdProd; // ID do Produto
+	private JLabel valorCategoria;
+	private JLabel lblDataCadastro = new JLabel("Data de Cadastro: "); // Data de Cadastro
+	private JLabel valorDataCadastro;
+	private JLabel lblIdProd = new JLabel("ID: "); // ID do Produto
+	private JTextField valorIdProd;
 	private JLabel lblNome = new JLabel("Nome: "); // Nome
 	private JTextField valorNome;
 	private JLabel lblTamanho = new JLabel("Tamanho: "); // Tamanho
 	private JComboBox valorTamanho = new JComboBox(tamanhos);
-	private JLabel lblPreco = new JLabel("Preço: "); // Preço
+	private JLabel lblPreco = new JLabel("Preço: R$"); // Preço
 	private JTextField valorPreco;
 	private JLabel lblMarca = new JLabel("Marca: "); // Marca
 	private JTextField valorMarca;
@@ -156,6 +159,79 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		 * A partir de agora, será gerada uma tela diferente para cada tipo de produto
 		 * da lista (Salto, Sapato, Tênis e Bota).
 		 */
+		// lblCategoria = new JLabel("Categoria: ")
+
+		lblNome.setFont(labelFont); // CAMPO DE NOME
+		lblNome.setForeground(new Color(29, 53, 87));
+		lblNome.setBounds(20, 78, 60, 20);
+		valorNome = new JTextField(50);
+		valorNome.setFont(textFont);
+		valorNome.setBounds(75, 80, 200, 20);
+		this.add(valorNome);
+		this.add(lblNome);
+
+		this.data = dataCalendar.getTime(); // Obtendo a data de Cadastro
+		String dataCad = formato.format(data);
+
+		lblDataCadastro.setFont(labelFont); // CAMPO DE DATA DE CADASTRO
+		lblDataCadastro.setForeground(new Color(29, 53, 87));
+		lblDataCadastro.setBounds(292, 78, 165, 20);
+		valorDataCadastro = new JLabel();
+		valorDataCadastro.setFont(labelFont);
+		valorDataCadastro.setBounds(435, 78, 80, 20);
+		valorDataCadastro.setText(dataCad);
+		this.add(valorDataCadastro);
+		this.add(lblDataCadastro);
+
+		lblQuantidade.setFont(labelFont); // CAMPO DE QUANTIDADE
+		lblQuantidade.setForeground(new Color(29, 53, 87));
+		lblQuantidade.setBounds(20, 105, 110, 20);
+		valorQuantidade = new JTextField(8);
+		valorQuantidade.setFont(textFont);
+		valorQuantidade.setText("0000");
+		valorQuantidade.setBounds(118, 107, 40, 20);
+		this.add(valorQuantidade);
+		this.add(lblQuantidade);
+
+		lblCategoria.setFont(labelFont); // CAMPO DE CATEGORIA
+		lblCategoria.setForeground(new Color(29, 53, 87));
+		lblCategoria.setBounds(170, 105, 100, 20);
+		valorCategoria = new JLabel(tipoProd);
+		valorCategoria.setFont(labelFont);
+		valorCategoria.setBounds(252, 105, 55, 20);
+		this.add(valorCategoria);
+		this.add(lblCategoria);
+
+		lblIdProd.setFont(labelFont); // CAMPO DE ID
+		lblIdProd.setForeground(new Color(29, 53, 87));
+		lblIdProd.setBounds(318, 105, 35, 20);
+		valorIdProd = new JTextField(8);
+		valorIdProd.setFont(textFont);
+		valorIdProd.setText("00");
+		valorIdProd.setBounds(343, 107, 30, 20);
+		this.add(valorIdProd);
+		this.add(lblIdProd);
+
+		lblTamanho.setFont(labelFont); // CAMPO DE TAMANHO
+		lblTamanho.setForeground(new Color(29, 53, 87));
+		lblTamanho.setBounds(389, 105, 85, 20);
+		valorTamanho.setFont(textFont);
+		valorTamanho.setBounds(470, 107, 45, 20);
+		this.add(valorTamanho);
+		this.add(lblTamanho);
+
+		lblPreco.setFont(labelFont); // CAMPO DE PREÇO
+		lblPreco.setForeground(new Color(29, 53, 87));
+		lblPreco.setBounds(20, 134, 85, 20);
+		valorPreco.setFont(textFont);
+		valorPreco.setBounds(100, 136, 45, 20);
+		this.add(valorPreco);
+		this.add(lblPreco);
+
+		// CONSTRUIR DIVERSAS INTERFACES DE ACORDO COM O PRODUTO ESCOLHIDO
+		if (tipoProd.equals("Salto")) {
+
+		}
 
 		// Adicionando o ActionListener
 		getBtnSalvar().addActionListener(this);

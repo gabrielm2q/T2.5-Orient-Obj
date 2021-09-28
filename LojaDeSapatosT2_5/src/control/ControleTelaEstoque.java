@@ -27,6 +27,7 @@ public class ControleTelaEstoque {
 				Object prodEscolhido = JOptionPane.showInputDialog(null, "Deseja cadastrar qual produto?", "Produto",
 						JOptionPane.INFORMATION_MESSAGE, null, produtos, produtos[0]);
 				new TelaDetalheEstoque(dados, 0, 0, prodEscolhido.toString());
+
 			} catch (NullPointerException exc1) {
 
 			}
