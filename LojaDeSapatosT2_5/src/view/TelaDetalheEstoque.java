@@ -32,6 +32,7 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 			"50" };
 	private String[] gen = { "M", "F", "Unissex" };
 	private String[] alturaSaltos = { "Baixo", "Médio", "Alto", "Não Possui" };
+	private String tipoProduto;
 
 	// Trabalhando com datas
 	private GregorianCalendar dataCalendar = new GregorianCalendar();
@@ -122,7 +123,8 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	public TelaDetalheEstoque(ControleDados d, int opcao, int idx, String tipoProd) {
 		super(tipoProd); // JFrame com o tipo do produto
 		this.dados = d;
-		this.controlaDetalhe = new ControleTelaDetalheEstoque(this, dados, opcao, idx);
+		this.tipoProduto = tipoProd;
+		this.controlaDetalhe = new ControleTelaDetalheEstoque(this, dados, opcao, idx, tipoProduto);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -504,8 +506,16 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		this.controlaDetalhe.clicaBtn(e);
 
+	}
+
+	public String getTipoProduto() {
+		return tipoProduto;
+	}
+
+	public void setTipoProduto(String tipoProduto) {
+		this.tipoProduto = tipoProduto;
 	}
 
 	public JButton getBtnSalvar() {
@@ -530,6 +540,294 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 
 	public void setDados(ControleDados dados) {
 		this.dados = dados;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public JTextField getValorQuantidade() {
+		return valorQuantidade;
+	}
+
+	public void setValorQuantidade(JTextField valorQuantidade) {
+		this.valorQuantidade = valorQuantidade;
+	}
+
+	public JLabel getValorCategoria() {
+		return valorCategoria;
+	}
+
+	public void setValorCategoria(JLabel valorCategoria) {
+		this.valorCategoria = valorCategoria;
+	}
+
+	public JLabel getValorDataCadastro() {
+		return valorDataCadastro;
+	}
+
+	public void setValorDataCadastro(JLabel valorDataCadastro) {
+		this.valorDataCadastro = valorDataCadastro;
+	}
+
+	public JTextField getValorIdProd() {
+		return valorIdProd;
+	}
+
+	public void setValorIdProd(JTextField valorIdProd) {
+		this.valorIdProd = valorIdProd;
+	}
+
+	public JTextField getValorNome() {
+		return valorNome;
+	}
+
+	public void setValorNome(JTextField valorNome) {
+		this.valorNome = valorNome;
+	}
+
+	public JComboBox getValorTamanho() {
+		return valorTamanho;
+	}
+
+	public void setValorTamanho(JComboBox valorTamanho) {
+		this.valorTamanho = valorTamanho;
+	}
+
+	public JTextField getValorPreco() {
+		return valorPreco;
+	}
+
+	public void setValorPreco(JTextField valorPreco) {
+		this.valorPreco = valorPreco;
+	}
+
+	public JTextField getValorMarca() {
+		return valorMarca;
+	}
+
+	public void setValorMarca(JTextField valorMarca) {
+		this.valorMarca = valorMarca;
+	}
+
+	public JTextField getValorOrigem() {
+		return valorOrigem;
+	}
+
+	public void setValorOrigem(JTextField valorOrigem) {
+		this.valorOrigem = valorOrigem;
+	}
+
+	public JTextField getValorGarantia() {
+		return valorGarantia;
+	}
+
+	public void setValorGarantia(JTextField valorGarantia) {
+		this.valorGarantia = valorGarantia;
+	}
+
+	public JComboBox getValorGenero() {
+		return valorGenero;
+	}
+
+	public void setValorGenero(JComboBox valorGenero) {
+		this.valorGenero = valorGenero;
+	}
+
+	public JTextField getValorBarras() {
+		return valorBarras;
+	}
+
+	public void setValorBarras(JTextField valorBarras) {
+		this.valorBarras = valorBarras;
+	}
+
+	public JTextField getValorCor() {
+		return valorCor;
+	}
+
+	public void setValorCor(JTextField valorCor) {
+		this.valorCor = valorCor;
+	}
+
+	public JTextField getValorMaterial() {
+		return valorMaterial;
+	}
+
+	public void setValorMaterial(JTextField valorMaterial) {
+		this.valorMaterial = valorMaterial;
+	}
+
+	public JTextField getValorSalto() {
+		return valorSalto;
+	}
+
+	public void setValorSalto(JTextField valorSalto) {
+		this.valorSalto = valorSalto;
+	}
+
+	public JTextField getValorCorExt() {
+		return valorCorExt;
+	}
+
+	public void setValorCorExt(JTextField valorCorExt) {
+		this.valorCorExt = valorCorExt;
+	}
+
+	public JTextField getValorCorSol() {
+		return valorCorSol;
+	}
+
+	public void setValorCorSol(JTextField valorCorSol) {
+		this.valorCorSol = valorCorSol;
+	}
+
+	public JTextField getValorAltSalto() {
+		return valorAltSalto;
+	}
+
+	public void setValorAltSalto(JTextField valorAltSalto) {
+		this.valorAltSalto = valorAltSalto;
+	}
+
+	public JTextField getValorAtividade() {
+		return valorAtividade;
+	}
+
+	public void setValorAtividade(JTextField valorAtividade) {
+		this.valorAtividade = valorAtividade;
+	}
+
+	public JTextField getValorTecSol() {
+		return valorTecSol;
+	}
+
+	public void setValorTecSol(JTextField valorTecSol) {
+		this.valorTecSol = valorTecSol;
+	}
+
+	public JTextField getValorPisada() {
+		return valorPisada;
+	}
+
+	public void setValorPisada(JTextField valorPisada) {
+		this.valorPisada = valorPisada;
+	}
+
+	public JTextField getValorTipoPalmilha() {
+		return valorTipoPalmilha;
+	}
+
+	public void setValorTipoPalmilha(JTextField valorTipoPalmilha) {
+		this.valorTipoPalmilha = valorTipoPalmilha;
+	}
+
+	public JTextField getValorPeso() {
+		return valorPeso;
+	}
+
+	public void setValorPeso(JTextField valorPeso) {
+		this.valorPeso = valorPeso;
+	}
+
+	public JTextField getValorAmarra() {
+		return valorAmarra;
+	}
+
+	public void setValorAmarra(JTextField valorAmarra) {
+		this.valorAmarra = valorAmarra;
+	}
+
+	public JTextField getValorCorCadarco() {
+		return valorCorCadarco;
+	}
+
+	public void setValorCorCadarco(JTextField valorCorCadarco) {
+		this.valorCorCadarco = valorCorCadarco;
+	}
+
+	public JTextField getValorModelo() {
+		return valorModelo;
+	}
+
+	public void setValorModelo(JTextField valorModelo) {
+		this.valorModelo = valorModelo;
+	}
+
+	public JTextField getValorAltCano() {
+		return valorAltCano;
+	}
+
+	public void setValorAltCano(JTextField valorAltCano) {
+		this.valorAltCano = valorAltCano;
+	}
+
+	public JTextField getValorTipoSalto() {
+		return valorTipoSalto;
+	}
+
+	public void setValorTipoSalto(JTextField valorTipoSalto) {
+		this.valorTipoSalto = valorTipoSalto;
+	}
+
+	public JTextField getValorTiPalmilha() {
+		return valorTiPalmilha;
+	}
+
+	public void setValorTiPalmilha(JTextField valorTiPalmilha) {
+		this.valorTiPalmilha = valorTiPalmilha;
+	}
+
+	public JTextField getValorMatSolado() {
+		return valorMatSolado;
+	}
+
+	public void setValorMatSolado(JTextField valorMatSolado) {
+		this.valorMatSolado = valorMatSolado;
+	}
+
+	public JTextField getValorSolado() {
+		return valorSolado;
+	}
+
+	public void setValorSolado(JTextField valorSolado) {
+		this.valorSolado = valorSolado;
+	}
+
+	public JTextField getValorInterno() {
+		return valorInterno;
+	}
+
+	public void setValorInterno(JTextField valorInterno) {
+		this.valorInterno = valorInterno;
+	}
+
+	public JTextField getValorBico() {
+		return valorBico;
+	}
+
+	public void setValorBico(JTextField valorBico) {
+		this.valorBico = valorBico;
+	}
+
+	public JComboBox getValorAlturaSalto() {
+		return valorAlturaSalto;
+	}
+
+	public void setValorAlturaSalto(JComboBox valorAlturaSalto) {
+		this.valorAlturaSalto = valorAlturaSalto;
+	}
+
+	public JTextField getValorPalmilha() {
+		return valorPalmilha;
+	}
+
+	public void setValorPalmilha(JTextField valorPalmilha) {
+		this.valorPalmilha = valorPalmilha;
 	}
 
 }

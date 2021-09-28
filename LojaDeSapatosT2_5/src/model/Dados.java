@@ -10,7 +10,16 @@ public class Dados {
 	private final ArrayList<Endereco> enderecoCliente;
 	private final ArrayList<Endereco> enderecoFuncionario;
 	private final Endereco enderecoLoja;
+	private final ArrayList<Estoque> prodEstoque;
 	private final List<Produto> produto;
+	private final ArrayList<Salto> salto;
+	private final ArrayList<Integer> saltoPosicaoLista;
+	private final ArrayList<Tenis> tenis;
+	private final ArrayList<Integer> tenisPosicaoLista;
+	private final ArrayList<Bota> bota;
+	private final ArrayList<Integer> botaPosicaoLista;
+	private final ArrayList<Sapato> sapato;
+	private final ArrayList<Integer> sapatoPosicaoLista;
 
 	public Dados() {
 		this.cliente = new ArrayList<>();
@@ -19,7 +28,16 @@ public class Dados {
 		this.enderecoCliente = new ArrayList<>();
 		this.enderecoFuncionario = new ArrayList<>();
 		this.enderecoLoja = new Endereco();
+		this.prodEstoque = new ArrayList<>();
 		this.produto = new ArrayList<>();
+		this.salto = new ArrayList<>();
+		this.saltoPosicaoLista = new ArrayList<>();
+		this.tenis = new ArrayList<>();
+		this.tenisPosicaoLista = new ArrayList<>();
+		this.bota = new ArrayList<>();
+		this.botaPosicaoLista = new ArrayList<>();
+		this.sapato = new ArrayList<>();
+		this.sapatoPosicaoLista = new ArrayList<>();
 	}
 
 	public ArrayList<Cliente> getCliente() {
@@ -79,6 +97,14 @@ public class Dados {
 		this.enderecoLoja.setComplemento(complemento);
 	}
 
+	public ArrayList<Estoque> getProdEstoque() {
+		return prodEstoque;
+	}
+
+	public void setProdEstoque(Estoque est) {
+		this.prodEstoque.add(est);
+	}
+
 	public List<Produto> getProduto() {
 		return produto;
 	}
@@ -87,106 +113,68 @@ public class Dados {
 		this.produto.add(prod);
 	}
 
-	/*
-	 * // CLIENTE public List<Cliente> getCliente() { return cliente; }
-	 * 
-	 * public void addCliente(Cliente cliente) { this.cliente.add(cliente); }
-	 * 
-	 * public void imprimirClientes() {
-	 * System.out.println("\n~IMPRIMINDO TODOS OS CLIENTES~\n");
-	 * 
-	 * for (int i = 0; i < cliente.size(); i++) { System.out.println(i + 1 +
-	 * "º Cliente: "); cliente.get(i).imprimir(); System.out.println(""); } }
-	 * 
-	 * public void deletarClientes() { System.out.
-	 * println("\n~DELETAR CLIENTE~\n\nEscolha o cliente a ser deletado: ");
-	 * 
-	 * for (int i = 0; i < cliente.size(); i++) { System.out.println(i + 1 +
-	 * "º Cliente: "); cliente.get(i).imprimir(); System.out.println(""); }
-	 * 
-	 * System.out.print("Opção escolhida: "); int opc = sc.nextInt(); sc.nextLine();
-	 * // Limpando o Buffer
-	 * 
-	 * while (opc < 1 || opc > cliente.size()) { // Verificação de validade do valor
-	 * inserido System.out.println("\nVALOR INCORRETO! ESCOLHA UMA OPÇÃO DO MENU!");
-	 * System.out.print("Opção escolhida: "); opc = sc.nextInt(); } opc--;
-	 * cliente.remove(opc); System.out.println("Cliente removido!"); }
-	 * 
-	 * // FUNCIONARIO public List<Funcionario> getFuncionario() { return
-	 * funcionario; }
-	 * 
-	 * public void addFuncionario(Funcionario funcionario) {
-	 * this.funcionario.add(funcionario); }
-	 * 
-	 * public void imprimirFuncionarios() {
-	 * System.out.println("\n~IMPRIMINDO TODOS OS FUNCIONÁRIOS~\n");
-	 * 
-	 * for (int i = 0; i < funcionario.size(); i++) { System.out.println(i + 1 +
-	 * "º Funcionário: "); funcionario.get(i).imprimir(); System.out.println(""); }
-	 * }
-	 * 
-	 * public void deletarFuncionarios(Loja loja) { System.out.
-	 * println("\n~DELETAR FUNCIONÁRIO~\n\nEscolha o funcionário a ser deletado: ");
-	 * 
-	 * for (int i = 0; i < funcionario.size(); i++) { System.out.println(i + 1 +
-	 * "º Funcionário: "); funcionario.get(i).imprimir(); System.out.println(""); }
-	 * 
-	 * System.out.print("Opção escolhida: "); int opc = sc.nextInt(); sc.nextLine();
-	 * // Limpando o Buffer
-	 * 
-	 * while (opc < 1 || opc > funcionario.size()) { // Verificação de validade do
-	 * valor inserido
-	 * System.out.println("\nVALOR INCORRETO! ESCOLHA UMA OPÇÃO DO MENU!");
-	 * System.out.print("Opção escolhida: "); opc = sc.nextInt(); } opc--;
-	 * loja.deletarFuncionario(funcionario.get(opc)); // Deletando o funcionário da
-	 * instância da classe Loja através do // método loja.deletarFuncionario()
-	 * funcionario.remove(opc); System.out.println("Funcionário removido!"); }
-	 * 
-	 * // VENDA public List<Venda> getVenda() { return venda; }
-	 * 
-	 * public void addVenda(Venda venda) { this.venda.add(venda); }
-	 * 
-	 * public void imprimirVendas() {
-	 * System.out.println("\n~IMPRIMINDO TODAS AS VENDAS~\n");
-	 * 
-	 * for (int i = 0; i < venda.size(); i++) { System.out.println(i + 1 +
-	 * "º Venda: "); venda.get(i).imprimir(); System.out.println(""); } }
-	 * 
-	 * // ENDERECO public ArrayList<Endereco> getEndereco() { return endereco; }
-	 * 
-	 * public void addEndereco(Endereco endereco) { this.endereco.add(endereco); }
-	 * 
-	 * public void imprimirEnderecos() {
-	 * System.out.println("\n~IMPRIMINDO TODOS OS ENDERECOS~\n");
-	 * 
-	 * for (int i = 0; i < endereco.size(); i++) { System.out.println(i + 1 +
-	 * "º Endereço: "); endereco.get(i).imprimir(); System.out.println(""); } }
-	 * 
-	 * // PRODUTO public List<Produto> getProduto() { return produto; }
-	 * 
-	 * public void addProduto(Produto produto) { this.produto.add(produto); }
-	 * 
-	 * public void imprimirProdutos() {
-	 * System.out.println("\n~IMPRIMINDO TODOS OS PRODUTOS~\n");
-	 * 
-	 * for (int i = 0; i < produto.size(); i++) { System.out.print(i + 1 +
-	 * "º Produto: "); produto.get(i).imprimir(); System.out.println(""); } }
-	 * 
-	 * public void deletarProdutos(Estoque estoque) { System.out.
-	 * println("\n~DELETAR PRODUTO~\n\nEscolha o produto a ser deletado: ");
-	 * 
-	 * for (int i = 0; i < produto.size(); i++) { System.out.print(i + 1 +
-	 * "º Produto: "); produto.get(i).imprimir(); System.out.println(""); }
-	 * 
-	 * System.out.print("Opção escolhida: "); int opc = sc.nextInt(); sc.nextLine();
-	 * // Limpando o Buffer
-	 * 
-	 * while (opc < 1 || opc > produto.size()) { // Validando valor inserido
-	 * System.out.println("\nVALOR INCORRETO! ESCOLHA UMA OPÇÃO DO MENU!");
-	 * System.out.print("Opção escolhida: "); opc = sc.nextInt(); } opc--;
-	 * estoque.deletarProduto(produto.get(opc)); // Enviando produto para que este
-	 * também seja deletado em Estoque produto.remove(opc); // Deletando produto em
-	 * Dados System.out.println("Produto removido!"); }
-	 */
+	public ArrayList<Salto> getSalto() {
+		return salto;
+	}
+
+	public void setSalto(Salto salto) {
+		this.salto.add(salto);
+	}
+
+	public ArrayList<Tenis> getTenis() {
+		return tenis;
+	}
+
+	public void setTenis(Tenis tenis) {
+		this.tenis.add(tenis);
+	}
+
+	public ArrayList<Bota> getBota() {
+		return bota;
+	}
+
+	public void setBota(Bota bota) {
+		this.bota.add(bota);
+	}
+
+	public ArrayList<Sapato> getSapato() {
+		return sapato;
+	}
+
+	public void setSapato(Sapato sapato) {
+		this.sapato.add(sapato);
+	}
+
+	public ArrayList<Integer> getSaltoPosicaoLista() {
+		return saltoPosicaoLista;
+	}
+
+	public void setSaltoPosicaoLista(int pos) {
+		this.saltoPosicaoLista.add(pos);
+	}
+
+	public ArrayList<Integer> getTenisPosicaoLista() {
+		return tenisPosicaoLista;
+	}
+
+	public void setTenisPosicaoLista(int pos) {
+		this.tenisPosicaoLista.add(pos);
+	}
+
+	public ArrayList<Integer> getBotaPosicaoLista() {
+		return botaPosicaoLista;
+	}
+
+	public void setBotaPosicaoLista(int pos) {
+		this.botaPosicaoLista.add(pos);
+	}
+
+	public ArrayList<Integer> getSapatoPosicaoLista() {
+		return sapatoPosicaoLista;
+	}
+
+	public void setSapatoPosicaoLista(int pos) {
+		this.sapatoPosicaoLista.add(pos);
+	}
 
 }
