@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 
@@ -45,6 +46,7 @@ public abstract class Template extends JFrame implements ActionListener, ListSel
 		btnOrdenar.setBounds(198, 420, 146, 50);
 		btnAtualizar.setBounds(368, 420, 145, 50);
 
+		// Editando Lista
 		this.listaPessoasProd.setBackground(Color.white);
 		this.listaPessoasProd.setBounds(32, 95, 480, 300);
 		this.listaPessoasProd.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
