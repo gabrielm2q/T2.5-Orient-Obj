@@ -7,7 +7,7 @@ import javax.swing.event.ListSelectionEvent;
 import control.ControleTelaVenda;
 
 public class TelaVenda extends Template {
-	ControleTelaVenda controlTela;
+	private ControleTelaVenda controlTela;
 
 	public TelaVenda() {
 		super("Venda");
@@ -15,13 +15,13 @@ public class TelaVenda extends Template {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { // Botões controlados pela classe ControleTelaVenda
 		this.controlTela.clicaBtn(e);
 
 	}
 
 	@Override
-	public void valueChanged(ListSelectionEvent e) {
+	public void valueChanged(ListSelectionEvent e) { // Lista controlada pela classe ControleTelaVenda
 		this.controlTela.clicaLista(e);
 
 	}

@@ -9,7 +9,6 @@ import javax.swing.event.ListSelectionEvent;
 
 import model.Dados;
 import model.Venda;
-import view.TelaDetalheCliente;
 import view.TelaDetalheVenda;
 import view.TelaVenda;
 
@@ -36,8 +35,8 @@ public class ControleTelaVenda {
 		Object selecionado = e.getSource();
 
 		if (e.getValueIsAdjusting()) {
-			TelaDetalheCliente detalhe = new TelaDetalheCliente(1, tela.getListaPessoasProd().getSelectedIndex());
-			ControleTelaDetalheCliente ctrlDetalhe = new ControleTelaDetalheCliente(detalhe, 1,
+			TelaDetalheVenda detalhe = new TelaDetalheVenda(1, tela.getListaPessoasProd().getSelectedIndex());
+			ControleTelaDetalheVenda ctrlDetalhe = new ControleTelaDetalheVenda(detalhe, 1,
 					tela.getListaPessoasProd().getSelectedIndex());
 			ctrlDetalhe.imprimirDetalhes(detalhe, tela.getListaPessoasProd().getSelectedIndex());
 		}
@@ -51,6 +50,14 @@ public class ControleTelaVenda {
 		}
 
 		return nomes;
+	}
+
+	public TelaVenda getTela() {
+		return tela;
+	}
+
+	public void setTela(TelaVenda tela) {
+		this.tela = tela;
 	}
 
 }

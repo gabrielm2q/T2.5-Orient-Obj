@@ -21,7 +21,6 @@ import control.ControleTelaDetalheVenda;
 public class TelaDetalheVenda extends JFrame implements ActionListener, ListSelectionListener {
 	private JLabel titulo = new JLabel("Venda", JLabel.CENTER);
 	private JButton btnSalvar = new JButton("Salvar");
-	private JButton btnDeletar = new JButton("Deletar");
 
 	private ControleTelaDetalheVenda controlaDetalhe;
 
@@ -69,17 +68,14 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		// Fontes dos Botões
 		Font f = new Font("Montserrat", Font.PLAIN, 20);
 		btnSalvar.setFont(f);
-		btnDeletar.setFont(f);
 
 		// Localização e Tamanho dos componentes da tela
 		titulo.setBounds(90, 20, 340, 50);
-		btnDeletar.setBounds(20, 400, 239, 75);
-		btnSalvar.setBounds(279, 400, 239, 75);
+		btnSalvar.setBounds(20, 395, 507, 70);
 
 		// Adicionando componentes a tela
 		this.add(titulo);
 		this.add(btnSalvar);
-		this.add(btnDeletar);
 
 		this.setVisible(true);
 

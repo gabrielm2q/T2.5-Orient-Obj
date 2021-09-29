@@ -16,15 +16,15 @@ public class Venda {
 
 	public Venda(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
 			Cliente cliente, Produto produto, Pagamento pagamento, int qtdVendida) {
-		setIdVenda(idVenda);
-		setValorVenda(valorVenda);
-		setValorDesconto(valorDesconto);
-		setDataPedido(dataPedido);
-		setFuncionario(funcionario);
-		setCliente(cliente);
-		this.produto = produto;
-		this.pagamento = pagamento;
-		this.qtdVendida = qtdVendida;
+		this.setIdVenda(idVenda);
+		this.setValorVenda(valorVenda);
+		this.setValorDesconto(valorDesconto);
+		this.setDataPedido(dataPedido);
+		this.setFuncionario(funcionario);
+		this.setCliente(cliente);
+		this.setProduto(produto);
+		this.setPagamento(pagamento);
+		this.setQtdVendida(qtdVendida);
 	}
 
 	public Venda() {
@@ -42,7 +42,8 @@ public class Venda {
 	@Override
 	public String toString() {
 		return "Venda [idVenda=" + idVenda + ", valorVenda=" + valorVenda + ", valorDesconto=" + valorDesconto
-				+ ", dataPedido=" + dataPedido + ", funcionario=" + funcionario + "]";
+				+ ", dataPedido=" + dataPedido + ", funcionario=" + funcionario + ", cliente=" + cliente + ", produto="
+				+ produto + ", pagamento=" + pagamento + ", qtdVendida=" + qtdVendida + "]";
 	}
 
 	public int getIdVenda() {
