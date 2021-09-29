@@ -12,7 +12,6 @@ public class Loja {
 	private Estoque estoque;
 	private ArrayList<Funcionario> funcionario;
 
-	
 	public Loja(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
 			Estoque estoque, ArrayList<Funcionario> funcionario) {
 		setNome(nome);
@@ -24,7 +23,7 @@ public class Loja {
 		setEstoque(estoque);
 		this.funcionario = new ArrayList<>();
 	}
-	
+
 	public Loja() {
 		setNome("");
 		setCnpj(0);
@@ -34,62 +33,6 @@ public class Loja {
 		setEndereco(null);
 		setEstoque(null);
 		this.funcionario = new ArrayList<>();
-	}
-
-	public void cadastrar(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
-			Estoque estoque, ArrayList<Funcionario> funcionario) {
-		setNome(nome);
-		setCnpj(cnpj);
-		setHoraAbertura(horaAbertura);
-		setHoraFechamento(horaFechamento);
-		setSite(site);
-		setEndereco(endereco);
-		setEstoque(estoque);
-		
-		for(int i = 0; i < funcionario.size(); i++) {
-			setFuncionario(funcionario.get(i));
-		}
-	}
-
-	public void imprimir() {
-		System.out.println("\n~DADOS DA LOJA~\n");
-		System.out.println("Nome: " + getNome());
-		System.out.println("CNPJ: " + getCnpj());
-		System.out.println("Hora de Abertura: " + getHoraAbertura() + "h");
-		System.out.println("Hora de Fechamento: " + getHoraFechamento() + "h");
-		System.out.println("Site: " + getSite());
-		System.out.println("Endereço: " + this.endereco.getNomeRua() + ", Número " + this.endereco.getNumero() + ", Bairro " + this.endereco.getBairro() +
-		", " + this.endereco.getCidade() + " - " + this.endereco.getUf());
-		System.out.println("Quantidade de Funcionários: " + this.funcionario.size());
-		
-	}
-	
-	public void editar(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
-			Estoque estoque, ArrayList<Funcionario> funcionario) {
-		setNome(nome);
-		setCnpj(cnpj);
-		setHoraAbertura(horaAbertura);
-		setHoraFechamento(horaFechamento);
-		setSite(site);
-		setEndereco(endereco);
-		setEstoque(estoque);
-		
-		for(int i = 0; i < funcionario.size(); i++) {
-			setFuncionario(funcionario.get(i));
-		}
-	}
-	
-	public void deletarFuncionario(Funcionario func) {
-		int i;
-		int index = -1;
-		for(i = 0; i < funcionario.size(); i++) {
-			if(func.equals(funcionario.get(i))) {
-				index = i;
-			}
-		}
-		if(index != -1) {
-			funcionario.remove(index);
-		}
 	}
 
 	@Override
@@ -160,5 +103,5 @@ public class Loja {
 
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario.add(funcionario);
-	}	
+	}
 }
