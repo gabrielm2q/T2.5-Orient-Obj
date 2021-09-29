@@ -9,9 +9,19 @@ public abstract class Dados {
 	private static final List<Funcionario> funcionario = new ArrayList<>();
 	private static final List<Venda> venda = new ArrayList<>();
 	private static final Estoque estoque = new Estoque();
+	private static int contadorIdProd = 1;
+	private static int contadorIdVenda = 1;
 
 	private Dados() {
 
+	}
+
+	public static void incrementarIdProd() {
+		contadorIdProd++;
+	}
+
+	public static void incrementarIdVenda() {
+		contadorIdVenda++;
 	}
 
 	public static Loja getLoja() {
@@ -32,6 +42,14 @@ public abstract class Dados {
 
 	public static Estoque getEstoque() {
 		return estoque;
+	}
+
+	public static int getContadorIdProd() {
+		return contadorIdProd;
+	}
+
+	public static int getContadorIdVenda() {
+		return contadorIdVenda;
 	}
 
 }

@@ -23,10 +23,14 @@ public class ControleTelaEstoque {
 		JButton clicado = (JButton) e.getSource();
 
 		if (clicado == tela.getBtnCadastrar()) {
-			String[] produtos = { "Salto", "Tênis", "Bota", "Sapato" };
-			Object prodEscolhido = JOptionPane.showInputDialog(null, "Deseja cadastrar qual produto?", "Produto",
-					JOptionPane.INFORMATION_MESSAGE, null, produtos, produtos[0]);
-			new TelaDetalheEstoque(0, prodEscolhido.toString());
+			try {
+				String[] produtos = { "Salto", "Tênis", "Bota", "Sapato" };
+				Object prodEscolhido = JOptionPane.showInputDialog(null, "Deseja cadastrar qual produto?", "Produto",
+						JOptionPane.INFORMATION_MESSAGE, null, produtos, produtos[0]);
+				new TelaDetalheEstoque(0, prodEscolhido.toString(), Dados.getEstoque().getProduto().size());
+			} catch (Exception exc) {
+
+			}
 		} else if (clicado == tela.getBtnOrdenar()) {
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
 		} else if (clicado == tela.getBtnAtualizar()) {
@@ -40,9 +44,13 @@ public class ControleTelaEstoque {
 		if (e.getValueIsAdjusting()) {
 
 			TelaDetalheEstoque detalhe = new TelaDetalheEstoque(1,
-					Dados.getEstoque().getCategoria().get(tela.getListaPessoasProd().getSelectedIndex()));
+					Dados.getEstoque().getCategoria().get(tela.getListaPessoasProd().getSelectedIndex()),
+					tela.getListaPessoasProd().getSelectedIndex());
+
 			ControleTelaDetalheEstoque ctrlDetalhe = new ControleTelaDetalheEstoque(detalhe, 1,
-					Dados.getEstoque().getCategoria().get(tela.getListaPessoasProd().getSelectedIndex()));
+					Dados.getEstoque().getCategoria().get(tela.getListaPessoasProd().getSelectedIndex()),
+					tela.getListaPessoasProd().getSelectedIndex());
+
 			ctrlDetalhe.imprimirDetalhes(detalhe, tela.getListaPessoasProd().getSelectedIndex());
 
 		}

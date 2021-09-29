@@ -118,9 +118,9 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JLabel lblPalmilha = new JLabel("Tipo de Palmilha: "); // Tipo de Palmilha
 	private JTextField valorPalmilha;
 
-	public TelaDetalheEstoque(int opcEditarSalvar, String tipoProd) {
+	public TelaDetalheEstoque(int opcEditarSalvar, String tipoProd, int indexProduto) {
 		super(tipoProd); // JFrame com a categoria do produto como título
-		this.controlaDetalhe = new ControleTelaDetalheEstoque(this, opcEditarSalvar, tipoProd);
+		this.controlaDetalhe = new ControleTelaDetalheEstoque(this, opcEditarSalvar, tipoProd, indexProduto);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -200,20 +200,12 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.add(valorCategoria);
 		this.add(lblCategoria);
 
-		// Pegando o ID de cada produto
-		String id;
-		if (Integer.toString(Dados.getEstoque().getProduto().size()) == null) {
-			id = "1";
-		} else {
-			id = Integer.toString(Dados.getEstoque().getProduto().size() + 1);
-		}
-
 		lblIdProd.setFont(labelFont); // CAMPO DE ID
 		lblIdProd.setForeground(new Color(29, 53, 87));
 		lblIdProd.setBounds(318, 111, 35, 20);
 		valorIdProd = new JLabel();
 		valorIdProd.setFont(labelFont);
-		valorIdProd.setText(id);
+		valorIdProd.setText(Integer.toString(Dados.getContadorIdProd()));
 		valorIdProd.setBounds(343, 111, 30, 20);
 		this.add(valorIdProd);
 		this.add(lblIdProd);
