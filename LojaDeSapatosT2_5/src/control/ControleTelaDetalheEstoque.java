@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import model.Bota;
+import model.Dados;
 import model.Salto;
 import model.Sapato;
 import model.Tenis;
@@ -17,8 +18,6 @@ import view.TelaDetalheEstoque;
 public class ControleTelaDetalheEstoque {
 	private TelaDetalheEstoque detalheEstoque;
 	private ControleEstoque estCtrl = new ControleEstoque();
-	private ControleDados dados = new ControleDados();
-	private int indexProduto;
 	private int opcEditarSalvar;
 	private String tipoProd;
 	private Date data = new Date();
@@ -28,10 +27,6 @@ public class ControleTelaDetalheEstoque {
 		this.detalheEstoque = detalheEstoque;
 		this.opcEditarSalvar = editarSalvar;
 		this.tipoProd = tipoProd;
-	}
-
-	public void imprimirDetalhes(TelaDetalheEstoque tela, int index) {
-
 	}
 
 	public void clicaBtn(ActionEvent e) {
@@ -230,6 +225,59 @@ public class ControleTelaDetalheEstoque {
 				JOptionPane.showMessageDialog(null, "Erro!\nNão há cliente a ser deletado!", null,
 						JOptionPane.ERROR_MESSAGE);
 			}
+		}
+	}
+
+	public void imprimirDetalhes(TelaDetalheEstoque tela, int index) {
+
+		// Imprimindo atributos comuns a todos os tipos de produto
+		tela.setValorCategoria(Dados.getEstoque().getCategoria().get(index));
+		tela.setValorDataCadastro(Dados.getEstoque().getDataCadastro().get(index));
+		tela.setValorQuantidade(Integer.toString(Dados.getEstoque().getQuantidade().get(index)));
+		tela.setValorIdProd(Integer.toString(Dados.getEstoque().getProduto().get(index).getIdProd()));
+		tela.setValorNome(Dados.getEstoque().getProduto().get(index).getNome());
+		tela.setValorTamanho(Integer.toString(Dados.getEstoque().getProduto().get(index).getTamanho()));
+		tela.setValorPreco(Double.toString(Dados.getEstoque().getProduto().get(index).getPreco()));
+		tela.setValorMarca(Dados.getEstoque().getProduto().get(index).getMarca());
+		tela.setValorOrigem(Dados.getEstoque().getProduto().get(index).getPaisOrigem());
+		tela.setValorGarantia(Dados.getEstoque().getProduto().get(index).getTempoGarantia());
+		tela.setValorGenero(Dados.getEstoque().getProduto().get(index).getGenero());
+		tela.setValorBarras(Dados.getEstoque().getProduto().get(index).getCodBarras());
+		tela.setValorCor(Dados.getEstoque().getProduto().get(index).getCor());
+		tela.setValorMaterial(Dados.getEstoque().getProduto().get(index).getMaterial());
+
+		if (Dados.getEstoque().getProduto().get(index) instanceof Salto) { // Imprimindo atributos especificos de Salto
+			Salto salto = (Salto) Dados.getEstoque().getProduto().get(index);
+			tela.setValorSalto(salto.getTipoSalto());
+			tela.setValorCorExt(salto.getCorExterna());
+			tela.setValorCorSol(salto.getCorSolado());
+			tela.setValorAltSalto(salto.getAlturaSalto());
+		} else if (Dados.getEstoque().getProduto().get(index) instanceof Tenis) { // Imprimindo atributos especificos de
+																					// Tenis
+			Tenis tenis = (Tenis) Dados.getEstoque().getProduto().get(index);
+			tela.setValorAtividade(tenis.getAtvdIndicada());
+			tela.setValorTecSol(tenis.getTecnoSolado());
+			tela.setValorPisada(tenis.getTipoPisada());
+			tela.setValorTipoPalmilha(tenis.getTipoPalmilha());
+			tela.setValorPeso(Double.toString(tenis.getPeso()));
+			tela.setValorAmarra(tenis.getTipoAmarracao());
+			tela.setValorCorCadarco(tenis.getCorCadarco());
+		} else if (Dados.getEstoque().getProduto().get(index) instanceof Bota) { // Imprimindo atributos especificos de
+																					// Bota
+			Bota bota = (Bota) Dados.getEstoque().getProduto().get(index);
+			tela.setValorModelo(bota.getModelo());
+			tela.setValorAltCano(bota.getAlturaCano());
+			tela.setValorTipoSalto(bota.getTipoSalto());
+			tela.setValorTiPalmilha(bota.getTipoPalmilha());
+			tela.setValorMatSolado(bota.getMaterialSolado());
+		} else if (Dados.getEstoque().getProduto().get(index) instanceof Sapato) { // Imprimindo atributos especificos
+																					// de Sapato
+			Sapato sapato = (Sapato) Dados.getEstoque().getProduto().get(index);
+			tela.setValorSolado(sapato.getMaterialSolado());
+			tela.setValorInterno(sapato.getMaterialInterno());
+			tela.setValorBico(sapato.getTipoBico());
+			tela.setValorAlturaSalto(sapato.getAlturaSalto());
+			tela.setValorPalmilha(sapato.getTipoPalmilha());
 		}
 	}
 
