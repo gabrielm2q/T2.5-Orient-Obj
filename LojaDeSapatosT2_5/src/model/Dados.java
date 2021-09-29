@@ -73,7 +73,7 @@ public abstract class Dados {
 		Sapato sapato = new Sapato();
 		Tenis tenis = new Tenis();
 		Bota bota = new Bota();
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 3; i++) {
 			salto.setIdProd(getContadorIdProd());
 			salto.setNome("Salto " + aleatorio.nextInt(50)); // Salto Aleatorio
 			salto.setTamanho(aleatorio.nextInt(45) + 1);

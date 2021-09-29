@@ -17,6 +17,7 @@ public class ControleTelaFuncionario {
 
 	public ControleTelaFuncionario(TelaFuncionario tela) {
 		this.tela = tela;
+		this.tela.setListaPessoasProd(this.listaNomes());
 	}
 
 	public void clicaBtn(ActionEvent e) {

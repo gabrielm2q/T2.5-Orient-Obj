@@ -17,6 +17,7 @@ public class ControleTelaCliente {
 
 	public ControleTelaCliente(TelaCliente tela) {
 		this.tela = tela;
+		this.tela.setListaPessoasProd(this.listaNomes());
 	}
 
 	public void clicaBtn(ActionEvent e) {

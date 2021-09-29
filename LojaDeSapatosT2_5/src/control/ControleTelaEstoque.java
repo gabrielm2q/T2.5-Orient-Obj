@@ -17,6 +17,7 @@ public class ControleTelaEstoque {
 
 	public ControleTelaEstoque(TelaEstoque estoque) {
 		this.tela = estoque;
+		this.tela.setListaPessoasProd(this.listaNomes());
 	}
 
 	public void clicaBtn(ActionEvent e) {

@@ -52,10 +52,18 @@ public abstract class Template extends JFrame implements ActionListener, ListSel
 		this.listaPessoasProd.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		this.listaPessoasProd.setVisibleRowCount(10);
 		this.listaPessoasProd.addListSelectionListener(this);
+		this.add(this.listaPessoasProd);
+
+		// Adicionando Barra de Rolagem
+		JScrollPane painel = new JScrollPane(this.getListaPessoasProd());
+		painel.setBounds(32, 95, 480, 300);
+		painel.setViewportView(this.getListaPessoasProd());
+		painel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		painel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		this.add(painel);
 
 		// Adicionando componentes a tela
 		this.add(this.texto);
-		this.add(this.listaPessoasProd);
 		this.add(btnCadastrar);
 		this.add(btnOrdenar);
 		this.add(btnAtualizar);
