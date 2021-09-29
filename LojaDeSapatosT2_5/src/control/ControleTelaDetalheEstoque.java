@@ -346,14 +346,19 @@ public class ControleTelaDetalheEstoque {
 			}
 		} else if (clicado == detalheEstoque.getBtnDeletar()) { // DELETAR PRODUTO
 			try {
+
 				estCtrl.deletarProduto(indexProduto);
 				detalheEstoque.dispose();
 				JOptionPane.showMessageDialog(null, tipoProd + " deletado com sucesso!", null,
 						JOptionPane.INFORMATION_MESSAGE);
+
 			} catch (Exception ex) {
 				JOptionPane.showMessageDialog(null, "Erro!\nNão há cliente a ser deletado!", null,
 						JOptionPane.ERROR_MESSAGE);
 			}
+
+		} else { // Mensagem de erro apenas por precaução
+			JOptionPane.showMessageDialog(null, "ERRO!", null, JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

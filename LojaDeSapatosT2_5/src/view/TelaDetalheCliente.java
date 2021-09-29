@@ -282,8 +282,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorNome;
 	}
 
-	public void setValorNome(JTextField valorNome) {
-		this.valorNome = valorNome;
+	public void setValorNome(String valorNome) {
+		this.valorNome.setText(valorNome);
 	}
 
 	public JLabel getLblGenero() {
@@ -306,8 +306,17 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorGenero;
 	}
 
-	public void setValorGenero(JComboBox<String> valorGenero) {
-		this.valorGenero = valorGenero;
+	public void setValorGenero(char valorGenero) {
+		int indexGen = 0;
+		if (valorGenero == 'M') {
+			indexGen = 0;
+		} else if (valorGenero == 'F') {
+			indexGen = 1;
+		} else if (valorGenero == 'O') {
+			indexGen = 2;
+		}
+
+		this.valorGenero.setSelectedIndex(indexGen);
 	}
 
 	public JLabel getLblData() {
@@ -322,8 +331,9 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorData;
 	}
 
-	public void setValorData(JTextField valorData) {
-		this.valorData = valorData;
+	public void setValorData(Date valorData) {
+		String data = formato.format(valorData);
+		this.valorData.setText(data);
 	}
 
 	public JLabel getLblCpf() {
@@ -338,8 +348,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorCpf;
 	}
 
-	public void setValorCpf(JTextField valorCpf) {
-		this.valorCpf = valorCpf;
+	public void setValorCpf(String valorCpf) {
+		this.valorCpf.setText(valorCpf);
 	}
 
 	public JLabel getLblFone() {
@@ -354,8 +364,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorFone;
 	}
 
-	public void setValorFone(JTextField valorFone) {
-		this.valorFone = valorFone;
+	public void setValorFone(String valorFone) {
+		this.valorFone.setText(valorFone);
 	}
 
 	public JLabel getLblEmail() {
@@ -370,8 +380,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorEmail;
 	}
 
-	public void setValorEmail(JTextField valorEmail) {
-		this.valorEmail = valorEmail;
+	public void setValorEmail(String valorEmail) {
+		this.valorEmail.setText(valorEmail);
 	}
 
 	public JLabel getEndereco() {
@@ -394,8 +404,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorCep;
 	}
 
-	public void setValorCep(JTextField valorCep) {
-		this.valorCep = valorCep;
+	public void setValorCep(String valorCep) {
+		this.valorCep.setText(valorCep);
 	}
 
 	public JLabel getLblCidade() {
@@ -410,16 +420,16 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorCidade;
 	}
 
-	public void setValorCidade(JTextField valorCidade) {
-		this.valorCidade = valorCidade;
+	public void setValorCidade(String valorCidade) {
+		this.valorCidade.setText(valorCidade);
 	}
 
 	public JComboBox<String> getValorUf() {
 		return valorUf;
 	}
 
-	public void setValorUf(JComboBox<String> valorUf) {
-		this.valorUf = valorUf;
+	public void setValorUf(String valorUf) {
+		this.valorUf.setSelectedItem(valorUf);
 	}
 
 	public JLabel getLblRua() {
@@ -434,8 +444,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorRua;
 	}
 
-	public void setValorRua(JTextField valorRua) {
-		this.valorRua = valorRua;
+	public void setValorRua(String valorRua) {
+		this.valorRua.setText(valorRua);
 	}
 
 	public JLabel getLblNum() {
@@ -450,8 +460,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorNum;
 	}
 
-	public void setValorNum(JTextField valorNum) {
-		this.valorNum = valorNum;
+	public void setValorNum(String valorNum) {
+		this.valorNum.setText(valorNum);
 	}
 
 	public JLabel getLblQd() {
@@ -466,8 +476,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorQd;
 	}
 
-	public void setValorQd(JTextField valorQd) {
-		this.valorQd = valorQd;
+	public void setValorQd(String valorQd) {
+		this.valorQd.setText(valorQd);
 	}
 
 	public JLabel getLblBairro() {
@@ -482,8 +492,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorBairro;
 	}
 
-	public void setValorBairro(JTextField valorBairro) {
-		this.valorBairro = valorBairro;
+	public void setValorBairro(String valorBairro) {
+		this.valorBairro.setText(valorBairro);
 	}
 
 	public JLabel getLblApart() {
@@ -498,8 +508,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorApart;
 	}
 
-	public void setValorApart(JTextField valorApart) {
-		this.valorApart = valorApart;
+	public void setValorApart(String valorApart) {
+		this.valorApart.setText(valorApart);
 	}
 
 	public JLabel getLblComp() {
@@ -514,8 +524,8 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		return valorComp;
 	}
 
-	public void setValorComp(JTextField valorComp) {
-		this.valorComp = valorComp;
+	public void setValorComp(String valorComp) {
+		this.valorComp.setText(valorComp);
 	}
 
 	public JButton getBtnSalvar() {
