@@ -15,44 +15,17 @@ public class ControleTelaDetalheFuncionario {
 	private ControleFuncionario funCtrl;
 	private ControleEndereco endereco;
 	private ControleDados dados = new ControleDados();
-	private int indexFunc, opc;
+	private int indexFunc;
+	private int opcEditarSalvar;
 	Date data = new Date();
 	Date dataContrat = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-	public ControleTelaDetalheFuncionario(TelaDetalheFuncionario detalheFunc, ControleDados d, int editarSalvar,
-			int idx) {
+	public ControleTelaDetalheFuncionario(TelaDetalheFuncionario detalheFunc, int opcaoEditarSalvar, int indexFuncio) {
 		this.detalheFunc = detalheFunc;
-		this.dados = d;
-		funCtrl = new ControleFuncionario(dados);
-		endereco = new ControleEndereco(dados);
-		opc = editarSalvar;
-		indexFunc = idx;
-	}
-
-	public void imprimirEditarDetalhe(TelaDetalheFuncionario tela, ControleDados d, int index) {
-
-		// Imprimindo dados do funcionário
-		tela.getValorNome().setText(d.getFuncionario().get(index).getNome());
-		tela.getValorData().setText(formato.format(d.getFuncionario().get(index).getDataNasc()));
-		tela.getValorCpf().setText(d.getFuncionario().get(index).getCpf());
-		tela.getValorFone().setText(d.getFuncionario().get(index).getTelefone());
-		tela.getValorDataCon().setText(formato.format(d.getFuncionario().get(index).getDataContratacao()));
-		tela.getValorTurno().setSelectedItem(d.getFuncionario().get(index).getTurno());
-		tela.getValorEntrada().setSelectedItem(String.valueOf(d.getFuncionario().get(index).getHoraEntrada()));
-		tela.getValorEntrada().setSelectedItem(String.valueOf(d.getFuncionario().get(index).getHoraSaida()));
-
-		// Imprimindo dados do endereço do funcionário
-		tela.getValorCep().setText(String.valueOf(d.getEnderecoFuncionario().get(index).getCep()));
-		tela.getValorCidade().setText(d.getEnderecoFuncionario().get(index).getCidade());
-		tela.getValorUf().setSelectedItem(d.getEnderecoFuncionario().get(index).getUf());
-		tela.getValorRua().setText(d.getEnderecoFuncionario().get(index).getNomeRua());
-		tela.getValorNum().setText(String.valueOf(d.getEnderecoFuncionario().get(index).getNumero()));
-		tela.getValorQd().setText(String.valueOf(d.getEnderecoFuncionario().get(index).getQuadra()));
-		tela.getValorBairro().setText(d.getEnderecoFuncionario().get(index).getBairro());
-		tela.getValorApart().setText(String.valueOf(d.getEnderecoFuncionario().get(index).getNumApart()));
-		tela.getValorComp().setText(d.getEnderecoFuncionario().get(index).getComplemento());
-
+		funCtrl = new ControleFuncionario();
+		this.opcEditarSalvar = opcaoEditarSalvar;
+		this.indexFunc = indexFuncio;
 	}
 
 	public void clicaBtn(ActionEvent e) { // CONTROLANDO AS AÇÕES DOS BOTÕES DE TelaDetalheFuncionário
@@ -167,28 +140,20 @@ public class ControleTelaDetalheFuncionario {
 		}
 	}
 
+	public void imprimirDetalhes(TelaDetalheFuncionario tela, int index) {
+
+		// Imprimindo dados do funcionário
+
+		// Imprimindo dados do endereço do funcionário
+
+	}
+
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,
 				"Erro!\nVerifique se todos os campos estão preenchidos."
 						+ "\nVerifique se os dados em formato numérico são números."
 						+ "\nVerifique se as datas foram inseridas corretamente.",
 				null, JOptionPane.ERROR_MESSAGE);
-	}
-
-	public int getIndexFunc() {
-		return indexFunc;
-	}
-
-	public void setIndexFunc(int indexFunc) {
-		this.indexFunc = indexFunc;
-	}
-
-	public int getOpc() {
-		return opc;
-	}
-
-	public void setOpc(int opc) {
-		this.opc = opc;
 	}
 
 }

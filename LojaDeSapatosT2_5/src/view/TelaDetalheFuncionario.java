@@ -13,15 +13,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import control.ControleDados;
 import control.ControleTelaDetalheFuncionario;
 
 public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 	private JLabel titulo = new JLabel("Funcionário", JLabel.CENTER);
 	private JButton btnSalvar = new JButton("Salvar");
 	private JButton btnDeletar = new JButton("Deletar");
+
 	private ControleTelaDetalheFuncionario controlaDetalhe;
-	private ControleDados dados = new ControleDados();
+
+	// Trabalhando com datas
+	Date data = new Date();
+	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
 	// Declarando valores que irão compor as ComboBoxes
 	private String[] estados = { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA",
@@ -42,11 +45,11 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 	private JLabel lblDataCon = new JLabel("Data de Contratação: "); // Data de Contratação
 	private JTextField valorDataCon;
 	private JLabel lblTurno = new JLabel("Turno: "); // Turno
-	private JComboBox valorTurno = new JComboBox(turno);
+	private JComboBox<String> valorTurno = new JComboBox<>(turno);
 	private JLabel lblEntrada = new JLabel("Entrada: "); // Hora de Entrada
-	private JComboBox valorEntrada = new JComboBox(hora);
+	private JComboBox<String> valorEntrada = new JComboBox<>(hora);
 	private JLabel lblSaida = new JLabel("Saída: "); // Hora de Saída
-	private JComboBox valorSaida = new JComboBox(hora);
+	private JComboBox<String> valorSaida = new JComboBox<>(hora);
 
 	// ENDEREÇO
 	private JLabel endereco = new JLabel("Endereço", JLabel.CENTER); // Título da seção
@@ -54,7 +57,7 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 	private JTextField valorCep;
 	private JLabel lblCidade = new JLabel("Cidade (UF): "); // Cidade
 	private JTextField valorCidade;
-	private JComboBox valorUf = new JComboBox(estados); // UF
+	private JComboBox<String> valorUf = new JComboBox<>(estados); // UF
 	private JLabel lblRua = new JLabel("Nome da Rua: "); // Rua
 	private JTextField valorRua;
 	private JLabel lblNum = new JLabel("Número: "); // Número
@@ -68,14 +71,9 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 	private JLabel lblComp = new JLabel("Complemento: "); // Complemento
 	private JTextField valorComp;
 
-	// Trabalhando com datas
-	Date data = new Date();
-	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-
-	public TelaDetalheFuncionario(ControleDados d, int opcao, int idx) {
+	public TelaDetalheFuncionario(int opcaoEditarSalvar, int indexFuncionario) {
 		super("Funcionário"); // JFrame com nome
-		this.dados = d;
-		this.controlaDetalhe = new ControleTelaDetalheFuncionario(this, dados, opcao, idx);
+		this.controlaDetalhe = new ControleTelaDetalheFuncionario(this, opcaoEditarSalvar, indexFuncionario);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -309,12 +307,20 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 		this.controlaDetalhe = controlaDetalhe;
 	}
 
-	public ControleDados getDados() {
-		return dados;
+	public Date getData() {
+		return data;
 	}
 
-	public void setDados(ControleDados dados) {
-		this.dados = dados;
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public SimpleDateFormat getFormato() {
+		return formato;
+	}
+
+	public void setFormato(SimpleDateFormat formato) {
+		this.formato = formato;
 	}
 
 	public String[] getEstados() {
@@ -429,11 +435,11 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 		this.lblTurno = lblTurno;
 	}
 
-	public JComboBox getValorTurno() {
+	public JComboBox<String> getValorTurno() {
 		return valorTurno;
 	}
 
-	public void setValorTurno(JComboBox valorTurno) {
+	public void setValorTurno(JComboBox<String> valorTurno) {
 		this.valorTurno = valorTurno;
 	}
 
@@ -445,11 +451,11 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 		this.lblEntrada = lblEntrada;
 	}
 
-	public JComboBox getValorEntrada() {
+	public JComboBox<String> getValorEntrada() {
 		return valorEntrada;
 	}
 
-	public void setValorEntrada(JComboBox valorEntrada) {
+	public void setValorEntrada(JComboBox<String> valorEntrada) {
 		this.valorEntrada = valorEntrada;
 	}
 
@@ -461,11 +467,11 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 		this.lblSaida = lblSaida;
 	}
 
-	public JComboBox getValorSaida() {
+	public JComboBox<String> getValorSaida() {
 		return valorSaida;
 	}
 
-	public void setValorSaida(JComboBox valorSaida) {
+	public void setValorSaida(JComboBox<String> valorSaida) {
 		this.valorSaida = valorSaida;
 	}
 
@@ -509,11 +515,11 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 		this.valorCidade = valorCidade;
 	}
 
-	public JComboBox getValorUf() {
+	public JComboBox<String> getValorUf() {
 		return valorUf;
 	}
 
-	public void setValorUf(JComboBox valorUf) {
+	public void setValorUf(JComboBox<String> valorUf) {
 		this.valorUf = valorUf;
 	}
 
@@ -611,22 +617,6 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 
 	public void setValorComp(JTextField valorComp) {
 		this.valorComp = valorComp;
-	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public SimpleDateFormat getFormato() {
-		return formato;
-	}
-
-	public void setFormato(SimpleDateFormat formato) {
-		this.formato = formato;
 	}
 
 }

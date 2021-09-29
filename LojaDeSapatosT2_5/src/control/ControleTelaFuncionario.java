@@ -2,31 +2,32 @@ package control;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
+import model.Dados;
+import model.Funcionario;
 import view.TelaDetalheFuncionario;
 import view.TelaFuncionario;
 
 public class ControleTelaFuncionario {
-	private TelaFuncionario funcionario;
-	private ControleDados dados = new ControleDados();
+	private TelaFuncionario tela;
 
-	public ControleTelaFuncionario(TelaFuncionario func, ControleDados d) {
-		this.funcionario = func;
-		this.dados = d;
+	public ControleTelaFuncionario(TelaFuncionario tela) {
+		this.tela = tela;
 	}
 
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 
-		if (clicado == funcionario.getBtnCadastrar()) {
-			new TelaDetalheFuncionario(dados, 0, 0);
-		} else if (clicado == funcionario.getBtnOrdenar()) {
+		if (clicado == tela.getBtnCadastrar()) {
+			new TelaDetalheFuncionario(0, Dados.getFuncionario().size());
+		} else if (clicado == tela.getBtnOrdenar()) {
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
-		} else if (clicado == funcionario.getBtnAtualizar()) {
-			funcionario.preencherLista("Funcionários", dados);
+		} else if (clicado == tela.getBtnAtualizar()) {
+			tela.setListaPessoasProd(this.listaNomes());
 		}
 	}
 
@@ -34,28 +35,30 @@ public class ControleTelaFuncionario {
 		Object selecionado = e.getSource();
 
 		if (e.getValueIsAdjusting()) {
-			TelaDetalheFuncionario detalhe = new TelaDetalheFuncionario(dados, 1,
-					funcionario.getListaPessoasProd().getSelectedIndex());
-			ControleTelaDetalheFuncionario ctrlDetalhe = new ControleTelaDetalheFuncionario(detalhe, dados, 1,
-					funcionario.getListaPessoasProd().getSelectedIndex());
-			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, funcionario.getListaPessoasProd().getSelectedIndex());
+			TelaDetalheFuncionario detalhe = new TelaDetalheFuncionario(1,
+					tela.getListaPessoasProd().getSelectedIndex());
+			ControleTelaDetalheFuncionario ctrlDetalhe = new ControleTelaDetalheFuncionario(detalhe, 1,
+					tela.getListaPessoasProd().getSelectedIndex());
+			ctrlDetalhe.imprimirDetalhes(detalhe, tela.getListaPessoasProd().getSelectedIndex());
 		}
 	}
 
-	public TelaFuncionario getFuncionario() {
-		return funcionario;
+	public DefaultListModel<String> listaNomes() {
+		DefaultListModel<String> nomes = new DefaultListModel<>();
+
+		for (Funcionario func : Dados.getFuncionario()) {
+			nomes.addElement(func.getNome());
+		}
+
+		return nomes;
 	}
 
-	public void setFuncionario(TelaFuncionario funcionario) {
-		this.funcionario = funcionario;
+	public TelaFuncionario getTela() {
+		return tela;
 	}
 
-	public ControleDados getDados() {
-		return dados;
-	}
-
-	public void setDados(ControleDados dados) {
-		this.dados = dados;
+	public void setTela(TelaFuncionario tela) {
+		this.tela = tela;
 	}
 
 }

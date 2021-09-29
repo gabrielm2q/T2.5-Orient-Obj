@@ -15,15 +15,15 @@ public class Funcionario {
 
 	public Funcionario(String nome, Date dataNasc, String cpf, String telefone, Date dataContratacao, String turno,
 			int horaEntrada, int horaSaida, Endereco endereco) {
-		setNome(nome);
-		setDataNasc(dataNasc);
-		setCpf(cpf);
-		setTelefone(telefone);
-		setDataContratacao(dataContratacao);
-		setTurno(turno);
-		setHoraEntrada(horaEntrada);
-		setHoraSaida(horaSaida);
-		setEndereco(endereco);
+		this.setNome(nome);
+		this.setDataNasc(dataNasc);
+		this.setCpf(cpf);
+		this.setTelefone(telefone);
+		this.setDataContratacao(dataContratacao);
+		this.setTurno(turno);
+		this.setHoraEntrada(horaEntrada);
+		this.setHoraSaida(horaSaida);
+		this.setEndereco(endereco);
 	}
 
 	public Funcionario() {
@@ -37,30 +37,6 @@ public class Funcionario {
 		setHoraSaida(0);
 		setEndereco(null);
 	}
-
-	/*
-	 * public void cadastrar(String nome, Date dataNasc, String cpf, String
-	 * telefone, Date dataContratacao, String turno, int horaEntrada, int horaSaida,
-	 * Endereco endereco) { setNome(nome); setDataNasc(dataNasc); setCpf(cpf);
-	 * setTelefone(telefone); setDataContratacao(dataContratacao); setTurno(turno);
-	 * setHoraEntrada(horaEntrada); setHoraSaida(horaSaida); setEndereco(endereco);
-	 * }
-	 * 
-	 * public void imprimir() { String saida = "Nome: " + this.getNome() +
-	 * ".\nData de Nascimento: " + this.getDataNasc() + ".\nCPF: " + this.getCpf() +
-	 * ".\nTelefone: " + this.getTelefone() + ".\nData de Contratação: " +
-	 * this.getDataContratacao() + ".\nTurno: " + this.getTurno() +
-	 * ".\nHora de Entrada: " + this.getHoraEntrada() + "h.\nHora de Saída: " +
-	 * this.getHoraSaida() + ".\nEndereco: " + this.getEndereco();
-	 * System.out.println(saida); }
-	 * 
-	 * public void editar(String nome, Date dataNasc, String cpf, String telefone,
-	 * Date dataContratacao, String turno, int horaEntrada, int horaSaida, Endereco
-	 * endereco) { setNome(nome); setDataNasc(dataNasc); setCpf(cpf);
-	 * setTelefone(telefone); setDataContratacao(dataContratacao); setTurno(turno);
-	 * setHoraEntrada(horaEntrada); setHoraSaida(horaSaida); setEndereco(endereco);
-	 * }
-	 */
 
 	@Override
 	public String toString() {
