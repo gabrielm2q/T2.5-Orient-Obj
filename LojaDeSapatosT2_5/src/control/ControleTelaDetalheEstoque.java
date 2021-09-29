@@ -418,4 +418,60 @@ public class ControleTelaDetalheEstoque {
 				null, JOptionPane.ERROR_MESSAGE);
 	}
 
+	public TelaDetalheEstoque getDetalheEstoque() {
+		return detalheEstoque;
+	}
+
+	public void setDetalheEstoque(TelaDetalheEstoque detalheEstoque) {
+		this.detalheEstoque = detalheEstoque;
+	}
+
+	public ControleEstoque getEstCtrl() {
+		return estCtrl;
+	}
+
+	public void setEstCtrl(ControleEstoque estCtrl) {
+		this.estCtrl = estCtrl;
+	}
+
+	public int getOpcEditarSalvar() {
+		return opcEditarSalvar;
+	}
+
+	public void setOpcEditarSalvar(int opcEditarSalvar) {
+		this.opcEditarSalvar = opcEditarSalvar;
+	}
+
+	public int getIndexProduto() {
+		return indexProduto;
+	}
+
+	public void setIndexProduto(int indexProduto) {
+		this.indexProduto = indexProduto;
+	}
+
+	public String getTipoProd() {
+		return tipoProd;
+	}
+
+	public void setTipoProd(String tipoProd) {
+		this.tipoProd = tipoProd;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public SimpleDateFormat getFormato() {
+		return formato;
+	}
+
+	public void setFormato(SimpleDateFormat formato) {
+		this.formato = formato;
+	}
+
 }

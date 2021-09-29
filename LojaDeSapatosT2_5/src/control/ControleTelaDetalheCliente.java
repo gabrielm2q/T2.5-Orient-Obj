@@ -13,58 +13,22 @@ import view.TelaDetalheCliente;
 public class ControleTelaDetalheCliente {
 	private TelaDetalheCliente detalheCliente;
 	private ControleCliente cliCtrl;
-	private ControleEndereco endereco;
-	private ControleDados dados = new ControleDados();
-	private int indexCliente, opc;
+	private int indexCliente;
+	private int opcEditarSalvar;
 	Date data = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-	public ControleTelaDetalheCliente(TelaDetalheCliente detalheCliente, ControleDados d, int editarSalvar, int idx) {
+	public ControleTelaDetalheCliente(TelaDetalheCliente detalheCliente, int opcaoEditarSalvar, int indexCliente) {
 		this.detalheCliente = detalheCliente;
-		this.dados = d;
-		cliCtrl = new ControleCliente(dados);
-		endereco = new ControleEndereco(dados);
-		opc = editarSalvar;
-		indexCliente = idx;
-	}
-
-	public void imprimirEditarDetalhe(TelaDetalheCliente tela, ControleDados d, int index) {
-
-		// Definindo o index do gênero
-		int iGen = 0;
-		if (d.getCliente().get(index).getGenero() == 'M') {
-			iGen = 0;
-		} else if (d.getCliente().get(index).getGenero() == 'F') {
-			iGen = 1;
-		} else if (d.getCliente().get(index).getGenero() == 'O') {
-			iGen = 2;
-		}
-
-		// Imprimindo dados do cliente
-		tela.getValorNome().setText(d.getCliente().get(index).getNome());
-		tela.getValorGenero().setSelectedIndex(iGen);
-		tela.getValorData().setText(formato.format(d.getCliente().get(index).getDataNasc()));
-		tela.getValorCpf().setText(d.getCliente().get(index).getCpf());
-		tela.getValorFone().setText(d.getCliente().get(index).getTelefone());
-		tela.getValorEmail().setText(d.getCliente().get(index).getEmail());
-
-		// Imprimindo dados do endereço do cliente
-		tela.getValorCep().setText(String.valueOf(d.getEnderecoCliente().get(index).getCep()));
-		tela.getValorCidade().setText(d.getEnderecoCliente().get(index).getCidade());
-		tela.getValorUf().setSelectedItem(d.getEnderecoCliente().get(index).getUf());
-		tela.getValorRua().setText(d.getEnderecoCliente().get(index).getNomeRua());
-		tela.getValorNum().setText(String.valueOf(d.getEnderecoCliente().get(index).getNumero()));
-		tela.getValorQd().setText(String.valueOf(d.getEnderecoCliente().get(index).getQuadra()));
-		tela.getValorBairro().setText(d.getEnderecoCliente().get(index).getBairro());
-		tela.getValorApart().setText(String.valueOf(d.getEnderecoCliente().get(index).getNumApart()));
-		tela.getValorComp().setText(d.getEnderecoCliente().get(index).getComplemento());
-
+		cliCtrl = new ControleCliente();
+		opcEditarSalvar = opcaoEditarSalvar;
+		this.indexCliente = indexCliente;
 	}
 
 	public void clicaBtn(ActionEvent e) { // CONTROLANDO AS AÇÕES DOS BOTÕES DE TelaDetalheCliente
 		JButton clicado = (JButton) e.getSource();
 
-		if (clicado == detalheCliente.getBtnSalvar() && opc == 0) { // SALVAR CLIENTE
+		if (clicado == detalheCliente.getBtnSalvar() && opcEditarSalvar == 0) { // SALVAR CLIENTE
 			try {
 				// Recebendo os valores do endereço
 				endereco.cadastrarEndereco(1, Integer.parseInt(detalheCliente.getValorCep().getText()), // CEP
@@ -104,7 +68,7 @@ public class ControleTelaDetalheCliente {
 				mensagemErroCadastro();
 			}
 
-		} else if (clicado == detalheCliente.getBtnSalvar() && opc == 1) { // SALVAR CLIENTE EDITADO
+		} else if (clicado == detalheCliente.getBtnSalvar() && opcEditarSalvar == 1) { // SALVAR CLIENTE EDITADO
 			try {
 				// Recebendo os valores do endereço
 				endereco.editarEndereco(1, dados, indexCliente, // Dados para preencher o endereço
@@ -168,28 +132,45 @@ public class ControleTelaDetalheCliente {
 		}
 	}
 
+	public void imprimirDetalhes(TelaDetalheCliente tela, int index) {
+
+		// Definindo o index do gênero
+		int iGen = 0;
+		if (d.getCliente().get(index).getGenero() == 'M') {
+			iGen = 0;
+		} else if (d.getCliente().get(index).getGenero() == 'F') {
+			iGen = 1;
+		} else if (d.getCliente().get(index).getGenero() == 'O') {
+			iGen = 2;
+		}
+
+		// Imprimindo dados do cliente
+		tela.getValorNome().setText(d.getCliente().get(index).getNome());
+		tela.getValorGenero().setSelectedIndex(iGen);
+		tela.getValorData().setText(formato.format(d.getCliente().get(index).getDataNasc()));
+		tela.getValorCpf().setText(d.getCliente().get(index).getCpf());
+		tela.getValorFone().setText(d.getCliente().get(index).getTelefone());
+		tela.getValorEmail().setText(d.getCliente().get(index).getEmail());
+
+		// Imprimindo dados do endereço do cliente
+		tela.getValorCep().setText(String.valueOf(d.getEnderecoCliente().get(index).getCep()));
+		tela.getValorCidade().setText(d.getEnderecoCliente().get(index).getCidade());
+		tela.getValorUf().setSelectedItem(d.getEnderecoCliente().get(index).getUf());
+		tela.getValorRua().setText(d.getEnderecoCliente().get(index).getNomeRua());
+		tela.getValorNum().setText(String.valueOf(d.getEnderecoCliente().get(index).getNumero()));
+		tela.getValorQd().setText(String.valueOf(d.getEnderecoCliente().get(index).getQuadra()));
+		tela.getValorBairro().setText(d.getEnderecoCliente().get(index).getBairro());
+		tela.getValorApart().setText(String.valueOf(d.getEnderecoCliente().get(index).getNumApart()));
+		tela.getValorComp().setText(d.getEnderecoCliente().get(index).getComplemento());
+
+	}
+
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,
 				"Erro!\nVerifique se todos os campos estão preenchidos."
 						+ "\nVerifique se os dados em formato numérico são números."
 						+ "\nVerifique se a data foi inserida corretamente.",
 				null, JOptionPane.ERROR_MESSAGE);
-	}
-
-	public int getIndexCliente() {
-		return indexCliente;
-	}
-
-	public void setIndexCliente(int indexCliente) {
-		this.indexCliente = indexCliente;
-	}
-
-	public int getOpc() {
-		return opc;
-	}
-
-	public void setOpc(int opc) {
-		this.opc = opc;
 	}
 
 }

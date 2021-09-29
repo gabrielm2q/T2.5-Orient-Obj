@@ -2,31 +2,32 @@ package control;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
+import model.Cliente;
+import model.Dados;
 import view.TelaCliente;
 import view.TelaDetalheCliente;
 
 public class ControleTelaCliente {
-	private TelaCliente cliente;
-	private ControleDados dados = new ControleDados();
+	private TelaCliente tela;
 
-	public ControleTelaCliente(TelaCliente cliente, ControleDados d) {
-		this.cliente = cliente;
-		this.dados = d;
+	public ControleTelaCliente(TelaCliente tela) {
+		this.tela = tela;
 	}
 
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 
-		if (clicado == cliente.getBtnCadastrar()) {
-			new TelaDetalheCliente(dados, 0, 0);
-		} else if (clicado == cliente.getBtnOrdenar()) {
+		if (clicado == tela.getBtnCadastrar()) {
+			new TelaDetalheCliente(0, Dados.getCliente().size());
+		} else if (clicado == tela.getBtnOrdenar()) {
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
-		} else if (clicado == cliente.getBtnAtualizar()) {
-			cliente.preencherLista("Clientes", dados);
+		} else if (clicado == tela.getBtnAtualizar()) {
+			tela.setListaPessoasProd(this.listaNomes());
 		}
 	}
 
@@ -34,28 +35,29 @@ public class ControleTelaCliente {
 		Object selecionado = e.getSource();
 
 		if (e.getValueIsAdjusting()) {
-			TelaDetalheCliente detalhe = new TelaDetalheCliente(dados, 1,
-					cliente.getListaPessoasProd().getSelectedIndex());
-			ControleTelaDetalheCliente ctrlDetalhe = new ControleTelaDetalheCliente(detalhe, dados, 1,
-					cliente.getListaPessoasProd().getSelectedIndex());
-			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, cliente.getListaPessoasProd().getSelectedIndex());
+			TelaDetalheCliente detalhe = new TelaDetalheCliente(1, tela.getListaPessoasProd().getSelectedIndex());
+			ControleTelaDetalheCliente ctrlDetalhe = new ControleTelaDetalheCliente(detalhe, 1,
+					tela.getListaPessoasProd().getSelectedIndex());
+			ctrlDetalhe.imprimirDetalhes(detalhe, tela.getListaPessoasProd().getSelectedIndex());
 		}
 	}
 
-	public TelaCliente getCliente() {
-		return cliente;
+	public DefaultListModel<String> listaNomes() {
+		DefaultListModel<String> nomes = new DefaultListModel<>();
+
+		for (Cliente cli : Dados.getCliente()) {
+			nomes.addElement(cli.getNome());
+		}
+
+		return nomes;
 	}
 
-	public void setCliente(TelaCliente cliente) {
-		this.cliente = cliente;
+	public TelaCliente getTela() {
+		return tela;
 	}
 
-	public ControleDados getDados() {
-		return dados;
-	}
-
-	public void setDados(ControleDados dados) {
-		this.dados = dados;
+	public void setTela(TelaCliente tela) {
+		this.tela = tela;
 	}
 
 }

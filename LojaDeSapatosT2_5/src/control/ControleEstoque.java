@@ -8,6 +8,7 @@ import model.Produto;
 public class ControleEstoque {
 
 	public ControleEstoque() {
+
 	}
 
 	public void cadastrarProduto(int quant, String cat, Date dtCad, Produto prod) {

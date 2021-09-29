@@ -22,7 +22,5 @@ public class TelaEstoque extends Template {
 	@Override
 	public void valueChanged(ListSelectionEvent e) { // Lista controlada pela classe ControleTelaEstoque
 		this.controlTela.clicaLista(e);
-
 	}
-
 }

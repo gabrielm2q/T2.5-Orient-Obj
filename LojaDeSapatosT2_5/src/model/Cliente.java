@@ -1,5 +1,6 @@
 package model;
-import java.util.*;
+
+import java.util.Date;
 
 public class Cliente {
 	private Endereco endereco;
@@ -9,16 +10,16 @@ public class Cliente {
 	private String cpf;
 	private String telefone;
 	private String email;
-	
+
 	public Cliente(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
 			String email) {
-		setEndereco(endereco);
-		setNome(nome);
-		setGenero(genero);
-		setDataNasc(dataNasc);
-		setCpf(cpf);
-		setTelefone(telefone);
-		setEmail(email);
+		this.setEndereco(endereco);
+		this.setNome(nome);
+		this.setGenero(genero);
+		this.setDataNasc(dataNasc);
+		this.setCpf(cpf);
+		this.setTelefone(telefone);
+		this.setEmail(email);
 	}
 
 	public Cliente() {
@@ -31,44 +32,13 @@ public class Cliente {
 		setEmail("");
 	}
 
-	/*
-	public void cadastrar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
-			String email) {
-		setEndereco(endereco);
-		setNome(nome);
-		setGenero(genero);
-		setDataNasc(dataNasc);
-		setCpf(cpf);
-		setTelefone(telefone);
-		setEmail(email);
-	}
-	
-	public void imprimir() {
-		 String saida = "Nome: " + this.getNome() + ".\nGênero: " + this.getGenero() + ".\nData de Nascimento: " 
-		+ this.getDataNasc() + ".\nCPF: " + this.getCpf() + ".\nTelefone: " + this.getTelefone() + ".\nE-Mail: " + this.getEmail()
-		+ ".\nEndereço: " + this.getEndereco();
-		System.out.println(saida);
-	}
-	
-	public void editar(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
-			String email) {
-		setEndereco(endereco);
-		setNome(nome);
-		setGenero(genero);
-		setDataNasc(dataNasc);
-		setCpf(cpf);
-		setTelefone(telefone);
-		setEmail(email);
-	}
-	*/
-	
 	@Override
 	public String toString() {
 		return "Cliente [endereco=" + endereco + ", nome=" + nome + ", genero=" + genero + ", dataNasc=" + dataNasc
 				+ ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", getEndereco()=" + getEndereco()
 				+ "]";
 	}
-	
+
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -124,5 +94,5 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }

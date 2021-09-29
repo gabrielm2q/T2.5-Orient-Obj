@@ -13,7 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import control.ControleDados;
 import control.ControleTelaDetalheCliente;
 
 public class TelaDetalheCliente extends JFrame implements ActionListener {
@@ -22,7 +21,6 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JButton btnDeletar = new JButton("Deletar");
 
 	private ControleTelaDetalheCliente controlaDetalhe;
-	private ControleDados dados = new ControleDados();
 
 	// Trabalhando com datas
 	Date data = new Date();
@@ -38,7 +36,7 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JLabel lblNome = new JLabel("Nome: "); // Nome
 	private JTextField valorNome;
 	private JLabel lblGenero = new JLabel("Gênero: "); // Gênero
-	private JComboBox valorGenero = new JComboBox(gen);
+	private JComboBox<String> valorGenero = new JComboBox<String>(gen);
 	private JLabel lblData = new JLabel("Data de Nascimento: "); // Nascimento
 	private JTextField valorData;
 	private JLabel lblCpf = new JLabel("CPF: "); // CPF
@@ -54,7 +52,7 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JTextField valorCep;
 	private JLabel lblCidade = new JLabel("Cidade (UF): "); // Cidade
 	private JTextField valorCidade;
-	private JComboBox valorUf = new JComboBox(estados); // UF
+	private JComboBox<String> valorUf = new JComboBox<String>(estados); // UF
 	private JLabel lblRua = new JLabel("Nome da Rua: "); // Rua
 	private JTextField valorRua;
 	private JLabel lblNum = new JLabel("Número: "); // Número
@@ -68,10 +66,9 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JLabel lblComp = new JLabel("Complemento: "); // Complemento
 	private JTextField valorComp;
 
-	public TelaDetalheCliente(ControleDados d, int opcao, int idx) {
+	public TelaDetalheCliente(int opcaoEditarSalvar, int indexCliente) {
 		super("Cliente"); // JFrame com nome
-		this.dados = d;
-		this.controlaDetalhe = new ControleTelaDetalheCliente(this, dados, opcao, idx);
+		this.controlaDetalhe = new ControleTelaDetalheCliente(this, opcaoEditarSalvar, indexCliente);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -305,11 +302,11 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		this.gen = gen;
 	}
 
-	public JComboBox getValorGenero() {
+	public JComboBox<String> getValorGenero() {
 		return valorGenero;
 	}
 
-	public void setValorGenero(JComboBox valorGenero) {
+	public void setValorGenero(JComboBox<String> valorGenero) {
 		this.valorGenero = valorGenero;
 	}
 
@@ -417,11 +414,11 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		this.valorCidade = valorCidade;
 	}
 
-	public JComboBox getValorUf() {
+	public JComboBox<String> getValorUf() {
 		return valorUf;
 	}
 
-	public void setValorUf(JComboBox valorUf) {
+	public void setValorUf(JComboBox<String> valorUf) {
 		this.valorUf = valorUf;
 	}
 
