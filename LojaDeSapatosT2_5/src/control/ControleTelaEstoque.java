@@ -2,39 +2,35 @@ package control;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
+import model.Dados;
+import model.Produto;
 import view.TelaDetalheEstoque;
 import view.TelaEstoque;
 
 public class ControleTelaEstoque {
 	private TelaEstoque tela;
-	private ControleDados dados = new ControleDados();
 
-	public ControleTelaEstoque(TelaEstoque estoque, ControleDados d) {
+	public ControleTelaEstoque(TelaEstoque estoque) {
 		this.tela = estoque;
-		this.dados = d;
 	}
 
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 
 		if (clicado == tela.getBtnCadastrar()) {
-			try {
-				String[] produtos = { "Salto", "Tênis", "Bota", "Sapato" };
-				Object prodEscolhido = JOptionPane.showInputDialog(null, "Deseja cadastrar qual produto?", "Produto",
-						JOptionPane.INFORMATION_MESSAGE, null, produtos, produtos[0]);
-				new TelaDetalheEstoque(dados, 0, dados.getProdEstoque().size(), prodEscolhido.toString());
-
-			} catch (NullPointerException exc1) {
-
-			}
+			String[] produtos = { "Salto", "Tênis", "Bota", "Sapato" };
+			Object prodEscolhido = JOptionPane.showInputDialog(null, "Deseja cadastrar qual produto?", "Produto",
+					JOptionPane.INFORMATION_MESSAGE, null, produtos, produtos[0]);
+			new TelaDetalheEstoque(0, prodEscolhido.toString());
 		} else if (clicado == tela.getBtnOrdenar()) {
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
 		} else if (clicado == tela.getBtnAtualizar()) {
-			tela.preencherLista("Estoque", dados);
+			tela.setListaPessoasProd(this.listaNomes());
 		}
 	}
 
@@ -43,14 +39,23 @@ public class ControleTelaEstoque {
 
 		if (e.getValueIsAdjusting()) {
 
-			TelaDetalheEstoque detalhe = new TelaDetalheEstoque(dados, 1, tela.getListaPessoasProd().getSelectedIndex(),
-					dados.getProdEstoque().get(tela.getListaPessoasProd().getSelectedIndex()).getCategoria().get(0));
-			ControleTelaDetalheEstoque ctrlDetalhe = new ControleTelaDetalheEstoque(detalhe, dados, 1,
-					tela.getListaPessoasProd().getSelectedIndex(),
-					dados.getProdEstoque().get(tela.getListaPessoasProd().getSelectedIndex()).getCategoria().get(0));
-			ctrlDetalhe.imprimirEditarDetalhe(detalhe, dados, tela.getListaPessoasProd().getSelectedIndex());
+			TelaDetalheEstoque detalhe = new TelaDetalheEstoque(1,
+					Dados.getEstoque().getCategoria().get(tela.getListaPessoasProd().getSelectedIndex()));
+			ControleTelaDetalheEstoque ctrlDetalhe = new ControleTelaDetalheEstoque(detalhe, 1,
+					Dados.getEstoque().getCategoria().get(tela.getListaPessoasProd().getSelectedIndex()));
+			ctrlDetalhe.imprimirDetalhes(detalhe, tela.getListaPessoasProd().getSelectedIndex());
 
 		}
+	}
+
+	public DefaultListModel<String> listaNomes() {
+		DefaultListModel<String> nomes = new DefaultListModel<>();
+
+		for (Produto prod : Dados.getEstoque().getProduto()) {
+			nomes.addElement(prod.getNome());
+		}
+
+		return nomes;
 	}
 
 	public TelaEstoque getTela() {
@@ -59,14 +64,6 @@ public class ControleTelaEstoque {
 
 	public void setTela(TelaEstoque tela) {
 		this.tela = tela;
-	}
-
-	public ControleDados getDados() {
-		return dados;
-	}
-
-	public void setDados(ControleDados dados) {
-		this.dados = dados;
 	}
 
 }

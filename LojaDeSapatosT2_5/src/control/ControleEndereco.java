@@ -3,14 +3,13 @@ package control;
 import model.Endereco;
 
 public class ControleEndereco {
-	private ControleDados dados = new ControleDados();
 	private Endereco ender = new Endereco();
 
-	public ControleEndereco(ControleDados d) {
-		this.dados = d;
+	public ControleEndereco() {
+
 	}
 
-	public void cadastrarEndereco(int opcEnder, int cep, String cidade, String uf, String nomeRua, int numero,
+	public void cadastrarEndereco(int cep, String cidade, String uf, String nomeRua, int numero,
 			int quadra, String bairro, int numApart, String complemento) {
 		ender.setCep(cep);
 		ender.setCidade(cidade);
@@ -21,6 +20,8 @@ public class ControleEndereco {
 		ender.setBairro(bairro);
 		ender.setNumApart(numApart);
 		ender.setComplemento(complemento);
+		
+		ControleDados
 
 		if (opcEnder == 1) { // Se recebermos a opção 1, cadastraremos o endereço do cliente
 			dados.setEnderecoCliente(ender);

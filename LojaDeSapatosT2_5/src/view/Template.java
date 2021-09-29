@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,17 +12,14 @@ import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 
-import control.ControleDados;
-
 public abstract class Template extends JFrame implements ActionListener, ListSelectionListener {
 	private JLabel texto;
 	private JButton btnCadastrar = new JButton("Cadastrar");
 	private JButton btnOrdenar = new JButton("Ordenar");
 	private JButton btnAtualizar = new JButton("Atualizar");
 	private JList<String> listaPessoasProd = new JList<>();
-	private ControleDados dados = new ControleDados();
 
-	public Template(String texto, ControleDados d) {
+	public Template(String texto) {
 		super(texto); // JFrame com nome
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -47,8 +45,6 @@ public abstract class Template extends JFrame implements ActionListener, ListSel
 		btnOrdenar.setBounds(198, 420, 146, 50);
 		btnAtualizar.setBounds(368, 420, 145, 50);
 
-		// Configurando exclusivamente a lista de Funcionários/Clientes
-		preencherLista(texto, d);
 		this.listaPessoasProd.setBackground(Color.white);
 		this.listaPessoasProd.setBounds(32, 95, 480, 300);
 		this.listaPessoasProd.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -71,61 +67,45 @@ public abstract class Template extends JFrame implements ActionListener, ListSel
 
 	}
 
-	public void preencherLista(String texto, ControleDados d) {
-		String[] listaNomes;
-		String[] listaProdutos;
-		this.dados = d;
+	public JLabel getTexto() {
+		return texto;
+	}
 
-		if (texto.equals("Clientes")) {
-			listaNomes = new String[dados.getCliente().size()];
-
-			for (int i = 0; i < dados.getCliente().size(); i++) {
-				listaNomes[i] = dados.getCliente().get(i).getNome();
-			}
-
-			listaPessoasProd.setListData(listaNomes);
-			listaPessoasProd.updateUI();
-
-		} else if (texto.equals("Funcionários")) {
-			listaNomes = new String[dados.getFuncionario().size()];
-
-			for (int i = 0; i < dados.getFuncionario().size(); i++) {
-				listaNomes[i] = dados.getFuncionario().get(i).getNome();
-			}
-
-			listaPessoasProd.setListData(listaNomes);
-			listaPessoasProd.updateUI();
-		} else if (texto.equals("Estoque")) {
-			listaProdutos = new String[dados.getProduto().size()];
-
-			for (int i = 0; i < dados.getProduto().size(); i++) {
-				listaProdutos[i] = dados.getProduto().get(i).getNome();
-			}
-
-			listaPessoasProd.setListData(listaProdutos);
-			listaPessoasProd.updateUI();
-		}
-
+	public void setTexto(JLabel texto) {
+		this.texto = texto;
 	}
 
 	public JButton getBtnCadastrar() {
 		return btnCadastrar;
 	}
 
+	public void setBtnCadastrar(JButton btnCadastrar) {
+		this.btnCadastrar = btnCadastrar;
+	}
+
 	public JButton getBtnOrdenar() {
 		return btnOrdenar;
+	}
+
+	public void setBtnOrdenar(JButton btnOrdenar) {
+		this.btnOrdenar = btnOrdenar;
 	}
 
 	public JButton getBtnAtualizar() {
 		return btnAtualizar;
 	}
 
+	public void setBtnAtualizar(JButton btnAtualizar) {
+		this.btnAtualizar = btnAtualizar;
+	}
+
 	public JList<String> getListaPessoasProd() {
 		return listaPessoasProd;
 	}
 
-	public JLabel getTexto() {
-		return texto;
+	public void setListaPessoasProd(DefaultListModel<String> nomes) {
+		this.listaPessoasProd.setModel(nomes);
+		this.listaPessoasProd.updateUI();
 	}
 
 }

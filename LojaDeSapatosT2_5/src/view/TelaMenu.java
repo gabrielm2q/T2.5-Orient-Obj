@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-import control.ControleDados;
 import control.ControleTelaMenu;
 
 public class TelaMenu extends JFrame implements ActionListener {
@@ -21,11 +20,10 @@ public class TelaMenu extends JFrame implements ActionListener {
 	private JButton btnEstoque = new JButton("Estoque");
 	private JButton btnLoja = new JButton("Loja");
 	private ControleTelaMenu controlaMenu;
-	private static ControleDados dados = new ControleDados();
 
 	public TelaMenu() {
 		super("Loja de Sapatos"); // JFrame com nome
-		this.controlaMenu = new ControleTelaMenu(this, dados);
+		this.controlaMenu = new ControleTelaMenu(this);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -70,11 +68,6 @@ public class TelaMenu extends JFrame implements ActionListener {
 		getBtnLoja().addActionListener(this);
 
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-	}
-
-	public static void main(String[] args) {
-		TelaMenu menu = new TelaMenu();
-		menu.setVisible(true);
 	}
 
 	@Override

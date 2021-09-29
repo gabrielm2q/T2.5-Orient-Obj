@@ -14,8 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import control.ControleDados;
 import control.ControleTelaDetalheEstoque;
+import model.Dados;
 
 public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JLabel titulo;
@@ -23,7 +23,6 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JButton btnDeletar = new JButton("Deletar");
 
 	private ControleTelaDetalheEstoque controlaDetalhe;
-	private ControleDados dados = new ControleDados();
 
 	// Declarando valores que irão compor as ComboBoxes
 	private String[] tamanhos = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14",
@@ -32,7 +31,6 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 			"50" };
 	private String[] gen = { "M", "F", "Unissex" };
 	private String[] alturaSaltos = { "Baixo", "Médio", "Alto", "Não Possui" };
-	private String tipoProduto;
 
 	// Trabalhando com datas
 	private GregorianCalendar dataCalendar = new GregorianCalendar();
@@ -47,11 +45,11 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JLabel lblDataCadastro = new JLabel("Data de Cadastro: "); // Data de Cadastro
 	private JLabel valorDataCadastro;
 	private JLabel lblIdProd = new JLabel("ID: "); // ID do Produto
-	private JTextField valorIdProd;
+	private JLabel valorIdProd;
 	private JLabel lblNome = new JLabel("Nome: "); // Nome
 	private JTextField valorNome;
 	private JLabel lblTamanho = new JLabel("Tamanho: "); // Tamanho
-	private JComboBox valorTamanho = new JComboBox(tamanhos);
+	private JComboBox<String> valorTamanho = new JComboBox<>(tamanhos);
 	private JLabel lblPreco = new JLabel("Preço: "); // Preço
 	private JTextField valorPreco;
 	private JLabel lblMarca = new JLabel("Marca: "); // Marca
@@ -61,7 +59,7 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JLabel lblGarantia = new JLabel("Garantia: "); // Tempo de Garantia
 	private JTextField valorGarantia;
 	private JLabel lblGenero = new JLabel("Gênero: "); // Gênero
-	private JComboBox valorGenero = new JComboBox(gen);
+	private JComboBox<String> valorGenero = new JComboBox<>(gen);
 	private JLabel lblBarras = new JLabel("Código de Barras: "); // Código de Barras
 	private JTextField valorBarras;
 	private JLabel lblCor = new JLabel("Cor: "); // Cor
@@ -116,15 +114,13 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JLabel lblBico = new JLabel("Tipo de Bico: "); // Tipo de Bico
 	private JTextField valorBico;
 	private JLabel lblAlturaSalto = new JLabel("Altura do Salto: "); // Altura do Salto
-	private JComboBox valorAlturaSalto = new JComboBox(alturaSaltos);
+	private JComboBox<String> valorAlturaSalto = new JComboBox<>(alturaSaltos);
 	private JLabel lblPalmilha = new JLabel("Tipo de Palmilha: "); // Tipo de Palmilha
 	private JTextField valorPalmilha;
 
-	public TelaDetalheEstoque(ControleDados d, int opcao, int idx, String tipoProd) {
-		super(tipoProd); // JFrame com o tipo do produto
-		this.dados = d;
-		this.tipoProduto = tipoProd;
-		this.controlaDetalhe = new ControleTelaDetalheEstoque(this, dados, opcao, idx, tipoProduto);
+	public TelaDetalheEstoque(int opcEditarSalvar, String tipoProd) {
+		super(tipoProd); // JFrame com a categoria do produto como título
+		this.controlaDetalhe = new ControleTelaDetalheEstoque(this, opcEditarSalvar, tipoProd);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -204,13 +200,21 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.add(valorCategoria);
 		this.add(lblCategoria);
 
+		// Pegando o ID de cada produto
+		String id;
+		if (Integer.toString(Dados.getEstoque().getProduto().size()) == null) {
+			id = "1";
+		} else {
+			id = Integer.toString(Dados.getEstoque().getProduto().size() + 1);
+		}
+
 		lblIdProd.setFont(labelFont); // CAMPO DE ID
 		lblIdProd.setForeground(new Color(29, 53, 87));
 		lblIdProd.setBounds(318, 111, 35, 20);
-		valorIdProd = new JTextField(8);
-		valorIdProd.setFont(textFont);
-		valorIdProd.setText("00");
-		valorIdProd.setBounds(343, 113, 30, 20);
+		valorIdProd = new JLabel();
+		valorIdProd.setFont(labelFont);
+		valorIdProd.setText(id);
+		valorIdProd.setBounds(343, 111, 30, 20);
 		this.add(valorIdProd);
 		this.add(lblIdProd);
 
@@ -510,12 +514,12 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 
 	}
 
-	public String getTipoProduto() {
-		return tipoProduto;
+	public JLabel getTitulo() {
+		return titulo;
 	}
 
-	public void setTipoProduto(String tipoProduto) {
-		this.tipoProduto = tipoProduto;
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
 	}
 
 	public JButton getBtnSalvar() {
@@ -534,12 +538,44 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.btnDeletar = btnDeletar;
 	}
 
-	public ControleDados getDados() {
-		return dados;
+	public ControleTelaDetalheEstoque getControlaDetalhe() {
+		return controlaDetalhe;
 	}
 
-	public void setDados(ControleDados dados) {
-		this.dados = dados;
+	public void setControlaDetalhe(ControleTelaDetalheEstoque controlaDetalhe) {
+		this.controlaDetalhe = controlaDetalhe;
+	}
+
+	public String[] getTamanhos() {
+		return tamanhos;
+	}
+
+	public void setTamanhos(String[] tamanhos) {
+		this.tamanhos = tamanhos;
+	}
+
+	public String[] getGen() {
+		return gen;
+	}
+
+	public void setGen(String[] gen) {
+		this.gen = gen;
+	}
+
+	public String[] getAlturaSaltos() {
+		return alturaSaltos;
+	}
+
+	public void setAlturaSaltos(String[] alturaSaltos) {
+		this.alturaSaltos = alturaSaltos;
+	}
+
+	public GregorianCalendar getDataCalendar() {
+		return dataCalendar;
+	}
+
+	public void setDataCalendar(GregorianCalendar dataCalendar) {
+		this.dataCalendar = dataCalendar;
 	}
 
 	public Date getData() {
@@ -550,12 +586,36 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.data = data;
 	}
 
+	public SimpleDateFormat getFormato() {
+		return formato;
+	}
+
+	public void setFormato(SimpleDateFormat formato) {
+		this.formato = formato;
+	}
+
+	public JLabel getLblQuantidade() {
+		return lblQuantidade;
+	}
+
+	public void setLblQuantidade(JLabel lblQuantidade) {
+		this.lblQuantidade = lblQuantidade;
+	}
+
 	public JTextField getValorQuantidade() {
 		return valorQuantidade;
 	}
 
 	public void setValorQuantidade(JTextField valorQuantidade) {
 		this.valorQuantidade = valorQuantidade;
+	}
+
+	public JLabel getLblCategoria() {
+		return lblCategoria;
+	}
+
+	public void setLblCategoria(JLabel lblCategoria) {
+		this.lblCategoria = lblCategoria;
 	}
 
 	public JLabel getValorCategoria() {
@@ -566,6 +626,14 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorCategoria = valorCategoria;
 	}
 
+	public JLabel getLblDataCadastro() {
+		return lblDataCadastro;
+	}
+
+	public void setLblDataCadastro(JLabel lblDataCadastro) {
+		this.lblDataCadastro = lblDataCadastro;
+	}
+
 	public JLabel getValorDataCadastro() {
 		return valorDataCadastro;
 	}
@@ -574,12 +642,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorDataCadastro = valorDataCadastro;
 	}
 
-	public JTextField getValorIdProd() {
+	public JLabel getLblIdProd() {
+		return lblIdProd;
+	}
+
+	public void setLblIdProd(JLabel lblIdProd) {
+		this.lblIdProd = lblIdProd;
+	}
+
+	public JLabel getValorIdProd() {
 		return valorIdProd;
 	}
 
-	public void setValorIdProd(JTextField valorIdProd) {
+	public void setValorIdProd(JLabel valorIdProd) {
 		this.valorIdProd = valorIdProd;
+	}
+
+	public JLabel getLblNome() {
+		return lblNome;
+	}
+
+	public void setLblNome(JLabel lblNome) {
+		this.lblNome = lblNome;
 	}
 
 	public JTextField getValorNome() {
@@ -590,12 +674,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorNome = valorNome;
 	}
 
-	public JComboBox getValorTamanho() {
+	public JLabel getLblTamanho() {
+		return lblTamanho;
+	}
+
+	public void setLblTamanho(JLabel lblTamanho) {
+		this.lblTamanho = lblTamanho;
+	}
+
+	public JComboBox<String> getValorTamanho() {
 		return valorTamanho;
 	}
 
-	public void setValorTamanho(JComboBox valorTamanho) {
+	public void setValorTamanho(JComboBox<String> valorTamanho) {
 		this.valorTamanho = valorTamanho;
+	}
+
+	public JLabel getLblPreco() {
+		return lblPreco;
+	}
+
+	public void setLblPreco(JLabel lblPreco) {
+		this.lblPreco = lblPreco;
 	}
 
 	public JTextField getValorPreco() {
@@ -606,12 +706,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorPreco = valorPreco;
 	}
 
+	public JLabel getLblMarca() {
+		return lblMarca;
+	}
+
+	public void setLblMarca(JLabel lblMarca) {
+		this.lblMarca = lblMarca;
+	}
+
 	public JTextField getValorMarca() {
 		return valorMarca;
 	}
 
 	public void setValorMarca(JTextField valorMarca) {
 		this.valorMarca = valorMarca;
+	}
+
+	public JLabel getLblOrigem() {
+		return lblOrigem;
+	}
+
+	public void setLblOrigem(JLabel lblOrigem) {
+		this.lblOrigem = lblOrigem;
 	}
 
 	public JTextField getValorOrigem() {
@@ -622,6 +738,14 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorOrigem = valorOrigem;
 	}
 
+	public JLabel getLblGarantia() {
+		return lblGarantia;
+	}
+
+	public void setLblGarantia(JLabel lblGarantia) {
+		this.lblGarantia = lblGarantia;
+	}
+
 	public JTextField getValorGarantia() {
 		return valorGarantia;
 	}
@@ -630,12 +754,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorGarantia = valorGarantia;
 	}
 
-	public JComboBox getValorGenero() {
+	public JLabel getLblGenero() {
+		return lblGenero;
+	}
+
+	public void setLblGenero(JLabel lblGenero) {
+		this.lblGenero = lblGenero;
+	}
+
+	public JComboBox<String> getValorGenero() {
 		return valorGenero;
 	}
 
-	public void setValorGenero(JComboBox valorGenero) {
+	public void setValorGenero(JComboBox<String> valorGenero) {
 		this.valorGenero = valorGenero;
+	}
+
+	public JLabel getLblBarras() {
+		return lblBarras;
+	}
+
+	public void setLblBarras(JLabel lblBarras) {
+		this.lblBarras = lblBarras;
 	}
 
 	public JTextField getValorBarras() {
@@ -646,12 +786,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorBarras = valorBarras;
 	}
 
+	public JLabel getLblCor() {
+		return lblCor;
+	}
+
+	public void setLblCor(JLabel lblCor) {
+		this.lblCor = lblCor;
+	}
+
 	public JTextField getValorCor() {
 		return valorCor;
 	}
 
 	public void setValorCor(JTextField valorCor) {
 		this.valorCor = valorCor;
+	}
+
+	public JLabel getLblMaterial() {
+		return lblMaterial;
+	}
+
+	public void setLblMaterial(JLabel lblMaterial) {
+		this.lblMaterial = lblMaterial;
 	}
 
 	public JTextField getValorMaterial() {
@@ -662,12 +818,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorMaterial = valorMaterial;
 	}
 
+	public JLabel getLblSalto() {
+		return lblSalto;
+	}
+
+	public void setLblSalto(JLabel lblSalto) {
+		this.lblSalto = lblSalto;
+	}
+
 	public JTextField getValorSalto() {
 		return valorSalto;
 	}
 
 	public void setValorSalto(JTextField valorSalto) {
 		this.valorSalto = valorSalto;
+	}
+
+	public JLabel getLblCorExt() {
+		return lblCorExt;
+	}
+
+	public void setLblCorExt(JLabel lblCorExt) {
+		this.lblCorExt = lblCorExt;
 	}
 
 	public JTextField getValorCorExt() {
@@ -678,12 +850,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorCorExt = valorCorExt;
 	}
 
+	public JLabel getLblCorSol() {
+		return lblCorSol;
+	}
+
+	public void setLblCorSol(JLabel lblCorSol) {
+		this.lblCorSol = lblCorSol;
+	}
+
 	public JTextField getValorCorSol() {
 		return valorCorSol;
 	}
 
 	public void setValorCorSol(JTextField valorCorSol) {
 		this.valorCorSol = valorCorSol;
+	}
+
+	public JLabel getLblAltSalto() {
+		return lblAltSalto;
+	}
+
+	public void setLblAltSalto(JLabel lblAltSalto) {
+		this.lblAltSalto = lblAltSalto;
 	}
 
 	public JTextField getValorAltSalto() {
@@ -694,12 +882,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorAltSalto = valorAltSalto;
 	}
 
+	public JLabel getLblAtividade() {
+		return lblAtividade;
+	}
+
+	public void setLblAtividade(JLabel lblAtividade) {
+		this.lblAtividade = lblAtividade;
+	}
+
 	public JTextField getValorAtividade() {
 		return valorAtividade;
 	}
 
 	public void setValorAtividade(JTextField valorAtividade) {
 		this.valorAtividade = valorAtividade;
+	}
+
+	public JLabel getLblTecSol() {
+		return lblTecSol;
+	}
+
+	public void setLblTecSol(JLabel lblTecSol) {
+		this.lblTecSol = lblTecSol;
 	}
 
 	public JTextField getValorTecSol() {
@@ -710,12 +914,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorTecSol = valorTecSol;
 	}
 
+	public JLabel getLblPisada() {
+		return lblPisada;
+	}
+
+	public void setLblPisada(JLabel lblPisada) {
+		this.lblPisada = lblPisada;
+	}
+
 	public JTextField getValorPisada() {
 		return valorPisada;
 	}
 
 	public void setValorPisada(JTextField valorPisada) {
 		this.valorPisada = valorPisada;
+	}
+
+	public JLabel getLblTipoPalmilha() {
+		return lblTipoPalmilha;
+	}
+
+	public void setLblTipoPalmilha(JLabel lblTipoPalmilha) {
+		this.lblTipoPalmilha = lblTipoPalmilha;
 	}
 
 	public JTextField getValorTipoPalmilha() {
@@ -726,12 +946,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorTipoPalmilha = valorTipoPalmilha;
 	}
 
+	public JLabel getLblPeso() {
+		return lblPeso;
+	}
+
+	public void setLblPeso(JLabel lblPeso) {
+		this.lblPeso = lblPeso;
+	}
+
 	public JTextField getValorPeso() {
 		return valorPeso;
 	}
 
 	public void setValorPeso(JTextField valorPeso) {
 		this.valorPeso = valorPeso;
+	}
+
+	public JLabel getLblAmarra() {
+		return lblAmarra;
+	}
+
+	public void setLblAmarra(JLabel lblAmarra) {
+		this.lblAmarra = lblAmarra;
 	}
 
 	public JTextField getValorAmarra() {
@@ -742,12 +978,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorAmarra = valorAmarra;
 	}
 
+	public JLabel getLblCorCadarco() {
+		return lblCorCadarco;
+	}
+
+	public void setLblCorCadarco(JLabel lblCorCadarco) {
+		this.lblCorCadarco = lblCorCadarco;
+	}
+
 	public JTextField getValorCorCadarco() {
 		return valorCorCadarco;
 	}
 
 	public void setValorCorCadarco(JTextField valorCorCadarco) {
 		this.valorCorCadarco = valorCorCadarco;
+	}
+
+	public JLabel getLblModelo() {
+		return lblModelo;
+	}
+
+	public void setLblModelo(JLabel lblModelo) {
+		this.lblModelo = lblModelo;
 	}
 
 	public JTextField getValorModelo() {
@@ -758,12 +1010,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorModelo = valorModelo;
 	}
 
+	public JLabel getLblAltCano() {
+		return lblAltCano;
+	}
+
+	public void setLblAltCano(JLabel lblAltCano) {
+		this.lblAltCano = lblAltCano;
+	}
+
 	public JTextField getValorAltCano() {
 		return valorAltCano;
 	}
 
 	public void setValorAltCano(JTextField valorAltCano) {
 		this.valorAltCano = valorAltCano;
+	}
+
+	public JLabel getLblTipoSalto() {
+		return lblTipoSalto;
+	}
+
+	public void setLblTipoSalto(JLabel lblTipoSalto) {
+		this.lblTipoSalto = lblTipoSalto;
 	}
 
 	public JTextField getValorTipoSalto() {
@@ -774,12 +1042,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorTipoSalto = valorTipoSalto;
 	}
 
+	public JLabel getLblTiPalmilha() {
+		return lblTiPalmilha;
+	}
+
+	public void setLblTiPalmilha(JLabel lblTiPalmilha) {
+		this.lblTiPalmilha = lblTiPalmilha;
+	}
+
 	public JTextField getValorTiPalmilha() {
 		return valorTiPalmilha;
 	}
 
 	public void setValorTiPalmilha(JTextField valorTiPalmilha) {
 		this.valorTiPalmilha = valorTiPalmilha;
+	}
+
+	public JLabel getLblMatSolado() {
+		return lblMatSolado;
+	}
+
+	public void setLblMatSolado(JLabel lblMatSolado) {
+		this.lblMatSolado = lblMatSolado;
 	}
 
 	public JTextField getValorMatSolado() {
@@ -790,12 +1074,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorMatSolado = valorMatSolado;
 	}
 
+	public JLabel getLblSolado() {
+		return lblSolado;
+	}
+
+	public void setLblSolado(JLabel lblSolado) {
+		this.lblSolado = lblSolado;
+	}
+
 	public JTextField getValorSolado() {
 		return valorSolado;
 	}
 
 	public void setValorSolado(JTextField valorSolado) {
 		this.valorSolado = valorSolado;
+	}
+
+	public JLabel getLblInterno() {
+		return lblInterno;
+	}
+
+	public void setLblInterno(JLabel lblInterno) {
+		this.lblInterno = lblInterno;
 	}
 
 	public JTextField getValorInterno() {
@@ -806,6 +1106,14 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorInterno = valorInterno;
 	}
 
+	public JLabel getLblBico() {
+		return lblBico;
+	}
+
+	public void setLblBico(JLabel lblBico) {
+		this.lblBico = lblBico;
+	}
+
 	public JTextField getValorBico() {
 		return valorBico;
 	}
@@ -814,12 +1122,28 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.valorBico = valorBico;
 	}
 
-	public JComboBox getValorAlturaSalto() {
+	public JLabel getLblAlturaSalto() {
+		return lblAlturaSalto;
+	}
+
+	public void setLblAlturaSalto(JLabel lblAlturaSalto) {
+		this.lblAlturaSalto = lblAlturaSalto;
+	}
+
+	public JComboBox<String> getValorAlturaSalto() {
 		return valorAlturaSalto;
 	}
 
-	public void setValorAlturaSalto(JComboBox valorAlturaSalto) {
+	public void setValorAlturaSalto(JComboBox<String> valorAlturaSalto) {
 		this.valorAlturaSalto = valorAlturaSalto;
+	}
+
+	public JLabel getLblPalmilha() {
+		return lblPalmilha;
+	}
+
+	public void setLblPalmilha(JLabel lblPalmilha) {
+		this.lblPalmilha = lblPalmilha;
 	}
 
 	public JTextField getValorPalmilha() {
