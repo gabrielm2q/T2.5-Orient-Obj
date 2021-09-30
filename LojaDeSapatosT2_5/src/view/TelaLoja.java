@@ -624,6 +624,13 @@ public class TelaLoja implements ActionListener {
 
 	public void setValorComp(JTextField valorComp) {
 		this.valorComp = valorComp;
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}  
 
 }
