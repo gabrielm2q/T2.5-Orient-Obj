@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -29,10 +30,10 @@ public class TelaPagamento extends JFrame implements ActionListener {
 	// Declarando componentes da tela
 	private JLabel valorPago;
 	private JLabel dataPag;
-	private JLabel lblFormaPag = new JLabel("Forma Pagamento: ");
+	private JLabel lblFormaPag = new JLabel("Forma de Pagamento: ");
 	private JComboBox valorFormaPag = new JComboBox(formasPagamento);
-	private JLabel lblNumParcelas = new JLabel("Forma Pagamento: ");
-	private JComboBox valorNumParcelas = new JComboBox(formasPagamento);
+	private JLabel lblNumParcelas = new JLabel("Número de Parcelas: ");
+	private JComboBox valorNumParcelas = new JComboBox(numParcelas);
 
 	public TelaPagamento(Venda venda, TelaDetalheVenda detalheVenda) {
 		super("Pagamento"); // JFrame com nome
@@ -41,7 +42,7 @@ public class TelaPagamento extends JFrame implements ActionListener {
 		this.detalheVenda = detalheVenda;
 		this.opcEditarSalvar = this.detalheVenda.getOpcEditarSalvar();
 
-		this.setSize(560, 520);
+		this.setSize(490, 313);
 		this.setLayout(null);
 		this.setResizable(false);
 
@@ -58,10 +59,11 @@ public class TelaPagamento extends JFrame implements ActionListener {
 		btnSalvar.setFont(f);
 
 		// Localização e Tamanho dos componentes da tela
-		titulo.setBounds(90, 20, 340, 60);
-		btnSalvar.setBounds(20, 395, 507, 70);
+		titulo.setBounds(80, 20, 320, 60);
+		btnSalvar.setBounds(20, 190, 438, 70);
 		this.add(titulo);
 		this.add(btnSalvar);
+		btnSalvar.addActionListener(this);
 
 		// Definindo posição dos JLabels e JTextFields e suas fontes
 		Font labelFont = new Font("Montserrat", Font.BOLD, 16);
@@ -74,6 +76,32 @@ public class TelaPagamento extends JFrame implements ActionListener {
 		valorPago.setBounds(20, 90, 185, 20);
 		this.add(valorPago);
 
+		// Data de Pagamento
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		dataPag = new JLabel("Data de Pagamento: " + formato.format(venda.getDataPedido()));
+		dataPag.setFont(labelFont);
+		dataPag.setForeground(new Color(29, 53, 87));
+		dataPag.setBounds(220, 90, 300, 20);
+		this.add(dataPag);
+
+		// Forma de Pagamento
+		lblFormaPag.setFont(labelFont);
+		lblFormaPag.setForeground(new Color(29, 53, 87));
+		lblFormaPag.setBounds(20, 120, 180, 20);
+		valorFormaPag.setFont(textFont);
+		valorFormaPag.setBounds(200, 122, 258, 20);
+		this.add(valorFormaPag);
+		this.add(lblFormaPag);
+
+		// Numero de Parcelas
+		lblNumParcelas.setFont(labelFont);
+		lblNumParcelas.setForeground(new Color(29, 53, 87));
+		lblNumParcelas.setBounds(20, 150, 170, 20);
+		valorNumParcelas.setFont(textFont);
+		valorNumParcelas.setBounds(200, 152, 258, 20);
+		this.add(valorNumParcelas);
+		this.add(lblNumParcelas);
+
 		this.setVisible(true);
 	}
 
@@ -81,6 +109,118 @@ public class TelaPagamento extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		this.controlaPag.clicaBtn(e);
 
+	}
+
+	public JLabel getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JButton getBtnSalvar() {
+		return btnSalvar;
+	}
+
+	public void setBtnSalvar(JButton btnSalvar) {
+		this.btnSalvar = btnSalvar;
+	}
+
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public void setVenda(Venda venda) {
+		this.venda = venda;
+	}
+
+	public TelaDetalheVenda getDetalheVenda() {
+		return detalheVenda;
+	}
+
+	public void setDetalheVenda(TelaDetalheVenda detalheVenda) {
+		this.detalheVenda = detalheVenda;
+	}
+
+	public ControleTelaPagamento getControlaPag() {
+		return controlaPag;
+	}
+
+	public void setControlaPag(ControleTelaPagamento controlaPag) {
+		this.controlaPag = controlaPag;
+	}
+
+	public int getOpcEditarSalvar() {
+		return opcEditarSalvar;
+	}
+
+	public void setOpcEditarSalvar(int opcEditarSalvar) {
+		this.opcEditarSalvar = opcEditarSalvar;
+	}
+
+	public String[] getFormasPagamento() {
+		return formasPagamento;
+	}
+
+	public void setFormasPagamento(String[] formasPagamento) {
+		this.formasPagamento = formasPagamento;
+	}
+
+	public String[] getNumParcelas() {
+		return numParcelas;
+	}
+
+	public void setNumParcelas(String[] numParcelas) {
+		this.numParcelas = numParcelas;
+	}
+
+	public JLabel getValorPago() {
+		return valorPago;
+	}
+
+	public void setValorPago(JLabel valorPago) {
+		this.valorPago = valorPago;
+	}
+
+	public JLabel getDataPag() {
+		return dataPag;
+	}
+
+	public void setDataPag(JLabel dataPag) {
+		this.dataPag = dataPag;
+	}
+
+	public JLabel getLblFormaPag() {
+		return lblFormaPag;
+	}
+
+	public void setLblFormaPag(JLabel lblFormaPag) {
+		this.lblFormaPag = lblFormaPag;
+	}
+
+	public JComboBox getValorFormaPag() {
+		return valorFormaPag;
+	}
+
+	public void setValorFormaPag(JComboBox valorFormaPag) {
+		this.valorFormaPag = valorFormaPag;
+	}
+
+	public JLabel getLblNumParcelas() {
+		return lblNumParcelas;
+	}
+
+	public void setLblNumParcelas(JLabel lblNumParcelas) {
+		this.lblNumParcelas = lblNumParcelas;
+	}
+
+	public JComboBox getValorNumParcelas() {
+		return valorNumParcelas;
+	}
+
+	public void setValorNumParcelas(JComboBox valorNumParcelas) {
+		this.valorNumParcelas = valorNumParcelas;
 	}
 
 }

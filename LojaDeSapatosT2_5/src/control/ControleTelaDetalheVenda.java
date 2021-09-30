@@ -42,11 +42,24 @@ public class ControleTelaDetalheVenda {
 					JOptionPane.showMessageDialog(null,
 							"Erro!\nA quantidade vendida não pode ser nula\nou maior que a quantidade em estoque!",
 							null, JOptionPane.ERROR_MESSAGE);
+				} else if (((Double.parseDouble(detalheVenda.getValorPrecoUnit().getText())
+						* Integer.parseInt(detalheVenda.getValorQuantidade().getText()))
+						- Double.parseDouble(detalheVenda.getValorDesconto().getText())) <= 0) {
+					/*
+					 * Aqui estamos verificando se o valor do desconto não é maior que o valor total
+					 * dos produtos vendidos
+					 */
+					JOptionPane.showMessageDialog(null,
+							"Erro!\nO valor do descontom não pode ser maior que o preço total da venda!", null,
+							JOptionPane.ERROR_MESSAGE);
+
 				} else { // Salvando os dados ja cadastrados e passando-os para a tela de pagamento
 
-					// Calculando o valor total da venda (preco unitario x quantidade vendida)
-					Double precoTotal = Double.parseDouble(detalheVenda.getValorPrecoUnit().getText())
-							* Integer.parseInt(detalheVenda.getValorQuantidade().getText());
+					// Calculando o valor total da venda [(preco unitario x quantidade vendida) -
+					// desconto]
+					Double precoTotal = (Double.parseDouble(detalheVenda.getValorPrecoUnit().getText())
+							* Integer.parseInt(detalheVenda.getValorQuantidade().getText()))
+							- Double.parseDouble(detalheVenda.getValorDesconto().getText());
 
 					// formatando data
 					try {
