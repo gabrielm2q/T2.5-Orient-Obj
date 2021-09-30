@@ -118,10 +118,10 @@ public class TelaLoja implements ActionListener {
 		
 		lblSite.setFont(labelFont); // CAMPO DO SITE
 		lblSite.setForeground(new Color(29, 53, 87));
-		lblSite.setBounds(20, 167, 75, 20);
+		lblSite.setBounds(x, y, 75, 20);
 		valorSite = new JTextField(62);
 		valorSite.setFont(textFont);
-		valorSite.setBounds(77, 167, 443, 20);
+		valorSite.setBounds(x, y, 443, 20);
 		janela.add(lblSite);
 		janela.add(valorSite);
 		
@@ -143,85 +143,85 @@ public class TelaLoja implements ActionListener {
 		
 		endereco.setFont(new Font("Montserrat", Font.BOLD, 44)); // TÍTULO DA SEÇÃO DE ENDEREÇO
 		endereco.setForeground(new Color(29, 53, 87));
-		endereco.setBounds(135, 202, 250, 65);
+		endereco.setBounds(x, y, 250, 65);
 		janela.add(endereco);
 
 		lblCep.setFont(labelFont); // CAMPO DO CEP
 		lblCep.setForeground(new Color(29, 53, 87));
-		lblCep.setBounds(20, 276, 50, 20);
+		lblCep.setBounds(x, y, 50, 20);
 		valorCep = new JTextField(10);
 		valorCep.setFont(textFont);
 		valorCep.setText("00000000");
-		valorCep.setBounds(67, 276, 90, 20);
+		valorCep.setBounds(x, y, 90, 20);
 		janela.add(lblCep);
 		janela.add(valorCep);
 
 		lblCidade.setFont(labelFont); // CAMPOS DA CIDADE e da UF
 		lblCidade.setForeground(new Color(29, 53, 87));
-		lblCidade.setBounds(170, 276, 100, 20);
+		lblCidade.setBounds(x, y, 100, 20);
 		valorCidade = new JTextField(30);
 		valorCidade.setFont(textFont);
-		valorCidade.setBounds(270, 276, 175, 20);
+		valorCidade.setBounds(x, y, 175, 20);
 		janela.add(lblCidade);
 		janela.add(valorCidade);
 		valorUf.setFont(textFont);
-		valorUf.setBounds(455, 276, 62, 20);
+		valorUf.setBounds(x, y, 62, 20);
 		janela.add(valorUf);
 
 		lblRua.setFont(labelFont); // CAMPO DA RUA
 		lblRua.setForeground(new Color(29, 53, 87));
-		lblRua.setBounds(20, 305, 120, 20);
+		lblRua.setBounds(x, y, 120, 20);
 		valorRua = new JTextField(50);
 		valorRua.setFont(textFont);
-		valorRua.setBounds(137, 305, 200, 20);
+		valorRua.setBounds(x, y, 200, 20);
 		janela.add(lblRua);
 		janela.add(valorRua);
 
 		lblNum.setFont(labelFont); // CAMPO DO NÚMERO
 		lblNum.setForeground(new Color(29, 53, 87));
-		lblNum.setBounds(350, 305, 75, 20);
+		lblNum.setBounds(x, y, 75, 20);
 		valorNum = new JTextField(5);
 		valorNum.setFont(textFont);
 		valorNum.setText("00");
-		valorNum.setBounds(420, 305, 97, 20);
+		valorNum.setBounds(x, y, 97, 20);
 		janela.add(lblNum);
 		janela.add(valorNum);
 
 		lblQd.setFont(labelFont); // CAMPO DA QUADRA
 		lblQd.setForeground(new Color(29, 53, 87));
-		lblQd.setBounds(20, 334, 75, 20);
+		lblQd.setBounds(x, y, 75, 20);
 		valorQd = new JTextField(5);
 		valorQd.setFont(textFont);
 		valorQd.setText("00");
-		valorQd.setBounds(90, 334, 97, 20);
+		valorQd.setBounds(x, y, 97, 20);
 		janela.add(lblQd);
 		janela.add(valorQd);
 
 		lblBairro.setFont(labelFont); // CAMPO DO BAIRRO
 		lblBairro.setForeground(new Color(29, 53, 87));
-		lblBairro.setBounds(200, 334, 75, 20);
+		lblBairro.setBounds(x, y, 75, 20);
 		valorBairro = new JTextField(30);
 		valorBairro.setFont(textFont);
-		valorBairro.setBounds(265, 334, 253, 20);
+		valorBairro.setBounds(x, y, 253, 20);
 		janela.add(lblBairro);
 		janela.add(valorBairro);
 
 		lblApart.setFont(labelFont); // CAMPO DO APARTAMENTO
 		lblApart.setForeground(new Color(29, 53, 87));
-		lblApart.setBounds(20, 363, 110, 20);
+		lblApart.setBounds(x, y, 110, 20);
 		valorApart = new JTextField(5);
 		valorApart.setFont(textFont);
 		valorApart.setText("00");
-		valorApart.setBounds(131, 363, 57, 20);
+		valorApart.setBounds(x, y, 57, 20);
 		janela.add(lblApart);
 		janela.add(valorApart);
 
 		lblComp.setFont(labelFont); // CAMPO DO COMPLEMENTO
 		lblComp.setForeground(new Color(29, 53, 87));
-		lblComp.setBounds(200, 363, 130, 20);
+		lblComp.setBounds(x, y, 130, 20);
 		valorComp = new JTextField(5);
 		valorComp.setFont(textFont);
-		valorComp.setBounds(317, 363, 201, 20);
+		valorComp.setBounds(x, y, 201, 20);
 		janela.add(lblComp);
 		janela.add(valorComp);
 		
