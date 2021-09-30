@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import model.Dados;
 import model.Pagamento;
 import view.TelaPagamento;
 
@@ -54,6 +55,11 @@ public class ControleTelaPagamento {
 					tela.getVenda().getValorDesconto(), tela.getVenda().getDataPedido(),
 					tela.getVenda().getFuncionario(), tela.getVenda().getCliente(), tela.getVenda().getProduto(), pag,
 					tela.getVenda().getQtdVendida());
+
+			// Diminuindo a quantidade do produto vendido no estoque da quantidade comprada
+			int indexProd = Dados.getEstoque().getProduto().indexOf(tela.getVenda().getProduto());
+			int qtdFinal = Dados.getEstoque().getQuantidade().get(indexProd) - tela.getVenda().getQtdVendida();
+			Dados.getEstoque().getQuantidade().set(indexProd, qtdFinal);
 
 			JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!", null, JOptionPane.INFORMATION_MESSAGE);
 			tela.dispose();

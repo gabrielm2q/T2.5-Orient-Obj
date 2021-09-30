@@ -9,6 +9,7 @@ import java.util.Random;
 import control.ControleCliente;
 import control.ControleEstoque;
 import control.ControleFuncionario;
+import control.ControleVenda;
 
 public abstract class Dados {
 	private static final Loja loja = new Loja();
@@ -151,6 +152,9 @@ public abstract class Dados {
 			estCtrl.cadastrarProduto(aleatorio.nextInt(999), "Bota", d, bota);
 			Dados.incrementarIdProd();
 		}
+
+		ControleVenda venCtrl = new ControleVenda();
+		Venda venda = new Venda();
 
 	}
 
