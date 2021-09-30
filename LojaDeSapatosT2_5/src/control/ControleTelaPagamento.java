@@ -13,14 +13,16 @@ import view.TelaPagamento;
 public class ControleTelaPagamento {
 	private TelaPagamento tela;
 	private int opcEditarSalvar;
+	private int indexVenda;
 	private ControleVenda venCtrl;
 
 	Date data = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-	public ControleTelaPagamento(TelaPagamento tela, int opcEditarSalvar) {
+	public ControleTelaPagamento(TelaPagamento tela, int opcEditarSalvar, int indexVenda) {
 		this.opcEditarSalvar = opcEditarSalvar;
 		this.tela = tela;
+		this.indexVenda = indexVenda;
 		venCtrl = new ControleVenda();
 	}
 
@@ -48,13 +50,22 @@ public class ControleTelaPagamento {
 		pag.setValorPago(tela.getVenda().getValorVenda());
 
 		if (opcEditarSalvar == 0) { // Cadastrando venda
-			venCtrl.cadastrarVenda(tela.getVenda().getValorVenda(), tela.getVenda().getValorDesconto(),
-					tela.getVenda().getDataPedido(), tela.getVenda().getFuncionario(), tela.getVenda().getCliente(),
-					tela.getVenda().getProduto(), pag, tela.getVenda().getQtdVendida());
+			venCtrl.cadastrarVenda(tela.getVenda().getIdVenda(), tela.getVenda().getValorVenda(),
+					tela.getVenda().getValorDesconto(), tela.getVenda().getDataPedido(),
+					tela.getVenda().getFuncionario(), tela.getVenda().getCliente(), tela.getVenda().getProduto(), pag,
+					tela.getVenda().getQtdVendida());
 
 			JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!", null, JOptionPane.INFORMATION_MESSAGE);
 			tela.dispose();
 
+		} else if (opcEditarSalvar == 1) {
+			venCtrl.editarVenda(indexVenda, tela.getVenda().getIdVenda(), tela.getVenda().getValorVenda(),
+					tela.getVenda().getValorDesconto(), tela.getVenda().getDataPedido(),
+					tela.getVenda().getFuncionario(), tela.getVenda().getCliente(), tela.getVenda().getProduto(), pag,
+					tela.getVenda().getQtdVendida());
+
+			JOptionPane.showMessageDialog(null, "Venda editada com sucesso!", null, JOptionPane.INFORMATION_MESSAGE);
+			tela.dispose();
 		}
 	}
 

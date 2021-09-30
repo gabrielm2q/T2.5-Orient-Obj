@@ -20,7 +20,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import control.ControleTelaDetalheVenda;
+import model.Cliente;
 import model.Dados;
+import model.Funcionario;
 
 public class TelaDetalheVenda extends JFrame implements ActionListener, ListSelectionListener {
 	private JLabel titulo = new JLabel("Venda", JLabel.CENTER);
@@ -28,6 +30,7 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 
 	private ControleTelaDetalheVenda controlaDetalhe;
 	private int opcEditarSalvar;
+	private int indexVenda;
 
 	// Trabalhando com datas
 	private GregorianCalendar dataCalendar = new GregorianCalendar();
@@ -58,8 +61,9 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 
 	public TelaDetalheVenda(int opcaoEditarSalvar, int indexVenda) {
 		super("Venda"); // JFrame com nome
+		this.controlaDetalhe = new ControleTelaDetalheVenda(this, opcaoEditarSalvar, indexVenda);
 		this.opcEditarSalvar = opcaoEditarSalvar;
-		this.controlaDetalhe = new ControleTelaDetalheVenda(this, opcEditarSalvar, indexVenda);
+		this.indexVenda = indexVenda;
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -299,8 +303,8 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		return valorQtdEstoque;
 	}
 
-	public void setValorQtdEstoque(JLabel valorQtdEstoque) {
-		this.valorQtdEstoque = valorQtdEstoque;
+	public void setValorQtdEstoque(String valorQtdEstoque) {
+		this.valorQtdEstoque.setText(valorQtdEstoque);
 	}
 
 	public JLabel getLblProdVendido() {
@@ -315,8 +319,8 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		return valorProdVendido;
 	}
 
-	public void setValorProdVendido(JLabel valorProdVendido) {
-		this.valorProdVendido = valorProdVendido;
+	public void setValorProdVendido(String valorProdVendido) {
+		this.valorProdVendido.setText(valorProdVendido);
 	}
 
 	public JLabel getLblQuantidade() {
@@ -331,8 +335,8 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		return valorQuantidade;
 	}
 
-	public void setValorQuantidade(JTextField valorQuantidade) {
-		this.valorQuantidade = valorQuantidade;
+	public void setValorQuantidade(String valorQuantidade) {
+		this.valorQuantidade.setText(valorQuantidade);
 	}
 
 	public JLabel getLblPrecoUnit() {
@@ -347,8 +351,8 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		return valorPrecoUnit;
 	}
 
-	public void setValorPrecoUnit(JLabel valorPrecoUnit) {
-		this.valorPrecoUnit = valorPrecoUnit;
+	public void setValorPrecoUnit(String valorPrecoUnit) {
+		this.valorPrecoUnit.setText(valorPrecoUnit);
 	}
 
 	public JLabel getLblIdVenda() {
@@ -363,8 +367,8 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		return valorIdVenda;
 	}
 
-	public void setValorIdVenda(JLabel valorIdVenda) {
-		this.valorIdVenda = valorIdVenda;
+	public void setValorIdVenda(String valorIdVenda) {
+		this.valorIdVenda.setText(valorIdVenda);
 	}
 
 	public JLabel getLblDesconto() {
@@ -379,8 +383,8 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		return valorDesconto;
 	}
 
-	public void setValorDesconto(JTextField valorDesconto) {
-		this.valorDesconto = valorDesconto;
+	public void setValorDesconto(String valorDesconto) {
+		this.valorDesconto.setText(valorDesconto);
 	}
 
 	public JLabel getLblDataVenda() {
@@ -395,8 +399,9 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		return valorDataVenda;
 	}
 
-	public void setValorDataVenda(JLabel valorDataVenda) {
-		this.valorDataVenda = valorDataVenda;
+	public void setValorDataVenda(Date valorDataVenda) {
+		String data = formato.format(valorDataVenda);
+		this.valorDataVenda.setText(data);
 	}
 
 	public JLabel getLblCliente() {
@@ -411,8 +416,8 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		return valorCliente;
 	}
 
-	public void setValorCliente(JComboBox<String> valorCliente) {
-		this.valorCliente = valorCliente;
+	public void setValorCliente(Cliente cli) {
+		this.valorCliente.setSelectedItem(cli);
 	}
 
 	public JLabel getLblFuncionario() {
@@ -427,8 +432,8 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		return valorFuncionario;
 	}
 
-	public void setValorFuncionario(JComboBox<String> valorFuncionario) {
-		this.valorFuncionario = valorFuncionario;
+	public void setValorFuncionario(Funcionario func) {
+		this.valorFuncionario.setSelectedItem(func);
 	}
 
 	public int getOpcEditarSalvar() {
@@ -437,6 +442,50 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 
 	public void setOpcEditarSalvar(int opcEditarSalvar) {
 		this.opcEditarSalvar = opcEditarSalvar;
+	}
+
+	public int getIndexVenda() {
+		return indexVenda;
+	}
+
+	public void setIndexVenda(int indexVenda) {
+		this.indexVenda = indexVenda;
+	}
+
+	public void setValorQtdEstoque(JLabel valorQtdEstoque) {
+		this.valorQtdEstoque = valorQtdEstoque;
+	}
+
+	public void setValorProdVendido(JLabel valorProdVendido) {
+		this.valorProdVendido = valorProdVendido;
+	}
+
+	public void setValorQuantidade(JTextField valorQuantidade) {
+		this.valorQuantidade = valorQuantidade;
+	}
+
+	public void setValorPrecoUnit(JLabel valorPrecoUnit) {
+		this.valorPrecoUnit = valorPrecoUnit;
+	}
+
+	public void setValorIdVenda(JLabel valorIdVenda) {
+		this.valorIdVenda = valorIdVenda;
+	}
+
+	public void setValorDesconto(JTextField valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
+
+	public void setValorDataVenda(JLabel valorDataVenda) {
+		this.valorDataVenda = valorDataVenda;
+	}
+
+	public void setValorCliente(JComboBox<String> valorCliente) {
+		this.valorCliente = valorCliente;
+	}
+
+	public void setValorFuncionario(JComboBox<String> valorFuncionario) {
+		this.valorFuncionario = valorFuncionario;
 	}
 
 }

@@ -31,16 +31,16 @@ public class TelaPagamento extends JFrame implements ActionListener {
 	private JLabel valorPago;
 	private JLabel dataPag;
 	private JLabel lblFormaPag = new JLabel("Forma de Pagamento: ");
-	private JComboBox valorFormaPag = new JComboBox(formasPagamento);
+	private JComboBox<String> valorFormaPag = new JComboBox<>(formasPagamento);
 	private JLabel lblNumParcelas = new JLabel("Número de Parcelas: ");
-	private JComboBox valorNumParcelas = new JComboBox(numParcelas);
+	private JComboBox<String> valorNumParcelas = new JComboBox<>(numParcelas);
 
 	public TelaPagamento(Venda venda, TelaDetalheVenda detalheVenda) {
 		super("Pagamento"); // JFrame com nome
-		this.controlaPag = new ControleTelaPagamento(this, this.opcEditarSalvar);
-		this.venda = venda;
 		this.detalheVenda = detalheVenda;
 		this.opcEditarSalvar = this.detalheVenda.getOpcEditarSalvar();
+		this.controlaPag = new ControleTelaPagamento(this, this.opcEditarSalvar, detalheVenda.getIndexVenda());
+		this.venda = venda;
 
 		this.setSize(490, 313);
 		this.setLayout(null);
@@ -73,7 +73,7 @@ public class TelaPagamento extends JFrame implements ActionListener {
 		valorPago = new JLabel("Valor Pago: R$ " + venda.getValorVenda());
 		valorPago.setFont(labelFont);
 		valorPago.setForeground(new Color(29, 53, 87));
-		valorPago.setBounds(20, 90, 185, 20);
+		valorPago.setBounds(20, 90, 250, 20);
 		this.add(valorPago);
 
 		// Data de Pagamento
@@ -199,11 +199,11 @@ public class TelaPagamento extends JFrame implements ActionListener {
 		this.lblFormaPag = lblFormaPag;
 	}
 
-	public JComboBox getValorFormaPag() {
+	public JComboBox<String> getValorFormaPag() {
 		return valorFormaPag;
 	}
 
-	public void setValorFormaPag(JComboBox valorFormaPag) {
+	public void setValorFormaPag(JComboBox<String> valorFormaPag) {
 		this.valorFormaPag = valorFormaPag;
 	}
 
@@ -215,11 +215,11 @@ public class TelaPagamento extends JFrame implements ActionListener {
 		this.lblNumParcelas = lblNumParcelas;
 	}
 
-	public JComboBox getValorNumParcelas() {
+	public JComboBox<String> getValorNumParcelas() {
 		return valorNumParcelas;
 	}
 
-	public void setValorNumParcelas(JComboBox valorNumParcelas) {
+	public void setValorNumParcelas(JComboBox<String> valorNumParcelas) {
 		this.valorNumParcelas = valorNumParcelas;
 	}
 

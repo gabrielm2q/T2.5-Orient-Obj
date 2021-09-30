@@ -15,9 +15,10 @@ public class ControleVenda {
 
 	}
 
-	public void cadastrarVenda(Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
-			Cliente cliente, Produto produto, Pagamento pagamento, int qtdVendida) {
+	public void cadastrarVenda(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido,
+			Funcionario funcionario, Cliente cliente, Produto produto, Pagamento pagamento, int qtdVendida) {
 		Venda ven = new Venda();
+		ven.setIdVenda(idVenda);
 		ven.setValorVenda(valorVenda);
 		ven.setValorDesconto(valorDesconto);
 		ven.setDataPedido(dataPedido);
@@ -27,10 +28,12 @@ public class ControleVenda {
 		ven.setPagamento(pagamento);
 		ven.setQtdVendida(qtdVendida);
 		Dados.getVenda().add(ven);
+		Dados.incrementarIdVenda();
 	}
 
-	public void editarVenda(int index, Double valorVenda, Double valorDesconto, Date dataPedido,
+	public void editarVenda(int index, int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido,
 			Funcionario funcionario, Cliente cliente, Produto produto, Pagamento pagamento, int qtdVendida) {
+		Dados.getVenda().get(index).setIdVenda(idVenda);
 		Dados.getVenda().get(index).setValorVenda(valorVenda);
 		Dados.getVenda().get(index).setValorDesconto(valorDesconto);
 		Dados.getVenda().get(index).setDataPedido(dataPedido);
