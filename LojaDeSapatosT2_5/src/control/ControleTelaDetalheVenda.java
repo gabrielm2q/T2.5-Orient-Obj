@@ -1,6 +1,7 @@
 package control;
 
 import java.awt.event.ActionEvent;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,7 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
 import model.Dados;
+import model.Venda;
 import view.TelaDetalheVenda;
+import view.TelaPagamento;
 
 public class ControleTelaDetalheVenda {
 	private TelaDetalheVenda detalheVenda;
@@ -32,9 +35,39 @@ public class ControleTelaDetalheVenda {
 				if (Integer.parseInt(detalheVenda.getValorQuantidade().getText()) <= 0
 						|| Integer.parseInt(detalheVenda.getValorQuantidade().getText()) > Integer
 								.parseInt(detalheVenda.getValorQtdEstoque().getText())) {
+					/*
+					 * Se a quantidade vendida for igual a/menor que 0 ou maior que a quantidade em
+					 * estoque, é exibida mensagem de erro!
+					 */
 					JOptionPane.showMessageDialog(null,
 							"Erro!\nA quantidade vendida não pode ser nula\nou maior que a quantidade em estoque!",
 							null, JOptionPane.ERROR_MESSAGE);
+				} else { // Salvando os dados ja cadastrados e passando-os para a tela de pagamento
+
+					// Calculando o valor total da venda (preco unitario x quantidade vendida)
+					Double precoTotal = Double.parseDouble(detalheVenda.getValorPrecoUnit().getText())
+							* Integer.parseInt(detalheVenda.getValorQuantidade().getText());
+
+					// formatando data
+					try {
+						data = formato.parse(detalheVenda.getValorDataVenda().getText());
+					} catch (ParseException excData) {
+						excData.printStackTrace();
+					}
+
+					Venda ven = new Venda();
+					ven.setIdVenda(Integer.parseInt(detalheVenda.getValorIdVenda().getText()));
+					ven.setValorVenda(precoTotal);
+					ven.setValorDesconto(Double.parseDouble(detalheVenda.getValorDesconto().getText()));
+					ven.setDataPedido(data);
+					ven.setProduto(Dados.getEstoque().getProduto().get(indexVenda));
+					ven.setQtdVendida(Integer.parseInt(detalheVenda.getValorQuantidade().getText()));
+					ven.setCliente(Dados.getCliente().get(detalheVenda.getValorCliente().getSelectedIndex()));
+					ven.setFuncionario(
+							Dados.getFuncionario().get(detalheVenda.getValorFuncionario().getSelectedIndex()));
+
+					detalheVenda.setVisible(false);
+					new TelaPagamento(ven, detalheVenda);
 				}
 			} catch (NullPointerException exc1) {
 				mensagemErro();
@@ -61,12 +94,21 @@ public class ControleTelaDetalheVenda {
 			detalheVenda.getValorProdVendido().setText(nome);
 			detalheVenda.getValorPrecoUnit().setText(preco);
 
+			this.setIndexVenda(detalheVenda.getListaProdutos().getSelectedIndex());
 		}
 	}
 
 	public void mensagemErro() {
 		JOptionPane.showMessageDialog(null, "Erro!\nVerifique se todos os campos estão preenchidos."
 				+ "\nVerifique se os dados em formato numérico são números.", null, JOptionPane.ERROR_MESSAGE);
+	}
+
+	public int getIndexVenda() {
+		return indexVenda;
+	}
+
+	public void setIndexVenda(int indexVenda) {
+		this.indexVenda = indexVenda;
 	}
 
 }

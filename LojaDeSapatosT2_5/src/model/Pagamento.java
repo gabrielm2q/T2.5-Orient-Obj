@@ -1,12 +1,13 @@
 package model;
-import java.util.*;
+
+import java.util.Date;
 
 public class Pagamento {
 	private Double valorPago;
 	private String formaPag;
 	private Date dataPag;
 	private int numParcelas;
-	
+
 	public Pagamento(Double valorPago, String formaPag, Date dataPag, int numParcelas) {
 		setValorPago(valorPago);
 		setFormaPag(formaPag);
@@ -20,32 +21,12 @@ public class Pagamento {
 		setDataPag(null);
 		setNumParcelas(0);
 	}
-	
-	public void cadastrar(Double valorPago, String formaPag, Date dataPag, int numParcelas) {
-		setValorPago(valorPago);
-		setFormaPag(formaPag);
-		setDataPag(dataPag);
-		setNumParcelas(numParcelas);
-	}
-
-	public void imprimir() {
-		String saida = "\nDados do Pagamento: ";
-		saida = saida + "\nValor Pago: R$" + this.getValorPago() + ".\nForma de Pagamento: " + this.getFormaPag()
-		+ ".\nData de Pagamento: " + this.getDataPag() + ".\nNúmero de Parcelas: " + this.getNumParcelas() + ".";
-		System.out.println(saida);
-	}
-	
-	public void editar(Double valorPago, String formaPag, Date dataPag, int numParcelas) {
-		setValorPago(valorPago);
-		setFormaPag(formaPag);
-		setDataPag(dataPag);
-		setNumParcelas(numParcelas);
-	}
 
 	@Override
 	public String toString() {
 		return "\nValor Pago: " + this.getValorPago() + ".\nForma de Pagamento: " + this.getFormaPag()
-		+ ".\nData de Pagamento: " + this.getDataPag() + ".\nNúmero de Parcelas: " + this.getNumParcelas() + ".";
+				+ ".\nData de Pagamento: " + this.getDataPag() + ".\nNúmero de Parcelas: " + this.getNumParcelas()
+				+ ".";
 	}
 
 	public Double getValorPago() {

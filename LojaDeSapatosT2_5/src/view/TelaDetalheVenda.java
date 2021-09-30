@@ -24,7 +24,7 @@ import model.Dados;
 
 public class TelaDetalheVenda extends JFrame implements ActionListener, ListSelectionListener {
 	private JLabel titulo = new JLabel("Venda", JLabel.CENTER);
-	private JButton btnSalvar = new JButton("Salvar");
+	private JButton btnSalvar = new JButton("Pagamento");
 
 	private ControleTelaDetalheVenda controlaDetalhe;
 
