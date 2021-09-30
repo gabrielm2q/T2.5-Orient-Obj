@@ -22,13 +22,15 @@ public class TelaLoja implements ActionListener {
 	private JButton btnAtualizar = new JButton("Atualizar");
 	private JLabel tituloEstoque = new JLabel("Estoque");
 	private JLabel tituloFuncionarios = new JLabel("Funcionários");
-	private JList<String> listaEstoque = new JList<>();
-	private JList<String> listaFuncionarios = new JList<>();
+	private JList<String> listaEstoque;
+	private JList<String> listaFuncionarios;
 	
 	
 	// Declarando valores que irão compor as ComboBoxes
 	private String[] estados = { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA",
 			"PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
+	private String[] hora = { "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22",
+			"23", "00", "01", "02", "03", "04", "05", "06", "07" };
 	
 	// Declarando componentes da tela
 	//LOJA
@@ -66,7 +68,7 @@ public class TelaLoja implements ActionListener {
 
 	public TelaLoja() {
 	
-		janela.setSize(560, 1560);
+		janela.setSize(560, 1040);
 		janela.setLayout(null);
 		janela.setResizable(false);
 		
@@ -84,8 +86,8 @@ public class TelaLoja implements ActionListener {
 		
 		// Localização e Tamanho dos componentes da tela
 		titulo.setBounds(90, 20, 340, 50);
-		btnAtualizar.setBounds(x, y, 239, 75);
-		btnSalvar.setBounds(x, y, 239, 75);
+		btnAtualizar.setBounds(20, 920, 239, 75);
+		btnSalvar.setBounds(279, 920, 239, 75);
 		
 		// Adicionando componentes a tela
 		titulo.add(titulo);
@@ -98,147 +100,153 @@ public class TelaLoja implements ActionListener {
 		
 		lblNome.setFont(labelFont); // CAMPO DE NOME
 		lblNome.setForeground(new Color(29, 53, 87));
-		lblNome.setBounds(x, y, 60, 20);
+		lblNome.setBounds(20, 80, 60, 20);
 		valorNome = new JTextField(100);
 		valorNome.setFont(textFont);
-		valorNome.setBounds(x, y, 440, 20);
+		valorNome.setBounds(80, 80, 440, 20);
 		janela.add(valorNome);
 		janela.add(lblNome);
 		
 		lblCnpj.setFont(labelFont); // CAMPO DO CNPJ
 		lblCnpj.setForeground(new Color(29, 53, 87));
-		lblCnpj.setBounds(x, y, 50, 20);
+		lblCnpj.setBounds(20, 109, 50, 20);
 		valorCnpj = new JTextField(15);
 		valorCnpj.setFont(textFont);
 		valorCnpj.setText("00.000.000/0000-00");
-		valorCnpj.setBounds(x, y, 195, 20);
+		valorCnpj.setBounds(80, 109, 195, 20);
 		janela.add(lblCnpj);
 		janela.add(valorCnpj);
 		
 		lblSite.setFont(labelFont); // CAMPO DO SITE
 		lblSite.setForeground(new Color(29, 53, 87));
-		lblSite.setBounds(x, y, 75, 20);
+		lblSite.setBounds(20, 138, 75, 20);
 		valorSite = new JTextField(62);
 		valorSite.setFont(textFont);
-		valorSite.setBounds(x, y, 443, 20);
+		valorSite.setBounds(70, 138, 443, 20);
 		janela.add(lblSite);
 		janela.add(valorSite);
 		
 		lblAbertura.setFont(labelFont); // CAMPO DA HORA DE ABERTURA
 		lblAbertura.setForeground(new Color(29, 53, 87));
-		lblAbertura.setBounds(x, y, 75, 20);
+		lblAbertura.setBounds(20, 167, 75, 20);
 		valorAbertura.setFont(textFont);
-		valorAbertura.setBounds(x, y, 85, 20);
+		valorAbertura.setBounds(70, 167, 85, 20);
 		janela.add(lblAbertura);
 		janela.add(valorAbertura);
 
 		lblFechamento.setFont(labelFont); // CAMPO DA HORA DE FECHAMENTO
 		lblFechamento.setForeground(new Color(29, 53, 87));
-		lblFechamento.setBounds(x, y, 75, 20);
+		lblFechamento.setBounds(207, 167, 75, 20);
 		valorFechamento.setFont(textFont);
-		valorFechamento.setBounds(x, y, 85, 20);
+		valorFechamento.setBounds(280, 167, 85, 20);
 		janela.add(lblFechamento);
 		janela.add(valorFechamento);
 		
 		endereco.setFont(new Font("Montserrat", Font.BOLD, 44)); // TÍTULO DA SEÇÃO DE ENDEREÇO
 		endereco.setForeground(new Color(29, 53, 87));
-		endereco.setBounds(x, y, 250, 65);
+		endereco.setBounds(135, 204, 250, 65);
 		janela.add(endereco);
 
 		lblCep.setFont(labelFont); // CAMPO DO CEP
 		lblCep.setForeground(new Color(29, 53, 87));
-		lblCep.setBounds(x, y, 50, 20);
+		lblCep.setBounds(20, 278, 50, 20);
 		valorCep = new JTextField(10);
 		valorCep.setFont(textFont);
 		valorCep.setText("00000000");
-		valorCep.setBounds(x, y, 90, 20);
+		valorCep.setBounds(67, 278, 90, 20);
 		janela.add(lblCep);
 		janela.add(valorCep);
 
 		lblCidade.setFont(labelFont); // CAMPOS DA CIDADE e da UF
 		lblCidade.setForeground(new Color(29, 53, 87));
-		lblCidade.setBounds(x, y, 100, 20);
+		lblCidade.setBounds(170, 278, 100, 20);
 		valorCidade = new JTextField(30);
 		valorCidade.setFont(textFont);
-		valorCidade.setBounds(x, y, 175, 20);
+		valorCidade.setBounds(270, 278, 175, 20);
 		janela.add(lblCidade);
 		janela.add(valorCidade);
 		valorUf.setFont(textFont);
-		valorUf.setBounds(x, y, 62, 20);
+		valorUf.setBounds(455, 278, 62, 20);
 		janela.add(valorUf);
 
 		lblRua.setFont(labelFont); // CAMPO DA RUA
 		lblRua.setForeground(new Color(29, 53, 87));
-		lblRua.setBounds(x, y, 120, 20);
+		lblRua.setBounds(20, 307, 120, 20);
 		valorRua = new JTextField(50);
 		valorRua.setFont(textFont);
-		valorRua.setBounds(x, y, 200, 20);
+		valorRua.setBounds(137, 307, 200, 20);
 		janela.add(lblRua);
 		janela.add(valorRua);
 
 		lblNum.setFont(labelFont); // CAMPO DO NÚMERO
 		lblNum.setForeground(new Color(29, 53, 87));
-		lblNum.setBounds(x, y, 75, 20);
+		lblNum.setBounds(350, 307, 75, 20);
 		valorNum = new JTextField(5);
 		valorNum.setFont(textFont);
 		valorNum.setText("00");
-		valorNum.setBounds(x, y, 97, 20);
+		valorNum.setBounds(420, 307, 97, 20);
 		janela.add(lblNum);
 		janela.add(valorNum);
 
 		lblQd.setFont(labelFont); // CAMPO DA QUADRA
 		lblQd.setForeground(new Color(29, 53, 87));
-		lblQd.setBounds(x, y, 75, 20);
+		lblQd.setBounds(20, 336, 75, 20);
 		valorQd = new JTextField(5);
 		valorQd.setFont(textFont);
 		valorQd.setText("00");
-		valorQd.setBounds(x, y, 97, 20);
+		valorQd.setBounds(90, 336, 97, 20);
 		janela.add(lblQd);
 		janela.add(valorQd);
 
 		lblBairro.setFont(labelFont); // CAMPO DO BAIRRO
 		lblBairro.setForeground(new Color(29, 53, 87));
-		lblBairro.setBounds(x, y, 75, 20);
+		lblBairro.setBounds(200, 336, 75, 20);
 		valorBairro = new JTextField(30);
 		valorBairro.setFont(textFont);
-		valorBairro.setBounds(x, y, 253, 20);
+		valorBairro.setBounds(265, 336, 253, 20);
 		janela.add(lblBairro);
 		janela.add(valorBairro);
 
 		lblApart.setFont(labelFont); // CAMPO DO APARTAMENTO
 		lblApart.setForeground(new Color(29, 53, 87));
-		lblApart.setBounds(x, y, 110, 20);
+		lblApart.setBounds(20, 365, 110, 20);
 		valorApart = new JTextField(5);
 		valorApart.setFont(textFont);
 		valorApart.setText("00");
-		valorApart.setBounds(x, y, 57, 20);
+		valorApart.setBounds(131, 365, 57, 20);
 		janela.add(lblApart);
 		janela.add(valorApart);
 
 		lblComp.setFont(labelFont); // CAMPO DO COMPLEMENTO
 		lblComp.setForeground(new Color(29, 53, 87));
-		lblComp.setBounds(x, y, 130, 20);
+		lblComp.setBounds(200, 365, 130, 20);
 		valorComp = new JTextField(5);
 		valorComp.setFont(textFont);
-		valorComp.setBounds(x, y, 201, 20);
+		valorComp.setBounds(317, 365, 201, 20);
 		janela.add(lblComp);
 		janela.add(valorComp);
 		
 		// Lista Funcionarios
-		janela.listaFuncionarios.setBackground(Color.white);
-		janela.listaFuncionarios.setBounds(x, y, 480, 300);
-		janela.listaFuncionarios.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		janela.listaFuncionarios.setVisibleRowCount(10);
-		janela.listaFuncionarios.addListSelectionListener(this);
-		janela.add(janela.listaFuncionarios);
+		janela.add(tituloFuncionarios);
+		tituloFuncionarios.setFont(new Font("Montserrat", Font.BOLD, 44));
+		tituloFuncionarios.setForeground(new Color(29, 53, 87));
+		tituloFuncionarios.setBounds(135, 400, 250, 65);
+		listaFuncionarios.setForeground(new Color(29, 53, 87));
+		listaFuncionarios.setBounds(32, 433, 200, 300);
+		listaFuncionarios.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		listaFuncionarios.setVisibleRowCount(10);
+		listaEstoque.add(listaFuncionarios);
 		
 		//Lista Estoque
-		janela.listaEstoque.setBackground(Color.white);
-		janela.listaEstoque.setBounds(x, y, 480, 300);
-		janela.listaEstoque.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		janela.listaEstoque.setVisibleRowCount(10);
-		janela.listaEstoque.addListSelectionListener(this);
-		janela.add(janela.listaEstoque);
+		janela.add(tituloEstoque);
+		tituloEstoque.setFont(new Font("Montserrat", Font.BOLD, 44));
+		tituloEstoque.setForeground(new Color(29, 53, 87));
+		tituloEstoque.setBounds(135, 662, 250, 65);
+		listaEstoque.setBackground(Color.white);
+		listaEstoque.setBounds(32, 691, 200, 300);
+		listaEstoque.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		listaEstoque.setVisibleRowCount(10);
+		listaEstoque.add(listaEstoque);
 		
 		// Adicionando o ActionListener
 		getBtnSalvar().addActionListener(janela);
@@ -616,6 +624,13 @@ public class TelaLoja implements ActionListener {
 
 	public void setValorComp(JTextField valorComp) {
 		this.valorComp = valorComp;
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}  
 
 }
