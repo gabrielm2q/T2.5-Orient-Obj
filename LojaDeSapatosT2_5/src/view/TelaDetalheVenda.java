@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,6 +20,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import control.ControleTelaDetalheVenda;
+import model.Dados;
 
 public class TelaDetalheVenda extends JFrame implements ActionListener, ListSelectionListener {
 	private JLabel titulo = new JLabel("Venda", JLabel.CENTER);
@@ -27,12 +29,13 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 	private ControleTelaDetalheVenda controlaDetalhe;
 
 	// Trabalhando com datas
-	Date data = new Date();
-	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+	private GregorianCalendar dataCalendar = new GregorianCalendar();
+	private Date data = new Date();
+	private SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
 	// Declarando componentes da tela
 	private JLabel lblTituloLista = new JLabel("Produtos Disponíveis: ");
-	private JList<String> listaProdutos = new JList<>();
+	private JList<String> listaProdutos;
 	private JLabel lblQtdEstoque = new JLabel("Quantidade Disponível: ");
 	private JLabel valorQtdEstoque = new JLabel();
 	private JLabel lblProdVendido = new JLabel("Produto Vendido: ");
@@ -86,11 +89,13 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		this.add(lblTituloLista);
 
 		// Editando Lista
+		this.listaProdutos = new JList(Dados.getEstoque().getProduto().toArray());
 		this.listaProdutos.setBackground(Color.white);
 		this.listaProdutos.setBounds(20, 105, 480, 100);
 		this.listaProdutos.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		this.listaProdutos.setVisibleRowCount(10);
 		this.listaProdutos.addListSelectionListener(this);
+		this.listaProdutos.setFont(textFont);
 		this.add(this.listaProdutos);
 
 		// Adicionando Barra de Rolagem
@@ -127,9 +132,10 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		lblQuantidade.setFont(labelFont);
 		lblQuantidade.setForeground(new Color(29, 53, 87));
 		lblQuantidade.setBounds(340, 240, 100, 20);
-		valorQuantidade.setFont(labelFont);
+		valorQuantidade.setFont(textFont);
 		valorQuantidade.setForeground(new Color(29, 53, 87));
-		valorQuantidade.setBounds(440, 240, 87, 20);
+		valorQuantidade.setBounds(440, 242, 87, 20);
+		valorQuantidade.setText("0");
 		this.add(lblQuantidade);
 		this.add(valorQuantidade);
 
@@ -139,21 +145,67 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		lblPrecoUnit.setBounds(20, 270, 125, 20);
 		valorPrecoUnit.setFont(labelFont);
 		valorPrecoUnit.setForeground(new Color(29, 53, 87));
-		valorPrecoUnit.setBounds(145, 270, 87, 20);
-		valorPrecoUnit.setText("0");
+		valorPrecoUnit.setBounds(140, 270, 85, 20);
+		valorPrecoUnit.setText("00000000");
 		this.add(lblPrecoUnit);
 		this.add(valorPrecoUnit);
 
-		// Preço Unitário
+		// Obtendo a Data da Venda
+		this.data = dataCalendar.getTime();
+		String dataCad = formato.format(data);
+
+		lblDataVenda.setFont(labelFont); // CAMPO DE DATA DA VENDA
+		lblDataVenda.setForeground(new Color(29, 53, 87));
+		lblDataVenda.setBounds(328, 270, 120, 20);
+		valorDataVenda.setFont(labelFont);
+		valorDataVenda.setBounds(449, 270, 85, 20);
+		valorDataVenda.setText(dataCad);
+		this.add(valorDataVenda);
+		this.add(lblDataVenda);
+
+		// ID da venda
 		lblIdVenda.setFont(labelFont);
 		lblIdVenda.setForeground(new Color(29, 53, 87));
-		lblIdVenda.setBounds(20, 270, 125, 20);
+		lblIdVenda.setBounds(20, 300, 120, 20);
 		valorIdVenda.setFont(labelFont);
 		valorIdVenda.setForeground(new Color(29, 53, 87));
-		valorIdVenda.setBounds(145, 270, 87, 20);
-		valorIdVenda.setText(Integer.toString(indexVenda));
+		valorIdVenda.setBounds(122, 300, 85, 20);
+		valorIdVenda.setText(Integer.toString(Dados.getContadorIdVenda()));
 		this.add(lblIdVenda);
 		this.add(valorIdVenda);
+
+		// Desconto
+		lblDesconto.setFont(labelFont);
+		lblDesconto.setForeground(new Color(29, 53, 87));
+		lblDesconto.setBounds(340, 300, 100, 20);
+		valorDesconto.setFont(textFont);
+		valorDesconto.setForeground(new Color(29, 53, 87));
+		valorDesconto.setBounds(425, 302, 100, 20);
+		valorDesconto.setText("0.0");
+		this.add(lblDesconto);
+		this.add(valorDesconto);
+
+		// Clientes
+		lblCliente.setFont(labelFont);
+		lblCliente.setForeground(new Color(29, 53, 87));
+		lblCliente.setBounds(20, 330, 75, 20);
+		this.valorCliente = new JComboBox(Dados.getCliente().toArray());
+		valorCliente.setFont(textFont);
+		valorCliente.setForeground(new Color(29, 53, 87));
+		valorCliente.setBounds(122, 332, 404, 20);
+		this.add(lblCliente);
+		this.add(valorCliente);
+
+		// Funcionarios
+		lblFuncionario.setFont(labelFont);
+		lblFuncionario.setForeground(new Color(29, 53, 87));
+		lblFuncionario.setBounds(20, 360, 100, 20);
+		this.valorFuncionario = new JComboBox(Dados.getFuncionario().toArray());
+		valorFuncionario.setFont(textFont);
+		valorFuncionario.setForeground(new Color(29, 53, 87));
+		valorFuncionario.setBounds(122, 362, 404, 20);
+		this.add(lblFuncionario);
+		this.add(valorFuncionario);
 
 		// TERMINAR DE ADICIONAR COMPONENTES
 

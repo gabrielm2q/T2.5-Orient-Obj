@@ -39,11 +39,8 @@ public class Funcionario {
 	}
 
 	@Override
-	public String toString() {
-		return "\nNome: " + this.getNome() + ".\nData de Nascimento: " + this.getDataNasc() + ".\nCPF: " + this.getCpf()
-				+ ".\nTelefone: " + this.getTelefone() + ".\nData de Contratação: " + this.getDataContratacao()
-				+ ".\nTurno: " + this.getTurno() + ".\nHora de Entrada: " + this.getHoraEntrada()
-				+ "h.\nHora de Saída: " + this.getHoraSaida() + ".\nEndereco: " + this.getEndereco();
+	public String toString() { // Colocando o toString para retornar apenas o nome dos funcionarios
+		return this.getNome();
 	}
 
 	public String getNome() {

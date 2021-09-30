@@ -33,10 +33,8 @@ public class Cliente {
 	}
 
 	@Override
-	public String toString() {
-		return "Cliente [endereco=" + endereco + ", nome=" + nome + ", genero=" + genero + ", dataNasc=" + dataNasc
-				+ ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", getEndereco()=" + getEndereco()
-				+ "]";
+	public String toString() { // Colocando o toString para retornar apenas o nome dos clientes
+		return this.getNome();
 	}
 
 	public Endereco getEndereco() {

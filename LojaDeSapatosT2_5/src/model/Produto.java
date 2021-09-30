@@ -42,20 +42,6 @@ public abstract class Produto {
 		setMaterial("");
 	}
 
-	/*
-	 * public void cadastrar() {
-	 * 
-	 * }
-	 * 
-	 * public void imprimir() {
-	 * 
-	 * }
-	 * 
-	 * public void editar() {
-	 * 
-	 * }
-	 */
-
 	public int getIdProd() {
 		return idProd;
 	}
