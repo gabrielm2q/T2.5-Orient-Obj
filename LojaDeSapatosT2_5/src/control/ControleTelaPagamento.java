@@ -1,9 +1,20 @@
 package control;
 
-public class ControleTelaPagamento {
+import java.awt.event.ActionEvent;
 
-	public ControleTelaPagamento() {
-		// TODO Auto-generated constructor stub
+import javax.swing.JButton;
+
+import view.TelaPagamento;
+
+public class ControleTelaPagamento {
+	private int opcEditarSalvar;
+
+	public ControleTelaPagamento(TelaPagamento tela, int opcEditarSalvar) {
+		this.opcEditarSalvar = opcEditarSalvar;
+	}
+
+	public void clicaBtn(ActionEvent e) {
+		JButton clicado = (JButton) e.getSource();
 	}
 
 }

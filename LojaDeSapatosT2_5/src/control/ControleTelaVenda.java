@@ -38,7 +38,6 @@ public class ControleTelaVenda {
 			TelaDetalheVenda detalhe = new TelaDetalheVenda(1, tela.getListaPessoasProd().getSelectedIndex());
 			ControleTelaDetalheVenda ctrlDetalhe = new ControleTelaDetalheVenda(detalhe, 1,
 					tela.getListaPessoasProd().getSelectedIndex());
-			ctrlDetalhe.imprimirDetalhes(detalhe, tela.getListaPessoasProd().getSelectedIndex());
 		}
 	}
 

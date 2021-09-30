@@ -27,6 +27,7 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 	private JButton btnSalvar = new JButton("Pagamento");
 
 	private ControleTelaDetalheVenda controlaDetalhe;
+	private int opcEditarSalvar;
 
 	// Trabalhando com datas
 	private GregorianCalendar dataCalendar = new GregorianCalendar();
@@ -57,7 +58,8 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 
 	public TelaDetalheVenda(int opcaoEditarSalvar, int indexVenda) {
 		super("Venda"); // JFrame com nome
-		this.controlaDetalhe = new ControleTelaDetalheVenda(this, opcaoEditarSalvar, indexVenda);
+		this.opcEditarSalvar = opcaoEditarSalvar;
+		this.controlaDetalhe = new ControleTelaDetalheVenda(this, opcEditarSalvar, indexVenda);
 
 		this.setSize(560, 520);
 		this.setLayout(null);
@@ -427,6 +429,14 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 
 	public void setValorFuncionario(JComboBox<String> valorFuncionario) {
 		this.valorFuncionario = valorFuncionario;
+	}
+
+	public int getOpcEditarSalvar() {
+		return opcEditarSalvar;
+	}
+
+	public void setOpcEditarSalvar(int opcEditarSalvar) {
+		this.opcEditarSalvar = opcEditarSalvar;
 	}
 
 }
