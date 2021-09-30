@@ -17,6 +17,7 @@ public class ControleTelaVenda {
 
 	public ControleTelaVenda(TelaVenda tela) {
 		this.tela = tela;
+		this.tela.setListaPessoasProd(this.listaNomes());
 	}
 
 	public void clicaBtn(ActionEvent e) {

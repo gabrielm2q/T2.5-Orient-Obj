@@ -155,6 +155,29 @@ public abstract class Dados {
 
 		ControleVenda venCtrl = new ControleVenda();
 		Venda venda = new Venda();
+		Pagamento pag = new Pagamento();
+		for (int i = 0; i < 5; i++) {
+			venda.setCliente(Dados.getCliente().get(i));
+			venda.setFuncionario(Dados.getFuncionario().get(i));
+			venda.setDataPedido(d);
+			venda.setProduto(Dados.getEstoque().getProduto().get(i));
+			venda.setQtdVendida(1);
+			venda.setValorDesconto(10.5);
+			venda.setValorVenda(Dados.getEstoque().getProduto().get(i).getPreco() - 10.5);
+			pag.setDataPag(venda.getDataPedido());
+			pag.setFormaPag("A vista");
+			pag.setNumParcelas(0);
+			pag.setValorPago(venda.getValorVenda());
+			venda.setIdVenda(Dados.contadorIdVenda);
+			venCtrl.cadastrarVenda(venda.getIdVenda(), venda.getValorVenda(), venda.getValorDesconto(),
+					venda.getDataPedido(), venda.getFuncionario(), venda.getCliente(), venda.getProduto(), pag,
+					venda.getQtdVendida());
+
+			// Diminuindo a quantidade do produto vendido no estoque da quantidade comprada
+			int qtdFinal = Dados.getEstoque().getQuantidade().get(i) - venda.getQtdVendida();
+			Dados.getEstoque().getQuantidade().set(i, qtdFinal);
+
+		}
 
 	}
 
