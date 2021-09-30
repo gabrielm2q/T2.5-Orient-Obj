@@ -111,7 +111,6 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		lblQtdEstoque.setForeground(new Color(29, 53, 87));
 		lblQtdEstoque.setBounds(20, 210, 185, 20);
 		valorQtdEstoque.setFont(labelFont);
-		valorQtdEstoque.setForeground(new Color(29, 53, 87));
 		valorQtdEstoque.setBounds(200, 210, 100, 20);
 		valorQtdEstoque.setText("0");
 		this.add(lblQtdEstoque);
@@ -122,7 +121,6 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		lblProdVendido.setForeground(new Color(29, 53, 87));
 		lblProdVendido.setBounds(20, 240, 140, 20);
 		valorProdVendido.setFont(labelFont);
-		valorProdVendido.setForeground(new Color(29, 53, 87));
 		valorProdVendido.setBounds(155, 240, 180, 20);
 		valorProdVendido.setText(" ");
 		this.add(lblProdVendido);
@@ -133,7 +131,6 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		lblQuantidade.setForeground(new Color(29, 53, 87));
 		lblQuantidade.setBounds(340, 240, 100, 20);
 		valorQuantidade.setFont(textFont);
-		valorQuantidade.setForeground(new Color(29, 53, 87));
 		valorQuantidade.setBounds(440, 242, 87, 20);
 		valorQuantidade.setText("0");
 		this.add(lblQuantidade);
@@ -144,9 +141,7 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		lblPrecoUnit.setForeground(new Color(29, 53, 87));
 		lblPrecoUnit.setBounds(20, 270, 125, 20);
 		valorPrecoUnit.setFont(labelFont);
-		valorPrecoUnit.setForeground(new Color(29, 53, 87));
 		valorPrecoUnit.setBounds(140, 270, 85, 20);
-		valorPrecoUnit.setText("00000000");
 		this.add(lblPrecoUnit);
 		this.add(valorPrecoUnit);
 
@@ -168,7 +163,6 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		lblIdVenda.setForeground(new Color(29, 53, 87));
 		lblIdVenda.setBounds(20, 300, 120, 20);
 		valorIdVenda.setFont(labelFont);
-		valorIdVenda.setForeground(new Color(29, 53, 87));
 		valorIdVenda.setBounds(122, 300, 85, 20);
 		valorIdVenda.setText(Integer.toString(Dados.getContadorIdVenda()));
 		this.add(lblIdVenda);
@@ -179,7 +173,6 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		lblDesconto.setForeground(new Color(29, 53, 87));
 		lblDesconto.setBounds(340, 300, 100, 20);
 		valorDesconto.setFont(textFont);
-		valorDesconto.setForeground(new Color(29, 53, 87));
 		valorDesconto.setBounds(425, 302, 100, 20);
 		valorDesconto.setText("0.0");
 		this.add(lblDesconto);
@@ -191,7 +184,6 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		lblCliente.setBounds(20, 330, 75, 20);
 		this.valorCliente = new JComboBox(Dados.getCliente().toArray());
 		valorCliente.setFont(textFont);
-		valorCliente.setForeground(new Color(29, 53, 87));
 		valorCliente.setBounds(122, 332, 404, 20);
 		this.add(lblCliente);
 		this.add(valorCliente);
@@ -202,16 +194,16 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 		lblFuncionario.setBounds(20, 360, 100, 20);
 		this.valorFuncionario = new JComboBox(Dados.getFuncionario().toArray());
 		valorFuncionario.setFont(textFont);
-		valorFuncionario.setForeground(new Color(29, 53, 87));
 		valorFuncionario.setBounds(122, 362, 404, 20);
 		this.add(lblFuncionario);
 		this.add(valorFuncionario);
 
-		// TERMINAR DE ADICIONAR COMPONENTES
-
 		// Adicionando componentes a tela
 		this.add(titulo);
 		this.add(btnSalvar);
+
+		// Adicionando o ActionListener
+		getBtnSalvar().addActionListener(this);
 
 		this.setVisible(true);
 
@@ -219,14 +211,70 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		// TODO Auto-generated method stub
+		this.controlaDetalhe.clicaLista(e);
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		this.controlaDetalhe.clicaBtn(e);
 
+	}
+
+	public JLabel getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JButton getBtnSalvar() {
+		return btnSalvar;
+	}
+
+	public void setBtnSalvar(JButton btnSalvar) {
+		this.btnSalvar = btnSalvar;
+	}
+
+	public ControleTelaDetalheVenda getControlaDetalhe() {
+		return controlaDetalhe;
+	}
+
+	public void setControlaDetalhe(ControleTelaDetalheVenda controlaDetalhe) {
+		this.controlaDetalhe = controlaDetalhe;
+	}
+
+	public GregorianCalendar getDataCalendar() {
+		return dataCalendar;
+	}
+
+	public void setDataCalendar(GregorianCalendar dataCalendar) {
+		this.dataCalendar = dataCalendar;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public SimpleDateFormat getFormato() {
+		return formato;
+	}
+
+	public void setFormato(SimpleDateFormat formato) {
+		this.formato = formato;
+	}
+
+	public JLabel getLblTituloLista() {
+		return lblTituloLista;
+	}
+
+	public void setLblTituloLista(JLabel lblTituloLista) {
+		this.lblTituloLista = lblTituloLista;
 	}
 
 	public JList<String> getListaProdutos() {
@@ -235,6 +283,150 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 
 	public void setListaProdutos(JList<String> listaProdutos) {
 		this.listaProdutos = listaProdutos;
+	}
+
+	public JLabel getLblQtdEstoque() {
+		return lblQtdEstoque;
+	}
+
+	public void setLblQtdEstoque(JLabel lblQtdEstoque) {
+		this.lblQtdEstoque = lblQtdEstoque;
+	}
+
+	public JLabel getValorQtdEstoque() {
+		return valorQtdEstoque;
+	}
+
+	public void setValorQtdEstoque(JLabel valorQtdEstoque) {
+		this.valorQtdEstoque = valorQtdEstoque;
+	}
+
+	public JLabel getLblProdVendido() {
+		return lblProdVendido;
+	}
+
+	public void setLblProdVendido(JLabel lblProdVendido) {
+		this.lblProdVendido = lblProdVendido;
+	}
+
+	public JLabel getValorProdVendido() {
+		return valorProdVendido;
+	}
+
+	public void setValorProdVendido(JLabel valorProdVendido) {
+		this.valorProdVendido = valorProdVendido;
+	}
+
+	public JLabel getLblQuantidade() {
+		return lblQuantidade;
+	}
+
+	public void setLblQuantidade(JLabel lblQuantidade) {
+		this.lblQuantidade = lblQuantidade;
+	}
+
+	public JTextField getValorQuantidade() {
+		return valorQuantidade;
+	}
+
+	public void setValorQuantidade(JTextField valorQuantidade) {
+		this.valorQuantidade = valorQuantidade;
+	}
+
+	public JLabel getLblPrecoUnit() {
+		return lblPrecoUnit;
+	}
+
+	public void setLblPrecoUnit(JLabel lblPrecoUnit) {
+		this.lblPrecoUnit = lblPrecoUnit;
+	}
+
+	public JLabel getValorPrecoUnit() {
+		return valorPrecoUnit;
+	}
+
+	public void setValorPrecoUnit(JLabel valorPrecoUnit) {
+		this.valorPrecoUnit = valorPrecoUnit;
+	}
+
+	public JLabel getLblIdVenda() {
+		return lblIdVenda;
+	}
+
+	public void setLblIdVenda(JLabel lblIdVenda) {
+		this.lblIdVenda = lblIdVenda;
+	}
+
+	public JLabel getValorIdVenda() {
+		return valorIdVenda;
+	}
+
+	public void setValorIdVenda(JLabel valorIdVenda) {
+		this.valorIdVenda = valorIdVenda;
+	}
+
+	public JLabel getLblDesconto() {
+		return lblDesconto;
+	}
+
+	public void setLblDesconto(JLabel lblDesconto) {
+		this.lblDesconto = lblDesconto;
+	}
+
+	public JTextField getValorDesconto() {
+		return valorDesconto;
+	}
+
+	public void setValorDesconto(JTextField valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
+
+	public JLabel getLblDataVenda() {
+		return lblDataVenda;
+	}
+
+	public void setLblDataVenda(JLabel lblDataVenda) {
+		this.lblDataVenda = lblDataVenda;
+	}
+
+	public JLabel getValorDataVenda() {
+		return valorDataVenda;
+	}
+
+	public void setValorDataVenda(JLabel valorDataVenda) {
+		this.valorDataVenda = valorDataVenda;
+	}
+
+	public JLabel getLblCliente() {
+		return lblCliente;
+	}
+
+	public void setLblCliente(JLabel lblCliente) {
+		this.lblCliente = lblCliente;
+	}
+
+	public JComboBox<String> getValorCliente() {
+		return valorCliente;
+	}
+
+	public void setValorCliente(JComboBox<String> valorCliente) {
+		this.valorCliente = valorCliente;
+	}
+
+	public JLabel getLblFuncionario() {
+		return lblFuncionario;
+	}
+
+	public void setLblFuncionario(JLabel lblFuncionario) {
+		this.lblFuncionario = lblFuncionario;
+	}
+
+	public JComboBox<String> getValorFuncionario() {
+		return valorFuncionario;
+	}
+
+	public void setValorFuncionario(JComboBox<String> valorFuncionario) {
+		this.valorFuncionario = valorFuncionario;
 	}
 
 }

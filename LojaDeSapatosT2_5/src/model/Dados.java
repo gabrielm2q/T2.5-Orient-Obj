@@ -77,10 +77,10 @@ public abstract class Dados {
 			salto.setIdProd(getContadorIdProd());
 			salto.setNome("Salto " + aleatorio.nextInt(50)); // Salto Aleatorio
 			salto.setTamanho(aleatorio.nextInt(45) + 1);
-			salto.setPreco(aleatorio.nextDouble() * 100);
+			salto.setPreco(aleatorio.nextInt(500) + 100.1);
 			salto.setMarca("Marca " + aleatorio.nextInt(50));
 			salto.setPaisOrigem("Pais " + aleatorio.nextInt(9));
-			salto.setTempoGarantia(aleatorio.nextInt(3) + "anos");
+			salto.setTempoGarantia(aleatorio.nextInt(3) + " anos");
 			salto.setGenero('U');
 			salto.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30)));
 			salto.setCor("Cor " + aleatorio.nextInt(9));
@@ -95,10 +95,10 @@ public abstract class Dados {
 			sapato.setIdProd(getContadorIdProd());
 			sapato.setNome("Sapato " + aleatorio.nextInt(50)); // Sapato Aleatorio
 			sapato.setTamanho(aleatorio.nextInt(45) + 1);
-			sapato.setPreco(aleatorio.nextDouble() * 100);
+			sapato.setPreco(aleatorio.nextInt(500) + 100.1);
 			sapato.setMarca("Marca " + aleatorio.nextInt(50));
 			sapato.setPaisOrigem("Pais " + aleatorio.nextInt(9));
-			sapato.setTempoGarantia(aleatorio.nextInt(3) + "anos");
+			sapato.setTempoGarantia(aleatorio.nextInt(3) + " anos");
 			sapato.setGenero('U');
 			sapato.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30)));
 			sapato.setCor("Cor " + aleatorio.nextInt(9));
@@ -114,10 +114,10 @@ public abstract class Dados {
 			tenis.setIdProd(getContadorIdProd());
 			tenis.setNome("Tenis " + aleatorio.nextInt(50)); // Tenis Aleatorio
 			tenis.setTamanho(aleatorio.nextInt(45) + 1);
-			tenis.setPreco(aleatorio.nextDouble() * 100);
+			tenis.setPreco(aleatorio.nextInt(500) + 100.1);
 			tenis.setMarca("Marca " + aleatorio.nextInt(50));
 			tenis.setPaisOrigem("Pais " + aleatorio.nextInt(9));
-			tenis.setTempoGarantia(aleatorio.nextInt(3) + "anos");
+			tenis.setTempoGarantia(aleatorio.nextInt(3) + " anos");
 			tenis.setGenero('U');
 			tenis.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30)));
 			tenis.setCor("Cor " + aleatorio.nextInt(9));
@@ -135,10 +135,10 @@ public abstract class Dados {
 			bota.setIdProd(getContadorIdProd());
 			bota.setNome("Bota " + aleatorio.nextInt(50)); // Bota Aleatoria
 			bota.setTamanho(aleatorio.nextInt(45) + 1);
-			bota.setPreco(aleatorio.nextDouble() * 100);
+			bota.setPreco(aleatorio.nextInt(500) + 100.1);
 			bota.setMarca("Marca " + aleatorio.nextInt(50));
 			bota.setPaisOrigem("Pais " + aleatorio.nextInt(9));
-			bota.setTempoGarantia(aleatorio.nextInt(3) + "anos");
+			bota.setTempoGarantia(aleatorio.nextInt(3) + " anos");
 			bota.setGenero('U');
 			bota.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30)));
 			bota.setCor("Cor " + aleatorio.nextInt(9));

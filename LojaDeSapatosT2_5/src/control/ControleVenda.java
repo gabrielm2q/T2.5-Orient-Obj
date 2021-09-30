@@ -26,6 +26,7 @@ public class ControleVenda {
 		ven.setProduto(produto);
 		ven.setPagamento(pagamento);
 		ven.setQtdVendida(qtdVendida);
+		Dados.getVenda().add(ven);
 	}
 
 	public void editarVenda(int index, Double valorVenda, Double valorDesconto, Date dataPedido,
