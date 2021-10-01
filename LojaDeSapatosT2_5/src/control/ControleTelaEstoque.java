@@ -11,6 +11,7 @@ import model.Dados;
 import model.Produto;
 import view.TelaDetalheEstoque;
 import view.TelaEstoque;
+import view.TelaFiltro;
 
 public class ControleTelaEstoque {
 	private TelaEstoque tela;
@@ -33,7 +34,19 @@ public class ControleTelaEstoque {
 
 			}
 		} else if (clicado == tela.getBtnOrdenar()) {
-			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
+			try { // Escolhendo por qual atributo o usuário deseja filtrar a lista de produtos
+				String[] filtros = { "Nome", "Tamanho" };
+				Object prodEscolhido = JOptionPane.showInputDialog(null, "Deseja buscar produtos por qual atributo?",
+						"Buscar", JOptionPane.INFORMATION_MESSAGE, null, filtros, filtros[0]);
+				if (prodEscolhido.toString().equals("Nome")) {
+					new TelaFiltro("nomeproduto");
+				} else {
+					new TelaFiltro("tamanhoproduto");
+				}
+
+			} catch (Exception exc) {
+
+			}
 		} else if (clicado == tela.getBtnAtualizar()) {
 			tela.setListaPessoasProd(this.listaNomes());
 		}

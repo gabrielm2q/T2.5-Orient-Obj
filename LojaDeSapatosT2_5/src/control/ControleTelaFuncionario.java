@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
 import model.Dados;
@@ -25,8 +24,6 @@ public class ControleTelaFuncionario {
 
 		if (clicado == tela.getBtnCadastrar()) {
 			new TelaDetalheFuncionario(0, Dados.getFuncionario().size());
-		} else if (clicado == tela.getBtnOrdenar()) {
-			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
 		} else if (clicado == tela.getBtnAtualizar()) {
 			tela.setListaPessoasProd(this.listaNomes());
 		}

@@ -28,11 +28,12 @@ public abstract class Dados {
 	public static void fillWithSomeData() {
 		Random aleatorio = new Random();
 		Date d = Calendar.getInstance().getTime();
-		Endereco ender = new Endereco();
 
 		// Gerando Clientes Aleatórios
 		ControleCliente cliCtrl = new ControleCliente();
 		for (int i = 0; i < 5; i++) {
+			Endereco ender = new Endereco();
+
 			ender.setCep(aleatorio.nextInt(99999));
 			ender.setCidade("Cidade " + aleatorio.nextInt(99));
 			ender.setUf("DF");
@@ -53,6 +54,8 @@ public abstract class Dados {
 		// Gerando Funcionários Aleatórios
 		ControleFuncionario funCtrl = new ControleFuncionario();
 		for (int i = 0; i < 5; i++) {
+			Endereco ender = new Endereco();
+
 			ender.setCep(aleatorio.nextInt(99999));
 			ender.setCidade("Cidade " + aleatorio.nextInt(9));
 			ender.setUf("DF");
@@ -71,42 +74,43 @@ public abstract class Dados {
 
 		// Gerando produtos aleatórios
 		ControleEstoque estCtrl = new ControleEstoque();
-		Salto salto = new Salto();
-		Sapato sapato = new Sapato();
-		Tenis tenis = new Tenis();
-		Bota bota = new Bota();
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 4; i++) {
+			Salto salto = new Salto();
+			Sapato sapato = new Sapato();
+			Tenis tenis = new Tenis();
+			Bota bota = new Bota();
+
 			salto.setIdProd(getContadorIdProd());
-			salto.setNome("Salto " + aleatorio.nextInt(50)); // Salto Aleatorio
-			salto.setTamanho(aleatorio.nextInt(45) + 1);
-			salto.setPreco(aleatorio.nextInt(500) + 100.1);
-			salto.setMarca("Marca " + aleatorio.nextInt(50));
-			salto.setPaisOrigem("Pais " + aleatorio.nextInt(9));
-			salto.setTempoGarantia(aleatorio.nextInt(3) + " anos");
+			salto.setNome("Salto " + aleatorio.nextInt(45)); // Salto Aleatorio
+			salto.setTamanho(aleatorio.nextInt(45) + i);
+			salto.setPreco(aleatorio.nextInt(500) + 100.1 + i);
+			salto.setMarca("Marca " + aleatorio.nextInt(50) + i);
+			salto.setPaisOrigem("Pais " + aleatorio.nextInt(9) + i);
+			salto.setTempoGarantia(aleatorio.nextInt(3) + i + " anos");
 			salto.setGenero('U');
-			salto.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30)));
-			salto.setCor("Cor " + aleatorio.nextInt(9));
-			salto.setMaterial("Material " + aleatorio.nextInt(9));
+			salto.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i));
+			salto.setCor("Cor " + aleatorio.nextInt(9) + i);
+			salto.setMaterial("Material " + aleatorio.nextInt(9) + i);
 			salto.setTipoSalto("Scarpin");
-			salto.setCorExterna("Cor " + aleatorio.nextInt(5));
-			salto.setCorSolado("Cor " + aleatorio.nextInt());
-			salto.setAlturaSalto(aleatorio.nextInt(10) + " cm");
+			salto.setCorExterna("Cor " + aleatorio.nextInt(5) + i);
+			salto.setCorSolado("Cor " + aleatorio.nextInt() + i);
+			salto.setAlturaSalto(aleatorio.nextInt(10) + i + " cm");
 			estCtrl.cadastrarProduto(aleatorio.nextInt(999), "Salto", d, salto);
 			Dados.incrementarIdProd();
 
 			sapato.setIdProd(getContadorIdProd());
-			sapato.setNome("Sapato " + aleatorio.nextInt(50)); // Sapato Aleatorio
-			sapato.setTamanho(aleatorio.nextInt(45) + 1);
-			sapato.setPreco(aleatorio.nextInt(500) + 100.1);
-			sapato.setMarca("Marca " + aleatorio.nextInt(50));
-			sapato.setPaisOrigem("Pais " + aleatorio.nextInt(9));
-			sapato.setTempoGarantia(aleatorio.nextInt(3) + " anos");
+			sapato.setNome("Sapato " + aleatorio.nextInt(45)); // Sapato Aleatorio
+			sapato.setTamanho(aleatorio.nextInt(45) + i);
+			sapato.setPreco(aleatorio.nextInt(500) + 100.1 + i);
+			sapato.setMarca("Marca " + aleatorio.nextInt(50) + i);
+			sapato.setPaisOrigem("Pais " + aleatorio.nextInt(9) + i);
+			sapato.setTempoGarantia(aleatorio.nextInt(3) + i + " anos");
 			sapato.setGenero('U');
-			sapato.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30)));
-			sapato.setCor("Cor " + aleatorio.nextInt(9));
-			sapato.setMaterial("Material " + aleatorio.nextInt(9));
-			sapato.setMaterialSolado("Couro Tipo " + aleatorio.nextInt(9));
-			sapato.setMaterialInterno("Algodão " + aleatorio.nextInt(9));
+			sapato.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i));
+			sapato.setCor("Cor " + aleatorio.nextInt(9) + i);
+			sapato.setMaterial("Material " + aleatorio.nextInt(9) + i);
+			sapato.setMaterialSolado("Couro Tipo " + aleatorio.nextInt(9) + i);
+			sapato.setMaterialInterno("Algodão " + aleatorio.nextInt(9) + i);
 			sapato.setTipoBico("Quadrado");
 			sapato.setAlturaSalto("Baixo");
 			sapato.setTipoPalmilha("Comum");
@@ -114,51 +118,53 @@ public abstract class Dados {
 			Dados.incrementarIdProd();
 
 			tenis.setIdProd(getContadorIdProd());
-			tenis.setNome("Tenis " + aleatorio.nextInt(50)); // Tenis Aleatorio
-			tenis.setTamanho(aleatorio.nextInt(45) + 1);
-			tenis.setPreco(aleatorio.nextInt(500) + 100.1);
-			tenis.setMarca("Marca " + aleatorio.nextInt(50));
-			tenis.setPaisOrigem("Pais " + aleatorio.nextInt(9));
-			tenis.setTempoGarantia(aleatorio.nextInt(3) + " anos");
+			tenis.setNome("Tenis " + aleatorio.nextInt(45)); // Tenis Aleatorio
+			tenis.setTamanho(aleatorio.nextInt(45) + i);
+			tenis.setPreco(aleatorio.nextInt(500) + 100.1 + i);
+			tenis.setMarca("Marca " + aleatorio.nextInt(50) + i);
+			tenis.setPaisOrigem("Pais " + aleatorio.nextInt(9) + i);
+			tenis.setTempoGarantia(aleatorio.nextInt(3) + i + " anos");
 			tenis.setGenero('U');
-			tenis.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30)));
-			tenis.setCor("Cor " + aleatorio.nextInt(9));
-			tenis.setMaterial("Material " + aleatorio.nextInt(9));
+			tenis.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i));
+			tenis.setCor("Cor " + aleatorio.nextInt(9) + i);
+			tenis.setMaterial("Material " + aleatorio.nextInt(9) + i);
 			tenis.setAtvdIndicada("Corrida");
-			tenis.setTecnoSolado("Tech0" + aleatorio.nextInt(9));
+			tenis.setTecnoSolado("Tech0" + aleatorio.nextInt(9) + i);
 			tenis.setTipoPisada("Supinada");
-			tenis.setTipoPalmilha("Gel0" + aleatorio.nextInt(5));
+			tenis.setTipoPalmilha("Gel0" + aleatorio.nextInt(5) + i);
 			tenis.setPeso(aleatorio.nextDouble() * 100);
 			tenis.setTipoAmarracao("Cadarco");
-			tenis.setCorCadarco("Azul0" + aleatorio.nextInt(8));
+			tenis.setCorCadarco("Azul0" + aleatorio.nextInt(8) + i);
 			estCtrl.cadastrarProduto(aleatorio.nextInt(999), "Tênis", d, tenis);
 			Dados.incrementarIdProd();
 
 			bota.setIdProd(getContadorIdProd());
-			bota.setNome("Bota " + aleatorio.nextInt(50)); // Bota Aleatoria
-			bota.setTamanho(aleatorio.nextInt(45) + 1);
-			bota.setPreco(aleatorio.nextInt(500) + 100.1);
-			bota.setMarca("Marca " + aleatorio.nextInt(50));
-			bota.setPaisOrigem("Pais " + aleatorio.nextInt(9));
-			bota.setTempoGarantia(aleatorio.nextInt(3) + " anos");
+			bota.setNome("Bota " + aleatorio.nextInt(45)); // Bota Aleatoria
+			bota.setTamanho(aleatorio.nextInt(45) + i);
+			bota.setPreco(aleatorio.nextInt(500) + 100.1 + i);
+			bota.setMarca("Marca " + aleatorio.nextInt(50) + i);
+			bota.setPaisOrigem("Pais " + aleatorio.nextInt(9) + i);
+			bota.setTempoGarantia(aleatorio.nextInt(3) + i + " anos");
 			bota.setGenero('U');
-			bota.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30)));
-			bota.setCor("Cor " + aleatorio.nextInt(9));
-			bota.setMaterial("Material " + aleatorio.nextInt(9));
-			bota.setModelo("Americana" + aleatorio.nextInt(8));
+			bota.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i));
+			bota.setCor("Cor " + aleatorio.nextInt(9) + i);
+			bota.setMaterial("Material " + aleatorio.nextInt(9) + i);
+			bota.setModelo("Americana" + aleatorio.nextInt(8) + i);
 			bota.setAlturaCano("Alto");
 			bota.setTipoSalto("Baixo");
-			bota.setTipoPalmilha("EVA 0" + aleatorio.nextInt(9));
-			bota.setMaterialSolado("Borracha" + aleatorio.nextInt(10));
+			bota.setTipoPalmilha("EVA 0" + aleatorio.nextInt(9) + i);
+			bota.setMaterialSolado("Borracha" + aleatorio.nextInt(10) + i);
 			estCtrl.cadastrarProduto(aleatorio.nextInt(999), "Bota", d, bota);
 			Dados.incrementarIdProd();
 		}
 
 		// Gerando vendas aleatórias
 		ControleVenda venCtrl = new ControleVenda();
-		Venda venda = new Venda();
-		Pagamento pag = new Pagamento();
+
 		for (int i = 0; i < 5; i++) {
+			Venda venda = new Venda();
+			Pagamento pag = new Pagamento();
+
 			venda.setCliente(Dados.getCliente().get(i));
 			venda.setFuncionario(Dados.getFuncionario().get(i));
 			venda.setDataPedido(d);
@@ -182,6 +188,8 @@ public abstract class Dados {
 
 		// Inserindo dados aleatórios na loja
 		ControleLoja ctrlLoja = new ControleLoja();
+		Endereco ender = new Endereco();
+
 		ender.setCep(aleatorio.nextInt(99999)); // Endereco aleatorio
 		ender.setCidade("Cidade " + aleatorio.nextInt(9));
 		ender.setUf("DF");

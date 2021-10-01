@@ -16,7 +16,7 @@ import javax.swing.event.ListSelectionListener;
 public abstract class Template extends JFrame implements ActionListener, ListSelectionListener {
 	private JLabel texto;
 	private JButton btnCadastrar = new JButton("Cadastrar");
-	private JButton btnOrdenar = new JButton("Ordenar");
+	private JButton btnOrdenar = new JButton("Buscar");
 	private JButton btnAtualizar = new JButton("Atualizar");
 	private JList<String> listaPessoasProd = new JList<>();
 
@@ -42,9 +42,15 @@ public abstract class Template extends JFrame implements ActionListener, ListSel
 
 		// Localização e Tamanho dos componentes da tela
 		this.texto.setBounds(120, 20, 300, 50);
-		btnCadastrar.setBounds(32, 420, 146, 50);
-		btnOrdenar.setBounds(198, 420, 146, 50);
-		btnAtualizar.setBounds(368, 420, 145, 50);
+
+		if (texto == "Funcionários") {
+			btnCadastrar.setBounds(32, 420, 230, 50);
+			btnAtualizar.setBounds(282, 420, 230, 50);
+		} else {
+			btnCadastrar.setBounds(32, 420, 146, 50);
+			btnOrdenar.setBounds(198, 420, 146, 50);
+			btnAtualizar.setBounds(368, 420, 145, 50);
+		}
 
 		// Editando Lista
 		this.listaPessoasProd.setBackground(Color.white);
@@ -65,12 +71,16 @@ public abstract class Template extends JFrame implements ActionListener, ListSel
 		// Adicionando componentes a tela
 		this.add(this.texto);
 		this.add(btnCadastrar);
-		this.add(btnOrdenar);
+		if (texto != "Funcionários") { // Tela de Funcionários nao requer funcao de ordenar
+			this.add(btnOrdenar);
+		}
 		this.add(btnAtualizar);
 
 		// Adicionando o ActionListener
 		getBtnCadastrar().addActionListener(this);
-		getBtnOrdenar().addActionListener(this);
+		if (texto != "Funcionários") { // Tela de Funcionários nao requer funcao de ordenar
+			getBtnOrdenar().addActionListener(this);
+		}
 		getBtnAtualizar().addActionListener(this);
 
 		this.setVisible(true);
