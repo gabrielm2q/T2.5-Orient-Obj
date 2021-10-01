@@ -32,7 +32,7 @@ public class TelaFiltro extends JFrame implements ActionListener {
 	private JButton btnBuscar = new JButton("Realizar Busca");
 	private JList<String> lista;
 
-	// Componentes de buscar produto pelo nome
+	// Componentes de buscar pelo nome
 	private JLabel lblNome = new JLabel("Nome do Produto: ");
 	private JTextField valorNome;
 
@@ -96,6 +96,66 @@ public class TelaFiltro extends JFrame implements ActionListener {
 			valorTamanho.setBounds(195, 62, 325, 20);
 			this.add(valorTamanho);
 			this.add(lblTamanho);
+
+			lista = new JList<String>(); // Adicionando Lista
+			lista.setForeground(new Color(29, 53, 87));
+			lista.setBounds(20, 95, 500, 300);
+			lista.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+			lista.setVisibleRowCount(10);
+			this.add(lista);
+
+			JScrollPane painel = new JScrollPane(this.getLista()); // Adicionando Barra de Rolagem para a lista
+			painel.setBounds(20, 95, 500, 300);
+			painel.setViewportView(this.getLista());
+			painel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			painel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			this.add(painel);
+
+			btnBuscar.setBounds(20, 410, 500, 55); // Posicao do botao de buscar
+
+		} else if (tipoFiltro.equals("nomecliente")) {
+
+			titulo = new JLabel("Buscar Cliente", JLabel.CENTER);
+
+			lblNome.setFont(labelFont); // CAMPO DE NOME A SER BUSCADO
+			lblNome.setForeground(new Color(29, 53, 87));
+			lblNome.setBounds(20, 60, 140, 20);
+			lblNome.setText("Nome do Cliente: ");
+			valorNome = new JTextField(100);
+			valorNome.setFont(textFont);
+			valorNome.setBounds(160, 62, 360, 20);
+			this.add(valorNome);
+			this.add(lblNome);
+
+			lista = new JList<String>(); // Adicionando Lista
+			lista.setForeground(new Color(29, 53, 87));
+			lista.setBounds(20, 95, 500, 300);
+			lista.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+			lista.setVisibleRowCount(10);
+			this.add(lista);
+
+			JScrollPane painel = new JScrollPane(this.getLista()); // Adicionando Barra de Rolagem para a lista
+			painel.setBounds(20, 95, 500, 300);
+			painel.setViewportView(this.getLista());
+			painel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			painel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			this.add(painel);
+
+			btnBuscar.setBounds(20, 410, 500, 55); // Posicao do botao de buscar
+
+		} else if (tipoFiltro.equals("vendacliente")) {
+
+			titulo = new JLabel("Buscar Venda", JLabel.CENTER);
+
+			lblNome.setFont(labelFont); // CAMPO DE NOME A SER BUSCADO
+			lblNome.setForeground(new Color(29, 53, 87));
+			lblNome.setBounds(20, 60, 175, 20);
+			lblNome.setText("Nome do Comprador: ");
+			valorNome = new JTextField(100);
+			valorNome.setFont(textFont);
+			valorNome.setBounds(195, 62, 325, 20);
+			this.add(valorNome);
+			this.add(lblNome);
 
 			lista = new JList<String>(); // Adicionando Lista
 			lista.setForeground(new Color(29, 53, 87));

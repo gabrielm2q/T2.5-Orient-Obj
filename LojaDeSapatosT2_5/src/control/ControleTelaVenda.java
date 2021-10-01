@@ -4,12 +4,12 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
 import model.Dados;
 import model.Venda;
 import view.TelaDetalheVenda;
+import view.TelaFiltro;
 import view.TelaVenda;
 
 public class ControleTelaVenda {
@@ -26,7 +26,7 @@ public class ControleTelaVenda {
 		if (clicado == tela.getBtnCadastrar()) {
 			new TelaDetalheVenda(0, Dados.getVenda().size());
 		} else if (clicado == tela.getBtnOrdenar()) {
-			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
+			new TelaFiltro("vendacliente");
 		} else if (clicado == tela.getBtnAtualizar()) {
 			tela.setListaPessoasProd(this.listaNomes());
 		}

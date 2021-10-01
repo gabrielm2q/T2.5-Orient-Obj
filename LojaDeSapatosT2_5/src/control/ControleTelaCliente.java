@@ -4,13 +4,13 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 
 import model.Cliente;
 import model.Dados;
 import view.TelaCliente;
 import view.TelaDetalheCliente;
+import view.TelaFiltro;
 
 public class ControleTelaCliente {
 	private TelaCliente tela;
@@ -26,7 +26,7 @@ public class ControleTelaCliente {
 		if (clicado == tela.getBtnCadastrar()) {
 			new TelaDetalheCliente(0, Dados.getCliente().size());
 		} else if (clicado == tela.getBtnOrdenar()) {
-			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
+			new TelaFiltro("nomecliente");
 		} else if (clicado == tela.getBtnAtualizar()) {
 			tela.setListaPessoasProd(this.listaNomes());
 		}
