@@ -14,9 +14,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
+import control.ControleTelaLoja;
 import model.Dados;
 
 public class TelaLoja extends JFrame implements ActionListener {
+	private ControleTelaLoja controlTela;
+
 	private JLabel titulo = new JLabel("Loja", JLabel.CENTER);
 	private JButton btnSalvar = new JButton("Salvar Alterações");
 	private JLabel tituloEstoque = new JLabel("Estoque", JLabel.CENTER);
@@ -65,6 +68,7 @@ public class TelaLoja extends JFrame implements ActionListener {
 
 	public TelaLoja() {
 		super("Loja");
+		controlTela = new ControleTelaLoja(this);
 
 		this.setSize(560, 720);
 		this.setLayout(null);
@@ -264,6 +268,12 @@ public class TelaLoja extends JFrame implements ActionListener {
 		getBtnSalvar().addActionListener(this);
 
 		this.setVisible(true);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		this.controlTela.clicaBtn(e);
 
 	}
 
@@ -553,12 +563,6 @@ public class TelaLoja extends JFrame implements ActionListener {
 
 	public void setValorComp(JTextField valorComp) {
 		this.valorComp = valorComp;
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
