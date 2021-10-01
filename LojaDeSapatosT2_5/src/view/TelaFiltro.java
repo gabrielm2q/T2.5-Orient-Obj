@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -20,6 +21,12 @@ public class TelaFiltro extends JFrame implements ActionListener {
 	private ControleTelaFiltro controlTela;
 	private String tipoFiltro;
 
+	// Declarando valores que irão compor as ComboBoxes
+	private String[] tamanhos = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14",
+			"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32",
+			"33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
+			"50" };
+
 	// Declarando componentes da tela
 	private JLabel titulo;
 	private JButton btnBuscar = new JButton("Realizar Busca");
@@ -28,6 +35,10 @@ public class TelaFiltro extends JFrame implements ActionListener {
 	// Componentes de buscar produto pelo nome
 	private JLabel lblNome = new JLabel("Nome do Produto: ");
 	private JTextField valorNome;
+
+	// Componentes de buscar produto pelo tamanho
+	private JLabel lblTamanho = new JLabel("Tamanho do Produto: ");
+	private JComboBox<String> valorTamanho = new JComboBox<>(tamanhos);
 
 	public TelaFiltro(String tipoFiltro) {
 		super("Buscar");
@@ -57,6 +68,34 @@ public class TelaFiltro extends JFrame implements ActionListener {
 			valorNome.setBounds(170, 62, 350, 20);
 			this.add(valorNome);
 			this.add(lblNome);
+
+			lista = new JList<String>(); // Adicionando Lista
+			lista.setForeground(new Color(29, 53, 87));
+			lista.setBounds(20, 95, 500, 300);
+			lista.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+			lista.setVisibleRowCount(10);
+			this.add(lista);
+
+			JScrollPane painel = new JScrollPane(this.getLista()); // Adicionando Barra de Rolagem para a lista
+			painel.setBounds(20, 95, 500, 300);
+			painel.setViewportView(this.getLista());
+			painel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			painel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			this.add(painel);
+
+			btnBuscar.setBounds(20, 410, 500, 55); // Posicao do botao de buscar
+
+		} else if (tipoFiltro.equals("tamanhoproduto")) {
+
+			titulo = new JLabel("Buscar Produto", JLabel.CENTER);
+
+			lblTamanho.setFont(labelFont); // CAMPO DE NOME A SER BUSCADO
+			lblTamanho.setForeground(new Color(29, 53, 87));
+			lblTamanho.setBounds(20, 60, 175, 20);
+			valorTamanho.setFont(textFont);
+			valorTamanho.setBounds(195, 62, 325, 20);
+			this.add(valorTamanho);
+			this.add(lblTamanho);
 
 			lista = new JList<String>(); // Adicionando Lista
 			lista.setForeground(new Color(29, 53, 87));
@@ -162,6 +201,34 @@ public class TelaFiltro extends JFrame implements ActionListener {
 
 	public void setTipoFiltro(String tipoFiltro) {
 		this.tipoFiltro = tipoFiltro;
+	}
+
+	public String[] getTamanhos() {
+		return tamanhos;
+	}
+
+	public void setTamanhos(String[] tamanhos) {
+		this.tamanhos = tamanhos;
+	}
+
+	public JLabel getLblTamanho() {
+		return lblTamanho;
+	}
+
+	public void setLblTamanho(JLabel lblTamanho) {
+		this.lblTamanho = lblTamanho;
+	}
+
+	public int getValorTamanho() {
+		return Integer.parseInt(valorTamanho.getSelectedItem().toString());
+	}
+
+	public void setValorTamanho(JComboBox<String> valorTamanho) {
+		this.valorTamanho = valorTamanho;
+	}
+
+	public void setLista(JList<String> lista) {
+		this.lista = lista;
 	}
 
 }

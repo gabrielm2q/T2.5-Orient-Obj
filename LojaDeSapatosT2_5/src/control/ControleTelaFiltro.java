@@ -41,6 +41,30 @@ public class ControleTelaFiltro {
 			}
 
 			tela.setLista(nomes);
+		} else if (tela.getTipoFiltro().equals("tamanhoproduto")) {
+			DefaultListModel<String> nomes = new DefaultListModel<>();
+
+			/*
+			 * Abaixo estamos verificando se algum produto armazenado no sistema possui o
+			 * mesmo valor que o inserido na caixa de texto pelo usuário
+			 */
+			for (Produto prod : Dados.getEstoque().getProduto()) {
+
+				if (prod.getTamanho() == tela.getValorTamanho()) {
+					nomes.addElement(prod.getNome());
+				}
+			}
+
+			if (nomes.size() > 0) {
+				JOptionPane.showMessageDialog(null,
+						"Foram encontrados " + nomes.size() + " produto(s) com esse tamanho!", null,
+						JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(null, "Nenhum produto com esse tamanho foi encontrado!", null,
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+
+			tela.setLista(nomes);
 		}
 
 	}
