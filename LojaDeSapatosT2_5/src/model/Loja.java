@@ -1,19 +1,20 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Loja {
 	private String nome;
-	private int cnpj;
+	private String cnpj;
 	private int horaAbertura;
 	private int horaFechamento;
 	private String site;
 	private Endereco endereco;
 	private Estoque estoque;
-	private ArrayList<Funcionario> funcionario;
+	private List<Funcionario> funcionario;
 
-	public Loja(String nome, int cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
-			Estoque estoque, ArrayList<Funcionario> funcionario) {
+	public Loja(String nome, String cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
+			Estoque estoque, List<Funcionario> funcionario) {
 		setNome(nome);
 		setCnpj(cnpj);
 		setHoraAbertura(horaAbertura);
@@ -26,7 +27,7 @@ public class Loja {
 
 	public Loja() {
 		setNome("");
-		setCnpj(0);
+		setCnpj("");
 		setHoraAbertura(0);
 		setHoraFechamento(0);
 		setSite("");
@@ -49,11 +50,11 @@ public class Loja {
 		this.nome = nome;
 	}
 
-	public int getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(int cnpj) {
+	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 
@@ -97,11 +98,11 @@ public class Loja {
 		this.estoque = estoque;
 	}
 
-	public ArrayList<Funcionario> getFuncionario() {
+	public List<Funcionario> getFuncionario() {
 		return funcionario;
 	}
 
-	public void setFuncionario(Funcionario funcionario) {
-		this.funcionario.add(funcionario);
+	public void setFuncionario(List<Funcionario> funcionario) {
+		this.funcionario = funcionario;
 	}
 }

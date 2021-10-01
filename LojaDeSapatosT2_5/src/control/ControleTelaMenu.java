@@ -9,6 +9,7 @@ import model.Dados;
 import view.TelaCliente;
 import view.TelaEstoque;
 import view.TelaFuncionario;
+import view.TelaLoja;
 import view.TelaMenu;
 import view.TelaVenda;
 
@@ -38,6 +39,8 @@ public class ControleTelaMenu {
 			} else {
 				new TelaVenda();
 			}
+		} else if (clicado == menu.getBtnLoja()) {
+			new TelaLoja();
 		} else {
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
 		}

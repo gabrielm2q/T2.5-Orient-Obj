@@ -9,6 +9,7 @@ import java.util.Random;
 import control.ControleCliente;
 import control.ControleEstoque;
 import control.ControleFuncionario;
+import control.ControleLoja;
 import control.ControleVenda;
 
 public abstract class Dados {
@@ -153,6 +154,7 @@ public abstract class Dados {
 			Dados.incrementarIdProd();
 		}
 
+		// Gerando vendas aleatórias
 		ControleVenda venCtrl = new ControleVenda();
 		Venda venda = new Venda();
 		Pagamento pag = new Pagamento();
@@ -176,8 +178,23 @@ public abstract class Dados {
 			// Diminuindo a quantidade do produto vendido no estoque da quantidade comprada
 			int qtdFinal = Dados.getEstoque().getQuantidade().get(i) - venda.getQtdVendida();
 			Dados.getEstoque().getQuantidade().set(i, qtdFinal);
-
 		}
+
+		// Inserindo dados aleatórios na loja
+		ControleLoja ctrlLoja = new ControleLoja();
+		ender.setCep(aleatorio.nextInt(99999)); // Endereco aleatorio
+		ender.setCidade("Cidade " + aleatorio.nextInt(9));
+		ender.setUf("DF");
+		ender.setNomeRua("Rua " + aleatorio.nextInt(999));
+		ender.setNumero(aleatorio.nextInt(9999));
+		ender.setQuadra(aleatorio.nextInt(999));
+		ender.setBairro("Setor " + aleatorio.nextInt(9999));
+		ender.setComplemento("Próximo a Casa Número " + aleatorio.nextInt(99));
+		String cnpjAle = (aleatorio.nextInt(89) + 10) + "." + (aleatorio.nextInt(899) + 100) + "."
+				+ (aleatorio.nextInt(899) + 100) + "/" + (aleatorio.nextInt(8999) + 1000) + "-"
+				+ (aleatorio.nextInt(89) + 10);
+		ctrlLoja.editarLoja("Lojas " + aleatorio.nextInt(9) + ".0", cnpjAle, 8, 20, "www.essesitenaoexiste.com",
+				Dados.getFuncionario(), Dados.getEstoque(), ender);
 
 	}
 
