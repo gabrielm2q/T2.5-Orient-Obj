@@ -71,5 +71,4 @@ public class Bota extends Produto {
 	public void setMaterialSolado(String materialSolado) {
 		this.materialSolado = materialSolado;
 	}
-
 }

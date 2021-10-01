@@ -17,8 +17,8 @@ public class ControleTelaDetalheCliente {
 	private ControleCliente cliCtrl;
 	private int indexCliente;
 	private int opcEditarSalvar;
-	Date data = new Date();
-	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+	private Date data = new Date();
+	private SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
 	public ControleTelaDetalheCliente(TelaDetalheCliente detalheCliente, int opcaoEditarSalvar, int indexCliente) {
 		this.detalheCliente = detalheCliente;

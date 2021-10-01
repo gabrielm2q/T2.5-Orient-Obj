@@ -241,5 +241,4 @@ public abstract class Dados {
 	public static int getContadorIdVenda() {
 		return contadorIdVenda;
 	}
-
 }

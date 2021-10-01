@@ -55,4 +55,16 @@ public class Estoque {
 	public void setProduto(Produto produto) {
 		this.produto.add(produto);
 	}
+
+	public void setQuantidade(ArrayList<Integer> quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public void setCategoria(ArrayList<String> categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setDataCadastro(ArrayList<Date> dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
 }
