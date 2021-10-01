@@ -18,16 +18,11 @@ public class ControleTelaLoja {
 	}
 
 	public void clicaBtn(ActionEvent e) {
-		Endereco end = new Endereco();
 		// Recebendo valores do endereco
-		end.setCep(Integer.parseInt(tela.getValorCep().getText()));
-		end.setCidade(tela.getValorCidade().getText());
-		end.setUf(tela.getValorUf().getSelectedItem().toString());
-		end.setNomeRua(tela.getValorRua().getText());
-		end.setNumero(Integer.parseInt(tela.getValorNum().getText()));
-		end.setQuadra(Integer.parseInt(tela.getValorQd().getText()));
-		end.setBairro(tela.getValorBairro().getText());
-		end.setComplemento(tela.getValorComp().getText());
+		Endereco end = new Endereco(Integer.parseInt(tela.getValorCep().getText()), tela.getValorCidade().getText(),
+				tela.getValorUf().getSelectedItem().toString(), tela.getValorRua().getText(),
+				Integer.parseInt(tela.getValorNum().getText()), Integer.parseInt(tela.getValorQd().getText()),
+				tela.getValorBairro().getText(), tela.getValorComp().getText());
 
 		// Editando Loja
 		lojaCtrl.editarLoja(tela.getValorNome().getText(), tela.getValorCnpj().getText(),

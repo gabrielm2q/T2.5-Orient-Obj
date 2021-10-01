@@ -24,6 +24,19 @@ public class Endereco {
 		setComplemento(complemento);
 	}
 
+	// Sobrecarga
+	public Endereco(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
+			String complemento) {
+		setCep(cep);
+		setCidade(cidade);
+		setUf(uf);
+		setNomeRua(nomeRua);
+		setNumero(numero);
+		setQuadra(quadra);
+		setBairro(bairro);
+		setComplemento(complemento);
+	}
+
 	public Endereco() {
 		setCep(0);
 		setCidade("");
