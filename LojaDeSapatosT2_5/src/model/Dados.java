@@ -34,7 +34,7 @@ public abstract class Dados {
 		for (int i = 0; i < 5; i++) {
 			Endereco ender = new Endereco();
 
-			ender.setCep(aleatorio.nextInt(99999));
+			ender.setCep(aleatorio.nextInt(88888888) + 10000000);
 			ender.setCidade("Cidade " + aleatorio.nextInt(99));
 			ender.setUf("DF");
 			ender.setNomeRua("Rua " + aleatorio.nextInt(999));
@@ -56,7 +56,7 @@ public abstract class Dados {
 		for (int i = 0; i < 5; i++) {
 			Endereco ender = new Endereco();
 
-			ender.setCep(aleatorio.nextInt(99999));
+			ender.setCep(aleatorio.nextInt(88888888) + 10000000);
 			ender.setCidade("Cidade " + aleatorio.nextInt(9));
 			ender.setUf("DF");
 			ender.setNomeRua("Rua " + aleatorio.nextInt(999));
@@ -190,7 +190,7 @@ public abstract class Dados {
 		ControleLoja ctrlLoja = new ControleLoja();
 		Endereco ender = new Endereco();
 
-		ender.setCep(aleatorio.nextInt(99999)); // Endereco aleatorio
+		ender.setCep(aleatorio.nextInt(88888888) + 10000000); // Endereco aleatorio
 		ender.setCidade("Cidade " + aleatorio.nextInt(9));
 		ender.setUf("DF");
 		ender.setNomeRua("Rua " + aleatorio.nextInt(999));
@@ -199,8 +199,7 @@ public abstract class Dados {
 		ender.setBairro("Setor " + aleatorio.nextInt(9999));
 		ender.setComplemento("Próximo a Casa Número " + aleatorio.nextInt(99));
 		String cnpjAle = (aleatorio.nextInt(89) + 10) + "." + (aleatorio.nextInt(899) + 100) + "."
-				+ (aleatorio.nextInt(899) + 100) + "/" + (aleatorio.nextInt(8999) + 1000) + "-"
-				+ (aleatorio.nextInt(89) + 10);
+				+ (aleatorio.nextInt(899) + 100) + "/0001" + "-" + (aleatorio.nextInt(89) + 10);
 		ctrlLoja.editarLoja("Lojas " + aleatorio.nextInt(9) + ".0", cnpjAle, 8, 20, "www.essesitenaoexiste.com",
 				Dados.getFuncionario(), Dados.getEstoque(), ender);
 
