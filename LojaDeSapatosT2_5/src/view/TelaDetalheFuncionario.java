@@ -139,7 +139,7 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 		lblFone.setBounds(20, 138, 100, 20);
 		valorFone = new JTextField(15);
 		valorFone.setFont(textFont);
-		valorFone.setText("(00) 00000-0000");
+		valorFone.setText("11922223333");
 		valorFone.setBounds(100, 138, 120, 20);
 		this.add(lblFone);
 		this.add(valorFone);

@@ -142,7 +142,7 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 		lblFone.setBounds(280, 138, 100, 20);
 		valorFone = new JTextField(15);
 		valorFone.setFont(textFont);
-		valorFone.setText("(00) 00000-0000");
+		valorFone.setText("11922223333");
 		valorFone.setBounds(360, 138, 160, 20);
 		this.add(lblFone);
 		this.add(valorFone);

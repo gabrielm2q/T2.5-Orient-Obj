@@ -44,9 +44,9 @@ public abstract class Dados {
 			ender.setNumApart(aleatorio.nextInt(75));
 			ender.setComplemento("Próximo a Casa Número " + aleatorio.nextInt(99));
 			cliCtrl.cadastrarCliente(ender, "Cliente" + aleatorio.nextInt(200), 'O', d,
-					aleatorio.nextInt(999) + "." + aleatorio.nextInt(999) + "." + aleatorio.nextInt(999) + "-"
-							+ aleatorio.nextInt(99),
-					"(" + aleatorio.nextInt(99) + ") 9" + aleatorio.nextInt(9999) + "-" + aleatorio.nextInt(9999),
+					(aleatorio.nextInt(899) + 100) + "." + (aleatorio.nextInt(899) + 100) + "."
+							+ (aleatorio.nextInt(899) + 100) + "-" + (aleatorio.nextInt(89) + 10),
+					(aleatorio.nextInt(89) + 10) + "9" + (aleatorio.nextInt(89999999) + 10000000),
 					"Cliente" + aleatorio.nextInt(999) + "@bol.com.br");
 
 		}
@@ -66,10 +66,10 @@ public abstract class Dados {
 			ender.setNumApart(aleatorio.nextInt(75));
 			ender.setComplemento("Próximo a Casa Número " + aleatorio.nextInt(99));
 			funCtrl.cadastrarFuncionario(ender, "Funcionario" + aleatorio.nextInt(200), d,
-					aleatorio.nextInt(999) + "." + aleatorio.nextInt(999) + "." + aleatorio.nextInt(999) + "-"
-							+ aleatorio.nextInt(99),
-					"(" + aleatorio.nextInt(99) + ") 9" + aleatorio.nextInt(9999) + "-" + aleatorio.nextInt(9999), d,
-					"Outros", (aleatorio.nextInt(23) + 1), (aleatorio.nextInt(23) + 1));
+					(aleatorio.nextInt(899) + 100) + "." + (aleatorio.nextInt(899) + 100) + "."
+							+ (aleatorio.nextInt(899) + 100) + "-" + (aleatorio.nextInt(89) + 10),
+					(aleatorio.nextInt(89) + 10) + "9" + (aleatorio.nextInt(89999999) + 10000000), d, "Outros",
+					(aleatorio.nextInt(23) + 1), (aleatorio.nextInt(23) + 1));
 		}
 
 		// Gerando produtos aleatórios
@@ -190,7 +190,7 @@ public abstract class Dados {
 		ControleLoja ctrlLoja = new ControleLoja();
 		Endereco ender = new Endereco();
 
-		ender.setCep(aleatorio.nextInt(88888888) + 10000000); // Endereco aleatorio
+		ender.setCep(aleatorio.nextInt(89999999) + 10000000); // Endereco aleatorio
 		ender.setCidade("Cidade " + aleatorio.nextInt(9));
 		ender.setUf("DF");
 		ender.setNomeRua("Rua " + aleatorio.nextInt(999));

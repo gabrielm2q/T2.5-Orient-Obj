@@ -29,34 +29,49 @@ public class ControleTelaDetalheCliente {
 
 	public void clicaBtn(ActionEvent e) { // CONTROLANDO AS AÇÕES DOS BOTÕES DE TelaDetalheCliente
 		JButton clicado = (JButton) e.getSource();
+		ControleValidacao control = new ControleValidacao();
 
 		if (clicado == detalheCliente.getBtnSalvar() && opcEditarSalvar == 0) { // SALVAR CLIENTE
 			try {
-				// Recebendo os valores do endereço
-				Endereco end = new Endereco();
-				end.setCep(Integer.parseInt(detalheCliente.getValorCep().getText()));
-				end.setCidade(detalheCliente.getValorCidade().getText());
-				end.setUf(detalheCliente.getValorUf().getSelectedItem().toString());
-				end.setNomeRua(detalheCliente.getValorRua().getText());
-				end.setNumero(Integer.parseInt(detalheCliente.getValorNum().getText()));
-				end.setQuadra(Integer.parseInt(detalheCliente.getValorQd().getText()));
-				end.setBairro(detalheCliente.getValorBairro().getText());
-				end.setNumApart(Integer.parseInt(detalheCliente.getValorApart().getText()));
-				end.setComplemento(detalheCliente.getValorComp().getText());
-
-				// formatando data de nascimento
-				data = formato.parse(detalheCliente.getValorData().getText());
-
-				// Cadastrando o cliente
-				cliCtrl.cadastrarCliente(end, detalheCliente.getValorNome().getText(),
-						detalheCliente.getValorGenero().getSelectedItem().toString().charAt(0), data,
+				// Validando dados inseridos pelo usuário (Endereço e dados do cliente)
+				boolean yesNoEnd = control.validaEndereco(Integer.parseInt(detalheCliente.getValorCep().getText()),
+						detalheCliente.getValorCidade().getText(), detalheCliente.getValorRua().getText(),
+						Integer.parseInt(detalheCliente.getValorNum().getText()),
+						Integer.parseInt(detalheCliente.getValorQd().getText()),
+						detalheCliente.getValorBairro().getText(),
+						Integer.parseInt(detalheCliente.getValorApart().getText()),
+						detalheCliente.getValorComp().getText());
+				boolean yesNoCli = control.validaCliente(detalheCliente.getValorNome().getText(),
 						detalheCliente.getValorCpf().getText(), detalheCliente.getValorFone().getText(),
 						detalheCliente.getValorEmail().getText());
 
-				JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", null,
-						JOptionPane.INFORMATION_MESSAGE);
+				if (yesNoEnd && yesNoCli) {
+					// Recebendo os valores do endereço
+					Endereco end = new Endereco();
+					end.setCep(Integer.parseInt(detalheCliente.getValorCep().getText()));
+					end.setCidade(detalheCliente.getValorCidade().getText());
+					end.setUf(detalheCliente.getValorUf().getSelectedItem().toString());
+					end.setNomeRua(detalheCliente.getValorRua().getText());
+					end.setNumero(Integer.parseInt(detalheCliente.getValorNum().getText()));
+					end.setQuadra(Integer.parseInt(detalheCliente.getValorQd().getText()));
+					end.setBairro(detalheCliente.getValorBairro().getText());
+					end.setNumApart(Integer.parseInt(detalheCliente.getValorApart().getText()));
+					end.setComplemento(detalheCliente.getValorComp().getText());
 
-				detalheCliente.dispose();
+					// formatando data de nascimento
+					data = formato.parse(detalheCliente.getValorData().getText());
+
+					// Cadastrando o cliente
+					cliCtrl.cadastrarCliente(end, detalheCliente.getValorNome().getText(),
+							detalheCliente.getValorGenero().getSelectedItem().toString().charAt(0), data,
+							detalheCliente.getValorCpf().getText(), detalheCliente.getValorFone().getText(),
+							detalheCliente.getValorEmail().getText());
+
+					JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", null,
+							JOptionPane.INFORMATION_MESSAGE);
+
+					detalheCliente.dispose();
+				}
 
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
@@ -69,31 +84,45 @@ public class ControleTelaDetalheCliente {
 
 		} else if (clicado == detalheCliente.getBtnSalvar() && opcEditarSalvar == 1) { // SALVAR CLIENTE EDITADO
 			try {
-				// Recebendo os valores do endereço
-				Endereco end = new Endereco();
-				end.setCep(Integer.parseInt(detalheCliente.getValorCep().getText()));
-				end.setCidade(detalheCliente.getValorCidade().getText());
-				end.setUf(detalheCliente.getValorUf().getSelectedItem().toString());
-				end.setNomeRua(detalheCliente.getValorRua().getText());
-				end.setNumero(Integer.parseInt(detalheCliente.getValorNum().getText()));
-				end.setQuadra(Integer.parseInt(detalheCliente.getValorQd().getText()));
-				end.setBairro(detalheCliente.getValorBairro().getText());
-				end.setNumApart(Integer.parseInt(detalheCliente.getValorApart().getText()));
-				end.setComplemento(detalheCliente.getValorComp().getText());
-
-				// formatando data de nascimento
-				data = formato.parse(detalheCliente.getValorData().getText());
-
-				// Editando o cliente
-				cliCtrl.editarCliente(indexCliente, end, detalheCliente.getValorNome().getText(),
-						detalheCliente.getValorGenero().getSelectedItem().toString().charAt(0), data,
+				// Validando dados editados pelo usuário (Endereço e dados do cliente)
+				boolean yesNoEnd = control.validaEndereco(Integer.parseInt(detalheCliente.getValorCep().getText()),
+						detalheCliente.getValorCidade().getText(), detalheCliente.getValorRua().getText(),
+						Integer.parseInt(detalheCliente.getValorNum().getText()),
+						Integer.parseInt(detalheCliente.getValorQd().getText()),
+						detalheCliente.getValorBairro().getText(),
+						Integer.parseInt(detalheCliente.getValorApart().getText()),
+						detalheCliente.getValorComp().getText());
+				boolean yesNoCli = control.validaCliente(detalheCliente.getValorNome().getText(),
 						detalheCliente.getValorCpf().getText(), detalheCliente.getValorFone().getText(),
 						detalheCliente.getValorEmail().getText());
 
-				JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!", null,
-						JOptionPane.INFORMATION_MESSAGE);
+				if (yesNoEnd && yesNoCli) {
+					// Recebendo os valores do endereço
+					Endereco end = new Endereco();
+					end.setCep(Integer.parseInt(detalheCliente.getValorCep().getText()));
+					end.setCidade(detalheCliente.getValorCidade().getText());
+					end.setUf(detalheCliente.getValorUf().getSelectedItem().toString());
+					end.setNomeRua(detalheCliente.getValorRua().getText());
+					end.setNumero(Integer.parseInt(detalheCliente.getValorNum().getText()));
+					end.setQuadra(Integer.parseInt(detalheCliente.getValorQd().getText()));
+					end.setBairro(detalheCliente.getValorBairro().getText());
+					end.setNumApart(Integer.parseInt(detalheCliente.getValorApart().getText()));
+					end.setComplemento(detalheCliente.getValorComp().getText());
 
-				detalheCliente.dispose();
+					// formatando data de nascimento
+					data = formato.parse(detalheCliente.getValorData().getText());
+
+					// Editando o cliente
+					cliCtrl.editarCliente(indexCliente, end, detalheCliente.getValorNome().getText(),
+							detalheCliente.getValorGenero().getSelectedItem().toString().charAt(0), data,
+							detalheCliente.getValorCpf().getText(), detalheCliente.getValorFone().getText(),
+							detalheCliente.getValorEmail().getText());
+
+					JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!", null,
+							JOptionPane.INFORMATION_MESSAGE);
+
+					detalheCliente.dispose();
+				}
 
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();

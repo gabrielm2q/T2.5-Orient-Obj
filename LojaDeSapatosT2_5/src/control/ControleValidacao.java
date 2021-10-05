@@ -233,7 +233,7 @@ public class ControleValidacao {
 
 				return false;
 			} else if (site.trim().contains(" ")) {
-				JOptionPane.showMessageDialog(null, "Erro!\nO site da loja não pode ser ter espaços no meio!", null,
+				JOptionPane.showMessageDialog(null, "Erro!\nO site da loja não pode ter espaços no meio!", null,
 						JOptionPane.ERROR_MESSAGE);
 
 				return false;
@@ -247,6 +247,156 @@ public class ControleValidacao {
 			}
 		} catch (NullPointerException exc1) {
 			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o site da loja foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		return true;
+	}
+
+	public boolean validaCliente(String nome, String cpf, String fone, String email) {
+
+		// Validando o nome do cliente
+		try {
+			if (nome.isBlank() || nome.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do cliente não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (nome.length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o nome do cliente foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (nome.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO nome do cliente não pode ser composto apenas por números!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do cliente foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o CPF
+		try {
+			if (cpf.isBlank() || cpf.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o CPF não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (cpf.trim().length() != 14) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o CPF foi preenchido corretamente!\nO padrão é: XXX.XXX.XXX-XX", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (cpf.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO CPF não pode ser composto apenas por números!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+
+			// Verificando se o CPF seguiu o padrao numerico requerido
+			if (!cpf.substring(0, 3).matches("[0-9]+") || !cpf.substring(4, 7).matches("[0-9]+")
+					|| !cpf.substring(8, 11).matches("[0-9]+") || !cpf.substring(12, 14).matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se os valores do CPF estão certos!\nO padrão é: XXX.XXX.XXX-XX", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+
+			// Verificando se o CPF seguiu o padrao de pontuacao requerido
+			if (!cpf.substring(3, 4).equals(".") || !cpf.substring(7, 8).equals(".")
+					|| !cpf.substring(11, 12).equals("-")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique a pontuação do CPF!\nO padrão é: XXX.XXX.XXX-XX",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+
+			/*
+			 * Verificando se o CPF nao e composto apenas de numeros repetidos ou contém
+			 * algum espaço com 000
+			 */
+			if (cpf.contains("000") || cpf.equals("111.111.111-11") || cpf.equals("222.222.222-22")
+					|| cpf.equals("333.333.333-33") || cpf.equals("444.444.444-44") || cpf.equals("555.555.555-55")
+					|| cpf.equals("666.666.666-66") || cpf.equals("777.777.777-77") || cpf.equals("888.888.888-88")
+					|| cpf.equals("999.999.999-99") || cpf.substring(12, 14).equals("00")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se os valores do CPF não são repetidos!\nO padrão de CPF é: XXX.XXX.XXX-XX",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o CPF foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o telefone do cliente
+		try {
+			if (fone.isBlank() || fone.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o telefone não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (fone.trim().length() != 11) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o telefone foi preenchido corretamente!\nO formato é: DDD + 9 + XXXX + XXXX\nUse apenas números! Sem espaços!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (!fone.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO telefone deve possuir apenas números! Sem espaços!\nO formato é: DDD + 9 + XXXX + XXXX",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (fone.equals("00000000000")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO telefone não pode conter apenas zeros! Sem espaços!\nO formato é: DDD + 9 + XXXX + XXXX",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (fone.substring(0, 2).equals("00") || !fone.substring(2, 3).equals("9")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO DDD deve ser válido!\nUse o dígito 9 antes do telefone!\nO formato é: DDD + 9 + XXXX + XXXX",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o telefone foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		try { // Validando o email
+			if (email.isBlank() || email.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o email não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (email.length() < 7) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o email foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (email.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO email não pode ser composto apenas por números!", null,
+						JOptionPane.ERROR_MESSAGE);
+
+				return false;
+			} else if (email.trim().contains(" ")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO email não pode ter espaços no meio!", null,
+						JOptionPane.ERROR_MESSAGE);
+
+				return false;
+			} else if (!email.trim().contains(".com") && !email.trim().contains(".edu")
+					&& !email.trim().contains(".unb") && !email.trim().contains(".br") && !email.trim().contains(".gov")
+					&& !email.trim().contains(".us") && !email.trim().contains(".fi")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO email deve ser válido!", null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (!email.trim().contains("@")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO email deve conter @!", null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (email.trim().substring(0, 1).equals("@")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO primeiro dígito do email não pode ser @!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o email foi preenchido!", null,
 					JOptionPane.ERROR_MESSAGE);
 		}
 
