@@ -93,39 +93,59 @@ public class ControleTelaDetalheEstoque {
 				} else if (tipoProd.equals("Tênis")) { // Salvando os dados do Tenis
 					Tenis tenis = new Tenis();
 
-					tenis.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
-					tenis.setNome(detalheEstoque.getValorNome().getText());
-					tenis.setTamanho(Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
-					tenis.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
-					tenis.setMarca(detalheEstoque.getValorMarca().getText());
-					tenis.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
-					tenis.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
-					tenis.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
-					tenis.setCodBarras(detalheEstoque.getValorBarras().getText());
-					tenis.setCor(detalheEstoque.getValorCor().getText());
-					tenis.setMaterial(detalheEstoque.getValorMaterial().getText());
-					tenis.setAtvdIndicada(detalheEstoque.getValorAtividade().getText());
-					tenis.setTecnoSolado(detalheEstoque.getValorTecSol().getText());
-					tenis.setTipoPisada(detalheEstoque.getValorPisada().getText());
-					tenis.setTipoPalmilha(detalheEstoque.getValorTipoPalmilha().getText());
-					tenis.setPeso(Double.parseDouble(detalheEstoque.getValorPeso().getText()));
-					tenis.setTipoAmarracao(detalheEstoque.getValorAmarra().getText());
-					tenis.setCorCadarco(detalheEstoque.getValorCorCadarco().getText());
+					// Validando dados inseridos pelo usuário (dados do tenis)
+					boolean yesNoProd = control.validaTenis(detalheEstoque.getValorNome().getText(),
+							Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
+							Double.parseDouble(detalheEstoque.getValorPreco().getText()),
+							detalheEstoque.getValorMarca().getText(), detalheEstoque.getValorOrigem().getText(),
+							detalheEstoque.getValorGarantia().getText(), detalheEstoque.getValorCor().getText(),
+							detalheEstoque.getValorBarras().getText(), detalheEstoque.getValorMaterial().getText(),
+							detalheEstoque.getValorAtividade().getText(), detalheEstoque.getValorPisada().getText(),
+							detalheEstoque.getValorTecSol().getText(),
+							Double.parseDouble(detalheEstoque.getValorPeso().getText()),
+							detalheEstoque.getValorTipoPalmilha().getText(), detalheEstoque.getValorAmarra().getText(),
+							detalheEstoque.getValorCorCadarco().getText());
 
-					// formatando data
-					try {
-						data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
-					} catch (ParseException excData) {
-						excData.printStackTrace();
-						JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
-								JOptionPane.ERROR_MESSAGE);
+					if (yesNoProd) {
+
+						tenis.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
+						tenis.setNome(detalheEstoque.getValorNome().getText());
+						tenis.setTamanho(
+								Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
+						tenis.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
+						tenis.setMarca(detalheEstoque.getValorMarca().getText());
+						tenis.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
+						tenis.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
+						tenis.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
+						tenis.setCodBarras(detalheEstoque.getValorBarras().getText());
+						tenis.setCor(detalheEstoque.getValorCor().getText());
+						tenis.setMaterial(detalheEstoque.getValorMaterial().getText());
+						tenis.setAtvdIndicada(detalheEstoque.getValorAtividade().getText());
+						tenis.setTecnoSolado(detalheEstoque.getValorTecSol().getText());
+						tenis.setTipoPisada(detalheEstoque.getValorPisada().getText());
+						tenis.setTipoPalmilha(detalheEstoque.getValorTipoPalmilha().getText());
+						tenis.setPeso(Double.parseDouble(detalheEstoque.getValorPeso().getText()));
+						tenis.setTipoAmarracao(detalheEstoque.getValorAmarra().getText());
+						tenis.setCorCadarco(detalheEstoque.getValorCorCadarco().getText());
+
+						// formatando data
+						try {
+							data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
+						} catch (ParseException excData) {
+							excData.printStackTrace();
+							JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
+									JOptionPane.ERROR_MESSAGE);
+						}
+
+						estCtrl.cadastrarProduto(Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
+								tipoProd, data, tenis);
+
+						JOptionPane.showMessageDialog(null, tipoProd + " cadastrado com sucesso!", null,
+								JOptionPane.INFORMATION_MESSAGE);
+
+						Dados.incrementarIdProd();
+						detalheEstoque.dispose(); // Fechando tela assim que o cadastro for realizado com sucesso!
 					}
-
-					estCtrl.cadastrarProduto(Integer.parseInt(detalheEstoque.getValorQuantidade().getText()), tipoProd,
-							data, tenis);
-
-					JOptionPane.showMessageDialog(null, tipoProd + " cadastrado com sucesso!", null,
-							JOptionPane.INFORMATION_MESSAGE);
 
 				} else if (tipoProd.equals("Bota")) { // Salvando os dados da Bota
 					Bota bota = new Bota();
@@ -264,39 +284,58 @@ public class ControleTelaDetalheEstoque {
 
 					Tenis tenis = new Tenis();
 
-					tenis.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
-					tenis.setNome(detalheEstoque.getValorNome().getText());
-					tenis.setTamanho(Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
-					tenis.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
-					tenis.setMarca(detalheEstoque.getValorMarca().getText());
-					tenis.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
-					tenis.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
-					tenis.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
-					tenis.setCodBarras(detalheEstoque.getValorBarras().getText());
-					tenis.setCor(detalheEstoque.getValorCor().getText());
-					tenis.setMaterial(detalheEstoque.getValorMaterial().getText());
-					tenis.setAtvdIndicada(detalheEstoque.getValorAtividade().getText());
-					tenis.setTecnoSolado(detalheEstoque.getValorTecSol().getText());
-					tenis.setTipoPisada(detalheEstoque.getValorPisada().getText());
-					tenis.setTipoPalmilha(detalheEstoque.getValorTipoPalmilha().getText());
-					tenis.setPeso(Double.parseDouble(detalheEstoque.getValorPeso().getText()));
-					tenis.setTipoAmarracao(detalheEstoque.getValorAmarra().getText());
-					tenis.setCorCadarco(detalheEstoque.getValorCorCadarco().getText());
+					// Validando dados inseridos pelo usuário (dados do tenis)
+					boolean yesNoProd = control.validaTenis(detalheEstoque.getValorNome().getText(),
+							Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
+							Double.parseDouble(detalheEstoque.getValorPreco().getText()),
+							detalheEstoque.getValorMarca().getText(), detalheEstoque.getValorOrigem().getText(),
+							detalheEstoque.getValorGarantia().getText(), detalheEstoque.getValorCor().getText(),
+							detalheEstoque.getValorBarras().getText(), detalheEstoque.getValorMaterial().getText(),
+							detalheEstoque.getValorAtividade().getText(), detalheEstoque.getValorPisada().getText(),
+							detalheEstoque.getValorTecSol().getText(),
+							Double.parseDouble(detalheEstoque.getValorPeso().getText()),
+							detalheEstoque.getValorTipoPalmilha().getText(), detalheEstoque.getValorAmarra().getText(),
+							detalheEstoque.getValorCorCadarco().getText());
 
-					// formatando data
-					try {
-						data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
-					} catch (ParseException excData) {
-						excData.printStackTrace();
-						JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
-								JOptionPane.ERROR_MESSAGE);
+					if (yesNoProd) {
+
+						tenis.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
+						tenis.setNome(detalheEstoque.getValorNome().getText());
+						tenis.setTamanho(
+								Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
+						tenis.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
+						tenis.setMarca(detalheEstoque.getValorMarca().getText());
+						tenis.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
+						tenis.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
+						tenis.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
+						tenis.setCodBarras(detalheEstoque.getValorBarras().getText());
+						tenis.setCor(detalheEstoque.getValorCor().getText());
+						tenis.setMaterial(detalheEstoque.getValorMaterial().getText());
+						tenis.setAtvdIndicada(detalheEstoque.getValorAtividade().getText());
+						tenis.setTecnoSolado(detalheEstoque.getValorTecSol().getText());
+						tenis.setTipoPisada(detalheEstoque.getValorPisada().getText());
+						tenis.setTipoPalmilha(detalheEstoque.getValorTipoPalmilha().getText());
+						tenis.setPeso(Double.parseDouble(detalheEstoque.getValorPeso().getText()));
+						tenis.setTipoAmarracao(detalheEstoque.getValorAmarra().getText());
+						tenis.setCorCadarco(detalheEstoque.getValorCorCadarco().getText());
+
+						// formatando data
+						try {
+							data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
+						} catch (ParseException excData) {
+							excData.printStackTrace();
+							JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
+									JOptionPane.ERROR_MESSAGE);
+						}
+
+						estCtrl.editarProduto(indexProduto,
+								Integer.parseInt(detalheEstoque.getValorQuantidade().getText()), tipoProd, data, tenis);
+
+						JOptionPane.showMessageDialog(null, tipoProd + " editado com sucesso!", null,
+								JOptionPane.INFORMATION_MESSAGE);
+
+						detalheEstoque.dispose();
 					}
-
-					estCtrl.editarProduto(indexProduto, Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
-							tipoProd, data, tenis);
-
-					JOptionPane.showMessageDialog(null, tipoProd + " editado com sucesso!", null,
-							JOptionPane.INFORMATION_MESSAGE);
 
 				} else if (tipoProd.equals("Bota")) { // Editando a Bota
 

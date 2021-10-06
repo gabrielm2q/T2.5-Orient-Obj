@@ -88,7 +88,7 @@ public abstract class Dados {
 			salto.setPaisOrigem("Pais " + aleatorio.nextInt(9) + i);
 			salto.setTempoGarantia(aleatorio.nextInt(3) + i + " anos");
 			salto.setGenero('U');
-			salto.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i));
+			salto.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i) + "1010");
 			salto.setCor("Cor " + aleatorio.nextInt(9) + i);
 			salto.setMaterial("Material " + aleatorio.nextInt(9) + i);
 			salto.setTipoSalto("Scarpin");
@@ -106,7 +106,7 @@ public abstract class Dados {
 			sapato.setPaisOrigem("Pais " + aleatorio.nextInt(9) + i);
 			sapato.setTempoGarantia(aleatorio.nextInt(3) + i + " anos");
 			sapato.setGenero('U');
-			sapato.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i));
+			sapato.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i) + "1010");
 			sapato.setCor("Cor " + aleatorio.nextInt(9) + i);
 			sapato.setMaterial("Material " + aleatorio.nextInt(9) + i);
 			sapato.setMaterialSolado("Couro Tipo " + aleatorio.nextInt(9) + i);
@@ -125,7 +125,7 @@ public abstract class Dados {
 			tenis.setPaisOrigem("Pais " + aleatorio.nextInt(9) + i);
 			tenis.setTempoGarantia(aleatorio.nextInt(3) + i + " anos");
 			tenis.setGenero('U');
-			tenis.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i));
+			tenis.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i) + "1010");
 			tenis.setCor("Cor " + aleatorio.nextInt(9) + i);
 			tenis.setMaterial("Material " + aleatorio.nextInt(9) + i);
 			tenis.setAtvdIndicada("Corrida");
@@ -146,7 +146,7 @@ public abstract class Dados {
 			bota.setPaisOrigem("Pais " + aleatorio.nextInt(9) + i);
 			bota.setTempoGarantia(aleatorio.nextInt(3) + i + " anos");
 			bota.setGenero('U');
-			bota.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i));
+			bota.setCodBarras(Integer.toBinaryString(aleatorio.nextInt(30) + i) + "1010");
 			bota.setCor("Cor " + aleatorio.nextInt(9) + i);
 			bota.setMaterial("Material " + aleatorio.nextInt(9) + i);
 			bota.setModelo("Americana" + aleatorio.nextInt(8) + i);
