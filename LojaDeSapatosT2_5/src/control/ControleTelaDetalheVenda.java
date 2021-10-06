@@ -128,8 +128,10 @@ public class ControleTelaDetalheVenda {
 	}
 
 	public void mensagemErro() {
-		JOptionPane.showMessageDialog(null, "Erro!\nVerifique se todos os campos estão preenchidos."
-				+ "\nVerifique se os dados em formato numérico são números.", null, JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null,
+				"Erro!\nVerifique se todos os campos estão preenchidos."
+						+ "\nVerifique se os dados em formato numérico são números.\nNão use vírgulas ','. Use pontos!",
+				null, JOptionPane.ERROR_MESSAGE);
 	}
 
 	public TelaDetalheVenda getDetalheVenda() {
