@@ -1382,7 +1382,270 @@ public class ControleValidacao {
 		return true;
 	}
 
-	public boolean validaSapato() {
+	public boolean validaSapato(String nome, int quantidade, Double preco, String marca, String paisOrigem,
+			String garantia, String cor, String codBarras, String material, String materialSolado, String tipoBico,
+			String materialInterno, String tipoPalmilha) {
+
+		// Validando o nome do produto
+		try {
+			if (nome.isBlank() || nome.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do produto não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (nome.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o nome do produto foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (nome.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO nome do produto não pode ser composto apenas por números!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do produto foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando a quantidade
+		try {
+			if (quantidade <= 0 || quantidade >= 100000) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se a quantidade do produto é maior que 0\ne menor que 100,000!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a quantidade do produto foi preenchida!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o preço do produto
+		try {
+			if (preco <= 0 || preco >= 1000000) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o preço do produto é maior que 0\ne menor que 1,000,000.00!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o preço do produto foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando a marca do produto
+		try {
+			if (marca.isBlank() || marca.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a marca do produto não está vazia!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (marca.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se a marca do produto foi preenchida corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a marca do produto foi preenchida!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o pais de origem
+		try {
+			if (paisOrigem.isBlank() || paisOrigem.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o país de origem não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (paisOrigem.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o país de origem foi preenchido corretamente!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (paisOrigem.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO país de origem não pode ser composto apenas por números!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o país de origem foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o tempo de garantia do produto
+		try {
+			if (garantia.isBlank() || garantia.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tempo de garantia não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (garantia.trim().length() < 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o tempo de garantia foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (garantia.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO tempo de garantia do produto não pode ser composto apenas por números!\nDeve conter a medida de tempo (anos/meses...)!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (garantia.trim().matches("[a-z]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO tempo de garantia deve conter o tempo!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tempo de garantia foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando a cor do produto
+		try {
+			if (cor.isBlank() || cor.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor do produto não está vazia!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (cor.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor do produto foi preenchida corretamente!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (cor.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nA cor do produto não pode ser composta apenas por números!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor do produto foi preenchida!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o código de barras
+		try {
+			if (codBarras.isBlank() || codBarras.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o código de barras não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (codBarras.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o código de barras foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (!codBarras.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO código de barras não pode ser composto por letras!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o código de barras foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o material do produto
+		try {
+			if (material.isBlank() || material.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o material não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (material.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o material foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (material.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO material não pode ser composto apenas por números!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o material foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o material do solado do sapato
+		try {
+			if (materialSolado.isBlank() || materialSolado.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o material do solado não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (materialSolado.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o material do solado foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (materialSolado.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO material do solado não pode ser composto apenas por números!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o material do solado foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o tipo de bico do sapato
+		try {
+			if (tipoBico.isBlank() || tipoBico.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tipo de bico do sapato não está vazio!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (tipoBico.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o tipo de bico do sapato foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (tipoBico.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO tipo de bico do sapato não pode ser composto apenas por números!\nTente usar formatos como 'quadrado'...",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tipo de bico do sapato foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o material interno do sapato
+		try {
+			if (materialInterno.isBlank() || materialInterno.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o material interno do sapato não está vazio!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (materialInterno.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o material interno do sapato foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (materialInterno.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO material interno do sapato não pode ser composto apenas por números!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o material interno do sapato foi preenchido!",
+					null, JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o tipo de palmilha do sapato
+		try {
+			if (tipoPalmilha.isBlank() || tipoPalmilha.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tipo de palmilha do sapato não está vazio!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (tipoPalmilha.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o tipo de palmilha do sapato foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (tipoPalmilha.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO tipo de palmilha do sapato não pode ser composto apenas por números!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tipo de palmilha do sapato foi preenchido!",
+					null, JOptionPane.ERROR_MESSAGE);
+		}
+
 		return true;
 	}
 

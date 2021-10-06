@@ -203,39 +203,53 @@ public class ControleTelaDetalheEstoque {
 				} else if (tipoProd.equals("Sapato")) { // Salvando os dados do Sapato
 					Sapato sapato = new Sapato();
 
-					sapato.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
-					sapato.setNome(detalheEstoque.getValorNome().getText());
-					sapato.setTamanho(Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
-					sapato.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
-					sapato.setMarca(detalheEstoque.getValorMarca().getText());
-					sapato.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
-					sapato.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
-					sapato.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
-					sapato.setCodBarras(detalheEstoque.getValorBarras().getText());
-					sapato.setCor(detalheEstoque.getValorCor().getText());
-					sapato.setMaterial(detalheEstoque.getValorMaterial().getText());
-					sapato.setMaterialSolado(detalheEstoque.getValorSolado().getText());
-					sapato.setMaterialInterno(detalheEstoque.getValorInterno().getText());
-					sapato.setTipoBico(detalheEstoque.getValorBico().getText());
-					sapato.setAlturaSalto(detalheEstoque.getValorAlturaSalto().getSelectedItem().toString());
-					sapato.setTipoPalmilha(detalheEstoque.getValorPalmilha().getText());
+					// Validando dados inseridos pelo usuário (dados do salto)
+					boolean yesNoProd = control.validaSapato(detalheEstoque.getValorNome().getText(),
+							Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
+							Double.parseDouble(detalheEstoque.getValorPreco().getText()),
+							detalheEstoque.getValorMarca().getText(), detalheEstoque.getValorOrigem().getText(),
+							detalheEstoque.getValorGarantia().getText(), detalheEstoque.getValorCor().getText(),
+							detalheEstoque.getValorBarras().getText(), detalheEstoque.getValorMaterial().getText(),
+							detalheEstoque.getValorSolado().getText(), detalheEstoque.getValorBico().getText(),
+							detalheEstoque.getValorInterno().getText(), detalheEstoque.getValorPalmilha().getText());
 
-					// formatando data
-					try {
-						data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
-					} catch (ParseException excData) {
-						excData.printStackTrace();
-						JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
-								JOptionPane.ERROR_MESSAGE);
+					if (yesNoProd) {
+
+						sapato.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
+						sapato.setNome(detalheEstoque.getValorNome().getText());
+						sapato.setTamanho(
+								Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
+						sapato.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
+						sapato.setMarca(detalheEstoque.getValorMarca().getText());
+						sapato.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
+						sapato.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
+						sapato.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
+						sapato.setCodBarras(detalheEstoque.getValorBarras().getText());
+						sapato.setCor(detalheEstoque.getValorCor().getText());
+						sapato.setMaterial(detalheEstoque.getValorMaterial().getText());
+						sapato.setMaterialSolado(detalheEstoque.getValorSolado().getText());
+						sapato.setMaterialInterno(detalheEstoque.getValorInterno().getText());
+						sapato.setTipoBico(detalheEstoque.getValorBico().getText());
+						sapato.setAlturaSalto(detalheEstoque.getValorAlturaSalto().getSelectedItem().toString());
+						sapato.setTipoPalmilha(detalheEstoque.getValorPalmilha().getText());
+
+						// formatando data
+						try {
+							data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
+						} catch (ParseException excData) {
+							excData.printStackTrace();
+							JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
+									JOptionPane.ERROR_MESSAGE);
+						}
+
+						estCtrl.cadastrarProduto(Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
+								tipoProd, data, sapato);
+
+						JOptionPane.showMessageDialog(null, tipoProd + " cadastrado com sucesso!", null,
+								JOptionPane.INFORMATION_MESSAGE);
+						Dados.incrementarIdProd();
+						detalheEstoque.dispose(); // Fechando tela assim que o cadastro for realizado com sucesso!
 					}
-
-					estCtrl.cadastrarProduto(Integer.parseInt(detalheEstoque.getValorQuantidade().getText()), tipoProd,
-							data, sapato);
-
-					JOptionPane.showMessageDialog(null, tipoProd + " cadastrado com sucesso!", null,
-							JOptionPane.INFORMATION_MESSAGE);
-					Dados.incrementarIdProd();
-					detalheEstoque.dispose(); // Fechando tela assim que o cadastro for realizado com sucesso!
 				}
 
 			} catch (NullPointerException exc1) {
@@ -409,37 +423,54 @@ public class ControleTelaDetalheEstoque {
 
 					Sapato sapato = new Sapato();
 
-					sapato.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
-					sapato.setNome(detalheEstoque.getValorNome().getText());
-					sapato.setTamanho(Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
-					sapato.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
-					sapato.setMarca(detalheEstoque.getValorMarca().getText());
-					sapato.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
-					sapato.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
-					sapato.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
-					sapato.setCodBarras(detalheEstoque.getValorBarras().getText());
-					sapato.setCor(detalheEstoque.getValorCor().getText());
-					sapato.setMaterial(detalheEstoque.getValorMaterial().getText());
-					sapato.setMaterialSolado(detalheEstoque.getValorSolado().getText());
-					sapato.setMaterialInterno(detalheEstoque.getValorInterno().getText());
-					sapato.setTipoBico(detalheEstoque.getValorBico().getText());
-					sapato.setAlturaSalto(detalheEstoque.getValorAlturaSalto().getSelectedItem().toString());
-					sapato.setTipoPalmilha(detalheEstoque.getValorPalmilha().getText());
+					// Validando dados inseridos pelo usuário (dados do salto)
+					boolean yesNoProd = control.validaSapato(detalheEstoque.getValorNome().getText(),
+							Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
+							Double.parseDouble(detalheEstoque.getValorPreco().getText()),
+							detalheEstoque.getValorMarca().getText(), detalheEstoque.getValorOrigem().getText(),
+							detalheEstoque.getValorGarantia().getText(), detalheEstoque.getValorCor().getText(),
+							detalheEstoque.getValorBarras().getText(), detalheEstoque.getValorMaterial().getText(),
+							detalheEstoque.getValorSolado().getText(), detalheEstoque.getValorBico().getText(),
+							detalheEstoque.getValorInterno().getText(), detalheEstoque.getValorPalmilha().getText());
 
-					// formatando data
-					try {
-						data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
-					} catch (ParseException excData) {
-						excData.printStackTrace();
-						JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
-								JOptionPane.ERROR_MESSAGE);
+					if (yesNoProd) {
+
+						sapato.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
+						sapato.setNome(detalheEstoque.getValorNome().getText());
+						sapato.setTamanho(
+								Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
+						sapato.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
+						sapato.setMarca(detalheEstoque.getValorMarca().getText());
+						sapato.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
+						sapato.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
+						sapato.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
+						sapato.setCodBarras(detalheEstoque.getValorBarras().getText());
+						sapato.setCor(detalheEstoque.getValorCor().getText());
+						sapato.setMaterial(detalheEstoque.getValorMaterial().getText());
+						sapato.setMaterialSolado(detalheEstoque.getValorSolado().getText());
+						sapato.setMaterialInterno(detalheEstoque.getValorInterno().getText());
+						sapato.setTipoBico(detalheEstoque.getValorBico().getText());
+						sapato.setAlturaSalto(detalheEstoque.getValorAlturaSalto().getSelectedItem().toString());
+						sapato.setTipoPalmilha(detalheEstoque.getValorPalmilha().getText());
+
+						// formatando data
+						try {
+							data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
+						} catch (ParseException excData) {
+							excData.printStackTrace();
+							JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
+									JOptionPane.ERROR_MESSAGE);
+						}
+
+						estCtrl.editarProduto(indexProduto,
+								Integer.parseInt(detalheEstoque.getValorQuantidade().getText()), tipoProd, data,
+								sapato);
+
+						JOptionPane.showMessageDialog(null, tipoProd + " editado com sucesso!", null,
+								JOptionPane.INFORMATION_MESSAGE);
+
+						detalheEstoque.dispose();
 					}
-
-					estCtrl.editarProduto(indexProduto, Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
-							tipoProd, data, sapato);
-
-					JOptionPane.showMessageDialog(null, tipoProd + " editado com sucesso!", null,
-							JOptionPane.INFORMATION_MESSAGE);
 
 				}
 
