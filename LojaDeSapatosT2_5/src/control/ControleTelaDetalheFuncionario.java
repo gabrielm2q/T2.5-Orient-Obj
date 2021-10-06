@@ -30,36 +30,49 @@ public class ControleTelaDetalheFuncionario {
 
 	public void clicaBtn(ActionEvent e) { // CONTROLANDO AS AÇÕES DOS BOTÕES DE TelaDetalheFuncionário
 		JButton clicado = (JButton) e.getSource();
+		ControleValidacao control = new ControleValidacao();
 
 		if (clicado == detalheFunc.getBtnSalvar() && opcEditarSalvar == 0) { // SALVAR FUNCIONARIO
 			try {
-				// Recebendo os valores do endereço
-				Endereco end = new Endereco();
-				end.setCep(Integer.parseInt(detalheFunc.getValorCep().getText()));
-				end.setCidade(detalheFunc.getValorCidade().getText());
-				end.setUf(detalheFunc.getValorUf().getSelectedItem().toString());
-				end.setNomeRua(detalheFunc.getValorRua().getText());
-				end.setNumero(Integer.parseInt(detalheFunc.getValorNum().getText()));
-				end.setQuadra(Integer.parseInt(detalheFunc.getValorQd().getText()));
-				end.setBairro(detalheFunc.getValorBairro().getText());
-				end.setNumApart(Integer.parseInt(detalheFunc.getValorApart().getText()));
-				end.setComplemento(detalheFunc.getValorComp().getText());
+				// Validando dados inseridos pelo usuário (Endereço e dados do funcionário)
+				boolean yesNoEnd = control.validaEndereco(Integer.parseInt(detalheFunc.getValorCep().getText()),
+						detalheFunc.getValorCidade().getText(), detalheFunc.getValorRua().getText(),
+						Integer.parseInt(detalheFunc.getValorNum().getText()),
+						Integer.parseInt(detalheFunc.getValorQd().getText()), detalheFunc.getValorBairro().getText(),
+						Integer.parseInt(detalheFunc.getValorApart().getText()), detalheFunc.getValorComp().getText());
+				boolean yesNoFunc = control.validaFuncionario(detalheFunc.getValorNome().getText(),
+						detalheFunc.getValorCpf().getText(), detalheFunc.getValorFone().getText());
 
-				// Formatando a data inserida
-				data = formato.parse(detalheFunc.getValorData().getText());
-				dataContrat = formato.parse(detalheFunc.getValorDataCon().getText());
+				if (yesNoEnd && yesNoFunc) {
 
-				// Cadastrando o Funcionario
-				funCtrl.cadastrarFuncionario(end, detalheFunc.getValorNome().getText(), data,
-						detalheFunc.getValorCpf().getText(), detalheFunc.getValorFone().getText(), dataContrat,
-						detalheFunc.getValorTurno().getSelectedItem().toString(),
-						Integer.parseInt(detalheFunc.getValorEntrada().getSelectedItem().toString()),
-						Integer.parseInt(detalheFunc.getValorSaida().getSelectedItem().toString()));
+					// Recebendo os valores do endereço
+					Endereco end = new Endereco();
+					end.setCep(Integer.parseInt(detalheFunc.getValorCep().getText()));
+					end.setCidade(detalheFunc.getValorCidade().getText());
+					end.setUf(detalheFunc.getValorUf().getSelectedItem().toString());
+					end.setNomeRua(detalheFunc.getValorRua().getText());
+					end.setNumero(Integer.parseInt(detalheFunc.getValorNum().getText()));
+					end.setQuadra(Integer.parseInt(detalheFunc.getValorQd().getText()));
+					end.setBairro(detalheFunc.getValorBairro().getText());
+					end.setNumApart(Integer.parseInt(detalheFunc.getValorApart().getText()));
+					end.setComplemento(detalheFunc.getValorComp().getText());
 
-				JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!", null,
-						JOptionPane.INFORMATION_MESSAGE);
+					// Formatando a data inserida
+					data = formato.parse(detalheFunc.getValorData().getText());
+					dataContrat = formato.parse(detalheFunc.getValorDataCon().getText());
 
-				detalheFunc.dispose();
+					// Cadastrando o Funcionario
+					funCtrl.cadastrarFuncionario(end, detalheFunc.getValorNome().getText(), data,
+							detalheFunc.getValorCpf().getText(), detalheFunc.getValorFone().getText(), dataContrat,
+							detalheFunc.getValorTurno().getSelectedItem().toString(),
+							Integer.parseInt(detalheFunc.getValorEntrada().getSelectedItem().toString()),
+							Integer.parseInt(detalheFunc.getValorSaida().getSelectedItem().toString()));
+
+					JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!", null,
+							JOptionPane.INFORMATION_MESSAGE);
+
+					detalheFunc.dispose();
+				}
 
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
@@ -67,38 +80,50 @@ public class ControleTelaDetalheFuncionario {
 				mensagemErroCadastro();
 			} catch (ParseException excData) {
 				excData.printStackTrace();
-				mensagemErroCadastro();
+				JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
+						JOptionPane.ERROR_MESSAGE);
 			}
 
 		} else if (clicado == detalheFunc.getBtnSalvar() && opcEditarSalvar == 1) { // SALVAR FUNCIONARIO EDITADO
 			try {
-				// Recebendo os valores do endereço
-				Endereco end = new Endereco();
-				end.setCep(Integer.parseInt(detalheFunc.getValorCep().getText()));
-				end.setCidade(detalheFunc.getValorCidade().getText());
-				end.setUf(detalheFunc.getValorUf().getSelectedItem().toString());
-				end.setNomeRua(detalheFunc.getValorRua().getText());
-				end.setNumero(Integer.parseInt(detalheFunc.getValorNum().getText()));
-				end.setQuadra(Integer.parseInt(detalheFunc.getValorQd().getText()));
-				end.setBairro(detalheFunc.getValorBairro().getText());
-				end.setNumApart(Integer.parseInt(detalheFunc.getValorApart().getText()));
-				end.setComplemento(detalheFunc.getValorComp().getText());
+				// Validando dados editados pelo usuário (Endereço e dados do funcionário)
+				boolean yesNoEnd = control.validaEndereco(Integer.parseInt(detalheFunc.getValorCep().getText()),
+						detalheFunc.getValorCidade().getText(), detalheFunc.getValorRua().getText(),
+						Integer.parseInt(detalheFunc.getValorNum().getText()),
+						Integer.parseInt(detalheFunc.getValorQd().getText()), detalheFunc.getValorBairro().getText(),
+						Integer.parseInt(detalheFunc.getValorApart().getText()), detalheFunc.getValorComp().getText());
+				boolean yesNoFunc = control.validaFuncionario(detalheFunc.getValorNome().getText(),
+						detalheFunc.getValorCpf().getText(), detalheFunc.getValorFone().getText());
 
-				// Formatando a data inserida
-				data = formato.parse(detalheFunc.getValorData().getText());
-				dataContrat = formato.parse(detalheFunc.getValorDataCon().getText());
+				if (yesNoEnd && yesNoFunc) {
+					// Recebendo os valores do endereço
+					Endereco end = new Endereco();
+					end.setCep(Integer.parseInt(detalheFunc.getValorCep().getText()));
+					end.setCidade(detalheFunc.getValorCidade().getText());
+					end.setUf(detalheFunc.getValorUf().getSelectedItem().toString());
+					end.setNomeRua(detalheFunc.getValorRua().getText());
+					end.setNumero(Integer.parseInt(detalheFunc.getValorNum().getText()));
+					end.setQuadra(Integer.parseInt(detalheFunc.getValorQd().getText()));
+					end.setBairro(detalheFunc.getValorBairro().getText());
+					end.setNumApart(Integer.parseInt(detalheFunc.getValorApart().getText()));
+					end.setComplemento(detalheFunc.getValorComp().getText());
 
-				// Cadastrando o Funcionario
-				funCtrl.editarFuncionario(indexFunc, end, detalheFunc.getValorNome().getText(), data,
-						detalheFunc.getValorCpf().getText(), detalheFunc.getValorFone().getText(), dataContrat,
-						detalheFunc.getValorTurno().getSelectedItem().toString(),
-						Integer.parseInt(detalheFunc.getValorEntrada().getSelectedItem().toString()),
-						Integer.parseInt(detalheFunc.getValorSaida().getSelectedItem().toString()));
+					// Formatando a data inserida
+					data = formato.parse(detalheFunc.getValorData().getText());
+					dataContrat = formato.parse(detalheFunc.getValorDataCon().getText());
 
-				JOptionPane.showMessageDialog(null, "Funcionário editado com sucesso!", null,
-						JOptionPane.INFORMATION_MESSAGE);
+					// Cadastrando o Funcionario
+					funCtrl.editarFuncionario(indexFunc, end, detalheFunc.getValorNome().getText(), data,
+							detalheFunc.getValorCpf().getText(), detalheFunc.getValorFone().getText(), dataContrat,
+							detalheFunc.getValorTurno().getSelectedItem().toString(),
+							Integer.parseInt(detalheFunc.getValorEntrada().getSelectedItem().toString()),
+							Integer.parseInt(detalheFunc.getValorSaida().getSelectedItem().toString()));
 
-				detalheFunc.dispose();
+					JOptionPane.showMessageDialog(null, "Funcionário editado com sucesso!", null,
+							JOptionPane.INFORMATION_MESSAGE);
+
+					detalheFunc.dispose();
+				}
 
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
@@ -106,7 +131,8 @@ public class ControleTelaDetalheFuncionario {
 				mensagemErroCadastro();
 			} catch (ParseException excData) {
 				excData.printStackTrace();
-				mensagemErroCadastro();
+				JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
+						JOptionPane.ERROR_MESSAGE);
 			}
 
 		} else if (clicado == detalheFunc.getBtnDeletar()) { // DELETAR FUNCIONÁRIO

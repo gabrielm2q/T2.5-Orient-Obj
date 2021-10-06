@@ -129,6 +129,7 @@ public class ControleTelaDetalheCliente {
 			} catch (NumberFormatException exc2) {
 				mensagemErroCadastro();
 			} catch (ParseException excData) {
+				excData.printStackTrace();
 				JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
 						JOptionPane.ERROR_MESSAGE);
 			}
