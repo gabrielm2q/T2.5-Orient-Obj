@@ -27,56 +27,62 @@ public class ControleTelaDetalheVenda {
 	}
 
 	public void clicaBtn(ActionEvent e) {
-		if (Integer.parseInt(detalheVenda.getValorQuantidade().getText()) <= 0
-				|| Integer.parseInt(detalheVenda.getValorQuantidade().getText()) > Integer
-						.parseInt(detalheVenda.getValorQtdEstoque().getText())) {
-			/*
-			 * Se a quantidade vendida for igual a/menor que 0 ou maior que a quantidade em
-			 * estoque, é exibida mensagem de erro!
-			 */
-			JOptionPane.showMessageDialog(null,
-					"Erro!\nA quantidade vendida não pode ser nula\nou maior que a quantidade em estoque!", null,
-					JOptionPane.ERROR_MESSAGE);
-		} else if (((Double.parseDouble(detalheVenda.getValorPrecoUnit().getText())
-				* Integer.parseInt(detalheVenda.getValorQuantidade().getText()))
-				- Double.parseDouble(detalheVenda.getValorDesconto().getText())) <= 0) {
-			/*
-			 * Aqui estamos verificando se o valor do desconto não é maior que o valor total
-			 * dos produtos vendidos
-			 */
-			JOptionPane.showMessageDialog(null,
-					"Erro!\nO valor do descontom não pode ser maior que o preço total da venda!", null,
-					JOptionPane.ERROR_MESSAGE);
-
-		} else { // Salvando os dados ja cadastrados e passando-os para a tela de pagamento
-
-			/*
-			 * Calculando o valor total da venda: [(preco unitario x quantidade vendida) -
-			 * desconto]
-			 */
-			Double precoTotal = (Double.parseDouble(detalheVenda.getValorPrecoUnit().getText())
+		try {
+			if (Integer.parseInt(detalheVenda.getValorQuantidade().getText()) <= 0
+					|| Integer.parseInt(detalheVenda.getValorQuantidade().getText()) > Integer
+							.parseInt(detalheVenda.getValorQtdEstoque().getText())) {
+				/*
+				 * Se a quantidade vendida for igual a/menor que 0 ou maior que a quantidade em
+				 * estoque, é exibida mensagem de erro!
+				 */
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nA quantidade vendida não pode ser nula\nou maior que a quantidade em estoque!", null,
+						JOptionPane.ERROR_MESSAGE);
+			} else if (((Double.parseDouble(detalheVenda.getValorPrecoUnit().getText())
 					* Integer.parseInt(detalheVenda.getValorQuantidade().getText()))
-					- Double.parseDouble(detalheVenda.getValorDesconto().getText());
+					- Double.parseDouble(detalheVenda.getValorDesconto().getText())) <= 0) {
+				/*
+				 * Aqui estamos verificando se o valor do desconto não é maior que o valor total
+				 * dos produtos vendidos
+				 */
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO valor do descontom não pode ser maior que o preço total da venda!", null,
+						JOptionPane.ERROR_MESSAGE);
 
-			// formatando data
-			try {
-				data = formato.parse(detalheVenda.getValorDataVenda().getText());
-			} catch (ParseException excData) {
-				excData.printStackTrace();
+			} else { // Salvando os dados ja cadastrados e passando-os para a tela de pagamento
+
+				/*
+				 * Calculando o valor total da venda: [(preco unitario x quantidade vendida) -
+				 * desconto]
+				 */
+				Double precoTotal = (Double.parseDouble(detalheVenda.getValorPrecoUnit().getText())
+						* Integer.parseInt(detalheVenda.getValorQuantidade().getText()))
+						- Double.parseDouble(detalheVenda.getValorDesconto().getText());
+
+				// formatando data
+				try {
+					data = formato.parse(detalheVenda.getValorDataVenda().getText());
+				} catch (ParseException excData) {
+					excData.printStackTrace();
+				}
+
+				Venda ven = new Venda();
+				ven.setIdVenda(Integer.parseInt(detalheVenda.getValorIdVenda().getText()));
+				ven.setValorVenda(precoTotal);
+				ven.setValorDesconto(Double.parseDouble(detalheVenda.getValorDesconto().getText()));
+				ven.setDataPedido(data);
+				ven.setProduto(Dados.getEstoque().getProduto().get(indexVenda));
+				ven.setQtdVendida(Integer.parseInt(detalheVenda.getValorQuantidade().getText()));
+				ven.setCliente(Dados.getCliente().get(detalheVenda.getValorCliente().getSelectedIndex()));
+				ven.setFuncionario(Dados.getFuncionario().get(detalheVenda.getValorFuncionario().getSelectedIndex()));
+
+				new TelaPagamento(ven, detalheVenda);
+				detalheVenda.setVisible(false);
 			}
-
-			Venda ven = new Venda();
-			ven.setIdVenda(Integer.parseInt(detalheVenda.getValorIdVenda().getText()));
-			ven.setValorVenda(precoTotal);
-			ven.setValorDesconto(Double.parseDouble(detalheVenda.getValorDesconto().getText()));
-			ven.setDataPedido(data);
-			ven.setProduto(Dados.getEstoque().getProduto().get(indexVenda));
-			ven.setQtdVendida(Integer.parseInt(detalheVenda.getValorQuantidade().getText()));
-			ven.setCliente(Dados.getCliente().get(detalheVenda.getValorCliente().getSelectedIndex()));
-			ven.setFuncionario(Dados.getFuncionario().get(detalheVenda.getValorFuncionario().getSelectedIndex()));
-
-			new TelaPagamento(ven, detalheVenda);
-			detalheVenda.setVisible(false);
+		} catch (NullPointerException exc1) {
+			mensagemErro();
+		} catch (NumberFormatException exc2) {
+			mensagemErro();
 		}
 	}
 
