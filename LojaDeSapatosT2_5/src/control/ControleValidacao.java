@@ -29,7 +29,7 @@ public class ControleValidacao {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome da cidade não está vazio!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-			} else if (cidade.length() <= 1) {
+			} else if (cidade.trim().length() <= 1) {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome da cidade foi preenchido corretamente!",
 						null, JOptionPane.ERROR_MESSAGE);
 				return false;
@@ -48,7 +48,7 @@ public class ControleValidacao {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome da rua não está vazio!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-			} else if (rua.length() <= 1) {
+			} else if (rua.trim().length() <= 1) {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome da rua foi preenchido corretamente!",
 						null, JOptionPane.ERROR_MESSAGE);
 				return false;
@@ -65,7 +65,7 @@ public class ControleValidacao {
 		try { // Validando o número
 			if (num <= 0 || num >= 999999) {
 				JOptionPane.showMessageDialog(null,
-						"Erro!\nVerifique se o número é maior que zero\ne menor que 999999!", null,
+						"Erro!\nVerifique se o número é maior que zero\ne menor que 999.999!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
 			}
@@ -80,7 +80,7 @@ public class ControleValidacao {
 		try { // Validando o número da quadra
 			if (quadra <= 0 || quadra >= 999999) {
 				JOptionPane.showMessageDialog(null,
-						"Erro!\nVerifique se o número da quadra é maior que zero\ne menor que 999999!", null,
+						"Erro!\nVerifique se o número da quadra é maior que zero\ne menor que 999.999!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
 			}
@@ -98,7 +98,7 @@ public class ControleValidacao {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do bairro não está vazio!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-			} else if (bairro.length() <= 1) {
+			} else if (bairro.trim().length() <= 1) {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do bairro foi preenchido corretamente!",
 						null, JOptionPane.ERROR_MESSAGE);
 				return false;
@@ -133,7 +133,7 @@ public class ControleValidacao {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o complemento não está vazio!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-			} else if (comp.length() <= 1) {
+			} else if (comp.trim().length() <= 1) {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o complemento foi preenchido corretamente!",
 						null, JOptionPane.ERROR_MESSAGE);
 				return false;
@@ -157,7 +157,7 @@ public class ControleValidacao {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome da loja não está vazio!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-			} else if (nome.length() <= 1) {
+			} else if (nome.trim().length() <= 1) {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome da loja foi preenchido corretamente!",
 						null, JOptionPane.ERROR_MESSAGE);
 				return false;
@@ -223,7 +223,7 @@ public class ControleValidacao {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o site da loja não está vazio!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-			} else if (site.length() <= 1) {
+			} else if (site.trim().length() <= 1) {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o site da loja foi preenchido corretamente!",
 						null, JOptionPane.ERROR_MESSAGE);
 				return false;
@@ -261,7 +261,7 @@ public class ControleValidacao {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do cliente não está vazio!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-			} else if (nome.length() <= 1) {
+			} else if (nome.trim().length() <= 1) {
 				JOptionPane.showMessageDialog(null,
 						"Erro!\nVerifique se o nome do cliente foi preenchido corretamente!", null,
 						JOptionPane.ERROR_MESSAGE);
@@ -368,7 +368,7 @@ public class ControleValidacao {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o email não está vazio!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-			} else if (email.length() < 7) {
+			} else if (email.trim().length() < 7) {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o email foi preenchido corretamente!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
@@ -411,7 +411,7 @@ public class ControleValidacao {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do funcionário não está vazio!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-			} else if (nome.length() <= 1) {
+			} else if (nome.trim().length() <= 1) {
 				JOptionPane.showMessageDialog(null,
 						"Erro!\nVerifique se o nome do funcionário foi preenchido corretamente!", null,
 						JOptionPane.ERROR_MESSAGE);
@@ -486,7 +486,7 @@ public class ControleValidacao {
 				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o telefone não está vazio!", null,
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-			} else if (fone.trim().length() != 11) {
+			} else if (fone.trim().trim().length() != 11) {
 				JOptionPane.showMessageDialog(null,
 						"Erro!\nVerifique se o telefone foi preenchido corretamente!\nO formato é: DDD + 9 + XXXX + XXXX\nUse apenas números! Sem espaços!",
 						null, JOptionPane.ERROR_MESSAGE);
@@ -513,6 +513,278 @@ public class ControleValidacao {
 					JOptionPane.ERROR_MESSAGE);
 		}
 
+		return true;
+	}
+
+	public boolean validaSalto(String nome, int quantidade, Double preco, String marca, String paisOrigem,
+			String garantia, String cor, String codBarras, String material, String tipoSalto, String corExterna,
+			String corSolado, String alturaSalto) {
+
+		// Validando o nome do salto
+		try {
+			if (nome.isBlank() || nome.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do salto não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (nome.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do salto foi preenchido corretamente!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (nome.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO nome do salto não pode ser composto apenas por números!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o nome do salto foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando a quantidade de saltos
+		try {
+			if (quantidade <= 0 || quantidade >= 100000) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se a quantidade do produto é maior que 0\ne menor que 100,000!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a quantidade do produto foi preenchida!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o preço dos saltos
+		try {
+			if (preco <= 0 || preco >= 1000000) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o preço do produto é maior que 0\ne menor que 1,000,000.00!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o preço do produto foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando a marca do salto
+		try {
+			if (marca.isBlank() || marca.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a marca do salto não está vazia!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (marca.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a marca do salto foi preenchida corretamente!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a marca do salto foi preenchida!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o pais de origem
+		try {
+			if (paisOrigem.isBlank() || paisOrigem.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o país de origem do salto não está vazio!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (paisOrigem.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o país de origem do salto foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (paisOrigem.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO país de origem do salto não pode ser composto apenas por números!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o país de origem do salto foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o tempo de garantia do salto
+		try {
+			if (garantia.isBlank() || garantia.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tempo de garantia do salto não está vazio!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (garantia.trim().length() < 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o tempo de garantia foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (garantia.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nO tempo de garantia do salto não pode ser composto apenas por números!\nDeve conter a medida de tempo (anos/meses...)!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (garantia.trim().matches("[a-z]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO tempo de garantia deve conter o tempo!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tempo de garantia do salto foi preenchido!",
+					null, JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando a cor do produto
+		try {
+			if (cor.isBlank() || cor.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor do salto não está vazia!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (cor.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor do salto foi preenchida corretamente!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (cor.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nA cor do salto não pode ser composta apenas por números!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor do salto foi preenchida!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o código de barras
+		try {
+			if (codBarras.isBlank() || codBarras.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o código de barras não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (codBarras.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se o código de barras foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (!codBarras.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO código de barras não pode ser composto por letras!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o código de barras foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o material do produto
+		try {
+			if (material.isBlank() || material.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o material não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (material.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o material foi preenchido corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (material.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO material não pode ser composto apenas por números!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o material foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando o tipo de salto
+		try {
+			if (tipoSalto.isBlank() || tipoSalto.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tipo de salto não está vazio!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (tipoSalto.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tipo de salto foi preenchido corretamente!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (tipoSalto.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nO tipo de salto não pode ser composto apenas por números!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se o tipo de salto foi preenchido!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando a cor externa
+		try {
+			if (corExterna.isBlank() || corExterna.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor externa não está vazia!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (corExterna.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor externa foi preenchida corretamente!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (corExterna.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nA cor externa não pode ser composta apenas por números!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor externa foi preenchida!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando a cor do solado
+		try {
+			if (corSolado.isBlank() || corSolado.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor do solado não está vazia!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (corSolado.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor do solado foi preenchida corretamente!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (corSolado.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null, "Erro!\nA cor do solado não pode ser composta apenas por números!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a cor do solado foi preenchida!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		// Validando a altura do salto
+		try {
+			if (alturaSalto.isBlank() || alturaSalto.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a altura do salto não está vazia!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (alturaSalto.trim().length() <= 1) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nVerifique se a altura do salto foi preenchida corretamente!", null,
+						JOptionPane.ERROR_MESSAGE);
+				return false;
+			} else if (alturaSalto.trim().matches("[a-z]+") || alturaSalto.trim().matches("[0-9]+")) {
+				JOptionPane.showMessageDialog(null,
+						"Erro!\nA altura do salto não pode ser composta apenas por letras!\n Detalhe a altura e a unidade de medida!",
+						null, JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		} catch (NullPointerException exc1) {
+			JOptionPane.showMessageDialog(null, "Erro!\nVerifique se a altura do salto foi preenchida!", null,
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+		return true;
+	}
+
+	public boolean validaTenis() {
+		return true;
+	}
+
+	public boolean validaBota() {
+		return true;
+	}
+
+	public boolean validaSapato() {
 		return true;
 	}
 

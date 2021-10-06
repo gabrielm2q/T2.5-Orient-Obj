@@ -93,7 +93,7 @@ public abstract class Dados {
 			salto.setMaterial("Material " + aleatorio.nextInt(9) + i);
 			salto.setTipoSalto("Scarpin");
 			salto.setCorExterna("Cor " + aleatorio.nextInt(5) + i);
-			salto.setCorSolado("Cor " + aleatorio.nextInt() + i);
+			salto.setCorSolado("Cor " + i);
 			salto.setAlturaSalto(aleatorio.nextInt(10) + i + " cm");
 			estCtrl.cadastrarProduto(aleatorio.nextInt(999), "Salto", d, salto);
 			Dados.incrementarIdProd();
@@ -132,7 +132,7 @@ public abstract class Dados {
 			tenis.setTecnoSolado("Tech0" + aleatorio.nextInt(9) + i);
 			tenis.setTipoPisada("Supinada");
 			tenis.setTipoPalmilha("Gel0" + aleatorio.nextInt(5) + i);
-			tenis.setPeso(aleatorio.nextDouble() * 100);
+			tenis.setPeso((aleatorio.nextInt(500) + 1.2));
 			tenis.setTipoAmarracao("Cadarco");
 			tenis.setCorCadarco("Azul0" + aleatorio.nextInt(8) + i);
 			estCtrl.cadastrarProduto(aleatorio.nextInt(999), "Tênis", d, tenis);

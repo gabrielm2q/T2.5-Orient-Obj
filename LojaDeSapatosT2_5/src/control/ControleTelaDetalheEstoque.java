@@ -34,6 +34,7 @@ public class ControleTelaDetalheEstoque {
 
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
+		ControleValidacao control = new ControleValidacao();
 
 		if (clicado == detalheEstoque.getBtnSalvar() && opcEditarSalvar == 0) { // SALVAR PRODUTOS
 			try {
@@ -41,36 +42,53 @@ public class ControleTelaDetalheEstoque {
 				if (tipoProd.equals("Salto")) { // Salvando os dados do Salto
 					Salto salto = new Salto();
 
-					salto.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
-					salto.setNome(detalheEstoque.getValorNome().getText());
-					salto.setTamanho(Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
-					salto.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
-					salto.setMarca(detalheEstoque.getValorMarca().getText());
-					salto.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
-					salto.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
-					salto.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
-					salto.setCodBarras(detalheEstoque.getValorBarras().getText());
-					salto.setCor(detalheEstoque.getValorCor().getText());
-					salto.setMaterial(detalheEstoque.getValorMaterial().getText());
-					salto.setTipoSalto(detalheEstoque.getValorSalto().getText());
-					salto.setCorExterna(detalheEstoque.getValorCorExt().getText());
-					salto.setCorSolado(detalheEstoque.getValorCorSol().getText());
-					salto.setAlturaSalto(detalheEstoque.getValorAltSalto().getText());
+					// Validando dados inseridos pelo usuário (dados do salto)
+					boolean yesNoProd = control.validaSalto(detalheEstoque.getValorNome().getText(),
+							Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
+							Double.parseDouble(detalheEstoque.getValorPreco().getText()),
+							detalheEstoque.getValorMarca().getText(), detalheEstoque.getValorOrigem().getText(),
+							detalheEstoque.getValorGarantia().getText(), detalheEstoque.getValorCor().getText(),
+							detalheEstoque.getValorBarras().getText(), detalheEstoque.getValorMaterial().getText(),
+							detalheEstoque.getValorSalto().getText(), detalheEstoque.getValorCorExt().getText(),
+							detalheEstoque.getValorCorSol().getText(), detalheEstoque.getValorAltSalto().getText());
 
-					// formatando data
-					try {
-						data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
-					} catch (ParseException excData) {
-						excData.printStackTrace();
-						JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
-								JOptionPane.ERROR_MESSAGE);
+					if (yesNoProd) {
+
+						salto.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
+						salto.setNome(detalheEstoque.getValorNome().getText());
+						salto.setTamanho(
+								Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
+						salto.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
+						salto.setMarca(detalheEstoque.getValorMarca().getText());
+						salto.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
+						salto.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
+						salto.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
+						salto.setCodBarras(detalheEstoque.getValorBarras().getText());
+						salto.setCor(detalheEstoque.getValorCor().getText());
+						salto.setMaterial(detalheEstoque.getValorMaterial().getText());
+						salto.setTipoSalto(detalheEstoque.getValorSalto().getText());
+						salto.setCorExterna(detalheEstoque.getValorCorExt().getText());
+						salto.setCorSolado(detalheEstoque.getValorCorSol().getText());
+						salto.setAlturaSalto(detalheEstoque.getValorAltSalto().getText());
+
+						// formatando data
+						try {
+							data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
+						} catch (ParseException excData) {
+							excData.printStackTrace();
+							JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
+									JOptionPane.ERROR_MESSAGE);
+						}
+
+						estCtrl.cadastrarProduto(Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
+								tipoProd, data, salto);
+
+						JOptionPane.showMessageDialog(null, tipoProd + " cadastrado com sucesso!", null,
+								JOptionPane.INFORMATION_MESSAGE);
+
+						Dados.incrementarIdProd();
+						detalheEstoque.dispose(); // Fechando tela assim que o cadastro for realizado com sucesso!
 					}
-
-					estCtrl.cadastrarProduto(Integer.parseInt(detalheEstoque.getValorQuantidade().getText()), tipoProd,
-							data, salto);
-
-					JOptionPane.showMessageDialog(null, tipoProd + " cadastrado com sucesso!", null,
-							JOptionPane.INFORMATION_MESSAGE);
 
 				} else if (tipoProd.equals("Tênis")) { // Salvando os dados do Tenis
 					Tenis tenis = new Tenis();
@@ -180,8 +198,9 @@ public class ControleTelaDetalheEstoque {
 							JOptionPane.INFORMATION_MESSAGE);
 				}
 
-				Dados.incrementarIdProd();
-				detalheEstoque.dispose(); // Fechando tela assim que o cadastro for realizado com sucesso!
+				// Dados.incrementarIdProd();
+				// detalheEstoque.dispose(); // Fechando tela assim que o cadastro for realizado
+				// com sucesso!
 
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
@@ -194,36 +213,52 @@ public class ControleTelaDetalheEstoque {
 				if (tipoProd.equals("Salto")) { // Editando o Salto
 					Salto salto = new Salto();
 
-					salto.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
-					salto.setNome(detalheEstoque.getValorNome().getText());
-					salto.setTamanho(Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
-					salto.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
-					salto.setMarca(detalheEstoque.getValorMarca().getText());
-					salto.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
-					salto.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
-					salto.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
-					salto.setCodBarras(detalheEstoque.getValorBarras().getText());
-					salto.setCor(detalheEstoque.getValorCor().getText());
-					salto.setMaterial(detalheEstoque.getValorMaterial().getText());
-					salto.setTipoSalto(detalheEstoque.getValorSalto().getText());
-					salto.setCorExterna(detalheEstoque.getValorCorExt().getText());
-					salto.setCorSolado(detalheEstoque.getValorCorSol().getText());
-					salto.setAlturaSalto(detalheEstoque.getValorAltSalto().getText());
+					// Validando dados inseridos pelo usuário (dados do salto)
+					boolean yesNoProd = control.validaSalto(detalheEstoque.getValorNome().getText(),
+							Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
+							Double.parseDouble(detalheEstoque.getValorPreco().getText()),
+							detalheEstoque.getValorMarca().getText(), detalheEstoque.getValorOrigem().getText(),
+							detalheEstoque.getValorGarantia().getText(), detalheEstoque.getValorCor().getText(),
+							detalheEstoque.getValorBarras().getText(), detalheEstoque.getValorMaterial().getText(),
+							detalheEstoque.getValorSalto().getText(), detalheEstoque.getValorCorExt().getText(),
+							detalheEstoque.getValorCorSol().getText(), detalheEstoque.getValorAltSalto().getText());
 
-					// formatando data
-					try {
-						data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
-					} catch (ParseException excData) {
-						excData.printStackTrace();
-						JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
-								JOptionPane.ERROR_MESSAGE);
+					if (yesNoProd) {
+
+						salto.setIdProd(Integer.parseInt(detalheEstoque.getValorIdProd().getText()));
+						salto.setNome(detalheEstoque.getValorNome().getText());
+						salto.setTamanho(
+								Integer.parseInt(detalheEstoque.getValorTamanho().getSelectedItem().toString()));
+						salto.setPreco(Double.parseDouble(detalheEstoque.getValorPreco().getText()));
+						salto.setMarca(detalheEstoque.getValorMarca().getText());
+						salto.setPaisOrigem(detalheEstoque.getValorOrigem().getText());
+						salto.setTempoGarantia(detalheEstoque.getValorGarantia().getText());
+						salto.setGenero(detalheEstoque.getValorGenero().getSelectedItem().toString().charAt(0));
+						salto.setCodBarras(detalheEstoque.getValorBarras().getText());
+						salto.setCor(detalheEstoque.getValorCor().getText());
+						salto.setMaterial(detalheEstoque.getValorMaterial().getText());
+						salto.setTipoSalto(detalheEstoque.getValorSalto().getText());
+						salto.setCorExterna(detalheEstoque.getValorCorExt().getText());
+						salto.setCorSolado(detalheEstoque.getValorCorSol().getText());
+						salto.setAlturaSalto(detalheEstoque.getValorAltSalto().getText());
+
+						// formatando data
+						try {
+							data = formato.parse(detalheEstoque.getValorDataCadastro().getText());
+						} catch (ParseException excData) {
+							excData.printStackTrace();
+							JOptionPane.showMessageDialog(null, "Verifique se a data está no padrão correto!", null,
+									JOptionPane.ERROR_MESSAGE);
+						}
+
+						estCtrl.editarProduto(indexProduto,
+								Integer.parseInt(detalheEstoque.getValorQuantidade().getText()), tipoProd, data, salto);
+
+						JOptionPane.showMessageDialog(null, tipoProd + " editado com sucesso!", null,
+								JOptionPane.INFORMATION_MESSAGE);
+
+						detalheEstoque.dispose();
 					}
-
-					estCtrl.editarProduto(indexProduto, Integer.parseInt(detalheEstoque.getValorQuantidade().getText()),
-							tipoProd, data, salto);
-
-					JOptionPane.showMessageDialog(null, tipoProd + " editado com sucesso!", null,
-							JOptionPane.INFORMATION_MESSAGE);
 
 				} else if (tipoProd.equals("Tênis")) { // Editando o Tenis
 
@@ -337,8 +372,6 @@ public class ControleTelaDetalheEstoque {
 
 				}
 
-				detalheEstoque.dispose();
-
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
 			} catch (NumberFormatException exc2) {
@@ -416,11 +449,10 @@ public class ControleTelaDetalheEstoque {
 	}
 
 	public void mensagemErroCadastro() {
-		JOptionPane.showMessageDialog(null,
-				"Erro!\nVerifique se todos os campos estão preenchidos."
-						+ "\nVerifique se os dados em formato numérico são números."
-						+ "\nVerifique se as datas foram inseridas corretamente.",
-				null, JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Erro!\nVerifique se todos os campos estão preenchidos."
+				+ "\nVerifique se os dados em formato numérico são números."
+				+ "\nVerifique se as datas foram inseridas corretamente." + "\nNão use vírgulas ','. Use pontos!", null,
+				JOptionPane.ERROR_MESSAGE);
 	}
 
 	public TelaDetalheEstoque getDetalheEstoque() {
