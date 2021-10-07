@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * Subclasse Tenis. Extende a classe Produto. Pode criar um Tênis com todos os
+ * atributos e métodos necessários para detalhar este.
+ * 
+ * @see Produto
+ * @author Gabriel Mariano
+ */
 public class Tenis extends Produto {
 	private String atvdIndicada;
 	private String tecnoSolado;
@@ -9,6 +16,9 @@ public class Tenis extends Produto {
 	private String tipoAmarracao;
 	private String corCadarco;
 
+	/**
+	 * Construtor.
+	 */
 	public Tenis(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem,
 			String tempoGarantia, char genero, String codBarras, String cor, String material, String atvdIndicada,
 			String tecnoSolado, String tipoPisada, String tipoPalmilha, Double peso, String tipoAmarracao,
@@ -23,6 +33,9 @@ public class Tenis extends Produto {
 		setCorCadarco(corCadarco);
 	}
 
+	/**
+	 * Construtor vazio.
+	 */
 	public Tenis() {
 		super();
 		setAtvdIndicada("");
@@ -34,6 +47,9 @@ public class Tenis extends Produto {
 		setCorCadarco("");
 	}
 
+	/**
+	 * Método toString retorna o nome do tênis.
+	 */
 	@Override
 	public String toString() {
 		return this.getNome();

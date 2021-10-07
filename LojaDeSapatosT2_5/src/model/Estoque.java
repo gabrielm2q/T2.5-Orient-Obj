@@ -4,6 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Estoque. Pode criar um Estoque com todos os atributos e métodos necessários
+ * para detalhar este. Note que podem ser salvos produtos de todos os tipos
+ * (Salto, Tênis, Bota, Sapato).
+ * 
+ * @see Produto
+ * @see Salto
+ * @see Tenis
+ * @see Bota
+ * @see Sapato
+ * @author Gabriel Mariano
+ */
 public class Estoque {
 
 	private ArrayList<Integer> quantidade;
@@ -11,6 +23,9 @@ public class Estoque {
 	private ArrayList<Date> dataCadastro;
 	private final List<Produto> produto;
 
+	/**
+	 * Construtor. Inicializa as ArrayLists/Lists
+	 */
 	public Estoque() {
 		this.quantidade = new ArrayList<>();
 		this.categoria = new ArrayList<>();
@@ -18,6 +33,10 @@ public class Estoque {
 		this.produto = new ArrayList<>();
 	}
 
+	/**
+	 * Método toString(), retorna atributos relevantes do produto armazenado no
+	 * estoque.
+	 */
 	@Override
 	public String toString() {
 		return "Estoque [quantidade=" + quantidade + ", categoria=" + categoria + ", dataCadastro=" + dataCadastro

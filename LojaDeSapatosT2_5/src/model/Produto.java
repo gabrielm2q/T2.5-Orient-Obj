@@ -1,5 +1,14 @@
 package model;
 
+/**
+ * Superclasse Produto. Possui atributos comuns a todos os tipos de produto.
+ * 
+ * @see Bota
+ * @see Salto
+ * @see Sapato
+ * @see Tenis
+ * @author Gabriel Mariano
+ */
 public abstract class Produto {
 	private int idProd;
 	private String nome;
@@ -13,6 +22,9 @@ public abstract class Produto {
 	private String cor;
 	private String material;
 
+	/**
+	 * Construtor.
+	 */
 	protected Produto(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem,
 			String tempoGarantia, char genero, String codBarras, String cor, String material) {
 		setIdProd(idProd);

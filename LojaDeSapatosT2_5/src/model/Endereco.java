@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Endereço. Pode criar um Endereço com todos os atributos e métodos necessários
+ * para detalhar este.
+ * 
+ * @author Gabriel Mariano
+ */
 public class Endereco {
 	private int cep;
 	private String cidade;
@@ -11,6 +17,9 @@ public class Endereco {
 	private int numApart;
 	private String complemento;
 
+	/**
+	 * Construtor.
+	 */
 	public Endereco(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
 			int numApart, String complemento) {
 		setCep(cep);
@@ -24,7 +33,9 @@ public class Endereco {
 		setComplemento(complemento);
 	}
 
-	// Sobrecarga
+	/**
+	 * Sobrecarga do Construtor.
+	 */
 	public Endereco(int cep, String cidade, String uf, String nomeRua, int numero, int quadra, String bairro,
 			String complemento) {
 		setCep(cep);
@@ -37,6 +48,9 @@ public class Endereco {
 		setComplemento(complemento);
 	}
 
+	/**
+	 * Construtor vazio.
+	 */
 	public Endereco() {
 		setCep(0);
 		setCidade("");
@@ -49,6 +63,9 @@ public class Endereco {
 		setComplemento("");
 	}
 
+	/**
+	 * Método toString(), retorna dados relevantes de endereço.
+	 */
 	@Override
 	public String toString() {
 		return "\n  Cidade: " + getCidade() + ".\n  CEP: " + getCep() + ".\n  UF: " + getUf() + "\n  Nome da Rua: "

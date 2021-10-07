@@ -12,6 +12,15 @@ import control.ControleFuncionario;
 import control.ControleLoja;
 import control.ControleVenda;
 
+/**
+ * Classe abstrata de dados. Pretende armazenar todos os dados necessários ao
+ * funcionamento do programa. É uma classe abstrata apenas para que não seja
+ * instanciada em qualquer outro lugar do programa. Seus atributos e métodos são
+ * estáticos para que possam ser acessados em quaisquer outras classes. Alguns
+ * atributos são "final" para que não sejam inicializados outra vez.
+ * 
+ * @author Gabriel Mariano
+ */
 public abstract class Dados {
 	private static final Loja loja = new Loja();
 	private static final List<Cliente> cliente = new ArrayList<>();
@@ -21,10 +30,20 @@ public abstract class Dados {
 	private static int contadorIdProd = 1;
 	private static int contadorIdVenda = 1;
 
+	/**
+	 * Construtor. Não tem o intuito de ser usado.
+	 */
 	private Dados() {
 
 	}
 
+	/**
+	 * Gera dados aleatórios e os armazena nessa classe em seus respectivos lugares.
+	 * Gera clientes, funcionários, produtos no estoque, vendas e os dados
+	 * aleatórios da loja. Usado na Main.
+	 * 
+	 * @see Main
+	 */
 	public static void fillWithSomeData() {
 		Random aleatorio = new Random();
 		Date d = Calendar.getInstance().getTime();
@@ -186,7 +205,7 @@ public abstract class Dados {
 			Dados.getEstoque().getQuantidade().set(i, qtdFinal);
 		}
 
-		// Inserindo dados aleatórios na loja
+		// Inserindo dados aleatórios na loja. IMPORTANTE!!!
 		ControleLoja ctrlLoja = new ControleLoja();
 		Endereco ender = new Endereco();
 
@@ -205,10 +224,18 @@ public abstract class Dados {
 
 	}
 
+	/**
+	 * Incrementa o contador de IDs dos produtos em uma unidade. Serve para
+	 * organizar os IDs dos produtos.
+	 */
 	public static void incrementarIdProd() {
 		contadorIdProd++;
 	}
 
+	/**
+	 * Incrementa o contador de IDs das vendas em uma unidade. Serve para organizar
+	 * os IDs das vendas.
+	 */
 	public static void incrementarIdVenda() {
 		contadorIdVenda++;
 	}

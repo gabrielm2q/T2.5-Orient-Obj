@@ -2,6 +2,13 @@ package model;
 
 import java.util.Date;
 
+/**
+ * Cliente. Permite criar um cliente com todos os atributos necessários para
+ * detalhar este.
+ * 
+ * @see Endereco
+ * @author Gabriel Mariano
+ */
 public class Cliente {
 	private Endereco endereco;
 	private String nome;
@@ -11,6 +18,9 @@ public class Cliente {
 	private String telefone;
 	private String email;
 
+	/**
+	 * Construtor.
+	 */
 	public Cliente(Endereco endereco, String nome, char genero, Date dataNasc, String cpf, String telefone,
 			String email) {
 		this.setEndereco(endereco);
@@ -22,6 +32,9 @@ public class Cliente {
 		this.setEmail(email);
 	}
 
+	/**
+	 * Construtor vazio.
+	 */
 	public Cliente() {
 		setEndereco(null);
 		setNome("");
@@ -32,8 +45,11 @@ public class Cliente {
 		setEmail("");
 	}
 
+	/**
+	 * Método toString para retornar apenas o nome do cliente
+	 */
 	@Override
-	public String toString() { // Colocando o toString para retornar apenas o nome dos clientes
+	public String toString() {
 		return this.getNome();
 	}
 

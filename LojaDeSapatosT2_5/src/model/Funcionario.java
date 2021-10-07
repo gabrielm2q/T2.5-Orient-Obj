@@ -2,6 +2,12 @@ package model;
 
 import java.util.Date;
 
+/**
+ * Funcionário. Pode criar um Funcionário com todos os atributos e métodos
+ * necessários para detalhar este.
+ * 
+ * @author Gabriel Mariano
+ */
 public class Funcionario {
 	private String nome;
 	private Date dataNasc;
@@ -13,6 +19,9 @@ public class Funcionario {
 	private int horaSaida;
 	private Endereco endereco;
 
+	/**
+	 * Construtor.
+	 */
 	public Funcionario(String nome, Date dataNasc, String cpf, String telefone, Date dataContratacao, String turno,
 			int horaEntrada, int horaSaida, Endereco endereco) {
 		this.setNome(nome);
@@ -26,6 +35,9 @@ public class Funcionario {
 		this.setEndereco(endereco);
 	}
 
+	/**
+	 * Construtor vazio.
+	 */
 	public Funcionario() {
 		setNome("");
 		setDataNasc(null);
@@ -38,8 +50,11 @@ public class Funcionario {
 		setEndereco(null);
 	}
 
+	/**
+	 * Método toString(), retorna apenas o nome do funcionário.
+	 */
 	@Override
-	public String toString() { // Colocando o toString para retornar apenas o nome dos funcionarios
+	public String toString() {
 		return this.getNome();
 	}
 

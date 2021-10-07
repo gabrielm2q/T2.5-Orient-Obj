@@ -3,6 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Loja. Pode criar uma Loja com todos os atributos e métodos necessários para
+ * detalhar esta. Pode armazenar mais de um funcionário.
+ * 
+ * @author Gabriel Mariano
+ */
 public class Loja {
 	private String nome;
 	private String cnpj;
@@ -13,6 +19,9 @@ public class Loja {
 	private Estoque estoque;
 	private List<Funcionario> funcionario;
 
+	/**
+	 * Construtor.
+	 */
 	public Loja(String nome, String cnpj, int horaAbertura, int horaFechamento, String site, Endereco endereco,
 			Estoque estoque, List<Funcionario> funcionario) {
 		setNome(nome);
@@ -25,6 +34,9 @@ public class Loja {
 		this.funcionario = new ArrayList<>();
 	}
 
+	/**
+	 * Construtor vazio.
+	 */
 	public Loja() {
 		setNome("");
 		setCnpj("");
@@ -36,6 +48,9 @@ public class Loja {
 		this.funcionario = new ArrayList<>();
 	}
 
+	/**
+	 * Método toString(), retorna dados relevantes da Loja.
+	 */
 	@Override
 	public String toString() {
 		return "Loja [nome=" + nome + ", cnpj=" + cnpj + ", horaAbertura=" + horaAbertura + ", horaFechamento="

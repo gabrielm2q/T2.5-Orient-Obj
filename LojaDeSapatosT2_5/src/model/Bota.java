@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * Subclasse Bota. Extende a classe Produto. Pode criar uma Bota com todos os
+ * atributos e métodos necessários para detalhar esta.
+ * 
+ * @see Produto
+ * @author Gabriel Mariano
+ */
 public class Bota extends Produto {
 	private String modelo;
 	private String alturaCano;
@@ -7,6 +14,9 @@ public class Bota extends Produto {
 	private String tipoPalmilha;
 	private String materialSolado;
 
+	/**
+	 * Construtor.
+	 */
 	public Bota(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem,
 			String tempoGarantia, char genero, String codBarras, String cor, String material, String modelo,
 			String alturaCano, String tipoSalto, String tipoPalmilha, String materialSolado) {
@@ -18,6 +28,9 @@ public class Bota extends Produto {
 		setMaterialSolado(materialSolado);
 	}
 
+	/**
+	 * Construtor vazio.
+	 */
 	public Bota() {
 		super();
 		setModelo("");
@@ -27,6 +40,9 @@ public class Bota extends Produto {
 		setMaterialSolado("");
 	}
 
+	/**
+	 * Método toString retorna o nome da bota.
+	 */
 	@Override
 	public String toString() {
 		return this.getNome();

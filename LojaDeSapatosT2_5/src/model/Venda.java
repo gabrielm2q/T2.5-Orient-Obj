@@ -2,6 +2,15 @@ package model;
 
 import java.util.Date;
 
+/**
+ * Venda. Pode criar uma Venda com todos os atributos e métodos necessários para
+ * detalhar este. Possui um pagamento! Armazena a venda de um produto por vez
+ * apenas.
+ * 
+ * @see Produto
+ * @see Pagamento
+ * @author Gabriel Mariano
+ */
 public class Venda {
 
 	private int idVenda;
@@ -14,6 +23,9 @@ public class Venda {
 	private Pagamento pagamento;
 	private int qtdVendida;
 
+	/**
+	 * Construtor.
+	 */
 	public Venda(int idVenda, Double valorVenda, Double valorDesconto, Date dataPedido, Funcionario funcionario,
 			Cliente cliente, Produto produto, Pagamento pagamento, int qtdVendida) {
 		this.setIdVenda(idVenda);
@@ -27,6 +39,9 @@ public class Venda {
 		this.setQtdVendida(qtdVendida);
 	}
 
+	/**
+	 * Construtor vazio.
+	 */
 	public Venda() {
 		setIdVenda(0);
 		setValorVenda(0.0);
@@ -39,6 +54,9 @@ public class Venda {
 		setQtdVendida(0);
 	}
 
+	/**
+	 * Método toString(), retorna atributos relevantes da venda.
+	 */
 	@Override
 	public String toString() {
 		return "Venda [idVenda=" + idVenda + ", valorVenda=" + valorVenda + ", valorDesconto=" + valorDesconto

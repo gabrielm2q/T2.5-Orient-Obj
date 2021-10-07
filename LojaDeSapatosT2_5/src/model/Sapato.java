@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * Subclasse Sapato. Extende a classe Produto. Pode criar um Sapato com todos os
+ * atributos e métodos necessários para detalhar este.
+ * 
+ * @see Produto
+ * @author Gabriel Mariano
+ */
 public class Sapato extends Produto {
 	private String materialSolado;
 	private String materialInterno;
@@ -7,6 +14,9 @@ public class Sapato extends Produto {
 	private String alturaSalto;
 	private String tipoPalmilha;
 
+	/**
+	 * Construtor.
+	 */
 	public Sapato(int idProd, String nome, int tamanho, Double preco, String marca, String paisOrigem,
 			String tempoGarantia, char genero, String codBarras, String cor, String material, String materialSolado,
 			String materialInterno, String tipoBico, String alturaSalto, String tipoPalmilha) {
@@ -18,6 +28,9 @@ public class Sapato extends Produto {
 		setTipoPalmilha(tipoPalmilha);
 	}
 
+	/**
+	 * Construtor vazio.
+	 */
 	public Sapato() {
 		super();
 		setMaterialSolado("");
@@ -27,6 +40,9 @@ public class Sapato extends Produto {
 		setTipoPalmilha("");
 	}
 
+	/**
+	 * Método toString retorna o nome do sapato.
+	 */
 	@Override
 	public String toString() {
 		return this.getNome();
