@@ -15,6 +15,13 @@ import model.Sapato;
 import model.Tenis;
 import view.TelaDetalheEstoque;
 
+/**
+ * Controle das Ações da Tela de Detalhe de Estoque. Controla os cliques dos
+ * botões e imprime os dados do estoque na tela.
+ * 
+ * @see TelaDetalheEstoque
+ * @author Gabriel Mariano
+ */
 public class ControleTelaDetalheEstoque {
 	private TelaDetalheEstoque detalheEstoque;
 	private ControleEstoque estCtrl = new ControleEstoque();
@@ -24,6 +31,17 @@ public class ControleTelaDetalheEstoque {
 	private Date data = new Date();
 	private SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
+	/**
+	 * Construtor. Recebe a Tela de Detalhe de Estoque, "seta" a opção escolhida
+	 * (editar ou salvar), recebe o index do produto caso a opção editar seja
+	 * escolhida.
+	 * 
+	 * @see TelaDetalheEstoque
+	 * @param TelaDetalheEstoque Recebe a Tela de Detalhe de Estoque
+	 * @param editarSalvar       Recebe a opção que será realizada (0: salvar; 1:
+	 *                           editar)
+	 * @param indexProduto       Index do produto a ser editado
+	 */
 	public ControleTelaDetalheEstoque(TelaDetalheEstoque detalheEstoque, int editarSalvar, String tipoProd,
 			int indexProduto) {
 		this.detalheEstoque = detalheEstoque;
@@ -32,6 +50,15 @@ public class ControleTelaDetalheEstoque {
 		this.indexProduto = indexProduto;
 	}
 
+	/**
+	 * Clique do Botão. Controla as ações dos botões da tela de detalhe de estoque.
+	 * Realiza a opção escolhida. Note que o cadastro é realizado de acordo com o
+	 * tipo de produto a ser cadastrado.
+	 * 
+	 * @see TelaDetalheEstoque
+	 * @param ActionEvent
+	 * @return void
+	 */
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 		ControleValidacao control = new ControleValidacao();
@@ -497,6 +524,15 @@ public class ControleTelaDetalheEstoque {
 		}
 	}
 
+	/**
+	 * Imprimir Detalhes. Imprime os detalhes do produto na tela de detalhe de
+	 * estoque.
+	 * 
+	 * @see TelaDetalheEstoque
+	 * @param TelaDetalheEstoque
+	 * @param Index              Index do produto cujos dados serão exibidos na tela
+	 * @return void
+	 */
 	public void imprimirDetalhes(TelaDetalheEstoque tela, int index) {
 
 		// Imprimindo atributos comuns a todos os tipos de produto
@@ -550,6 +586,11 @@ public class ControleTelaDetalheEstoque {
 		}
 	}
 
+	/**
+	 * Imprimir Mensagem de Erro.
+	 * 
+	 * @return void
+	 */
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null, "Erro!\nVerifique se todos os campos estão preenchidos."
 				+ "\nVerifique se os dados em formato numérico são números."

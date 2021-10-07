@@ -12,6 +12,13 @@ import model.Dados;
 import model.Endereco;
 import view.TelaDetalheCliente;
 
+/**
+ * Controle das Ações da Tela de Detalhe de Cliente. Controla os cliques dos
+ * botões e imprime os dados do cliente na tela.
+ * 
+ * @see TelaDetalheCliente
+ * @author Gabriel Mariano
+ */
 public class ControleTelaDetalheCliente {
 	private TelaDetalheCliente detalheCliente;
 	private ControleCliente cliCtrl;
@@ -20,6 +27,17 @@ public class ControleTelaDetalheCliente {
 	private Date data = new Date();
 	private SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
+	/**
+	 * Construtor. Recebe a Tela de Detalhe de Cliente, "seta" a opção escolhida
+	 * (editar ou salvar), recebe o index do cliente caso a opção editar seja
+	 * escolhida.
+	 * 
+	 * @see TelaDetalheCliente
+	 * @param TelaDetalheCliente Recebe a Tela de Detalhe de Cliente
+	 * @param opcaoEditarSalvar  Recebe a opção que será realizada (0: salvar; 1:
+	 *                           editar)
+	 * @param indexCliente       Index do cliente a ser editado
+	 */
 	public ControleTelaDetalheCliente(TelaDetalheCliente detalheCliente, int opcaoEditarSalvar, int indexCliente) {
 		this.detalheCliente = detalheCliente;
 		cliCtrl = new ControleCliente();
@@ -27,6 +45,14 @@ public class ControleTelaDetalheCliente {
 		this.indexCliente = indexCliente;
 	}
 
+	/**
+	 * Clique do Botão. Controla as ações dos botões da tela de detalhe de cliente.
+	 * Realiza a opção escolhida.
+	 * 
+	 * @see TelaDetalheCliente
+	 * @param ActionEvent
+	 * @return void
+	 */
 	public void clicaBtn(ActionEvent e) { // CONTROLANDO AS AÇÕES DOS BOTÕES DE TelaDetalheCliente
 		JButton clicado = (JButton) e.getSource();
 		ControleValidacao control = new ControleValidacao();
@@ -152,6 +178,15 @@ public class ControleTelaDetalheCliente {
 		}
 	}
 
+	/**
+	 * Imprimir Detalhes. Imprime os detalhes do cliente na tela de detalhe de
+	 * clientes.
+	 * 
+	 * @see TelaDetalheCliente
+	 * @param TelaDetalheCliente
+	 * @param Index              Index do cliente cujos dados serão exibidos na tela
+	 * @return void
+	 */
 	public void imprimirDetalhes(TelaDetalheCliente tela, int index) {
 		// Imprimindo atributos do cliente
 		tela.setValorNome(Dados.getCliente().get(index).getNome());
@@ -173,6 +208,11 @@ public class ControleTelaDetalheCliente {
 		tela.setValorComp(Dados.getCliente().get(index).getEndereco().getComplemento());
 	}
 
+	/**
+	 * Imprimir Mensagem de Erro.
+	 * 
+	 * @return void
+	 */
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,
 				"Erro!\nVerifique se todos os campos estão preenchidos."

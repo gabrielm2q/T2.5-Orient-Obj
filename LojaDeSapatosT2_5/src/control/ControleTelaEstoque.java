@@ -13,14 +13,35 @@ import view.TelaDetalheEstoque;
 import view.TelaEstoque;
 import view.TelaFiltro;
 
+/**
+ * Controle da Tela de Estoque. Controla os cliques dos botões e as ações da
+ * lista.
+ * 
+ * @see TelaDetalheEstoque
+ * @author Gabriel Mariano
+ */
 public class ControleTelaEstoque {
 	private TelaEstoque tela;
 
+	/**
+	 * Construtor. Recebe a Tela de Estoque.
+	 * 
+	 * @see TelaEstoque
+	 * @param TelaEstoque Recebe a Tela de Estoque
+	 */
 	public ControleTelaEstoque(TelaEstoque estoque) {
 		this.tela = estoque;
 		this.tela.setListaPessoasProd(this.listaNomes());
 	}
 
+	/**
+	 * Clique do Botão. Controla as ações dos botões da tela de estoque. Realiza a
+	 * opção escolhida.
+	 * 
+	 * @see TelaEstoque
+	 * @param ActionEvent
+	 * @return void
+	 */
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 
@@ -52,6 +73,14 @@ public class ControleTelaEstoque {
 		}
 	}
 
+	/**
+	 * Ação da Lista. Controla as ações da lista de produtos no estoque. Realiza a
+	 * opção escolhida.
+	 * 
+	 * @see TelaEstoque
+	 * @param ListSelectionEvent
+	 * @return void
+	 */
 	public void clicaLista(ListSelectionEvent e) {
 		Object selecionado = e.getSource();
 
@@ -70,6 +99,13 @@ public class ControleTelaEstoque {
 		}
 	}
 
+	/**
+	 * Listar Nomes. Lista os nomes dos produtos no estoque.
+	 * 
+	 * @see Dados
+	 * @see TelaEstoque
+	 * @return DefaultListModel<String>
+	 */
 	public DefaultListModel<String> listaNomes() {
 		DefaultListModel<String> nomes = new DefaultListModel<>();
 

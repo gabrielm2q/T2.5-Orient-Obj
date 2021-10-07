@@ -13,6 +13,13 @@ import model.Venda;
 import view.TelaDetalheVenda;
 import view.TelaPagamento;
 
+/**
+ * Controle das Ações da Tela de Detalhe de Venda. Controla os cliques dos
+ * botões e imprime os dados da Venda na tela.
+ * 
+ * @see TelaDetalheVenda
+ * @author Gabriel Mariano
+ */
 public class ControleTelaDetalheVenda {
 	private TelaDetalheVenda detalheVenda;
 	private int indexVenda;
@@ -20,12 +27,31 @@ public class ControleTelaDetalheVenda {
 	Date data = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
+	/**
+	 * Construtor. Recebe a Tela de Detalhe da Venda, "seta" a opção escolhida
+	 * (editar ou salvar), recebe o index da venda caso a opção editar seja
+	 * escolhida.
+	 * 
+	 * @see TelaDetalheVenda
+	 * @param TelaDetalheVenda  Recebe a Tela de Detalhe da Venda
+	 * @param opcaoEditarSalvar Recebe a opção que será realizada (0: salvar; 1:
+	 *                          editar)
+	 * @param indexVenda        Index da venda a ser editada
+	 */
 	public ControleTelaDetalheVenda(TelaDetalheVenda detalheVenda, int opcaoEditarSalvar, int indexVenda) {
 		this.detalheVenda = detalheVenda;
 		this.opcEditarSalvar = opcaoEditarSalvar;
 		this.indexVenda = indexVenda;
 	}
 
+	/**
+	 * Clique do Botão. Controla as ações dos botões da tela de detalhe de venda.
+	 * Realiza a opção escolhida.
+	 * 
+	 * @see TelaDetalheVenda
+	 * @param ActionEvent
+	 * @return void
+	 */
 	public void clicaBtn(ActionEvent e) {
 		try {
 			if (Integer.parseInt(detalheVenda.getValorQuantidade().getText()) <= 0
@@ -86,6 +112,14 @@ public class ControleTelaDetalheVenda {
 		}
 	}
 
+	/**
+	 * Ação da Lista. Controla as ações da lista de vendas da tela de venda. Realiza
+	 * a opção escolhida.
+	 * 
+	 * @see TelaDetalheVenda
+	 * @param ListSelectionEvent
+	 * @return void
+	 */
 	public void clicaLista(ListSelectionEvent e) {
 		if (e.getValueIsAdjusting()) {
 			/*
@@ -106,6 +140,14 @@ public class ControleTelaDetalheVenda {
 		}
 	}
 
+	/**
+	 * Imprimir Detalhes. Imprime os detalhes da venda na tela de detalhe de venda.
+	 * 
+	 * @see TelaDetalheVenda
+	 * @param TelaDetalheVenda
+	 * @param Index            Index da venda cujos dados serão exibidos na tela
+	 * @return void
+	 */
 	public void imprimirDados(TelaDetalheVenda tela, int indexVenda) {
 		/*
 		 * Imprimindo dados da venda selecionada na lista
@@ -127,6 +169,11 @@ public class ControleTelaDetalheVenda {
 
 	}
 
+	/**
+	 * Imprimir Mensagem de Erro.
+	 * 
+	 * @return void
+	 */
 	public void mensagemErro() {
 		JOptionPane.showMessageDialog(null,
 				"Erro!\nVerifique se todos os campos estão preenchidos."

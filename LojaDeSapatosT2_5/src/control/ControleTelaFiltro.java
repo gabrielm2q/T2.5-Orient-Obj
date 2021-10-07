@@ -12,13 +12,33 @@ import model.Produto;
 import model.Venda;
 import view.TelaFiltro;
 
+/**
+ * Controle da Tela de Filtros. Realiza todas as ações da tela de filtro de
+ * acordo com o tipo de filtro escolhido. Há filtros e buscas.
+ * 
+ * @see TelaFiltro
+ * @author Gabriel Mariano
+ */
 public class ControleTelaFiltro {
 	private TelaFiltro tela;
 
+	/**
+	 * Construtor. Recebe e "seta" a tela de filtro.
+	 * 
+	 */
 	public ControleTelaFiltro(TelaFiltro tela) {
 		this.tela = tela;
 	}
 
+	/**
+	 * Clique do Botão. Controla as ações dos botões das telas de filtro. Realiza a
+	 * opção escolhida. De acordo com o tipo de filtro escolhido, realiza a função
+	 * específica desse filtro/busca.
+	 * 
+	 * @see TelaFiltro
+	 * @param ActionEvent
+	 * @return void
+	 */
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 		if (tela.getTipoFiltro().equals("nomeproduto")) {

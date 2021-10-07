@@ -12,6 +12,13 @@ import model.Dados;
 import model.Endereco;
 import view.TelaDetalheFuncionario;
 
+/**
+ * Controle das Ações da Tela de Detalhe de Funcionário. Controla os cliques dos
+ * botões e imprime os dados do Funcionário na tela.
+ * 
+ * @see TelaDetalheFuncionario
+ * @author Gabriel Mariano
+ */
 public class ControleTelaDetalheFuncionario {
 	private TelaDetalheFuncionario detalheFunc;
 	private ControleFuncionario funCtrl;
@@ -21,6 +28,17 @@ public class ControleTelaDetalheFuncionario {
 	Date dataContrat = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
+	/**
+	 * Construtor. Recebe a Tela de Detalhe de Funcionário, "seta" a opção escolhida
+	 * (editar ou salvar), recebe o index do funcionário caso a opção editar seja
+	 * escolhida.
+	 * 
+	 * @see TelaDetalheFuncionario
+	 * @param TelaDetalheFuncionario Recebe a Tela de Detalhe de Funcionário
+	 * @param opcaoEditarSalvar      Recebe a opção que será realizada (0: salvar;
+	 *                               1: editar)
+	 * @param indexFuncio            Index do funcionário a ser editado
+	 */
 	public ControleTelaDetalheFuncionario(TelaDetalheFuncionario detalheFunc, int opcaoEditarSalvar, int indexFuncio) {
 		this.detalheFunc = detalheFunc;
 		funCtrl = new ControleFuncionario();
@@ -28,6 +46,14 @@ public class ControleTelaDetalheFuncionario {
 		this.indexFunc = indexFuncio;
 	}
 
+	/**
+	 * Clique do Botão. Controla as ações dos botões da tela de detalhe de
+	 * funcionário. Realiza a opção escolhida.
+	 * 
+	 * @see TelaDetalheFuncionario
+	 * @param ActionEvent
+	 * @return void
+	 */
 	public void clicaBtn(ActionEvent e) { // CONTROLANDO AS AÇÕES DOS BOTÕES DE TelaDetalheFuncionário
 		JButton clicado = (JButton) e.getSource();
 		ControleValidacao control = new ControleValidacao();
@@ -152,6 +178,16 @@ public class ControleTelaDetalheFuncionario {
 		}
 	}
 
+	/**
+	 * Imprimir Detalhes. Imprime os detalhes do funcionário na tela de detalhe de
+	 * funcionário.
+	 * 
+	 * @see TelaDetalheFuncionario
+	 * @param TelaDetalheFuncionario
+	 * @param Index                  Index do funcionário cujos dados serão exibidos
+	 *                               na tela
+	 * @return void
+	 */
 	public void imprimirDetalhes(TelaDetalheFuncionario tela, int index) {
 
 		// Imprimindo atributos do funcionário
@@ -177,6 +213,11 @@ public class ControleTelaDetalheFuncionario {
 
 	}
 
+	/**
+	 * Imprimir Mensagem de Erro.
+	 * 
+	 * @return void
+	 */
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,
 				"Erro!\nVerifique se todos os campos estão preenchidos."
