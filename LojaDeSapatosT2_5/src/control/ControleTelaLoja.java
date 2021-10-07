@@ -8,15 +8,35 @@ import model.Dados;
 import model.Endereco;
 import view.TelaLoja;
 
+/**
+ * Controle da Tela da Loja. Realiza todas as ações dos botões da tela da loja.
+ * 
+ * @see TelaLoja
+ * @author Gabriel Mariano
+ * @author Pedro Victor Torreão
+ */
 public class ControleTelaLoja {
 	private ControleLoja lojaCtrl;
 	private TelaLoja tela;
 
+	/**
+	 * Construtor. Recebe e "seta" a tela da Loja.
+	 * 
+	 * @param TelaLoja
+	 */
 	public ControleTelaLoja(TelaLoja tela) {
 		this.tela = tela;
 		lojaCtrl = new ControleLoja();
 	}
 
+	/**
+	 * Clique do Botão. Controla as ações dos botões da tela da loja. Realiza a
+	 * edição dos dados da loja.
+	 * 
+	 * @see TelaLoja
+	 * @param ActionEvent
+	 * @return void
+	 */
 	public void clicaBtn(ActionEvent e) {
 		ControleValidacao control = new ControleValidacao();
 		try {
@@ -58,6 +78,9 @@ public class ControleTelaLoja {
 
 	}
 
+	/**
+	 * Exibe a mensagem de erro quando chamada.
+	 */
 	public void mensagemErro() {
 		JOptionPane.showMessageDialog(null, "Erro!\nVerifique se todos os campos estão preenchidos."
 				+ "\nVerifique se os dados em formato numérico são números.", null, JOptionPane.ERROR_MESSAGE);

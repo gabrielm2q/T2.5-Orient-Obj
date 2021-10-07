@@ -13,6 +13,7 @@ import model.Loja;
  * 
  * @see Loja
  * @author Gabriel Mariano
+ * @author Pedro Victor Torreão
  */
 public class ControleLoja {
 

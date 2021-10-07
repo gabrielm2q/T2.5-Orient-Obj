@@ -13,13 +13,32 @@ import view.TelaLoja;
 import view.TelaMenu;
 import view.TelaVenda;
 
+/**
+ * Controle da Tela de Menu. Realiza todas as ações dos botões da tela de menu.
+ * 
+ * @see TelaMenu
+ * @author Gabriel Mariano
+ */
 public class ControleTelaMenu {
 	private final TelaMenu menu;
 
+	/**
+	 * Construtor. Recebe e "seta" a tela de menu.
+	 * 
+	 * @param TelaMenu
+	 */
 	public ControleTelaMenu(TelaMenu menu) {
 		this.menu = menu;
 	}
 
+	/**
+	 * Clique do Botão. Controla as ações dos botões da tela de menu. Direciona o
+	 * usuário para a tela desejada.
+	 * 
+	 * @see TelaMenu
+	 * @param ActionEvent
+	 * @return void
+	 */
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 
@@ -42,6 +61,7 @@ public class ControleTelaMenu {
 		} else if (clicado == menu.getBtnLoja()) {
 			new TelaLoja();
 		} else {
+			// Apenas por precaução
 			JOptionPane.showMessageDialog(null, "SISTEMA EM CONSTRUÇÃO!", null, JOptionPane.INFORMATION_MESSAGE);
 		}
 	}

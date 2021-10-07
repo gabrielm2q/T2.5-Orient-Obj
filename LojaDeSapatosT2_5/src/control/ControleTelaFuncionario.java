@@ -24,6 +24,7 @@ public class ControleTelaFuncionario {
 	/**
 	 * Construtor. Recebe e "seta" a tela de funcionário e a lista de funcionários.
 	 * 
+	 * @param TelaFuncionario
 	 */
 	public ControleTelaFuncionario(TelaFuncionario tela) {
 		this.tela = tela;

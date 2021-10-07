@@ -9,8 +9,17 @@ import javax.swing.JOptionPane;
 
 import model.Dados;
 import model.Pagamento;
+import view.TelaMenu;
 import view.TelaPagamento;
+import view.TelaVenda;
 
+/**
+ * Controle da Tela de Pagamento. Realiza todas as ações dos botões da tela de
+ * pagamentos.
+ * 
+ * @see TelaMenu
+ * @author Gabriel Mariano
+ */
 public class ControleTelaPagamento {
 	private TelaPagamento tela;
 	private int opcEditarSalvar;
@@ -20,6 +29,14 @@ public class ControleTelaPagamento {
 	Date data = new Date();
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
+	/**
+	 * Construtor. Recebe e "seta" a tela de pagamento, recebe a opção desejada (0:
+	 * Salvar; 1: Editar) e o index da venda a ser editada, caso necessário.
+	 * 
+	 * @param TelaPagamento
+	 * @param opcEditarSalvar Opção desejada: Editar ou Salvar venda/pagamento
+	 * @param indexVenda      Caso a venda seja editada, o index desta é usado
+	 */
 	public ControleTelaPagamento(TelaPagamento tela, int opcEditarSalvar, int indexVenda) {
 		this.opcEditarSalvar = opcEditarSalvar;
 		this.tela = tela;
@@ -27,6 +44,15 @@ public class ControleTelaPagamento {
 		venCtrl = new ControleVenda();
 	}
 
+	/**
+	 * Clique do Botão. Controla as ações do botão da tela de pagamento. Realiza a
+	 * função especificada.
+	 * 
+	 * @see TelaPagamento
+	 * @see TelaVenda
+	 * @param ActionEvent
+	 * @return void
+	 */
 	public void clicaBtn(ActionEvent e) {
 		JButton clicado = (JButton) e.getSource();
 
@@ -64,7 +90,7 @@ public class ControleTelaPagamento {
 			JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!", null, JOptionPane.INFORMATION_MESSAGE);
 			tela.dispose();
 
-		} else if (opcEditarSalvar == 1) {
+		} else if (opcEditarSalvar == 1) { // Editando venda
 			venCtrl.editarVenda(indexVenda, tela.getVenda().getIdVenda(), tela.getVenda().getValorVenda(),
 					tela.getVenda().getValorDesconto(), tela.getVenda().getDataPedido(),
 					tela.getVenda().getFuncionario(), tela.getVenda().getCliente(), tela.getVenda().getProduto(), pag,
