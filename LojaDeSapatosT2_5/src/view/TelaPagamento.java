@@ -14,6 +14,12 @@ import javax.swing.JLabel;
 import control.ControleTelaPagamento;
 import model.Venda;
 
+/**
+ * Tela do Pagamento. Exibe os atributos do pagamento e a opção de salvar a
+ * venda.
+ * 
+ * @author Gabriel Mariano
+ */
 public class TelaPagamento extends JFrame implements ActionListener {
 	private JLabel titulo = new JLabel("Pagamento", JLabel.CENTER);
 	private JButton btnSalvar = new JButton("Salvar Venda");
@@ -35,6 +41,15 @@ public class TelaPagamento extends JFrame implements ActionListener {
 	private JLabel lblNumParcelas = new JLabel("Número de Parcelas: ");
 	private JComboBox<String> valorNumParcelas = new JComboBox<>(numParcelas);
 
+	/**
+	 * Construtor. Instancia a classe ControleTelaPagamento para que essa execute as
+	 * funções dessa tela.
+	 * 
+	 * @see ControleTelaPagamento
+	 * 
+	 * @param Venda            Recebe a venda a ser realizada
+	 * @param TelaDetalheVenda Recebe a tela de detalhe da venda com seus atributos
+	 */
 	public TelaPagamento(Venda venda, TelaDetalheVenda detalheVenda) {
 		super("Pagamento"); // JFrame com nome
 		this.detalheVenda = detalheVenda;
@@ -105,6 +120,15 @@ public class TelaPagamento extends JFrame implements ActionListener {
 		this.setVisible(true);
 	}
 
+	/**
+	 * ActionPerformed dos Botões da Tela. Envia o evento à classe
+	 * ControleTelaPagamento para que esta salve a venda e seu pagamento.
+	 * 
+	 * @see ControleTelaPagamento
+	 * 
+	 * @param ActionEvent
+	 * @return void
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.controlaPag.clicaBtn(e);

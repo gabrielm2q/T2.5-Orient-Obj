@@ -15,6 +15,11 @@ import javax.swing.JTextField;
 
 import control.ControleTelaDetalheCliente;
 
+/**
+ * Tela dos Detalhes do Cliente. Exibe os atributos do Cliente selecionado.
+ * 
+ * @author Gabriel Mariano
+ */
 public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JLabel titulo = new JLabel("Cliente", JLabel.CENTER);
 	private JButton btnSalvar = new JButton("Salvar");
@@ -66,6 +71,16 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 	private JLabel lblComp = new JLabel("Complemento: "); // Complemento
 	private JTextField valorComp;
 
+	/**
+	 * Construtor.
+	 * 
+	 * @see ControleTelaDetalheCliente
+	 * 
+	 * @param opcaoEditarSalvar Repassa à classe ControleTelaDetalheCliente se o
+	 *                          usuário deseja salvar ou editar um cliente
+	 * @param indexCliente      Repassa à classe ControleTelaDetalheCliente o index
+	 *                          do cliente a ser editado, caso necessário
+	 */
 	public TelaDetalheCliente(int opcaoEditarSalvar, int indexCliente) {
 		super("Cliente"); // JFrame com nome
 		this.controlaDetalhe = new ControleTelaDetalheCliente(this, opcaoEditarSalvar, indexCliente);
@@ -248,6 +263,15 @@ public class TelaDetalheCliente extends JFrame implements ActionListener {
 
 	}
 
+	/**
+	 * ActionPerformed dos Botões da Tela. Envia o evento à classe
+	 * ControleTelaDetalheCliente para que esta execute as ações adequadas.
+	 * 
+	 * @see ControleTelaDetalheCliente
+	 * 
+	 * @param ActionEvent
+	 * @return void
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.controlaDetalhe.clicaBtn(e);

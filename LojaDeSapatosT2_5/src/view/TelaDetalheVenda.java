@@ -24,6 +24,11 @@ import model.Cliente;
 import model.Dados;
 import model.Funcionario;
 
+/**
+ * Tela dos Detalhes das Vendas. Exibe os atributos da Venda selecionada.
+ * 
+ * @author Gabriel Mariano
+ */
 public class TelaDetalheVenda extends JFrame implements ActionListener, ListSelectionListener {
 	private JLabel titulo = new JLabel("Venda", JLabel.CENTER);
 	private JButton btnSalvar = new JButton("Pagamento");
@@ -59,6 +64,16 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 	private JLabel lblFuncionario = new JLabel("Funcionário: ");
 	private JComboBox<String> valorFuncionario;
 
+	/**
+	 * Construtor.
+	 * 
+	 * @see ControleTelaDetalheVenda
+	 * 
+	 * @param opcaoEditarSalvar Repassa à classe ControleTelaDetalheVenda se o
+	 *                          usuário deseja salvar ou editar uma venda
+	 * @param indexVenda        Repassa à classe ControleTelaDetalheVenda o index da
+	 *                          venda a ser editada, caso necessário
+	 */
 	public TelaDetalheVenda(int opcaoEditarSalvar, int indexVenda) {
 		super("Venda"); // JFrame com nome
 		this.controlaDetalhe = new ControleTelaDetalheVenda(this, opcaoEditarSalvar, indexVenda);
@@ -215,12 +230,30 @@ public class TelaDetalheVenda extends JFrame implements ActionListener, ListSele
 
 	}
 
+	/**
+	 * ActionPerformed da Lista da Tela. Envia o evento à classe
+	 * ControleTelaDetalheVenda para que esta execute as ações adequadas.
+	 * 
+	 * @see ControleTelaDetalheVenda
+	 * 
+	 * @param ListSelectionEvent
+	 * @return void
+	 */
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		this.controlaDetalhe.clicaLista(e);
 
 	}
 
+	/**
+	 * ActionPerformed dos Botões da Tela. Envia o evento à classe
+	 * ControleTelaDetalheVenda para que esta execute as ações adequadas.
+	 * 
+	 * @see ControleTelaDetalheVenda
+	 * 
+	 * @param ActionEvent
+	 * @return void
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.controlaDetalhe.clicaBtn(e);

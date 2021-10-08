@@ -17,6 +17,12 @@ import javax.swing.ListSelectionModel;
 import control.ControleTelaLoja;
 import model.Dados;
 
+/**
+ * Tela do Funcionário. Exibe os atributos da Loja
+ * 
+ * @author Pedro Victor Torreão
+ * @author Gabriel Mariano
+ */
 public class TelaLoja extends JFrame implements ActionListener {
 	private ControleTelaLoja controlTela;
 
@@ -66,6 +72,12 @@ public class TelaLoja extends JFrame implements ActionListener {
 	private JLabel lblComp = new JLabel("Complemento: "); // Complemento
 	private JTextField valorComp;
 
+	/**
+	 * Construtor. Instancia a classe ControleTelaLoja para que esta execute as
+	 * funções dessa tela.
+	 * 
+	 * @see ControleTelaLoja
+	 */
 	public TelaLoja() {
 		super("Loja");
 		controlTela = new ControleTelaLoja(this);
@@ -271,6 +283,15 @@ public class TelaLoja extends JFrame implements ActionListener {
 
 	}
 
+	/**
+	 * ActionPerformed dos Botões da Tela. Envia o evento à classe ControleTelaLoja
+	 * para que esta execute as ações adequadas.
+	 * 
+	 * @see ControleTelaLoja
+	 * 
+	 * @param ActionEvent
+	 * @return void
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.controlTela.clicaBtn(e);

@@ -13,6 +13,12 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * Template. É uma classe abstrata que gera uma tela com componentes comuns à
+ * várias telas. É importante para o conceito de Herança da POO.
+ * 
+ * @author Gabriel Mariano
+ */
 public abstract class Template extends JFrame implements ActionListener, ListSelectionListener {
 	private JLabel texto;
 	private JButton btnCadastrar = new JButton("Cadastrar");
@@ -20,6 +26,13 @@ public abstract class Template extends JFrame implements ActionListener, ListSel
 	private JButton btnAtualizar = new JButton("Atualizar");
 	private JList<String> listaPessoasProd = new JList<>();
 
+	/**
+	 * Construtor. Recebe uma string texto que nomeia a tela. Implementa os
+	 * componentes necessários à várias telas (Botões, Lista...)
+	 * 
+	 * @param Texto Nomeia a tela
+	 * 
+	 */
 	public Template(String texto) {
 		super(texto); // JFrame com nome
 		this.setSize(560, 520);
@@ -123,6 +136,14 @@ public abstract class Template extends JFrame implements ActionListener, ListSel
 		return listaPessoasProd;
 	}
 
+	/**
+	 * Listar dados. Recebe a lista com os nomes dos dados a serem inseridos na
+	 * JList da tela e os adiciona a esta lista.
+	 * 
+	 * @param Nomes Nomes das Pessoas ou Produtos a serem exibidos na lista
+	 * 
+	 * @return void
+	 */
 	public void setListaPessoasProd(DefaultListModel<String> nomes) {
 		this.listaPessoasProd.setModel(nomes);
 		this.listaPessoasProd.updateUI();

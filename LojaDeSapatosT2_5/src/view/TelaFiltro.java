@@ -17,6 +17,12 @@ import javax.swing.ListSelectionModel;
 
 import control.ControleTelaFiltro;
 
+/**
+ * Tela do Filtro. A depender do filtro/busca selecionado, exibe uma tela
+ * específica para tal.
+ * 
+ * @author Gabriel Mariano
+ */
 public class TelaFiltro extends JFrame implements ActionListener {
 	private ControleTelaFiltro controlTela;
 	private String tipoFiltro;
@@ -40,6 +46,11 @@ public class TelaFiltro extends JFrame implements ActionListener {
 	private JLabel lblTamanho = new JLabel("Tamanho do Produto: ");
 	private JComboBox<String> valorTamanho = new JComboBox<>(tamanhos);
 
+	/**
+	 * Construtor.
+	 * 
+	 * @param tipoFiltro Recebe o tipo de filtro/busca que será selecionado.
+	 */
 	public TelaFiltro(String tipoFiltro) {
 		super("Buscar");
 		this.controlTela = new ControleTelaFiltro(this);
@@ -200,6 +211,15 @@ public class TelaFiltro extends JFrame implements ActionListener {
 
 	}
 
+	/**
+	 * ActionPerformed dos Botões da Tela. Envia o evento à classe
+	 * ControleTelaFiltro para que esta execute as ações adequadas.
+	 * 
+	 * @see ControleTelaFiltro
+	 * 
+	 * @param ActionEvent
+	 * @return void
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.controlTela.clicaBtn(e);

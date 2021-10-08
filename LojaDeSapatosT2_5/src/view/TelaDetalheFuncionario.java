@@ -15,6 +15,12 @@ import javax.swing.JTextField;
 
 import control.ControleTelaDetalheFuncionario;
 
+/**
+ * Tela dos Detalhes dos Funcionários. Exibe os atributos do Funcionário
+ * selecionado.
+ * 
+ * @author Gabriel Mariano
+ */
 public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 	private JLabel titulo = new JLabel("Funcionário", JLabel.CENTER);
 	private JButton btnSalvar = new JButton("Salvar");
@@ -71,6 +77,16 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 	private JLabel lblComp = new JLabel("Complemento: "); // Complemento
 	private JTextField valorComp;
 
+	/**
+	 * Construtor.
+	 * 
+	 * @see ControleTelaDetalheFuncionario
+	 * 
+	 * @param opcaoEditarSalvar Repassa à classe ControleTelaDetalheFuncionario se o
+	 *                          usuário deseja salvar ou editar um funcionário
+	 * @param indexFuncionario  Repassa à classe ControleTelaDetalheFuncionario o
+	 *                          index do funcionário a ser editado, caso necessário
+	 */
 	public TelaDetalheFuncionario(int opcaoEditarSalvar, int indexFuncionario) {
 		super("Funcionário"); // JFrame com nome
 		this.controlaDetalhe = new ControleTelaDetalheFuncionario(this, opcaoEditarSalvar, indexFuncionario);
@@ -269,6 +285,15 @@ public class TelaDetalheFuncionario extends JFrame implements ActionListener {
 		this.setVisible(true);
 	}
 
+	/**
+	 * ActionPerformed dos Botões da Tela. Envia o evento à classe
+	 * ControleTelaDetalheFuncionario para que esta execute as ações adequadas.
+	 * 
+	 * @see ControleTelaDetalheFuncionario
+	 * 
+	 * @param ActionEvent
+	 * @return void
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.controlaDetalhe.clicaBtn(e);

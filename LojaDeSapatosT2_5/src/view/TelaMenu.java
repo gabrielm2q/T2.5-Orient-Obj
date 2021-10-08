@@ -12,6 +12,12 @@ import javax.swing.WindowConstants;
 
 import control.ControleTelaMenu;
 
+/**
+ * Tela de Menu. Exibe a Tela de Menu e os botões que direcionam o usuário à
+ * tela desejada.
+ * 
+ * @author Gabriel Mariano
+ */
 public class TelaMenu extends JFrame implements ActionListener {
 	private JLabel titulo = new JLabel("Loja de Sapatos", JLabel.CENTER);
 	private JButton btnCliente = new JButton("Cliente");
@@ -21,6 +27,12 @@ public class TelaMenu extends JFrame implements ActionListener {
 	private JButton btnLoja = new JButton("Loja");
 	private ControleTelaMenu controlaMenu;
 
+	/**
+	 * Construtor. Instancia a classe ControleTelaMenu. Seta os componentes dessa
+	 * tela.
+	 * 
+	 * @see ControleTelaMenu.
+	 */
 	public TelaMenu() {
 		super("Loja de Sapatos"); // JFrame com nome
 		this.controlaMenu = new ControleTelaMenu(this);
@@ -70,6 +82,15 @@ public class TelaMenu extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
+	/**
+	 * ActionPerformed dos Botões da Tela. Envia o evento à classe ControleTelaMenu
+	 * para que esta execute as ações adequadas.
+	 * 
+	 * @see ControleTelaMenu
+	 * 
+	 * @param ActionEvent
+	 * @return void
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) { // ActionPerformed controlado pela classe ControleTelaMenu
 		this.controlaMenu.clicaBtn(e);

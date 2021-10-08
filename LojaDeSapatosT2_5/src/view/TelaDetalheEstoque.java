@@ -17,6 +17,12 @@ import javax.swing.JTextField;
 import control.ControleTelaDetalheEstoque;
 import model.Dados;
 
+/**
+ * Tela dos Detalhes dos Produtos do Estoque. Exibe os atributos do Produto
+ * selecionado do Estoque.
+ * 
+ * @author Gabriel Mariano
+ */
 public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JLabel titulo;
 	private JButton btnSalvar = new JButton("Salvar");
@@ -118,6 +124,18 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 	private JLabel lblPalmilha = new JLabel("Tipo de Palmilha: "); // Tipo de Palmilha
 	private JTextField valorPalmilha;
 
+	/**
+	 * Construtor.
+	 * 
+	 * @see ControleTelaDetalheEstoque
+	 * 
+	 * @param opcaoEditarSalvar Repassa à classe ControleTelaDetalheEstoque se o
+	 *                          usuário deseja salvar ou editar um produto
+	 * @param tipoProduto       Repassa à classe ControleTelaDetalheEstoque o tipo
+	 *                          de produto que será cadastrado/editado
+	 * @param indexProduto      Repassa à classe ControleTelaDetalheEstoque o index
+	 *                          do produto a ser editado, caso necessário
+	 */
 	public TelaDetalheEstoque(int opcEditarSalvar, String tipoProd, int indexProduto) {
 		super(tipoProd); // JFrame com a categoria do produto como título
 		this.controlaDetalhe = new ControleTelaDetalheEstoque(this, opcEditarSalvar, tipoProd, indexProduto);
@@ -500,6 +518,15 @@ public class TelaDetalheEstoque extends JFrame implements ActionListener {
 		this.setVisible(true);
 	}
 
+	/**
+	 * ActionPerformed dos Botões da Tela. Envia o evento à classe
+	 * ControleTelaDetalheEstoque para que esta execute as ações adequadas.
+	 * 
+	 * @see ControleTelaDetalheEstoque
+	 * 
+	 * @param ActionEvent
+	 * @return void
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.controlaDetalhe.clicaBtn(e);

@@ -12,9 +12,24 @@ import control.ControleEstoque;
 import model.Dados;
 import model.Sapato;
 
+/**
+ * Teste do Método de Cadastrar Produto no Estoque. Verifica se, após o cadastro
+ * do produto no estoque, este foi salvo na classe Dados.
+ * 
+ * @see ControleEstoque
+ * @author Gabriel Mariano
+ */
 class TesteCadastroEstoque {
 	ControleEstoque c = new ControleEstoque();
 
+	/**
+	 * Teste do Método de Cadastro de Produto no Estoque.
+	 * 
+	 * @see ControleEstoque
+	 * @see Dados
+	 * 
+	 * @return void
+	 */
 	@Test
 	void testCadastrarProduto() {
 		Date d = Calendar.getInstance().getTime();

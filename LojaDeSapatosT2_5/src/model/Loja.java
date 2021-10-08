@@ -8,6 +8,7 @@ import java.util.List;
  * detalhar esta. Pode armazenar mais de um funcionário.
  * 
  * @author Gabriel Mariano
+ * @author Pedro Victor Torreão
  */
 public class Loja {
 	private String nome;

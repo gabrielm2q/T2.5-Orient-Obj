@@ -6,10 +6,27 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import control.ControleValidacao;
+import model.Dados;
 
+/**
+ * Teste dos Métodos de Validação dos Atributos Inseridos pelo Usuário. Verifica
+ * se, de acordo com a validade dos dados inseridos, o retorno é true quando
+ * deve ser true e false quando deve ser false.
+ * 
+ * @see ControleValidacao
+ * @author Gabriel Mariano
+ */
 class TesteValidacao {
 	ControleValidacao v = new ControleValidacao();
 
+	/**
+	 * Teste dos Métodos de Validação dos Atributos do Salto Inseridos pelo Usuário
+	 * 
+	 * @see ControleValidacao
+	 * @see Dados
+	 * 
+	 * @return void
+	 */
 	@Test
 	void testValidaSalto() {
 		assertTrue(v.validaSalto("Salto", 333, 150.2, "Random", "EUA", "6 meses", "Bege", "010100101", "Couro Vegetal",
@@ -28,6 +45,15 @@ class TesteValidacao {
 				"Scarpin", "Preto", "Vermelho", "15 cm"));
 	}
 
+	/**
+	 * Teste dos Métodos de Validação dos Atributos do Endereço Inseridos pelo
+	 * Usuário
+	 * 
+	 * @see ControleValidacao
+	 * @see Dados
+	 * 
+	 * @return void
+	 */
 	@Test
 	void testValidaEndereco() {
 		assertTrue(v.validaEndereco(73850000, "Cristalina", "Rua dos Cristais", 77, 4, "Centro", 1, "Casa Amarela"));
@@ -41,6 +67,15 @@ class TesteValidacao {
 		assertFalse(v.validaEndereco(10000000, "Cristalina", "Rua dos Cristais", 7, 4, "Centro", 1, " "));
 	}
 
+	/**
+	 * Teste dos Métodos de Validação dos Atributos do Cliente Inseridos pelo
+	 * Usuário
+	 * 
+	 * @see ControleValidacao
+	 * @see Dados
+	 * 
+	 * @return void
+	 */
 	@Test
 	void testValidaCliente() {
 		assertTrue(v.validaCliente("Gabriel", "095.823.168-77", "64985887777", "emailaleatorio@email.com.br"));

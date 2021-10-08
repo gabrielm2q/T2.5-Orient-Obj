@@ -11,9 +11,24 @@ import control.ControleCliente;
 import model.Dados;
 import model.Endereco;
 
+/**
+ * Teste do Método de Cadastrar Cliente. Verifica se, após o cadastro do
+ * cliente, este foi salvo na classe Dados.
+ * 
+ * @see ControleCliente
+ * @author Gabriel Mariano
+ */
 class TesteCadastroCliente {
 	ControleCliente c = new ControleCliente();
 
+	/**
+	 * Teste do Método de Cadastro de Cliente.
+	 * 
+	 * @see ControleCliente
+	 * @see Dados
+	 * 
+	 * @return void
+	 */
 	@Test
 	void testCadastrarCliente() {
 		Date d = Calendar.getInstance().getTime();
