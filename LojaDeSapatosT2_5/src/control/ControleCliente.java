@@ -16,7 +16,7 @@ import model.Endereco;
 public class ControleCliente {
 
 	/**
-	 * Construtor.
+	 * Construtor Vazio.
 	 */
 	public ControleCliente() {
 

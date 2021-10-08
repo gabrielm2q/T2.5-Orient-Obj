@@ -2,12 +2,46 @@ package control;
 
 import javax.swing.JOptionPane;
 
+import model.Bota;
+import model.Cliente;
+import model.Endereco;
+import model.Funcionario;
+import model.Loja;
+import model.Salto;
+import model.Sapato;
+
+/**
+ * Validadora. Valida os dados inseridos pelo usuário de acordo com cada tipo de
+ * dado e a entrada esperada. Exibe mensagem informando o erro detalhado. Usado
+ * antes dos métodos de cadastro e edição.
+ * 
+ * @author Gabriel Mariano
+ */
 public class ControleValidacao {
 
+	/**
+	 * Construtor vazio.
+	 */
 	public ControleValidacao() {
 
 	}
 
+	/**
+	 * Validação de Endereço. Valida os dados requeridos para o cadastro de
+	 * endereço. Retorna True caso seja válido e False caso seja inválido.
+	 * 
+	 * @see Endereco
+	 * 
+	 * @param CEP         CEP da Cidade cadastrada
+	 * @param Cidade      Nome da Cidade
+	 * @param Rua         Nome da Rua
+	 * @param Número      Número da Casa
+	 * @param Quadra      Número da Quadra
+	 * @param Bairro      Nome do Bairro
+	 * @param numApart    Número do Apartamento, se necessário
+	 * @param Complemento Complemento do Endereço
+	 * @return boolean True ou False
+	 */
 	public boolean validaEndereco(int cep, String cidade, String rua, int num, int quadra, String bairro, int numApart,
 			String comp) {
 		try { // Validando o CEP
@@ -150,6 +184,17 @@ public class ControleValidacao {
 		return true;
 	}
 
+	/**
+	 * Validação dos dados da Loja. Valida os dados requeridos para o cadastro da
+	 * Loja. Retorna True caso seja válido e False caso seja inválido.
+	 * 
+	 * @see Loja
+	 * 
+	 * @param Nome Nome da Loja
+	 * @param CNPJ CNPJ da Loja
+	 * @param Site Link do site da loja
+	 * @return boolean True ou False
+	 */
 	public boolean validaLoja(String nome, String cnpj, String site) {
 
 		try { // Validando o nome da loja
@@ -253,6 +298,18 @@ public class ControleValidacao {
 		return true;
 	}
 
+	/**
+	 * Validação do Cliente. Valida os dados requeridos para o cadastro do Cliente.
+	 * Retorna True caso seja válido e False caso seja inválido.
+	 * 
+	 * @see Cliente
+	 * 
+	 * @param Nome     Nome do Cliente
+	 * @param CPF      CPF do Cliente
+	 * @param Telefone Celular do Cliente
+	 * @param Email    Email do Cliente
+	 * @return boolean True ou False
+	 */
 	public boolean validaCliente(String nome, String cpf, String fone, String email) {
 
 		// Validando o nome do cliente
@@ -403,6 +460,17 @@ public class ControleValidacao {
 		return true;
 	}
 
+	/**
+	 * Validação do Funcionário. Valida os dados requeridos para o cadastro do
+	 * Funcionário. Retorna True caso seja válido e False caso seja inválido.
+	 * 
+	 * @see Funcionario
+	 * 
+	 * @param Nome     Nome do Funcionário
+	 * @param CPF      CPF do Funcionário
+	 * @param Telefone Celular do Funcionário
+	 * @return boolean True ou False
+	 */
 	public boolean validaFuncionario(String nome, String cpf, String fone) {
 
 		// Validando o nome do funcionario
@@ -516,6 +584,27 @@ public class ControleValidacao {
 		return true;
 	}
 
+	/**
+	 * Validação do Salto. Valida os dados requeridos para o cadastro de um Produto
+	 * do tipo Salto. Retorna True caso seja válido e False caso seja inválido.
+	 * 
+	 * @see Salto
+	 * 
+	 * @param Nome
+	 * @param Quantidade
+	 * @param Preço
+	 * @param Marca
+	 * @param paisOrigem
+	 * @param Garantia
+	 * @param Cor
+	 * @param codBarras
+	 * @param Material
+	 * @param tipoSalto
+	 * @param corExterna
+	 * @param corSolado
+	 * @param alturaSalto
+	 * @return boolean True ou False
+	 */
 	public boolean validaSalto(String nome, int quantidade, Double preco, String marca, String paisOrigem,
 			String garantia, String cor, String codBarras, String material, String tipoSalto, String corExterna,
 			String corSolado, String alturaSalto) {
@@ -776,6 +865,30 @@ public class ControleValidacao {
 		return true;
 	}
 
+	/**
+	 * Validação do Tênis. Valida os dados requeridos para o cadastro de um Produto
+	 * do tipo Tênis. Retorna True caso seja válido e False caso seja inválido.
+	 * 
+	 * @see Tênis
+	 * 
+	 * @param Nome
+	 * @param Quantidade
+	 * @param Preço
+	 * @param Marca
+	 * @param paisOrigem
+	 * @param GarantiaDoProduto
+	 * @param Cor
+	 * @param codBarras
+	 * @param Material
+	 * @param AtividadeIndicada
+	 * @param TipoDePisada
+	 * @param TecnologiaDoSolado
+	 * @param Peso
+	 * @param TipoDePalmilha
+	 * @param TipoDeAmarração
+	 * @param CorDoCadarço
+	 * @return boolean True ou False
+	 */
 	public boolean validaTenis(String nome, int quantidade, Double preco, String marca, String paisOrigem,
 			String garantia, String cor, String codBarras, String material, String atividade, String tipoPisada,
 			String tecnoSolado, Double peso, String tipoPalmilha, String tipoAmarra, String corCadarco) {
@@ -1095,6 +1208,28 @@ public class ControleValidacao {
 		return true;
 	}
 
+	/**
+	 * Validação da Bota. Valida os dados requeridos para o cadastro de um Produto
+	 * do tipo Bota. Retorna True caso seja válido e False caso seja inválido.
+	 * 
+	 * @see Bota
+	 * 
+	 * @param Nome
+	 * @param Quantidade
+	 * @param Preço
+	 * @param Marca
+	 * @param paisOrigem
+	 * @param Garantia
+	 * @param Cor
+	 * @param codBarras
+	 * @param Material
+	 * @param Modelo
+	 * @param AlturaDoCano
+	 * @param TipoDeSalto
+	 * @param TipoDePalmilha
+	 * @param MaterialDoSolado
+	 * @return boolean True ou False
+	 */
 	public boolean validaBota(String nome, int quantidade, Double preco, String marca, String paisOrigem,
 			String garantia, String cor, String codBarras, String material, String modelo, String alturaCano,
 			String tipoSalto, String tipoPalmilha, String materialSolado) {
@@ -1382,6 +1517,27 @@ public class ControleValidacao {
 		return true;
 	}
 
+	/**
+	 * Validação do Sapato. Valida os dados requeridos para o cadastro de um Produto
+	 * do tipo Sapato. Retorna True caso seja válido e False caso seja inválido.
+	 * 
+	 * @see Sapato
+	 * 
+	 * @param Nome
+	 * @param Quantidade
+	 * @param Preço
+	 * @param Marca
+	 * @param paisOrigem
+	 * @param Garantia
+	 * @param Cor
+	 * @param codBarras
+	 * @param Material
+	 * @param MaterialDoSolado
+	 * @param TipoDeBico
+	 * @param MaterialInterno
+	 * @param TipoDePalmilha
+	 * @return boolean True ou False
+	 */
 	public boolean validaSapato(String nome, int quantidade, Double preco, String marca, String paisOrigem,
 			String garantia, String cor, String codBarras, String material, String materialSolado, String tipoBico,
 			String materialInterno, String tipoPalmilha) {
